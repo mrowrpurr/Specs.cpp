@@ -1,0 +1,20 @@
+{
+    "registries": [
+        {
+            "kind": "git",
+            "repository": "https://gitlab.com/colorglass/vcpkg-colorglass",
+            "baseline": "6fb127f7d425ae3cf3fab0f79005d907c885c0d8",
+            "packages": [
+                "commonlibsse-ng"
+            ]
+        },
+        {
+            "kind": "git",
+            "repository": "https://github.com/mrowrpurr/vcpkg-repo.git",
+            "baseline": "77afafe5cbc4759d49d5f9524f7b9b016e7380a0",
+            "packages": [
+                "bandit"
+            ]
+        }
+    ]
+}
