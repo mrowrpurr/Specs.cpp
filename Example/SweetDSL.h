@@ -1,3 +1,13 @@
+#include <Spec.h>
+
+test("something") { AssertThat(69, Equals(420)); }
+
+testAsync("something", done) {
+    AssertThat(69, Equals(420));
+    // some async shit
+    done(true);
+}
+
 #include <Spec/Internal/SpecStorage.h>
 
 void test_fn(const std::string& description, std::function<void()> body) {
@@ -84,9 +94,9 @@ struct FunctionRunner {
 #define test(description) if (description)
 
 _describe("this is a describe block") {
-    std::cout << "THIS BODY RUNS~!" << std::endl;
-
-    test("something") {}
+    test("something") {
+        // use dog
+    }
 }
 
 _test("the macro test!") { std::cout << "THE MACRO DEFINED TEST RAN!" << std::endl; }
