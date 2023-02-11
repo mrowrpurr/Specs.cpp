@@ -25,7 +25,25 @@ void SetupAndRunSpecs() {
         test.promise.set_value(true);
     };
 
-    group.tests.emplace_back(std::move(test));
+    // Test 1
+    group.tests.emplace_back(SpecTest{
+        .description = "Test1 desc", .body = [](auto&) { Log("Hello from Test 1"); }});
+
+    // Test 2
+    group.tests.emplace_back(SpecTest{
+        .description = "Test2 desc", .body = [](auto&) { Log("Hello from Test 2"); }});
+
+    // Setup1
+    group.setups.emplace_back(SpecTest{.body = [](auto&) { Log("Hello from Setup 1"); }});
+
+    // Setup2
+    group.setups.emplace_back(SpecTest{.body = [](auto&) { Log("Hello from Setup 2"); }});
+
+    // Teardown1
+    group.teardowns.emplace_back(SpecTest{.body = [](auto&) { Log("Hello from Teardown 1"); }});
+
+    // Teardown2
+    group.teardowns.emplace_back(SpecTest{.body = [](auto&) { Log("Hello from Teardown 2"); }});
 
     // Run the group!
     SpecRunner runner;
