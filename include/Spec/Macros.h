@@ -4,7 +4,6 @@
 
 #include "Spec/SpecController.h"
 
-
 #define __SPEC_MACRO_CONCAT0(x, y) x##y
 #define __SPEC_MACRO_CONCAT(x, y) __SPEC_MACRO_CONCAT0(x, y)
 
@@ -39,9 +38,5 @@ namespace Spec::Internal {
     };
 }
 
-// Useful!
-// #define __NEW_SPEC_MACRO_FUNCTIONRUNNER __SPEC_MACRO_FUNCTIONRUNNER(__COUNTER__)
-// #define SomeMacro(someArg)                                       \
-//     __NEW_SPEC_MACRO_FUNCTIONRUNNER {                        \
-//         []() { SkyrimScripting::Plugin::Config::LogFullPath = fullPath; } \
-//     }
+#define RunSpecs \
+    int main() { Spec::SpecController::GetSingleton().RunSpecs(); }
