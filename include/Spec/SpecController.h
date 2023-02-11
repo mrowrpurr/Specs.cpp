@@ -1,5 +1,6 @@
 #pragma once
 
+#include <format>
 #include <functional>
 #include <iostream>
 #include <queue>
@@ -18,24 +19,62 @@ namespace Spec {
         SpecController& operator=(const SpecController&) = delete;
         SpecController& operator=(SpecController&&)      = delete;
 
-        std::queue<std::function<void()>> _unevaluatedSpecsBlocks;
-        Internal::EventLoop               _eventLoop;
+        std::vector<std::function<void()>> _unevaluatedSpecsBlocks;
+        Internal::EventLoop                _eventLoop;
 
     public:
+        // just to hack things together quickly for testing things...
+        std::promise<bool> _currentlyRunningTestResultPromise;
+        std::atomic<bool>  _currentlyRunningTestPassed;
+
         static SpecController& GetSingleton() {
             static SpecController singleton;
             return singleton;
         }
 
         void _RegisterSpecBlockToEvaluate(std::function<void()> fn) {
-            _unevaluatedSpecsBlocks.push(fn);
+            _unevaluatedSpecsBlocks.emplace_back(fn);
         }
 
         void RunSpecs() {
-            std::cout << "RunSpecs()" << std::endl;
-            std::cout << "Run some stuff in the event loop!" << std::endl;
-            _eventLoop.enqueue([]() { std::cout << "RUN ME" << std::endl; });
-            _eventLoop.enqueue([]() { std::cout << "RUN TOO" << std::endl; });
+            for (auto& block : _unevaluatedSpecsBlocks) block();
+        }
+
+        void RunSpec(const std::string& description, std::function<void()> body) {
+            _eventLoop.enqueue([body, description]() {
+                try {
+                    body();
+                    GetSingleton()._currentlyRunningTestPassed = true;
+                    std::cout << std::format("sync TEST PASSED!: '{}'", description) << std::endl;
+                } catch (...) {
+                    GetSingleton()._currentlyRunningTestPassed = false;
+                    std::cout << std::format("sync TEST FAILED!: '{}'", description) << std::endl;
+                }
+            });
+        }
+
+        // TODO: time
+        void RunSpecAsync(
+            const std::string& description, std::function<void(std::promise<bool>&)> body
+        ) {
+            _currentlyRunningTestResultPromise = {};
+            _eventLoop.enqueue([&]() {
+                try {
+                    body(GetSingleton()._currentlyRunningTestResultPromise);
+                } catch (...) {
+                    std::cout << std::format(
+                                     "*async* TEST FAILED! with unexpected error: '{}'", description
+                                 )
+                              << std::endl;
+                    _currentlyRunningTestResultPromise.set_value(false);
+                }
+            });
+            auto future = _currentlyRunningTestResultPromise.get_future();
+            auto result = future.get();
+            std::cout << std::format(
+                             "Ran *ASYNC* test {} and the result was {}", description, result
+                         )
+                      << std::endl;
         }
     };
 }
