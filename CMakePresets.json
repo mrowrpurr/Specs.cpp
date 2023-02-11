@@ -1,65 +1,44 @@
 {
-    "version": 2,
-    "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
-    "configurePresets": [
-        {
-            "name": "flags",
-            "hidden": true,
-            "cacheVariables": {
-                "CMAKE_CXX_FLAGS": "/permissive- /Zc:preprocessor /EHsc /MP /W4 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DUNICODE -D_UNICODE -D_CRT_SECURE_NO_WARNINGS"
-            }
-        },
-        {
-            "name": "vcpkg",
-            "hidden": true,
-            "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "VCPKG_TARGET_TRIPLET": "x64-windows-static-md",
-                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
-                "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL"
-            }
-        },
-        {
-            "name": "x64",
-            "hidden": true,
-            "architecture": { "value": "x64", "strategy": "external" }
-        },
-        {
-            "name": "msvc",
-            "hidden": true,
-            "generator": "Visual Studio 17 2022",
-            "vendor": {
-                "microsoft.com/VisualStudioSettings/CMake/1.0": {
-                    "intelliSenseMode": "windows-msvc-x64",
-                    "enableMicrosoftCodeAnalysis": true,
-                    "enableClangTidyCodeAnalysis": true
-                }
-            }
-        },
-        {
-            "name": "base-configuration",
-            "hidden": true,
-            "inherits": [ "flags", "vcpkg", "x64", "msvc" ]
-        },
-        {
-            "name": "debug-configuration",
-            "inherits": [ "base-configuration" ],
-            "displayName": "Debug",
-            "description": "Debug build",
-            "binaryDir": "${sourceDir}/build/Debug",
-            "cacheVariables": { "CMAKE_BUILD_TYPE": { "type": "STRING", "value": "Debug" }}
-        },
-        {
-            "name": "release-configuration",
-            "inherits": [ "base-configuration" ],
-            "displayName": "Release",
-            "description": "Release build",
-            "binaryDir": "${sourceDir}/build/Release",
-            "cacheVariables": { "CMAKE_BUILD_TYPE": { "type": "STRING", "value": "Release" }}
-        }
-    ],
-    "buildPresets": [
-        { "name": "build-debug", "displayName": "Debug", "configurePreset": "debug-configuration" },
-        { "name": "build-release", "displayName": "Release", "configurePreset": "release-configuration" }
-    ]
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install/${presetName}",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_CXX_STANDARD": "23",
+        "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+        "CMAKE_CXX_FLAGS": "/std:c++20 /permissive- /Zc:preprocessor /EHsc /MP /W4 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DUNICODE -D_UNICODE -D_CRT_SECURE_NO_WARNINGS",
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "VCPKG_TARGET_TRIPLET": "x64-windows-static-md",
+        "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
+        "VCPKG_INSTALL_OPTIONS": "--x-buildtrees-root=D:\\b\\"
+      }
+    },
+    {
+      "name": "debug",
+      "inherits": ["base"],
+      "displayName": "Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "inherits": ["base"],
+      "displayName": "Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ]
 }
