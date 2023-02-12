@@ -2,13 +2,13 @@
 
 #include <functional>
 #include <future>
-#include <string>
+#include <optional>
 
 namespace Spec {
 
     struct SpecTest {
-        std::string                    description;
-        std::promise<bool>             promise = {};
-        std::function<void(SpecTest&)> body;
+        std::string                         description;
+        std::shared_ptr<std::promise<bool>> promisePtr;
+        std::function<void(SpecTest&)>      body;
     };
 }

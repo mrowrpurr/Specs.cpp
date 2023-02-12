@@ -1,0 +1,12 @@
+#include <Spec.h>
+
+Describe() { ... } <-- top-level
+Test() { ... }     <-- top-level
+
+describe() { ... } <-- if()
+test() { ... }     <-- if()
+
+using namespace Spec;
+
+_describe() <-- lambda
+_test()    <-- lambda
