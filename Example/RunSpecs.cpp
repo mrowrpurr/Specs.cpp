@@ -3,6 +3,6 @@
 // #include "BasicTestStructures.h"
 // #include "SweetDSL.h"
 // #include "FunctionalDSL.h"
-#include "SimpleLambdaDSL.h"
+#include "ExampleSpecs.h"
 
 // RunSpecs

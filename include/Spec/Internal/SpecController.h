@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+#include <format>
 #include <functional>
 #include <iostream>
 #include <optional>
@@ -11,7 +12,10 @@
 
 namespace Spec::Internal {
 
-    void Print(const std::string& text) { std::cout << text << std::endl; }
+    template <class... Args>
+    static void Print(const std::string_view text, Args&&... args) {
+        std::cout << std::vformat(text, std::make_format_args(args...)) << std::endl;
+    }
 
     class SpecController {
         ~SpecController()                                = default;
@@ -21,13 +25,13 @@ namespace Spec::Internal {
         SpecController& operator=(SpecController&&)      = delete;
 
         std::shared_ptr<SpecGroup> _rootSpecGroup;
+        std::shared_ptr<SpecGroup> _currentlyEvaluatingGroup;
 
         SpecController() {
             _rootSpecGroup              = std::make_shared<SpecGroup>();
             _rootSpecGroup->description = "!ROOT!";
+            _currentlyEvaluatingGroup   = _rootSpecGroup;
         }
-
-        std::shared_ptr<SpecGroup> _currentlyEvaluatingGroup{nullptr};
 
     public:
         static SpecController& GetSingleton() {
@@ -35,38 +39,37 @@ namespace Spec::Internal {
             return singleton;
         }
 
-        void DefineSpecGroup(const std::string& description, std::function<void()> body) {
-            auto parent =
-                _currentlyEvaluatingGroup == nullptr ? _rootSpecGroup : _currentlyEvaluatingGroup;
-
-            Print(std::format("DEFINE: group '{}' parent '{}'", description, parent->description));
-
-            auto group         = std::make_shared<SpecGroup>();
-            group->description = description;
-
+        void DefineSpecGroup(const std::string& description, std::function<void(SpecGroup&)> body) {
+            auto parent = _currentlyEvaluatingGroup;
+            Print("DEFINE: group '{}' parent '{}'", description, parent->description);
+            auto group                = std::make_shared<SpecGroup>();
+            group->description        = description;
             _currentlyEvaluatingGroup = group;
-
-            body();
-
+            body(*group);
             parent->groups.emplace_back(*group);
+            _currentlyEvaluatingGroup = parent;
         }
 
         void DefineSpecTest(const std::string& description, std::function<void(SpecTest&)> body) {
+            Print("DefineSpecTest {}", description);
             SpecTest _test{.description = description, .body = body};
             auto     parent = _currentlyEvaluatingGroup;
-            Print(std::format("DEFINE: test '{}' PARENT '{}'", description, parent->description));
             parent->tests.emplace_back(std::move(_test));
         }
 
         // TODO setup , teardown
         void RunSpecGroup(SpecGroup group) {
-            currentIndent.append("  ");
-            Print(std::format("{}RUN GROUP: {}", currentIndent, group.description));
+            Print("{}RUN GROUP: {}", currentIndent, group.description);
             for (auto& test : group.tests) {
                 Print(std::format("{}>> RUN TEST: {}", currentIndent, test.description));
                 test.body(test);
             }
-            for (auto& innerGroup : group.groups) RunSpecGroup(innerGroup);
+            for (auto& innerGroup : group.groups) {
+                auto indent = currentIndent;
+                currentIndent.append("  ");
+                RunSpecGroup(innerGroup);
+                currentIndent = indent;
+            }
         }
 
         std::string currentIndent = "";
