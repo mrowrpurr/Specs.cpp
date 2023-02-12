@@ -1,5 +1,4 @@
-#include <Spec.h>
-#include <Spec/Main.h>
+#include <Spec/Autorun.h>
 
 using namespace Spec;
 
