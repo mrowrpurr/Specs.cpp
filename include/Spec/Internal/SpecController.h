@@ -9,13 +9,9 @@
 
 #include "Spec/SpecGroup.h"
 #include "Spec/SpecTest.h"
+#include "Spec/TEMP_PRINT.h"
 
 namespace Spec::Internal {
-
-    template <class... Args>
-    static void Print(const std::string_view text, Args&&... args) {
-        std::cout << std::vformat(text, std::make_format_args(args...)) << std::endl;
-    }
 
     class SpecController {
         ~SpecController()                                = default;

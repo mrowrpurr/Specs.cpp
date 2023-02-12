@@ -1,31 +1,19 @@
 #include <Spec.h>
+#include <Spec/Main.h>
 
-#include <format>
-#include <iostream>
-
-void Print(const std::string& text) { std::cout << text << std::endl; }
+using namespace Spec;
 
 Test("top-level test") { Print("Hi from top-level test!"); }
 
 Describe("top-level-describe") {
-    Spec::Internal::_DefineSpecTest_("inside top-level describe", [](auto&) {
-        Print("this is inside top level describe");
-    });
+    it("inside top-level describe", []() { Print("this is inside top level describe"); });
 }
 
-int main() {
-    // Define straight up here in main, yp!
-    Spec::Internal::_DefineSpecGroup_("Dog", [](auto&) {
-        Spec::Internal::_DefineSpecTest_("barks", [](auto&) {
-            Print("THIS IS THE BODY OF THE DOG TEST");
-        });
-        Spec::Internal::_DefineSpecGroup_("Certain type of dog", [](auto&) {
-            Spec::Internal::_DefineSpecTest_("Does certain thing", [](auto&) {
-                Print("THIS IS THE BODY OF THE CAT TEST");
-            });
+Specs {
+    describe("Dog", []() {
+        it("barks", []() { Print("THIS IS THE BODY OF THE DOG TEST"); });
+        describe("Certain type of dog", []() {
+            it("Does certain thing", []() { Print("THIS IS THE BODY OF THE CAT TEST"); });
         });
     });
-
-    // Run them straight up here in main, yo!
-    Spec::Internal::SpecController::GetSingleton().RunSpecs();
 }
