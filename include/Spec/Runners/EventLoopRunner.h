@@ -4,6 +4,7 @@
 
 namespace Spec::Runners {
 
+    // TODO - get MVP working!
     class EventLoopRunner : public SpecRunner {
     public:
         void RunSpecs(std::promise<void>&, SpecSession&, SpecReporter&) override {

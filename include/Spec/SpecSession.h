@@ -5,6 +5,8 @@
 
 namespace Spec {
 
+    // TODO : remove, just pass SpecContext to Runner
+
     //! Represents a session in which to run groups of specs
     class SpecSession {
         SpecContext _context;

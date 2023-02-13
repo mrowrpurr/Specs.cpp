@@ -5,6 +5,7 @@
 #include <future>
 #include <optional>
 #include <unordered_map>
+#include <vector>
 
 namespace Spec {
 
@@ -12,6 +13,10 @@ namespace Spec {
     struct SpecTest {
         /** The description of this test (does not include description from parent group(s)) */
         std::string description;
+
+        // Maybe weak_ptr parent? <-- (so we can get to its description, but siblings/etc would be cool)
+        /** All  */
+        // std::vector<std::string> parentDescription;
 
         /** The promise which this test is expected to resolve (when using an async test interface)
          *
@@ -37,5 +42,44 @@ namespace Spec {
          * Its lifetime lasts for one individual test run.
          */
         std::shared_ptr<std::unordered_map<std::string, std::any>> data;
+
+        void pass() { promise->set_value(true); }
+        void fail() { promise->set_value(false); }
+        void done() { pass(); }
+        void fail(std::string message) {
+            // TODO - set message
+            fail();
+        }
+
+        std::any Get(const std::string& key) { return data->at(key); }
+
+        template <typename T>
+        T Get(const std::string& key) {
+            return std::any_cast<T>(data->at(key));
+        }
+
+        std::any Get(const std::string& key, const std::any& defaultValue) {
+            auto it = data->find(key);
+            if (it == data->end()) {
+                return defaultValue;
+            }
+            return it->second;
+        }
+
+        template <typename T>
+        T Get(const std::string& key, const T& defaultValue) {
+            auto it = data->find(key);
+            if (it == data->end()) {
+                return defaultValue;
+            }
+            return std::any_cast<T>(it->second);
+        }
+
+        void Set(const std::string& key, const std::any& value) { data->insert_or_assign(key, value); }
+
+        template <typename T>
+        void Set(const std::string& key, const T& value) {
+            data->insert_or_assign(key, value);
+        }
     };
 }
