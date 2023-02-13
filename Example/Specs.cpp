@@ -12,10 +12,6 @@
 
 using namespace Spec;
 
-Test("fail just a string") { throw "just a string!"; }
-
-Test("fail std::exception") { throw std::runtime_error("Boom! Runtime error!"); }
-
 Test("top-level test") { Print("Hi from top-level test!"); }
 
 Describe("top-level-describe") {
@@ -25,6 +21,17 @@ Describe("top-level-describe") {
 Specs {
     test("something", []() {});
 
+    test(
+        "description",
+        {
+            {   "tags", "foo,bar"},
+            {"another",    "blah"}
+    },
+        []() {}
+    );
+
+    test("description", tags({"foo", "bar"}), []() { auto tags = "making sure this works"; });
+
     describe("Dog", []() {
         it("barks", []() { Print("THIS IS THE BODY OF THE DOG TEST"); });
         describe("Certain type of dog", []() {
@@ -32,3 +39,6 @@ Specs {
         });
     });
 }
+
+// Test("fail just a string") { throw "just a string!"; }
+// Test("fail std::exception") { throw std::runtime_error("Boom! Runtime error!"); }

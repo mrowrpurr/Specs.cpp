@@ -1,4 +1,10 @@
 #pragma once
 
-#include "Spec/DSL/BDD/Functions.h"
-#include "Spec/DSL/BDD/Macros.h"
+#include "Spec/DSL/Components/Functions/describe.h"
+#include "Spec/DSL/Components/Functions/it.h"
+#include "Spec/DSL/Components/Functions/tags.h"
+#include "Spec/DSL/Components/Functions/test.h"
+#include "Spec/DSL/Components/Macros/Describe.h"
+#include "Spec/DSL/Components/Macros/Specs.h"
+#include "Spec/DSL/Components/Macros/Test.h"
+
