@@ -20,6 +20,7 @@ namespace Spec::Internal {
         SpecController& operator=(const SpecController&) = delete;
         SpecController& operator=(SpecController&&)      = delete;
 
+        // This stuff should be in a Discovery thingy --- or Registry, even better!
         std::shared_ptr<SpecGroup> _rootSpecGroup;
         std::shared_ptr<SpecGroup> _currentlyEvaluatingGroup;
 
@@ -42,7 +43,7 @@ namespace Spec::Internal {
             group->description        = description;
             _currentlyEvaluatingGroup = group;
             body(*group);
-            parent->groups.emplace_back(*group);
+            // parent->groups.emplace_back(*group);
             _currentlyEvaluatingGroup = parent;
         }
 
@@ -53,6 +54,7 @@ namespace Spec::Internal {
             parent->tests.emplace_back(std::move(_test));
         }
 
+        // TODO move to a SpecRunner, yo. With SpecReporter support.
         // TODO setup , teardown
         void RunSpecGroup(SpecGroup group) {
             Print("{}RUN GROUP: {}", currentIndent, group.description);
