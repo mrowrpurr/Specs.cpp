@@ -1,6 +1,20 @@
 #include <Spec/Autorun.h>
 
+//////////////////////
+// TODO
+// - catch thrown exception (...) and std::exception with .what()
+// - setup/teardown
+// - get promise
+// - get callback, void or bool
+// - provide tags
+// - setup/teardown/tests have access to testdata<> (powered by map<str,any>)
+//////////////////////
+
 using namespace Spec;
+
+Test("fail just a string") { throw "just a string!"; }
+
+Test("fail std::exception") { throw std::runtime_error("Boom! Runtime error!"); }
 
 Test("top-level test") { Print("Hi from top-level test!"); }
 
@@ -9,6 +23,8 @@ Describe("top-level-describe") {
 }
 
 Specs {
+    test("something", []() {});
+
     describe("Dog", []() {
         it("barks", []() { Print("THIS IS THE BODY OF THE DOG TEST"); });
         describe("Certain type of dog", []() {

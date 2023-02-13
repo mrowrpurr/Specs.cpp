@@ -2,5 +2,5 @@
 
 namespace Spec {
 
-    class SpecReporter {};
+    class SpecResults {};
 }
