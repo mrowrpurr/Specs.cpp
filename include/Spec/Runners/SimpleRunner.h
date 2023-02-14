@@ -6,30 +6,30 @@ namespace Spec::Runners {
 
     class SimpleRunner : public SpecRunner {
     public:
-        void RunTest(SpecTest& test, SpecReporter& reporter) {
-            reporter.BeginTest(test);
+        void RunTest(SpecTest& test, SpecSession& session) {
+            session.BeginTest(test);
             try {
                 test.body(test);
-                reporter.EndTest(test, true, "");
+                session.EndTest(test, true, "");
             } catch (const std::exception& ex) {
-                reporter.EndTest(test, false, ex.what());
+                session.EndTest(test, false, ex.what());
             } catch (const char* ex) {
-                reporter.EndTest(test, false, ex);
+                session.EndTest(test, false, ex);
             } catch (...) {
-                reporter.EndTest(test, false, "Unknown exception");
+                session.EndTest(test, false, "Unknown exception");
             }
         }
 
-        void RunGroup(SpecGroup& group, SpecReporter& reporter) {
-            reporter.BeginGroup(group);
-            for (auto& test : group.tests) RunTest(test, reporter);
-            for (auto& innerGroup : group.groups) RunGroup(innerGroup, reporter);
-            reporter.EndGroup(group);
+        void RunGroup(SpecGroup& group, SpecSession& session) {
+            session.BeginGroup(group);
+            for (auto& test : group.tests) RunTest(test, session);
+            for (auto& innerGroup : group.groups) RunGroup(innerGroup, session);
+            session.EndGroup(group);
         }
 
-        void RunSpecs(std::promise<void>& promise, SpecSession& session, SpecReporter& reporter) override {
+        void RunSpecs(std::promise<void>& promise, SpecSession& session) override {
             auto specGroupRoot = session.GetContext().GetRegistry().GetRoot();
-            RunGroup(*specGroupRoot, reporter);
+            RunGroup(*specGroupRoot, session);
             promise.set_value();
         }
     };

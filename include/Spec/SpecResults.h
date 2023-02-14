@@ -1,6 +1,8 @@
 #pragma once
 
-namespace Spec {
+#include "Spec/SpecResultGroup.h"
+#include "Spec/SpecResultTest.h"
 
+namespace Spec {
     class SpecResults {};
 }

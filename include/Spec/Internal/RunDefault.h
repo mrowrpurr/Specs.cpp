@@ -9,8 +9,9 @@ namespace Spec::Internal {
         auto& runner   = config.GetRunner();
         auto& reporter = config.GetReporter();
         auto& session  = SpecSession::GetDefault();
-        auto  promise  = std::promise<void>{};
-        runner.RunSpecs(promise, session, reporter);
+        session.AddReporter(reporter);
+        auto promise = std::promise<void>{};
+        runner.RunSpecs(promise, session);
         promise.get_future().wait_for(std::chrono::seconds(5));
     }
 }

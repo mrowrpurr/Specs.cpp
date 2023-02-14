@@ -10,7 +10,8 @@
 namespace Spec {
 
     /** Represents an individual "spec" or "test" */
-    struct SpecTest {
+    class SpecTest {
+    public:
         /** The description of this test (does not include description from parent group(s)) */
         std::string description;
 
