@@ -32,23 +32,21 @@ namespace Spec {
         std::vector<std::shared_ptr<SpecReporter>>& GetReporters() { return _reporters; }
         void AddReporter(std::shared_ptr<SpecReporter> reporter) { _reporters.push_back(reporter); }
 
-        /** Session is also responsible for tracking results
-         * and delegating to reporter(s) */
         void BeginTest(SpecTest& test) {
             // _results.BeginTest(test);
             for (auto& reporter : _reporters) reporter->BeginTest(test);
         }
         void EndTest(SpecTest& test, bool passed, const std::string& failureMessage) {
-            // _results.EndTest(test, passed, failureMessage);
             for (auto& reporter : _reporters) reporter->EndTest(test, passed, failureMessage);
+            // _results.EndTest(test, passed, failureMessage);
         }
         void BeginGroup(SpecGroup& group) {
             // _results.BeginGroup(group);
             for (auto& reporter : _reporters) reporter->BeginGroup(group);
         }
         void EndGroup(SpecGroup& group) {
-            // _results.EndGroup(group);
             for (auto& reporter : _reporters) reporter->EndGroup(group);
+            // _results.EndGroup(group);
         }
     };
 }
