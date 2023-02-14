@@ -21,16 +21,15 @@ namespace Spec {
             return config;
         }
 
-        SpecConfig(SpecReporter reporter, SpecRunner runner)
-            : _reporter(std::make_shared<SpecReporter>(std::move(reporter))),
-              _runner(std::make_shared<SpecRunner>(std::move(runner))) {}
+        SpecConfig(std::shared_ptr<SpecReporter> reporter, SpecRunner& runner)
+            : _reporter(reporter), _runner(std::make_shared<SpecRunner>(std::move(runner))) {}
 
         SpecConfig() {}
 
-        void SetReporter(SpecReporter reporter) { _reporter = std::make_shared<SpecReporter>(std::move(reporter)); }
+        void SetReporter(std::shared_ptr<SpecReporter> reporter) { _reporter = reporter; }
         void SetRunner(SpecRunner runner) { _runner = std::make_shared<SpecRunner>(std::move(runner)); }
 
-        SpecReporter& GetReporter() { return *_reporter; }
-        SpecRunner&   GetRunner() { return *_runner; }
+        std::shared_ptr<SpecReporter> GetReporter() { return _reporter; }
+        SpecRunner&                   GetRunner() { return *_runner; }
     };
 }

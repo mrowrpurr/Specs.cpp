@@ -4,5 +4,8 @@
 #include "Spec/SpecResultTest.h"
 
 namespace Spec {
-    class SpecResults {};
+    class SpecResults {
+    public:
+        size_t size() const { return 0; }
+    };
 }

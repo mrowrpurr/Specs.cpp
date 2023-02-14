@@ -1,8 +1,10 @@
 #pragma once
 
+#include <format>
 #include <iostream>
 
 #include "Spec/SpecReporter.h"
+
 
 namespace Spec::Reporters {
 
@@ -16,7 +18,7 @@ namespace Spec::Reporters {
                 std::cout << "FAIL: " << test.description << "\n" << failureMessage << std::endl;
         }
         void BeginGroup(SpecGroup& group) override {
-            if (group.description != "") std::cout << group.description << std::endl;
+            if (group.description != "") std::cout << std::format("[{}]", group.description) << std::endl;
         }
         void EndGroup(SpecGroup&) override {}
     };

@@ -5,7 +5,6 @@
 namespace Spec::Runners {
 
     class SimpleRunner : public SpecRunner {
-    public:
         void RunTest(SpecTest& test, SpecSession& session) {
             session.BeginTest(test);
             try {
@@ -27,6 +26,7 @@ namespace Spec::Runners {
             session.EndGroup(group);
         }
 
+    public:
         void RunSpecs(std::promise<void>& promise, SpecSession& session) override {
             auto specGroupRoot = session.GetContext().GetRegistry().GetRoot();
             RunGroup(*specGroupRoot, session);
