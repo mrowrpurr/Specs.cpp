@@ -2,8 +2,8 @@
 
 #include <atomic>
 
-#include "Spec/Reporters/DocumentationReporter.h"
-#include "Spec/Runners/EventLoopRunner.h"
+#include "Spec/Reporters/SimpleReporter.h"
+#include "Spec/Runners/SimpleRunner.h"
 #include "Spec/SpecReporter.h"
 #include "Spec/SpecRunner.h"
 
@@ -16,9 +16,8 @@ namespace Spec {
     public:
         static SpecConfig& GetDefaults() {
             static SpecConfig config;
-            if (!config._reporter)
-                config._reporter = std::make_shared<Reporters::DocumentationReporter>();
-            if (!config._runner) config._runner = std::make_shared<Runners::EventLoopRunner>();
+            if (!config._reporter) config._reporter = std::make_shared<Reporters::SimpleReporter>();
+            if (!config._runner) config._runner = std::make_shared<Runners::SimpleRunner>();
             return config;
         }
 
@@ -28,12 +27,8 @@ namespace Spec {
 
         SpecConfig() {}
 
-        void SetReporter(SpecReporter reporter) {
-            _reporter = std::make_shared<SpecReporter>(std::move(reporter));
-        }
-        void SetRunner(SpecRunner runner) {
-            _runner = std::make_shared<SpecRunner>(std::move(runner));
-        }
+        void SetReporter(SpecReporter reporter) { _reporter = std::make_shared<SpecReporter>(std::move(reporter)); }
+        void SetRunner(SpecRunner runner) { _runner = std::make_shared<SpecRunner>(std::move(runner)); }
 
         SpecReporter& GetReporter() { return *_reporter; }
         SpecRunner&   GetRunner() { return *_runner; }

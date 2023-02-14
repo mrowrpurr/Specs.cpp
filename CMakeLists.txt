@@ -9,3 +9,4 @@ add_library(Spec INTERFACE)
 target_include_directories(Spec INTERFACE include)
 
 add_subdirectory(Example)
+add_subdirectory(spec)

@@ -8,7 +8,7 @@ namespace Spec::Runners {
     class EventLoopRunner : public SpecRunner {
     public:
         void RunSpecs(std::promise<void>&, SpecSession&, SpecReporter&) override {
-            Print("Run Specs with event loop!");
+            // Let's as LAZILY as possible... RUN THE TESTS!
         }
     };
 }

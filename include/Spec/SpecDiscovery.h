@@ -35,7 +35,6 @@ namespace Spec {
         SpecDiscovery(SpecRegistry& registry) : _registry(registry) {}
 
         void DiscoverGroup(const std::string& description, std::function<void(SpecGroup&)> body) {
-            Print("Group {}", description);
             auto group         = std::make_shared<SpecGroup>();
             group->description = description;
             PushGroup(group);
@@ -49,7 +48,6 @@ namespace Spec {
         }
 
         void DiscoverTest(const std::string& description, std::function<void(SpecTest&)> body) {
-            Print("Test {}", description);
             CurrentGroup()->tests.emplace_back(SpecTest{.description = description, .body = body});
         }
 
