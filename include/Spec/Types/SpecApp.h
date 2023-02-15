@@ -37,7 +37,26 @@ namespace Spec::Types {
             SpecDiscovery::SetGlobalInstance(globalSpecDiscovery);
         }
 
-        void Run() {}
+        std::shared_ptr<std::promise<bool>> Run() {
+            auto promise = std::make_shared<std::promise<bool>>();
+            if (!Runner) {
+                promise->set_value(false);
+                return promise;
+            }
+            Runner->RunSpecs(promise, Registry, Results, Reporters);
+            return promise;
+        }
+
+        int RunAndWait(std::chrono::duration<long long> timeout = std::chrono::seconds(0)) {
+            auto promise = Run();
+            auto future  = promise->get_future();
+            if (timeout.count() > 0) {
+                if (future.wait_for(timeout) == std::future_status::timeout) {
+                    return 2;
+                }
+            }
+            return future.get() ? 0 : 1;
+        }
     };
 
     std::shared_ptr<SpecApp> SpecApp::_defaultInstance;

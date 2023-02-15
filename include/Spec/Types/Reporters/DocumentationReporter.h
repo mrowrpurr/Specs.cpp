@@ -4,5 +4,5 @@
 
 namespace Spec::Types::Reporters {
 
-    class DocumentationReporter : public ISpecReporter {};
+    // class DocumentationReporter : public ISpecReporter {};
 }

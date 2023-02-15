@@ -4,5 +4,5 @@
 
 namespace Spec::Types::Runners {
 
-    class EventLoopRunner : public ISpecRunner {};
+    // class EventLoopRunner : public ISpecRunner {};
 }

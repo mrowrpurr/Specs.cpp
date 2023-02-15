@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Spec/Types/Reporters/SimpleReporter.h"
+#include "Spec/Types/Runners/SimpleRunner.h"
 #include "Spec/Types/SpecApp.h"
 
 namespace Spec::Types {
@@ -8,9 +10,10 @@ namespace Spec::Types {
         static int RunDefault() {
             auto app = SpecApp::GetDefaultInstance();
             app->LoadDefinitionBlocks();
-            Print("RUN!");
-            app->Run();
-            return 0;
+            app->Runner    = std::make_shared<Runners::SimpleRunner>();
+            app->Reporters = std::vector<std::shared_ptr<ISpecReporter>>();
+            app->Reporters.push_back(std::make_shared<Reporters::SimpleReporter>());
+            return app->RunAndWait();
         }
     };
 }

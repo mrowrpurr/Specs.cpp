@@ -14,7 +14,10 @@ namespace Spec::Types {
             return instance;
         }
 
-        void RegisterBlock(std::function<void()> block) { _blocks.push_back(block); }
+        void RegisterBlock(std::function<void()> block) {
+            //
+            _blocks.push_back(block);
+        }
 
         void EvaluateBlocks() {
             for (auto& block : _blocks) block();

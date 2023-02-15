@@ -8,8 +8,8 @@ namespace Spec::Types {
     class ISpecRunner {
     public:
         virtual void RunSpecs(
-            std::promise<void>& complete, SpecRegistry& registry, SpecResults& results,
-            std::vector<ISpecReporter> reporters
+            std::shared_ptr<std::promise<bool>> complete, SpecRegistry& registry, SpecResults& results,
+            std::vector<std::shared_ptr<ISpecReporter>> reporters
         ) = 0;
     };
 }

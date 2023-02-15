@@ -1,3 +1,4 @@
 #include <Spec/Autorun.h>
 
-Specs { Print("HI FROM SPECS"); }
+Test("This should pass") { Print("AAAAA"); }
+Test("This should fail") { Print("BBBBB"); }
