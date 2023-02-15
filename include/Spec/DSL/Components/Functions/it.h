@@ -3,19 +3,19 @@
 #include <any>
 #include <unordered_map>
 
-#include "Spec/SpecContext.h"
+#include "Spec/Types/SpecDiscovery.h"
 
 namespace Spec {
 
     void it(const std::string& description, std::function<void(SpecTest&)> body) {
-        SpecContext::GetDefault().GetDiscovery().DiscoverTest(description, body);
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
     }
 
     void it(const std::string& description, std::function<void()> body) {
-        SpecContext::GetDefault().GetDiscovery().DiscoverTest(description, body);
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
     }
 
     void it(const std::string& description, std::unordered_map<std::string, std::any>, std::function<void()> body) {
-        SpecContext::GetDefault().GetDiscovery().DiscoverTest(description, body);
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
     }
 }
