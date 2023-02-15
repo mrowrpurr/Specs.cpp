@@ -29,6 +29,11 @@ namespace Spec {
         void AddTest(const SpecTest& test) { _tests.push_back(test); }
         void AddGroup(const SpecGroup& group) { _groups.push_back(group); }
 
+        std::vector<SpecTest>&  GetSetups() { return _setups; }
+        std::vector<SpecTest>&  GetTeardowns() { return _teardowns; }
+        std::vector<SpecTest>&  GetTests() { return _tests; }
+        std::vector<SpecGroup>& GetGroups() { return _groups; }
+
         bool IsRoot() const { return _parent == nullptr; }
     };
 }

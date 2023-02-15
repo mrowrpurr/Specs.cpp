@@ -31,6 +31,8 @@ namespace Spec {
               _promise(std::make_shared<std::promise<bool>>()),
               _data(std::make_shared<std::unordered_map<std::string, std::any>>()) {}
 
+        void Run() { _body(*this); }
+
         const std::string&                GetDescription() const { return _description; }
         const std::shared_ptr<SpecGroup>& GetGroup() const { return _parent; }
 
