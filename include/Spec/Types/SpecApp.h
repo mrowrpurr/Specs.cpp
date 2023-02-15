@@ -4,8 +4,7 @@
 
 #include "Spec/Types/ISpecReporter.h"
 #include "Spec/Types/ISpecRunner.h"
-#include "Spec/Types/Reporters/SimpleReporter.h"
-#include "Spec/Types/Runners/SimpleRunner.h"
+#include "Spec/Types/SpecDefinitionBlocks.h"
 #include "Spec/Types/SpecDiscovery.h"
 #include "Spec/Types/SpecRegistry.h"
 #include "Spec/Types/SpecResults.h"
@@ -29,6 +28,13 @@ namespace Spec::Types {
                 _defaultInstance->Discovery.SetRegistry(_defaultInstance->Registry);
             }
             return _defaultInstance;
+        }
+
+        void LoadDefinitionBlocks() {
+            auto& globalSpecDiscovery = SpecDiscovery::GetGlobalInstance();
+            SpecDiscovery::SetGlobalInstance(Discovery);
+            SpecDefinitionBlocks::GetGlobalInstance().EvaluateBlocks();
+            SpecDiscovery::SetGlobalInstance(globalSpecDiscovery);
         }
 
         void Run() {}

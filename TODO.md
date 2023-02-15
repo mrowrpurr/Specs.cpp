@@ -6,3 +6,7 @@
 
 ...
 
+
+bool                             parallel    = false;
+bool                             randomOrder = false;
+std::function<bool(std::string)> specFilter;

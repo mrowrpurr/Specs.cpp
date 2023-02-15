@@ -43,12 +43,11 @@ namespace Spec::Types {
         void DiscoverGroup(const std::string& description, std::function<void(SpecGroup&)> body) {
             if (!EnsureRoot()) return;
             Print("DiscoverGroup {}", description);
-            auto group         = std::make_shared<SpecGroup>();
-            group->description = description;
+            auto group = std::make_shared<SpecGroup>(description, CurrentGroup());
             PushGroup(group);
             body(*group);
             PopGroup();
-            CurrentGroup()->groups.emplace_back(*group);
+            CurrentGroup()->AddGroup(*group);
         }
 
         void DiscoverGroup(const std::string& description, std::function<void()> body) {
@@ -58,7 +57,7 @@ namespace Spec::Types {
         void DiscoverTest(const std::string& description, std::function<void(SpecTest&)> body) {
             if (!EnsureRoot()) return;
             Print("DiscoverTest {}", description);
-            CurrentGroup()->tests.emplace_back(SpecTest{.description = description, .body = body});
+            CurrentGroup()->AddTest(SpecTest(description, CurrentGroup(), body));
         }
 
         void DiscoverTest(const std::string& description, std::function<void()> body) {

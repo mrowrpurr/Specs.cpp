@@ -5,6 +5,12 @@
 namespace Spec::Types::Runners {
 
     class SimpleRunner : public ISpecRunner {
+    public:
+        void RunSpecs(
+            std::promise<void>& complete, SpecRegistry& registry, SpecResults& results,
+            std::vector<ISpecReporter> reporters
+        ) override {}
+
         //     void RunTest(SpecTest& test, SpecSession& session) {
         //         session.BeginTest(test);
         //         try {
