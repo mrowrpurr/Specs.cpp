@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Spec/Internal/RunDefault.h"
+#include "Spec/Types/SpecMain.h"
 
-#define RunSpecsMain                  \
-    int main() {                      \
-        Spec::Internal::RunDefault(); \
-        return 0;                     \
-    }
+#define RunSpecsMain \
+    int main() { return Spec::Types::SpecMain::RunDefault(); }

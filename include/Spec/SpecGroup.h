@@ -8,7 +8,7 @@
 
 namespace Spec {
 
-    //! Represents a colletion of one or more Spec (tests)
+    //! Represents a collection of child SpecTest and other SpecGroup.
     struct SpecGroup {
         std::string            description;
         std::vector<SpecTest>  setups;

@@ -2,16 +2,15 @@
 
 #include "Spec/SpecGroup.h"
 
-namespace Spec {
-
-    //! Stores groups of specs
+namespace Spec::Types {
+    //! Stores a tree of spec groups.
     class SpecRegistry {
         std::shared_ptr<SpecGroup> _rootSpecGroup;
 
     public:
         SpecRegistry() : _rootSpecGroup(std::make_shared<SpecGroup>()) {}
 
-        /** Spec groups are stored as a tree and this is the root node */
         std::shared_ptr<SpecGroup> GetRoot() { return _rootSpecGroup; }
+        void                       SetRoot(std::shared_ptr<SpecGroup> root) { _rootSpecGroup = root; }
     };
 }
