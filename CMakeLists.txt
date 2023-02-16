@@ -12,14 +12,5 @@ target_include_directories(Spec INTERFACE include)
 find_path(SNOWHOUSE_INCLUDE_DIRS "snowhouse/assert.h")
 target_include_directories(Spec INTERFACE ${SNOWHOUSE_INCLUDE_DIRS})
 
-# ...
-find_package(Boost COMPONENTS stacktrace_windbg REQUIRED)
-target_link_libraries(Spec INTERFACE Boost::stacktrace_windbg)
-
-target_compile_definitions(Spec
-    INTERFACE
-    BOOST_STACKTRACE_LINK=1
-    BOOST_STACKTRACE_USE_WINDBG=1)
-
 add_subdirectory(Example)
 add_subdirectory(spec)
