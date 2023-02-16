@@ -9,31 +9,24 @@ namespace Spec::Types::Runners {
         void RunTest(
             SpecTest& test, SpecResultGroup& resultGroup, std::vector<std::shared_ptr<ISpecReporter>> reporters
         ) {
-            Print("Test: {}", test.GetDescription());
+            for (auto& reporter : reporters) reporter->BeginTest(test);
             try {
-                // This should be like .Start() and then have a .Wait() or .Get() or something
                 test.Run();
-                Print("PASS");
-                // resultGroup.AddResult(SpecResult::Pass(test.GetDescription()));
+                for (auto& reporter : reporters) reporter->EndTest(test, true, "");
             } catch (const std::exception& e) {
-                // resultGroup.AddResult(SpecResult::Fail(test.GetDescription(), e.what()));
-                Print("FAIL: exception {}", e.what());
+                for (auto& reporter : reporters) reporter->EndTest(test, false, e.what());
             } catch (const std::string& e) {
-                // resultGroup.AddResult(SpecResult::Fail(test.GetDescription(), e));
-                Print("FAIL: string {}", e);
+                for (auto& reporter : reporters) reporter->EndTest(test, false, e);
             } catch (const char* e) {
-                // resultGroup.AddResult(SpecResult::Fail(test.GetDescription(), e));
-                Print("FAIL: char {}", e);
+                for (auto& reporter : reporters) reporter->EndTest(test, false, e);
             } catch (...) {
-                // resultGroup.AddResult(SpecResult::Fail(test.GetDescription(), "Unknown exception"));
-                Print("FAIL");
+                for (auto& reporter : reporters) reporter->EndTest(test, false, "Unknown exception!");
             }
         }
 
         void RunGroup(
             SpecGroup& group, SpecResultGroup& resultGroup, std::vector<std::shared_ptr<ISpecReporter>> reporters
         ) {
-            Print("Group: {}", group.GetDescription());
             for (auto& test : group.GetTests()) RunTest(test, resultGroup, reporters);
             for (auto& innerGroup : group.GetGroups()) RunGroup(innerGroup, resultGroup, reporters);
         }

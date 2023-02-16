@@ -2,22 +2,21 @@
 
 using namespace Spec;
 
-Test("This should pass") { Print("Pass!"); }
+Test("Cool shit") {}
+
+Test("This should pass") {}
+
 Test("This should fail") {
     throw "KABOOM!";
     Print("Fail!");
 }
-Test("This should fail with an exception") {
-    throw std::runtime_error("KABOOM exception!");
-    Print("Fail!");
-}
+
+Test("This should fail with an exception") { throw std::runtime_error("KABOOM exception!"); }
 
 Describe("some test group") {
-    it("prints something", []() { Print("Hello world!"); });
+    it("prints something", []() {});
 }
 
 Specs {
-    describe("group in specs", []() {
-        it("prints something in group", []() { Print("Hello world from group test!"); });
-    });
+    describe("group in specs", []() { it("prints something in group", []() {}); });
 }
