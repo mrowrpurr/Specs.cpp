@@ -21,28 +21,12 @@ namespace Spec::Types::Runners {
             try {
                 test.Run();
                 for (auto& reporter : reporters) reporter->EndTest(test, true, "");
-            // } catch (const std::exception& e) {
-            //     for (auto& reporter : reporters) reporter->EndTest(test, false, e.what());
-            // } catch (const std::string& e) {
-            //     for (auto& reporter : reporters) reporter->EndTest(test, false, e);
-            } catch (snowhouse::AssertionException& e) {
-                // for (auto& reporter : reporters) reporter->EndTest(test, false, e.what());
-                Print("SNOWHOUSE ERROR: {} FILE:{} LINE:{}", e.what(), e.line(), e.file());
-            // } catch (snowhouse::Exception& e) {
-                // for (auto& reporter : reporters) reporter->EndTest(test, false, e.what()
             } catch (const char* e) {
-                Print("LET'S GET THE LINE NUMBER");
-                auto entry = std::stacktrace::current();
-                for (auto whatever : entry) {
-                    Print("FILE: {} LINE: {}", whatever.source_file(), whatever.source_line());
-                }
-                // Print("FILE: {} LINE: {}", entry.source_file(), entry.source_line());
-                
-
-                // for (auto& reporter : reporters) {
-
-                // }
-                // reporter->EndTest(test, false, std::format("{} FILE:{} LINE:{}", e, __FILE__, __LINE__));
+                for (auto& reporter : reporters) reporter->EndTest(test, false, e);
+            } catch (std::string e) {
+                for (auto& reporter : reporters) reporter->EndTest(test, false, e);
+            } catch (std::exception& e) {
+                for (auto& reporter : reporters) reporter->EndTest(test, false, e.what());
             } catch (...) {
                 for (auto& reporter : reporters) reporter->EndTest(test, false, "Unknown exception!");
             }
