@@ -7,7 +7,6 @@
 #include "Spec/Types/ISpecExceptionHandler.h"
 #include "Spec/Types/SpecTestResult.h"
 
-
 namespace Spec::Types {
 
     class SpecExtensionsRegistry {
@@ -45,13 +44,15 @@ namespace Spec::Types {
         ) {
             try {
                 test.Run();
-                test.Pass();
+                // test.Pass(); <--- PROMISE, we're not even doing this yet!
+                result.Pass();
                 return true;
             } catch (...) {
                 for (auto& handler : exceptionHandlers) {
                     if (handler->HandleException(std::current_exception(), result)) break;
                 }
-                test.Fail();
+                result.Fail();
+                // test.Fail(); <--- PROMISE, we're not even doing this yet!
                 return false;
             }
         }

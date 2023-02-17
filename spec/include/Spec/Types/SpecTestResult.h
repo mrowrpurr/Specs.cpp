@@ -2,15 +2,17 @@
 
 #include <format>
 #include <memory>
+#include <optional>
 
 #include "Spec/Types/SpecGroupResult.h"
 #include "Spec/Types/SpecTestResultFailure.h"
+#include "Spec/Types/SpecTestResultStatus.h"
 
 namespace Spec::Types {
 
     class SpecTestResult {
         std::string                      _description;
-        bool                             _passed;  // TODO <-- make this an optional!
+        SpecTestResultStatus             _status = SpecTestResultStatus::NotRun;
         SpecTestResultFailure            _failure;
         std::shared_ptr<SpecGroupResult> _group;
 
@@ -24,21 +26,27 @@ namespace Spec::Types {
         std::shared_ptr<SpecGroupResult> GetGroup() { return _group; }
         void                             SetGroup(std::shared_ptr<SpecGroupResult> group) { _group = group; }
 
-        void SetPassed(bool passed) {
-            _passed = passed;
-            if (_group) {
-                _group->IncrementTotalTests();
-                if (passed) {
-                    _group->IncrementTotalPassed();
-                } else {
-                    _group->IncrementTotalFailed();
+        SpecTestResultStatus GetStatus() { return _status; }
+
+        void SetStatus(SpecTestResultStatus status) {
+            if (_status == SpecTestResultStatus::NotRun) {
+                _status = status;
+                if (_group) {
+                    _group->IncrementTotalTests();
+                    if (status == SpecTestResultStatus::Passed) {
+                        _group->IncrementTotalPassed();
+                    } else if (status == SpecTestResultStatus::Failed) {
+                        _group->IncrementTotalFailed();
+                    }
                 }
             }
         }
-        void Pass() { SetPassed(true); }
-        void Fail() { SetPassed(false); }
-        bool Passed() { return _passed; }
-        bool Failed() { return !_passed; }
+
+        void Pass() { SetStatus(SpecTestResultStatus::Passed); }
+        void Fail() { SetStatus(SpecTestResultStatus::Failed); }
+
+        bool Passed() { return _status == SpecTestResultStatus::Passed; }
+        bool Failed() { return _status == SpecTestResultStatus::Failed; }
 
         SpecTestResultFailure GetFailure() { return _failure; }
 
