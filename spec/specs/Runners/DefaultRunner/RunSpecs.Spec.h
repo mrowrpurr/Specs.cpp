@@ -1,11 +1,6 @@
 #pragma once
 
-#include <snowhouse/snowhouse.h>
-
-using namespace snowhouse;
-
-#include "Spec.h"
-#include "Spec/Types/SpecApp.h"
+#include "SpecHelper.h"
 
 Test("Run passing test") {
     auto app = Spec::Types::SpecApp::CreateDefault();
