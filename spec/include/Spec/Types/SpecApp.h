@@ -20,13 +20,15 @@ namespace Spec::Types {
         static std::shared_ptr<SpecApp> _defaultInstance;
 
     public:
-        SpecRegistry  Registry;
-        SpecDiscovery Discovery;
-        SpecResults   Results;
-
+        // MOVE THESE INTO PRIVATE FIELDS
+        std::shared_ptr<SpecRegistry>                       Registry{nullptr};
+        SpecDiscovery                                       Discovery;
+        SpecResults                                         Results;
         std::shared_ptr<ISpecRunner>                        Runner;
         std::vector<std::shared_ptr<ISpecReporter>>         Reporters;
         std::vector<std::shared_ptr<ISpecExceptionHandler>> ExceptionHandlers;
+
+        SpecApp() { Registry = std::make_shared<SpecRegistry>(); }
 
         static std::shared_ptr<SpecApp> CreateDefault() {
             auto app = std::make_shared<SpecApp>();
@@ -60,7 +62,7 @@ namespace Spec::Types {
                 promise->set_value(false);
                 return promise;
             }
-            Runner->RunSpecs(promise, Registry, Results, Reporters, ExceptionHandlers);
+            Runner->RunSpecs(promise, Registry->GetRoot(), Results, Reporters, ExceptionHandlers);
             return promise;
         }
 

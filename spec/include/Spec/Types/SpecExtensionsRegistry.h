@@ -39,11 +39,11 @@ namespace Spec::Types {
         // TODO - replace the function<void()> code with a shared_ptr to a SpecTestResult
         //        and HandleException should take BOTH the exception_ptr and the SpecTestResult
         static bool RunAndHandleError(
-            SpecTest& test, SpecTestResult& result,
+            std::shared_ptr<SpecTest> test, SpecTestResult& result,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
             try {
-                test.Run();
+                test->Run();
                 // test.Pass(); <--- PROMISE, we're not even doing this yet!
                 result.Pass();
                 return true;

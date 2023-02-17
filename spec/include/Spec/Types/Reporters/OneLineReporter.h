@@ -27,12 +27,12 @@ namespace Spec::Types::Reporters {
         }
 
     public:
-        void BeginTest(SpecTest&, SpecTestResult&) override {}
-        void EndTest(SpecTest& test, SpecTestResult& result) override {
+        void BeginTest(std::shared_ptr<SpecTest>, SpecTestResult&) override {}
+        void EndTest(std::shared_ptr<SpecTest> test, SpecTestResult& result) override {
             if (result.Passed()) {
-                PrintPassed(test.GetDescription());
+                PrintPassed(test->GetFullDescription());
             } else {
-                PrintFailed(test.GetDescription(), result.GetFailureMessageWithFileLocation());
+                PrintFailed(test->GetFullDescription(), result.GetFailureMessageWithFileLocation());
             }
         }
         void BeginGroup(SpecGroup&, SpecGroupResult&) override {}

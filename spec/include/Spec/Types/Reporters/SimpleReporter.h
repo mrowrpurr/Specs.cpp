@@ -8,8 +8,8 @@ namespace Spec::Types::Reporters {
 
     class SimpleReporter : public ISpecReporter {
     public:
-        void BeginTest(SpecTest&, SpecTestResult&) override {}
-        void EndTest(SpecTest& test, SpecTestResult& result) override {
+        void BeginTest(std::shared_ptr<SpecTest> test, SpecTestResult&) override {}
+        void EndTest(std::shared_ptr<SpecTest> test, SpecTestResult& result) override {
             if (result.Passed()) {
                 std::cout << std::format("    [{}] {}", result.Passed() ? "PASS" : "FAIL", test.GetDescription())
                           << std::endl;

@@ -10,6 +10,7 @@ namespace Spec::Types {
         static int RunDefault() {
             auto app = SpecApp::GetDefaultInstance();
             app->LoadDefinitionBlocks();
+
             app->Runner    = std::make_shared<Runners::DefaultRunner>();
             app->Reporters = std::vector<std::shared_ptr<ISpecReporter>>();
             app->Reporters.push_back(std::make_shared<Reporters::OneLineReporter>());

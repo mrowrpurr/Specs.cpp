@@ -5,3 +5,4 @@ cmake-build*
 *.pdb
 .vscode/settings.json
 docs
+doxygen-awesome-css

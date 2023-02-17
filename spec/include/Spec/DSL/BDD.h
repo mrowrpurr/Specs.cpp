@@ -7,3 +7,4 @@
 #include "Spec/DSL/Components/Macros/Describe.h"
 #include "Spec/DSL/Components/Macros/Specs.h"
 #include "Spec/DSL/Components/Macros/Test.h"
+#include "Spec/DSL/Components/Macros/TestGroup.h"

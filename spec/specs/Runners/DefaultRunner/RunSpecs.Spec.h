@@ -2,6 +2,8 @@
 
 #include "SpecHelper.h"
 
+TestGroup("Running Specs");
+
 Test("passing test") {
     auto app = SpecApp([]() { it("should pass", []() { AssertThat(69, Equals(69)); }); });
     AssertThat(app->Results.GetTotalTests(), Equals<unsigned int>(0));
@@ -29,7 +31,7 @@ Test("failing test") {
 
 Test("Multiple tests (passing and failing)") {
     auto app = SpecApp([]() {
-        describe("Group of tests", []() {
+        describe("IN THE DESC Group of tests", []() {
             it("should pass", []() { AssertThat(69, Equals(69)); });
             it("should fail", []() { AssertThat(69, Equals(420)); });
         });
@@ -44,4 +46,8 @@ Test("Multiple tests (passing and failing)") {
     AssertThat(
         app->Results.GetRoot()->GetTests()[1]->GetFailureMessage(), MatchesRegex("Expected: equal to 420", "Actual: 69")
     );
+}
+
+Describe("Child group") {
+    describe("Another child", []() { it("should pass", []() { AssertThat(69, Equals(69)); }); });
 }
