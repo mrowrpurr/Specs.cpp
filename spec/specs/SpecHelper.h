@@ -5,6 +5,14 @@
 using namespace Spec;
 using namespace snowhouse;
 
+std::shared_ptr<Spec::Types::SpecApp> SpecApp() {
+    auto app = Spec::Types::SpecApp::CreateDefault();
+    app->Reporters.clear();
+    return app;
+}
+
+#include <regex>
+
 class MatchesRegexMatcher {
     std::vector<std::string> _patterns;
 

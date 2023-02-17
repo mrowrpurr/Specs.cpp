@@ -1,15 +1,14 @@
 #pragma once
 
-#include <regex>
-
 #include "SpecHelper.h"
 
 Test("Run passing test") {
-    auto app = Spec::Types::SpecApp::CreateDefault();
-    app->Reporters.clear();
+    auto app = SpecApp();
+
     app->Discovery.DiscoverTest("PassingTest", []() {
         // Nothing, so this passes.
     });
+
     AssertThat(app->Results.GetTotalTests(), Equals<unsigned int>(0));
 
     app->RunAndWait();
@@ -20,9 +19,10 @@ Test("Run passing test") {
 }
 
 Test("Run failing test") {
-    auto app = Spec::Types::SpecApp::CreateDefault();
-    app->Reporters.clear();
+    auto app = SpecApp();
+
     app->Discovery.DiscoverTest("FailingTest", []() { AssertThat(69, Equals(420)); });
+
     AssertThat(app->Results.GetTotalTests(), Equals<unsigned int>(0));
 
     app->RunAndWait();
