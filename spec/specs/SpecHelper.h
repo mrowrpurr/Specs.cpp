@@ -5,9 +5,10 @@
 using namespace Spec;
 using namespace snowhouse;
 
-std::shared_ptr<Spec::Types::SpecApp> SpecApp() {
+std::shared_ptr<Spec::Types::SpecApp> SpecApp(std::function<void()> body = []() {}) {
     auto app = Spec::Types::SpecApp::CreateDefault();
     app->Reporters.clear();
+    Types::SpecDiscovery::UsingRegistry(app->Registry, body);
     return app;
 }
 

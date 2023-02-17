@@ -35,6 +35,19 @@ namespace Spec::Types {
 
         static SpecDiscovery& GetGlobalInstance() { return _globalInstance; }
         static void           SetGlobalInstance(SpecDiscovery& instance) { _globalInstance = instance; }
+        static void           UsingRegistry(std::shared_ptr<SpecRegistry> registry, std::function<void()> code) {
+            // TODO XXX This is pretty gross. Clean it up :)
+            auto oldRegistry   = GetGlobalInstance().GetRegistry();
+            auto oldGroupStack = GetGlobalInstance()._groupStack;
+            GetGlobalInstance().SetRegistry(registry);
+            GetGlobalInstance()._groupStack.clear();
+            code();
+            GetGlobalInstance().SetRegistry(oldRegistry);
+            GetGlobalInstance()._groupStack = oldGroupStack;
+        }
+        static void UsingRegistry(SpecRegistry& registry, std::function<void()> code) {
+            UsingRegistry(std::make_shared<SpecRegistry>(registry), code);
+        }
 
         std::shared_ptr<SpecRegistry> GetRegistry() { return _registry; }
         void                          SetRegistry(std::shared_ptr<SpecRegistry> registry) { _registry = registry; }
