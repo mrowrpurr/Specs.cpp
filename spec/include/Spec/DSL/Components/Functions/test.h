@@ -7,6 +7,12 @@
 
 namespace Spec {
 
+    // TODO: xtest() for all variations of test()
+
+    void test(const std::string& description) {
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description);
+    }
+
     void test(const std::string& description, std::function<void(SpecTest&)> body) {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
     }

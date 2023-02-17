@@ -7,6 +7,8 @@
 
 namespace Spec {
 
+    // TODO: xdescribe() for all variations of describe()
+
     void describe(const std::string& description, std::function<void(SpecGroup&)> body) {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverGroup(description, body);
     }

@@ -15,23 +15,29 @@ namespace Spec {
     class SpecTest {
         std::string                                                _description;
         std::shared_ptr<SpecGroup>                                 _parent;
-        std::function<void(SpecTest&)>                             _body;
+        std::optional<std::function<void(SpecTest&)>>              _body;
         std::shared_ptr<std::promise<bool>>                        _promise;
         std::unordered_map<std::string, std::any>                  _metadata;
         std::shared_ptr<std::unordered_map<std::string, std::any>> _data;
+        bool                                                       _todo;
 
     public:
+        SpecTest(const std::string& description, const std::shared_ptr<SpecGroup>& parent)
+            : _description(description), _parent(parent), _todo(true) {}
         SpecTest(
             const std::string& description, const std::shared_ptr<SpecGroup>& parent,
-            const std::function<void(SpecTest&)>& body
+            const std::function<void(SpecTest&)>& body, bool todo = false
         )
             : _description(description),
               _parent(parent),
               _body(body),
               _promise(std::make_shared<std::promise<bool>>()),
-              _data(std::make_shared<std::unordered_map<std::string, std::any>>()) {}
+              _data(std::make_shared<std::unordered_map<std::string, std::any>>()),
+              _todo(todo) {}
 
-        void Run() { _body(*this); }
+        void Run() {
+            if (_body) _body.value()(*this);
+        }
 
         std::shared_ptr<SpecGroup>& GetGroup() { return _parent; }
         std::string                 GetDescription() { return _description; }
@@ -40,6 +46,11 @@ namespace Spec {
         void Pass() { _promise->set_value(true); }
         void Fail() { _promise->set_value(false); }
         void Reset() { _promise = std::make_shared<std::promise<bool>>(); }
+
+        bool HasBody() { return _body.has_value(); }
+
+        bool IsTodo() { return _todo; }
+        void SetTodo(bool todo = true) { _todo = todo; }
 
         std::any Get(const std::string& key) { return _data->at(key); }
 

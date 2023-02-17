@@ -18,7 +18,7 @@ namespace Spec::Types::Runners {
         ) {
             auto testResult = resultGroup.NewTest(test->GetDescription());
             for (auto& reporter : reporters) reporter->BeginTest(test, *testResult);
-            SpecExtensionsRegistry::RunAndHandleError(test, *testResult, exceptionHandlers);
+            if (!test->IsTodo()) SpecExtensionsRegistry::RunAndHandleError(test, *testResult, exceptionHandlers);
             for (auto& reporter : reporters) reporter->EndTest(test, *testResult);
         }
 

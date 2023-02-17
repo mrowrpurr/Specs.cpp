@@ -78,6 +78,11 @@ namespace Spec::Types {
             DiscoverGroup(description, [body](auto&) { body(); });
         }
 
+        void DiscoverTest(const std::string& description) {
+            if (!EnsureRoot()) return;
+            CurrentGroup()->AddTest(SpecTest(description, CurrentGroup()));
+        }
+
         void DiscoverTest(const std::string& description, std::function<void(SpecTest&)> body) {
             if (!EnsureRoot()) return;
             CurrentGroup()->AddTest(SpecTest(description, CurrentGroup(), body));

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Spec.h>
 #include <Spec/Snowhouse.h>
 #include <Spec/Types/SpecApp.h>

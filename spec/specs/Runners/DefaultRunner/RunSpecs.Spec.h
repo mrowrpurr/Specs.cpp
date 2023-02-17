@@ -1,5 +1,3 @@
-#pragma once
-
 #include "SpecHelper.h"
 
 TestGroup("Running Specs");
@@ -29,7 +27,7 @@ Test("failing test") {
     );
 }
 
-Test("Multiple tests (passing and failing)") {
+Test("multiple tests (passing and failing)") {
     auto app = SpecApp([]() {
         describe("IN THE DESC Group of tests", []() {
             it("should pass", []() { AssertThat(69, Equals(69)); });
@@ -46,8 +44,4 @@ Test("Multiple tests (passing and failing)") {
     AssertThat(
         app->Results.GetRoot()->GetTests()[1]->GetFailureMessage(), MatchesRegex("Expected: equal to 420", "Actual: 69")
     );
-}
-
-Describe("Child group") {
-    describe("Another child", []() { it("should pass", []() { AssertThat(69, Equals(69)); }); });
 }

@@ -7,6 +7,12 @@
 
 namespace Spec {
 
+    // TODO: xit() for all variations of it()
+
+    void it(const std::string& description) {
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description);
+    }
+
     void it(const std::string& description, std::function<void(SpecTest&)> body) {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
     }
