@@ -21,8 +21,12 @@ namespace Spec {
         SpecGroup(const std::string& description, std::shared_ptr<SpecGroup> parent)
             : _description(description), _parent(parent) {}
 
-        const std::string&                GetDescription() const { return _description; }
-        const std::shared_ptr<SpecGroup>& GetParent() const { return _parent; }
+        std::shared_ptr<SpecGroup>& GetParent() { return _parent; }
+        std::string                 GetDescription() { return _description; }
+        std::string                 GetFullDescription() {
+            if (IsRoot()) return _description;
+            return _parent->GetFullDescription() + " " + _description;
+        }
 
         void AddSetup(const SpecTest& setup) { _setups.push_back(setup); }
         void AddTeardown(const SpecTest& teardown) { _teardowns.push_back(teardown); }
@@ -36,4 +40,10 @@ namespace Spec {
 
         bool IsRoot() const { return _parent == nullptr; }
     };
+
+    // Hacky header-only grossness which we should possibily reorganize code to avoid
+    std::string SpecTest::GetFullDescription() {
+        if (_parent->IsRoot()) return _description;
+        return _parent->GetFullDescription() + " " + _description;
+    }
 }

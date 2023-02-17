@@ -27,20 +27,15 @@ namespace Spec::Types::Reporters {
         }
 
     public:
-        void BeginTest(SpecTest&) override {}
-        void EndTest(SpecTest& test, bool passed, const std::string& failureMessage) override {
-            std::string testDescription = test.GetDescription();
-            auto        group           = test.GetGroup();
-            while (group) {
-                testDescription = group->GetDescription() + " " + testDescription;
-                group           = group->GetParent();
+        void BeginTest(SpecTest&, SpecTestResult&) override {}
+        void EndTest(SpecTest& test, SpecTestResult& result) override {
+            if (result.Passed()) {
+                PrintPassed(test.GetDescription());
+            } else {
+                PrintFailed(test.GetDescription(), result.GetFailureMessageWithFileLocation());
             }
-            if (passed)
-                PrintPassed(testDescription);
-            else
-                PrintFailed(testDescription, failureMessage);
         }
-        void BeginGroup(SpecGroup& group) override {}
-        void EndGroup(SpecGroup&) override {}
+        void BeginGroup(SpecGroup&, SpecGroupResult&) override {}
+        void EndGroup(SpecGroup&, SpecGroupResult&) override {}
     };
 }

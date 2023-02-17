@@ -3,7 +3,10 @@
 #include <functional>
 #include <memory>
 
+#include "Spec/SpecTest.h"
 #include "Spec/Types/ISpecExceptionHandler.h"
+#include "Spec/Types/SpecTestResult.h"
+
 
 namespace Spec::Types {
 
@@ -34,17 +37,22 @@ namespace Spec::Types {
             RegisterExceptionHandler(std::make_shared<T>());
         }
 
-        static void RunAndHandleError(
-            std::function<void()> code, std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
+        // TODO - replace the function<void()> code with a shared_ptr to a SpecTestResult
+        //        and HandleException should take BOTH the exception_ptr and the SpecTestResult
+        static bool RunAndHandleError(
+            SpecTest& test, SpecTestResult& result,
+            std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
             try {
-                code();
+                test.Run();
+                test.Pass();
+                return true;
             } catch (...) {
-                Print("Trying {} exception handlers", exceptionHandlers.size());
                 for (auto& handler : exceptionHandlers) {
-                    if (handler->HandleException(std::current_exception())) return;
+                    if (handler->HandleException(std::current_exception(), result)) break;
                 }
-                Print("Nothing handled it!!!");
+                test.Fail();
+                return false;
             }
         }
     };

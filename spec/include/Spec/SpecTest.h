@@ -33,8 +33,9 @@ namespace Spec {
 
         void Run() { _body(*this); }
 
-        const std::string&                GetDescription() const { return _description; }
-        const std::shared_ptr<SpecGroup>& GetGroup() const { return _parent; }
+        std::shared_ptr<SpecGroup>& GetGroup() { return _parent; }
+        std::string                 GetDescription() { return _description; }
+        std::string                 GetFullDescription();
 
         void Pass() { _promise->set_value(true); }
         void Fail() { _promise->set_value(false); }

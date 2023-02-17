@@ -9,26 +9,20 @@
 
 namespace Spec::Types::Runners {
 
-    class SimpleRunner : public ISpecRunner {
+    class DefaultRunner : public ISpecRunner {
     public:
         void RunTest(
-            SpecTest& test, SpecResultGroup& resultGroup, std::vector<std::shared_ptr<ISpecReporter>> reporters,
+            SpecTest& test, SpecGroupResult& resultGroup, std::vector<std::shared_ptr<ISpecReporter>> reporters,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
-            for (auto& reporter : reporters) reporter->BeginTest(test);
-            SpecExtensionsRegistry::RunAndHandleError(
-                [&]() {
-                    Print("BEFORE RUN");
-                    test.Run();
-                    Print("AFTER RUN");
-                },
-                exceptionHandlers
-            );
-            for (auto& reporter : reporters) reporter->EndTest(test, 0, "");
+            auto testResult = resultGroup.NewTest(test.GetDescription());
+            for (auto& reporter : reporters) reporter->BeginTest(test, *testResult);
+            SpecExtensionsRegistry::RunAndHandleError(test, *testResult, exceptionHandlers);
+            for (auto& reporter : reporters) reporter->EndTest(test, *testResult);
         }
 
         void RunGroup(
-            SpecGroup& group, SpecResultGroup& resultGroup, std::vector<std::shared_ptr<ISpecReporter>> reporters,
+            SpecGroup& group, SpecGroupResult& resultGroup, std::vector<std::shared_ptr<ISpecReporter>> reporters,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
             for (auto& test : group.GetTests()) RunTest(test, resultGroup, reporters, exceptionHandlers);

@@ -2,13 +2,15 @@
 
 #include "Spec/SpecGroup.h"
 #include "Spec/SpecTest.h"
+#include "Spec/Types/SpecGroupResult.h"
+#include "Spec/Types/SpecTestResult.h"
 
 namespace Spec::Types {
     class ISpecReporter {
     public:
-        virtual void BeginTest(SpecTest& test)                                               = 0;
-        virtual void EndTest(SpecTest& test, bool passed, const std::string& failureMessage) = 0;
-        virtual void BeginGroup(SpecGroup& group)                                            = 0;
-        virtual void EndGroup(SpecGroup& group)                                              = 0;
+        virtual void BeginTest(SpecTest& test, SpecTestResult& result)     = 0;
+        virtual void EndTest(SpecTest& test, SpecTestResult& result)       = 0;
+        virtual void BeginGroup(SpecGroup& group, SpecGroupResult& result) = 0;
+        virtual void EndGroup(SpecGroup& group, SpecGroupResult& result)   = 0;
     };
 }

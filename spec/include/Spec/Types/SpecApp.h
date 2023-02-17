@@ -6,6 +6,8 @@
 #include "Spec/Types/ISpecExceptionHandler.h"
 #include "Spec/Types/ISpecReporter.h"
 #include "Spec/Types/ISpecRunner.h"
+#include "Spec/Types/Reporters/OneLineReporter.h"
+#include "Spec/Types/Runners/DefaultRunner.h"
 #include "Spec/Types/SpecDefinitionBlocks.h"
 #include "Spec/Types/SpecDiscovery.h"
 #include "Spec/Types/SpecExtensionsRegistry.h"
@@ -26,19 +28,22 @@ namespace Spec::Types {
         std::vector<std::shared_ptr<ISpecReporter>>         Reporters;
         std::vector<std::shared_ptr<ISpecExceptionHandler>> ExceptionHandlers;
 
+        static std::shared_ptr<SpecApp> CreateDefault() {
+            auto app = std::make_shared<SpecApp>();
+            app->Discovery.SetRegistry(app->Registry);
+            app->ExceptionHandlers.emplace_back(
+                std::make_shared<Spec::Types::ExceptionHandlers::DefaultExceptionHandler>()
+            );
+            auto& specExtensionRegistry = SpecExtensionsRegistry::GetRegistry();
+            for (auto& handler : specExtensionRegistry.GetExceptionHandlers())
+                app->ExceptionHandlers.insert(app->ExceptionHandlers.begin(), handler);
+            app->Runner = std::make_shared<Runners::DefaultRunner>();
+            app->Reporters.emplace_back(std::make_shared<Reporters::OneLineReporter>());
+            return app;
+        }
+
         static std::shared_ptr<SpecApp> GetDefaultInstance() {
-            if (!_defaultInstance) {
-                Print("SETUP DEFAULT INSTANCE");
-                _defaultInstance = std::make_shared<SpecApp>();
-                _defaultInstance->Discovery.SetRegistry(_defaultInstance->Registry);
-                _defaultInstance->ExceptionHandlers.emplace_back(
-                    std::make_shared<Spec::Types::ExceptionHandlers::DefaultExceptionHandler>()
-                );
-                auto& specExtensionRegistry = SpecExtensionsRegistry::GetRegistry();
-                for (auto& handler : specExtensionRegistry.GetExceptionHandlers())
-                    _defaultInstance->ExceptionHandlers.insert(_defaultInstance->ExceptionHandlers.begin(), handler);
-                Print("This app has {} exception handlers", _defaultInstance->ExceptionHandlers.size());
-            }
+            if (!_defaultInstance) _defaultInstance = CreateDefault();
             return _defaultInstance;
         }
 

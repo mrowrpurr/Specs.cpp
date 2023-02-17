@@ -9,19 +9,19 @@ namespace Spec::Types::ExceptionHandlers {
 
     class DefaultExceptionHandler : public ISpecExceptionHandler {
     public:
-        bool HandleException(std::exception_ptr exception) {
-            Print("I AM DEFAULT EXCEPTION HANDLER!");
+        bool HandleException(std::exception_ptr exception, SpecTestResult& result) {
             try {
                 std::rethrow_exception(exception);
             } catch (const char* e) {
-                Print("DefaultExceptionHandler: Caught char* exception: {}", e);
+                result.SetFailure(e);
             } catch (std::string e) {
-                Print("DefaultExceptionHandler: Caught std::string exception: {}", e);
+                result.SetFailure(e);
             } catch (std::exception& e) {
-                Print("DefaultExceptionHandler: Caught std::exception: {}", e.what());
+                result.SetFailure(e.what());
             } catch (...) {
-                Print("DefaultExceptionHandler: Caught unknown exception");
+                result.SetFailure("Unknown exception");
             }
+            return true;
         }
     };
 

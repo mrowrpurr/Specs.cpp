@@ -2,20 +2,20 @@
 
 #include <memory>
 
-#include "Spec/Types/SpecResultGroup.h"
+#include "Spec/Types/SpecGroupResult.h"
 
 namespace Spec::Types {
     class SpecResults {
-        std::shared_ptr<SpecResultGroup> _rootResultGroup;
+        std::shared_ptr<SpecGroupResult> _rootResultGroup;
         unsigned int                     _totalTests  = 0;
         unsigned int                     _totalPassed = 0;
         unsigned int                     _totalFailed = 0;
 
     public:
-        SpecResults() : _rootResultGroup(std::make_shared<SpecResultGroup>()) {}
+        SpecResults() : _rootResultGroup(std::make_shared<SpecGroupResult>()) {}
 
-        std::shared_ptr<SpecResultGroup> GetRoot() { return _rootResultGroup; }
-        void                             SetRoot(std::shared_ptr<SpecResultGroup> root) { _rootResultGroup = root; }
+        std::shared_ptr<SpecGroupResult> GetRoot() { return _rootResultGroup; }
+        void                             SetRoot(std::shared_ptr<SpecGroupResult> root) { _rootResultGroup = root; }
 
         unsigned int GetTotalTests() { return _totalTests; }
         void         IncrementTotalTests() { _totalTests++; }
