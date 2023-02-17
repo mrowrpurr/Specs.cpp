@@ -2,13 +2,8 @@
 
 #include "SpecHelper.h"
 
-Test("Run passing test") {
-    auto app = SpecApp();
-
-    app->Discovery.DiscoverTest("PassingTest", []() {
-        // Nothing, so this passes.
-    });
-
+Test("passing test") {
+    auto app = SpecApp([]() { it("should pass", []() { AssertThat(69, Equals(69)); }); });
     AssertThat(app->Results.GetTotalTests(), Equals<unsigned int>(0));
 
     app->RunAndWait();
@@ -18,11 +13,8 @@ Test("Run passing test") {
     AssertThat(app->Results.GetTotalFailed(), Equals<unsigned int>(0));
 }
 
-Test("Run failing test") {
-    auto app = SpecApp();
-
-    app->Discovery.DiscoverTest("FailingTest", []() { AssertThat(69, Equals(420)); });
-
+Test("failing test") {
+    auto app = SpecApp([]() { it("should fail", []() { AssertThat(69, Equals(420)); }); });
     AssertThat(app->Results.GetTotalTests(), Equals<unsigned int>(0));
 
     app->RunAndWait();
@@ -35,7 +27,7 @@ Test("Run failing test") {
     );
 }
 
-Test("Using the DSL") {
+Test("Multiple tests (passing and failing)") {
     auto app = SpecApp([]() {
         describe("Group of tests", []() {
             it("should pass", []() { AssertThat(69, Equals(69)); });
