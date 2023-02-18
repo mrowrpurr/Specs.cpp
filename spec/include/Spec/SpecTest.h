@@ -44,9 +44,9 @@ namespace Spec {
             if (_body) _body.value()(*this);
         }
 
-        bool RunAndWait(std::chrono::duration<long long> timeout = std::chrono::seconds(0)) {
+        bool RunAndWait(std::future<bool>& future, std::chrono::duration<long long> timeout = std::chrono::seconds(0)) {
             if (_body) _body.value()(*this);
-            auto future = _promise->get_future();
+            future      = _promise->get_future();
             auto result = future.wait_for(timeout);
             if (result == std::future_status::timeout) {
                 Fail();
@@ -59,16 +59,10 @@ namespace Spec {
         std::string                 GetDescription() { return _description; }
         std::string                 GetFullDescription();
 
-        void Pass() { _promise->set_value(true); }
-        void Fail() { _promise->set_value(false); }
-        void Reset() { _promise = std::make_shared<std::promise<bool>>(); }
-        void ResolvePromise(bool success) {
-            if (success) {
-                Pass();
-            } else {
-                Fail();
-            }
-        }
+        void                                 Pass() { _promise->set_value(true); }
+        void                                 Fail() { _promise->set_value(false); }
+        void                                 Reset() { _promise = std::make_shared<std::promise<bool>>(); }
+        std::shared_ptr<std::promise<bool>>& GetPromise() { return _promise; }
 
         bool HasBody() { return _body.has_value(); }
 

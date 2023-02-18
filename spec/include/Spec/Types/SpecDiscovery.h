@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Spec/AsyncSpec.h"
 #include "Spec/Types/SpecRegistry.h"
 
 namespace Spec::Types {
@@ -36,7 +37,6 @@ namespace Spec::Types {
         static SpecDiscovery& GetGlobalInstance() { return _globalInstance; }
         static void           SetGlobalInstance(SpecDiscovery& instance) { _globalInstance = instance; }
         static void           UsingRegistry(std::shared_ptr<SpecRegistry> registry, std::function<void()> code) {
-            // TODO XXX This is pretty gross. Clean it up :)
             auto& globalInstance = GetGlobalInstance();
             auto  oldRegistry    = globalInstance.GetRegistry();
             auto  oldGroupStack  = globalInstance._groupStack;
@@ -54,9 +54,6 @@ namespace Spec::Types {
         void                          SetRegistry(std::shared_ptr<SpecRegistry> registry) { _registry = registry; }
         void SetRegistry(SpecRegistry& registry) { _registry = std::make_shared<SpecRegistry>(registry); }
 
-        /** Starts a top-level group without adding any body to it.
-         * Calling DiscoverGroup without a body always sets the current group to the root group.
-         */
         void DiscoverGroup(const std::string& description) {
             _groupStack.clear();
             if (!EnsureRoot()) return;
@@ -88,9 +85,19 @@ namespace Spec::Types {
             CurrentGroup()->AddTest(SpecTest(description, CurrentGroup(), body, isAsync));
         }
 
-        // TODO get rid of this???? Move to DSL (caller)
+        void DiscoverTest(const std::string& description, std::function<void(AsyncSpec&)> body) {
+            DiscoverTest(
+                description,
+                [body](auto& test) {
+                    AsyncSpec asyncSpec{std::make_shared<SpecTest>(test)};
+                    body(asyncSpec);
+                },
+                true
+            );
+        }
+
         void DiscoverTest(const std::string& description, std::function<void()> body) {
-            DiscoverTest(description, [body](auto&) { body(); });
+            DiscoverTest(description, [body](SpecTest&) { body(); });
         }
 
         void DiscoverSetup(std::function<void(SpecTest&)> body) {

@@ -3,6 +3,7 @@
 #include <any>
 #include <unordered_map>
 
+#include "Spec/AsyncSpec.h"
 #include "Spec/Types/SpecDiscovery.h"
 
 namespace Spec {
@@ -20,6 +21,10 @@ namespace Spec {
     }
 
     void it(const std::string& description, std::function<void(SpecTest&)> body) {
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
+    }
+
+    void it(const std::string& description, std::function<void(AsyncSpec&)> body) {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
     }
 

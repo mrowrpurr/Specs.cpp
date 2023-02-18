@@ -36,24 +36,30 @@ namespace Spec::Types {
             RegisterExceptionHandler(std::make_shared<T>());
         }
 
-        // TODO - replace the function<void()> code with a shared_ptr to a SpecTestResult
-        //        and HandleException should take BOTH the exception_ptr and the SpecTestResult
         static bool RunAndHandleError(
             std::shared_ptr<SpecTest> test, SpecTestResult& result,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
             try {
-                if (test->IsAsync())
-                    test->RunAndWait(std::chrono::seconds(3));
-                else
+                if (test->IsAsync()) {
+                    std::future<bool> future;
+                    if (!test->RunAndWait(future, std::chrono::seconds(3))) {
+                        result.SetFailure("Async test timed out");
+                        return false;
+                    }
+                    if (!future.get()) {
+                        result.SetFailure("Async test failed");
+                        return false;
+                    }
+                } else {
                     test->Run();
+                }
                 return true;
             } catch (...) {
                 for (auto& handler : exceptionHandlers) {
                     if (handler->HandleException(std::current_exception(), result)) break;
                 }
                 result.Fail();
-                // test.Fail(); <--- PROMISE, we're not even doing this yet!
                 return false;
             }
         }
