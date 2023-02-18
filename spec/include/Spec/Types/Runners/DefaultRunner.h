@@ -55,8 +55,12 @@ namespace Spec::Types::Runners {
             for (auto& reporter : reporters) reporter->BeginTest(test, *testResult);
             if (!test->IsTodo()) {
                 if (RunSetups(test->GetGroup()->GetSetups(), testResult, exceptionHandlers)) {
-                    SpecExtensionsRegistry::RunAndHandleError(test, *testResult, exceptionHandlers);
-                    RunTeardowns(test->GetGroup()->GetTeardowns(), testResult, exceptionHandlers);
+                    bool testPassed = SpecExtensionsRegistry::RunAndHandleError(test, *testResult, exceptionHandlers);
+                    if (RunTeardowns(test->GetGroup()->GetTeardowns(), testResult, exceptionHandlers)) {
+                        if (testPassed) testResult->Pass();
+                    }
+                } else {
+                    testResult->Fail();
                 }
             }
             for (auto& reporter : reporters) reporter->EndTest(test, *testResult);

@@ -45,7 +45,7 @@ namespace Spec::Types {
             try {
                 test->Run();
                 // test.Pass(); <--- PROMISE, we're not even doing this yet!
-                result.Pass();
+                // result.Pass();
                 return true;
             } catch (...) {
                 for (auto& handler : exceptionHandlers) {
