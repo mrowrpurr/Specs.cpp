@@ -12,10 +12,17 @@ xTest("I would like this to be an async test") {
 }
 
 void RunMeOnAThread(SpecCallback done) {
+    // Oooooo me likey!
+    done.capture([&]() {
+        // https://stackoverflow.com/a/25284064
+        // promise.set_exception
+        // try { promise.get() } catch { ... }
+    });
+
     Print("um, hello?????");
+    AssertThat("Something in the background thread", Equals("butts"));
     std::this_thread::sleep_for(std::chrono::seconds(2));
     Print("Done sleeping");
-    // AssertThat("Something in the background thread", Equals("butts"));
     done();
 }
 
