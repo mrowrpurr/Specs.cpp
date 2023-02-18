@@ -9,9 +9,12 @@
 #include "Spec/DSL/Components/Functions/test.h"
 #include "Spec/DSL/Components/Functions/todo.h"
 #include "Spec/DSL/Components/Macros/Describe.h"
+#include "Spec/DSL/Components/Macros/Setup.h"
 #include "Spec/DSL/Components/Macros/Specs.h"
 #include "Spec/DSL/Components/Macros/TODO.h"
+#include "Spec/DSL/Components/Macros/Teardown.h"
 #include "Spec/DSL/Components/Macros/Test.h"
 #include "Spec/DSL/Components/Macros/TestGroup.h"
 #include "Spec/DSL/Components/Macros/xDescribe.h"
 #include "Spec/DSL/Components/Macros/xTest.h"
+

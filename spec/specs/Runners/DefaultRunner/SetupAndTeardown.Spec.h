@@ -2,24 +2,10 @@
 
 TestGroup("Setup and Teardown");
 
-// TODO("Top-level setup and teardown");
+Setup { Print("This is the setup!"); }
+Setup { Print("This is another setup!"); }
 
-// Describe("Within a top-level describe") { todo("Setup and teardown"); }
+Teardown { Print("This is the teardown!"); }
 
-Specs {
-    describe("hello!", []() {
-        std::string hello = "hello";
-
-        setup([]() {
-            //
-        });
-
-        teardown([&]() {
-            //
-        });
-
-        it("a test!", [hello]() {
-            //
-        });
-    });
-}
+Test("Something!") { Print("This is something!"); }
+Test("Something else!") { Print("This is something else!"); }
