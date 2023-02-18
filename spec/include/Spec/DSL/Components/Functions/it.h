@@ -13,6 +13,12 @@ namespace Spec {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description);
     }
 
+    void it(const std::string& description, std::function<void(std::function<void()>)> body) {
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(
+            description, [body](SpecTest& test) { body([&]() { test.Pass(); }); }, true
+        );
+    }
+
     void it(const std::string& description, std::function<void(SpecTest&)> body) {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description, body);
     }

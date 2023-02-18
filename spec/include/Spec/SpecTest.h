@@ -19,7 +19,8 @@ namespace Spec {
         std::shared_ptr<std::promise<bool>>                        _promise;
         std::unordered_map<std::string, std::any>                  _metadata;
         std::shared_ptr<std::unordered_map<std::string, std::any>> _data;
-        bool                                                       _todo;
+        bool                                                       _todo                       = false;
+        bool                                                       _automaticPromiseResolution = true;
 
     public:
         SpecTest(const std::shared_ptr<SpecGroup>& parent, const std::function<void(SpecTest&)>& body)
@@ -30,17 +31,28 @@ namespace Spec {
 
         SpecTest(
             const std::string& description, const std::shared_ptr<SpecGroup>& parent,
-            const std::function<void(SpecTest&)>& body, bool todo = false
+            const std::function<void(SpecTest&)>& body, bool isAsync = false
         )
             : _description(description),
               _parent(parent),
               _body(body),
               _promise(std::make_shared<std::promise<bool>>()),
               _data(std::make_shared<std::unordered_map<std::string, std::any>>()),
-              _todo(todo) {}
+              _automaticPromiseResolution(!isAsync) {}
 
         void Run() {
             if (_body) _body.value()(*this);
+        }
+
+        bool RunAndWait(std::chrono::duration<long long> timeout = std::chrono::seconds(0)) {
+            if (_body) _body.value()(*this);
+            auto future = _promise->get_future();
+            auto result = future.wait_for(timeout);
+            if (result == std::future_status::timeout) {
+                Fail();
+                return false;
+            }
+            return true;
         }
 
         std::shared_ptr<SpecGroup>& GetGroup() { return _parent; }
@@ -50,11 +62,26 @@ namespace Spec {
         void Pass() { _promise->set_value(true); }
         void Fail() { _promise->set_value(false); }
         void Reset() { _promise = std::make_shared<std::promise<bool>>(); }
+        void ResolvePromise(bool success) {
+            if (success) {
+                Pass();
+            } else {
+                Fail();
+            }
+        }
 
         bool HasBody() { return _body.has_value(); }
 
         bool IsTodo() { return _todo; }
         void SetTodo(bool todo = true) { _todo = todo; }
+
+        bool IsAutomaticPromiseResolution() { return _automaticPromiseResolution; }
+        void SetAutomaticPromiseResolution(bool automaticPromiseResolution = true) {
+            _automaticPromiseResolution = automaticPromiseResolution;
+        }
+        void SetManualPromiseResolution() { _automaticPromiseResolution = false; }
+        bool IsManualPromiseResolution() { return !_automaticPromiseResolution; }
+        bool IsAsync() { return IsManualPromiseResolution(); }
 
         std::any Get(const std::string& key) { return _data->at(key); }
 

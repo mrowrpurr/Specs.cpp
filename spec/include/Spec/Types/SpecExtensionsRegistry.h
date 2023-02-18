@@ -43,9 +43,10 @@ namespace Spec::Types {
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
             try {
-                test->Run();
-                // test.Pass(); <--- PROMISE, we're not even doing this yet!
-                // result.Pass();
+                if (test->IsAsync())
+                    test->RunAndWait(std::chrono::seconds(3));
+                else
+                    test->Run();
                 return true;
             } catch (...) {
                 for (auto& handler : exceptionHandlers) {

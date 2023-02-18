@@ -83,11 +83,12 @@ namespace Spec::Types {
             CurrentGroup()->AddTest(SpecTest(description, CurrentGroup()));
         }
 
-        void DiscoverTest(const std::string& description, std::function<void(SpecTest&)> body) {
+        void DiscoverTest(const std::string& description, std::function<void(SpecTest&)> body, bool isAsync = false) {
             if (!EnsureRoot()) return;
-            CurrentGroup()->AddTest(SpecTest(description, CurrentGroup(), body));
+            CurrentGroup()->AddTest(SpecTest(description, CurrentGroup(), body, isAsync));
         }
 
+        // TODO get rid of this???? Move to DSL (caller)
         void DiscoverTest(const std::string& description, std::function<void()> body) {
             DiscoverTest(description, [body](auto&) { body(); });
         }

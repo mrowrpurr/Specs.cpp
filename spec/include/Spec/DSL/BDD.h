@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Spec/DSL/Components/Aliases/SpecCallback.h"
 #include "Spec/DSL/Components/Functions/describe.h"
 #include "Spec/DSL/Components/Functions/it.h"
 #include "Spec/DSL/Components/Functions/pending.h"
@@ -17,4 +18,3 @@
 #include "Spec/DSL/Components/Macros/TestGroup.h"
 #include "Spec/DSL/Components/Macros/xDescribe.h"
 #include "Spec/DSL/Components/Macros/xTest.h"
-
