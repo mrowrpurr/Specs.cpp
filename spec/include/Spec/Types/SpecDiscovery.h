@@ -91,6 +91,24 @@ namespace Spec::Types {
         void DiscoverTest(const std::string& description, std::function<void()> body) {
             DiscoverTest(description, [body](auto&) { body(); });
         }
+
+        void DiscoverSetup(std::function<void(SpecTest&)> body) {
+            if (!EnsureRoot()) return;
+            CurrentGroup()->AddSetup(SpecTest(CurrentGroup(), body));
+        }
+
+        void DiscoverSetup(std::function<void()> body) {
+            DiscoverSetup([body](auto&) { body(); });
+        }
+
+        void DiscoverTeardown(std::function<void(SpecTest&)> body) {
+            if (!EnsureRoot()) return;
+            CurrentGroup()->AddTeardown(SpecTest(CurrentGroup(), body));
+        }
+
+        void DiscoverTeardown(std::function<void()> body) {
+            DiscoverTeardown([body](auto&) { body(); });
+        }
     };
 
     SpecDiscovery SpecDiscovery::_globalInstance;

@@ -2,15 +2,25 @@
 
 TestGroup("Setup and Teardown");
 
-TODO("A test that I should write!");
+TODO("Top-level setup and teardown");
 
-xTest("Something") {
-    //
-    Print("xTest RAN!");
-}
+Describe("Within a top-level describe") { todo("Setup and teardown"); }
 
-Describe("All the tests in here will be skipped") {
-    it("should this show up at all?");
-    todo("This one is todo");
-    pending("This one is pending");
+Specs {
+    describe("hello!", []() {
+        std::string hello = "hello";
+
+        setup([]() {
+            Print("runnnn! THIS IS SETUP!");
+            // Print("In setup, hello is: " + hello);
+            // hello = "hello updated by setup";
+        });
+
+        teardown([&]() {
+            Print("runnnn! THIS IS TEARDONW!");
+            // Print("In teardown, hello is: " + hello);
+        });
+
+        it("a test!", [hello]() { AssertThat(hello, Equals("hello updated by setup")); });
+    });
 }

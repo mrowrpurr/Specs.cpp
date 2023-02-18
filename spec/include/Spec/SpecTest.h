@@ -22,8 +22,12 @@ namespace Spec {
         bool                                                       _todo;
 
     public:
+        SpecTest(const std::shared_ptr<SpecGroup>& parent, const std::function<void(SpecTest&)>& body)
+            : _parent(parent), _body(body), _todo(false) {}
+
         SpecTest(const std::string& description, const std::shared_ptr<SpecGroup>& parent)
             : _description(description), _parent(parent), _todo(true) {}
+
         SpecTest(
             const std::string& description, const std::shared_ptr<SpecGroup>& parent,
             const std::function<void(SpecTest&)>& body, bool todo = false

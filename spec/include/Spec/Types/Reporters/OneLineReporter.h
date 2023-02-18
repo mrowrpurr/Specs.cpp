@@ -43,6 +43,10 @@ namespace Spec::Types::Reporters {
                 PrintNotRun(test->GetFullDescription());
             }
         }
+        void BeginSetup(std::shared_ptr<SpecTest>, SpecTestResult&) override {}
+        void EndSetup(std::shared_ptr<SpecTest>, SpecTestResult&) override {}
+        void BeginTeardown(std::shared_ptr<SpecTest>, SpecTestResult&) override {}
+        void EndTeardown(std::shared_ptr<SpecTest>, SpecTestResult&) override {}
         void BeginGroup(SpecGroup&, SpecGroupResult&) override {}
         void EndGroup(SpecGroup&, SpecGroupResult&) override {}
     };

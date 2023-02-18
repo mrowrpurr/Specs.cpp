@@ -11,14 +11,54 @@ namespace Spec::Types::Runners {
 
     class DefaultRunner : public ISpecRunner {
     public:
+        bool RunSetup(
+            std::shared_ptr<SpecTest> setup, std::shared_ptr<SpecTestResult> testResult,
+            std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
+        ) {
+            if (setup->IsTodo()) return true;
+            return SpecExtensionsRegistry::RunAndHandleError(setup, *testResult, exceptionHandlers);
+        }
+
+        bool RunSetups(
+            std::vector<std::shared_ptr<SpecTest>> setups, std::shared_ptr<SpecTestResult> testResult,
+            std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
+        ) {
+            for (auto& setup : setups) {
+                if (!RunSetup(setup, testResult, exceptionHandlers)) return false;
+            }
+            return true;
+        }
+
+        bool RunTeardown(
+            std::shared_ptr<SpecTest> teardown, std::shared_ptr<SpecTestResult> testResult,
+            std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
+        ) {
+            if (teardown->IsTodo()) return true;
+            return SpecExtensionsRegistry::RunAndHandleError(teardown, *testResult, exceptionHandlers);
+        }
+
+        bool RunTeardowns(
+            std::vector<std::shared_ptr<SpecTest>> teardown, std::shared_ptr<SpecTestResult> testResult,
+            std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
+        ) {
+            for (auto& teardown : teardown) {
+                if (!RunTeardown(teardown, testResult, exceptionHandlers)) return false;
+            }
+            return true;
+        }
+
         void RunTest(
-            std::shared_ptr<SpecTest> test, SpecGroupResult& resultGroup,
+            std::shared_ptr<SpecTest> test, std::shared_ptr<SpecTestResult> testResult,
             std::vector<std::shared_ptr<ISpecReporter>>         reporters,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
-            auto testResult = resultGroup.NewTest(test->GetDescription());
             for (auto& reporter : reporters) reporter->BeginTest(test, *testResult);
-            if (!test->IsTodo()) SpecExtensionsRegistry::RunAndHandleError(test, *testResult, exceptionHandlers);
+            if (!test->IsTodo()) {
+                if (RunSetups(test->GetGroup()->GetSetups(), testResult, exceptionHandlers)) {
+                    SpecExtensionsRegistry::RunAndHandleError(test, *testResult, exceptionHandlers);
+                    RunTeardowns(test->GetGroup()->GetTeardowns(), testResult, exceptionHandlers);
+                }
+            }
             for (auto& reporter : reporters) reporter->EndTest(test, *testResult);
         }
 
@@ -27,7 +67,10 @@ namespace Spec::Types::Runners {
             std::vector<std::shared_ptr<ISpecReporter>>         reporters,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers
         ) {
-            for (auto& test : group->GetTests()) RunTest(test, resultGroup, reporters, exceptionHandlers);
+            for (auto& test : group->GetTests()) {
+                auto testResult = resultGroup.NewTest(test->GetDescription());
+                RunTest(test, testResult, reporters, exceptionHandlers);
+            }
             for (auto& innerGroup : group->GetGroups()) RunGroup(innerGroup, resultGroup, reporters, exceptionHandlers);
         }
 

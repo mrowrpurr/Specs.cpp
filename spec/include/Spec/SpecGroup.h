@@ -12,8 +12,8 @@ namespace Spec {
     class SpecGroup {
         std::string                             _description;
         std::weak_ptr<SpecGroup>                _parent;
-        std::vector<SpecTest>                   _setups;
-        std::vector<SpecTest>                   _teardowns;
+        std::vector<std::shared_ptr<SpecTest>>  _setups;
+        std::vector<std::shared_ptr<SpecTest>>  _teardowns;
         std::vector<std::shared_ptr<SpecTest>>  _tests;
         std::vector<std::shared_ptr<SpecGroup>> _groups;
 
@@ -32,16 +32,18 @@ namespace Spec {
 
         void AddTest(std::shared_ptr<SpecTest> test) { _tests.push_back(test); }
         void AddGroup(std::shared_ptr<SpecGroup> group) { _groups.push_back(group); }
+        void AddSetup(std::shared_ptr<SpecTest> setup) { _setups.push_back(setup); }
+        void AddTeardown(std::shared_ptr<SpecTest> teardown) { _teardowns.push_back(teardown); }
 
-        void AddSetup(const SpecTest& setup) { _setups.push_back(setup); }
-        void AddTeardown(const SpecTest& teardown) { _teardowns.push_back(teardown); }
         void AddTest(const SpecTest& test) { _tests.push_back(std::make_shared<SpecTest>(test)); }
         void AddGroup(const SpecGroup& group) { _groups.push_back(std::make_shared<SpecGroup>(group)); }
+        void AddSetup(const SpecTest& setup) { _setups.push_back(std::make_shared<SpecTest>(setup)); }
+        void AddTeardown(const SpecTest& teardown) { _teardowns.push_back(std::make_shared<SpecTest>(teardown)); }
 
-        std::vector<SpecTest>&                   GetSetups() { return _setups; }
-        std::vector<SpecTest>&                   GetTeardowns() { return _teardowns; }
         std::vector<std::shared_ptr<SpecTest>>&  GetTests() { return _tests; }
         std::vector<std::shared_ptr<SpecGroup>>& GetGroups() { return _groups; }
+        std::vector<std::shared_ptr<SpecTest>>&  GetSetups() { return _setups; }
+        std::vector<std::shared_ptr<SpecTest>>&  GetTeardowns() { return _teardowns; }
 
         bool IsRoot() const { return _parent.lock() == nullptr; }
     };
