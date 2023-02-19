@@ -1,3 +1,3 @@
-#include <Spec/Autorun.h>
+#include <Spec/Core.h>
 
-Test("Hello") { Print("wassup?"); }
+//
