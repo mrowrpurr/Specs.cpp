@@ -11,7 +11,8 @@ namespace Spec::Types {
 
         bool EnsureRoot() {
             if (!_registry) return false;
-            if (_groupStack.empty()) _groupStack.emplace_back(_registry->GetRoot());
+            if (_groupStack.empty())
+                _groupStack.emplace_back(_registry->GetRoot());
             return true;
         }
 
@@ -32,11 +33,16 @@ namespace Spec::Types {
 
     public:
         SpecDiscovery() = default;
-        SpecDiscovery(std::shared_ptr<SpecRegistry> registry) : _registry(registry) {}
+        SpecDiscovery(std::shared_ptr<SpecRegistry> registry)
+            : _registry(registry) {}
 
         static SpecDiscovery& GetGlobalInstance() { return _globalInstance; }
-        static void           SetGlobalInstance(SpecDiscovery& instance) { _globalInstance = instance; }
-        static void           UsingRegistry(std::shared_ptr<SpecRegistry> registry, std::function<void()> code) {
+        static void           SetGlobalInstance(SpecDiscovery& instance) {
+            _globalInstance = instance;
+        }
+        static void UsingRegistry(
+            std::shared_ptr<SpecRegistry> registry, std::function<void()> code
+        ) {
             auto& globalInstance = GetGlobalInstance();
             auto  oldRegistry    = globalInstance.GetRegistry();
             auto  oldGroupStack  = globalInstance._groupStack;
@@ -46,32 +52,44 @@ namespace Spec::Types {
             globalInstance.SetRegistry(oldRegistry);
             globalInstance._groupStack = oldGroupStack;
         }
-        static void UsingRegistry(SpecRegistry& registry, std::function<void()> code) {
+        static void UsingRegistry(
+            SpecRegistry& registry, std::function<void()> code
+        ) {
             UsingRegistry(std::make_shared<SpecRegistry>(registry), code);
         }
 
         std::shared_ptr<SpecRegistry> GetRegistry() { return _registry; }
-        void                          SetRegistry(std::shared_ptr<SpecRegistry> registry) { _registry = registry; }
-        void SetRegistry(SpecRegistry& registry) { _registry = std::make_shared<SpecRegistry>(registry); }
+        void SetRegistry(std::shared_ptr<SpecRegistry> registry) {
+            _registry = registry;
+        }
+        void SetRegistry(SpecRegistry& registry) {
+            _registry = std::make_shared<SpecRegistry>(registry);
+        }
 
         void DiscoverGroup(const std::string& description) {
             _groupStack.clear();
             if (!EnsureRoot()) return;
-            auto group = std::make_shared<SpecGroup>(description, CurrentGroup());
+            auto group =
+                std::make_shared<SpecGroup>(description, CurrentGroup());
             _registry->GetRoot()->AddGroup(group);
             PushGroup(group);
         }
 
-        void DiscoverGroup(const std::string& description, std::function<void(SpecGroup&)> body) {
+        void DiscoverGroup(
+            const std::string& description, std::function<void(SpecGroup&)> body
+        ) {
             if (!EnsureRoot()) return;
-            auto group = std::make_shared<SpecGroup>(description, CurrentGroup());
+            auto group =
+                std::make_shared<SpecGroup>(description, CurrentGroup());
             CurrentGroup()->AddGroup(group);
             PushGroup(group);
             body(*group);
             PopGroup();
         }
 
-        void DiscoverGroup(const std::string& description, std::function<void()> body) {
+        void DiscoverGroup(
+            const std::string& description, std::function<void()> body
+        ) {
             DiscoverGroup(description, [body](auto&) { body(); });
         }
 
@@ -80,12 +98,35 @@ namespace Spec::Types {
             CurrentGroup()->AddTest(SpecTest(description, CurrentGroup()));
         }
 
-        void DiscoverTest(const std::string& description, std::function<void(SpecTest&)> body, bool isAsync = false) {
+        void DiscoverTest(
+            const std::string& description, std::function<void(SpecTest&)> body,
+            bool isAsync = false
+        ) {
             if (!EnsureRoot()) return;
-            CurrentGroup()->AddTest(SpecTest(description, CurrentGroup(), body, isAsync));
+            CurrentGroup()->AddTest(
+                SpecTest(description, CurrentGroup(), body, isAsync)
+            );
         }
 
-        void DiscoverTest(const std::string& description, std::function<void(AsyncSpec&)> body) {
+        void DiscoverTest(
+            const std::string&                              description,
+            std::function<void(std::shared_ptr<AsyncSpec>)> body
+        ) {
+            DiscoverTest(
+                description,
+                [body](auto& test) {
+                    auto asyncSpec = std::make_shared<AsyncSpec>(
+                        std::make_shared<SpecTest>(test)
+                    );
+                    body(asyncSpec);
+                },
+                true
+            );
+        }
+
+        void DiscoverTest(
+            const std::string& description, std::function<void(AsyncSpec&)> body
+        ) {
             DiscoverTest(
                 description,
                 [body](auto& test) {
@@ -96,7 +137,9 @@ namespace Spec::Types {
             );
         }
 
-        void DiscoverTest(const std::string& description, std::function<void()> body) {
+        void DiscoverTest(
+            const std::string& description, std::function<void()> body
+        ) {
             DiscoverTest(description, [body](SpecTest&) { body(); });
         }
 

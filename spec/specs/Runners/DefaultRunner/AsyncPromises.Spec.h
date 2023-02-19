@@ -11,7 +11,8 @@ xTest("I would like this to be an async test") {
     // done();
 }
 
-void RunMeOnAThread(SpecCallback done) {  // <--- SpecTest& instead of SpecCallback
+void RunMeOnAThread(SpecCallback done
+) {  // <--- SpecTest& instead of SpecCallback
     Print("Sleeping for 2 seconds");
     std::this_thread::sleep_for(std::chrono::seconds(2));
     Print("Done sleeping");
@@ -21,7 +22,9 @@ void RunMeOnAThread(SpecCallback done) {  // <--- SpecTest& instead of SpecCallb
 void BackgroundThreadFunction_UsingTryCatch(std::shared_ptr<AsyncSpec> spec) {
     spec->tryCatch([]() {
         //
-        throw std::runtime_error("This is an exception from the background thread");
+        throw std::runtime_error(
+            "This is an exception from the background thread"
+        );
     });
     spec->done();
 }
@@ -37,14 +40,29 @@ Describe("Async tests") {
         // Does nothing! Never calls done()
     });
 
-    it("catch exception in background thread (using tryCatch)", [](AsyncSpec& spec) {
-        auto        specPtr = std::make_shared<AsyncSpec>(spec);
-        std::thread t(BackgroundThreadFunction_UsingTryCatch, specPtr);
-        t.detach();
-    });
+    xit("catch exception in background thread (using tryCatch)",
+        [](AsyncSpec& spec) {
+            auto        specPtr = std::make_shared<AsyncSpec>(spec);
+            std::thread t(BackgroundThreadFunction_UsingTryCatch, specPtr);
+            t.detach();
+        });
 
-    xit("catch exception in background thread (using background)", [](AsyncSpec& spec) {
+    xit("catch exception in background thread (using background)",
+        [](AsyncSpec& spec) {
 
+        });
+
+    describe("spec.background", []() {
+        it("background [](SpecCallback done)");
+
+        it("---> THIS ONE background [](AsyncSpec& spec)",
+           [](std::shared_ptr<AsyncSpec> spec) {
+               spec->background([](std::shared_ptr<AsyncSpec> s) {
+                   s->done("Kaboom from background!");
+               });
+           });
+
+        it("background []()");
     });
 
     xit("SOME EXAMPLES!", [](AsyncSpec& spec) {
