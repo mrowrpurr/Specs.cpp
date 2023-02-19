@@ -10,8 +10,8 @@ namespace Specs {
 
     //! Represents a group of SpecTestCase test cases and other children SpecTestGroup.
     class SpecTestGroup {
-        std::string                                 _description;
-        std::weak_ptr<SpecTestGroup>                _parent;
+        std::string                                 _description = "";
+        std::shared_ptr<SpecTestGroup>              _parent;
         std::vector<std::shared_ptr<SpecTestCase>>  _tests;
         std::vector<std::shared_ptr<SpecTestGroup>> _groups;
         std::vector<std::shared_ptr<SpecTestCase>>  _setups;
@@ -20,6 +20,9 @@ namespace Specs {
         std::vector<std::shared_ptr<SpecTestCase>>  _groupTeardowns;
 
     public:
+        //! Creates a new SpecTestGroup
+        SpecTestGroup() : _parent(std::make_shared<SpecTestGroup>()) {}
+
         //! Creates a new SpecTestGroup with the given description and parent.
         SpecTestGroup(const std::string& description, std::weak_ptr<SpecTestGroup> parent)
             : _description(description), _parent(parent) {}
@@ -34,7 +37,7 @@ namespace Specs {
         std::weak_ptr<SpecTestGroup> GetParent() { return _parent; }
 
         //! Sets the parent of this test group.
-        void SetParent(std::weak_ptr<SpecTestGroup> parent) { _parent = parent; }
+        void SetParent(std::shared_ptr<SpecTestGroup> parent) { _parent = parent; }
 
         //! Gets the test cases in this test group.
         std::vector<std::shared_ptr<SpecTestCase>>& GetTestCases() { return _tests; }
