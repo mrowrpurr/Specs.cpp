@@ -40,41 +40,32 @@ Describe("Async tests") {
         // Does nothing! Never calls done()
     });
 
-    xit("catch exception in background thread (using tryCatch)",
-        [](AsyncSpec& spec) {
-            auto        specPtr = std::make_shared<AsyncSpec>(spec);
-            std::thread t(BackgroundThreadFunction_UsingTryCatch, specPtr);
-            t.detach();
-        });
+    // xit("catch exception in background thread (using tryCatch)",
+    //     [](AsyncSpec& spec) {
+    //         auto        specPtr = std::make_shared<AsyncSpec>(spec);
+    //         std::thread t(BackgroundThreadFunction_UsingTryCatch, specPtr);
+    //         t.detach();
+    //     });
 
-    xit("catch exception in background thread (using background)",
-        [](AsyncSpec& spec) {
+    // xit("catch exception in background thread (using background)",
+    //     [](AsyncSpec& spec) {
 
-        });
+    //     });
 
     describe("spec.background", []() {
         it("background [](SpecCallback done)");
-
-        it("---> THIS ONE background [](AsyncSpec& spec)",
+        it("background [](std::shared_ptr<AsyncSpec> spec)",
            [](std::shared_ptr<AsyncSpec> spec) {
                spec->background([](std::shared_ptr<AsyncSpec> s) {
-                   s->done("Kaboom from background!");
+                   throw "Kaboom from background!!!!";
+                   //    s->done("Kaboom from background!");
                });
            });
 
-        it("background []()");
-    });
-
-    xit("SOME EXAMPLES!", [](AsyncSpec& spec) {
-        spec.background([](SpecCallback done) {
-            // you have to call done()
-        });
-        spec.background([](AsyncSpec& spec) {
-            // you have to call spec.done()
-        });
-        spec.background([]() {
-            // if no exception, test passes!
-            // just try/catch
+        xit("background []()", [](AsyncSpec& spec) {
+            spec.background([]() {
+                throw std::runtime_error("Kaboom from background 333!");
+            });
         });
     });
 }

@@ -31,20 +31,20 @@ namespace Spec {
         }
 
         void background(std::function<void()> func) {
+            // TODO use tryCatch
             std::thread t(func);
             t.detach();
         }
-        void background(std::function<void(AsyncSpec&)> func) {
-            std::thread t([func, this]() { func(*this); });
-            t.detach();
-        }
         void background(std::function<void(std::function<void()>)> func) {
+            // TODO use tryCatch
             std::thread t([func, this]() { func([this]() { done(); }); });
             t.detach();
         }
         void background(std::function<void(std::shared_ptr<AsyncSpec>)> func) {
             auto        ptr = shared_from_this();
-            std::thread t([func, ptr]() { func(ptr); });
+            std::thread t([func, ptr]() {
+                ptr->tryCatch([func, ptr]() { func(ptr); });
+            });
             t.detach();
         }
     };

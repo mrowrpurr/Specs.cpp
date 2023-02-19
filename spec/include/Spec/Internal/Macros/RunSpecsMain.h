@@ -2,5 +2,9 @@
 
 #include "Spec/Types/SpecMain.h"
 
-#define RunSpecsMain \
-    int main() { return Spec::Types::SpecMain::RunDefault(); }
+#define RunSpecsMain                                       \
+    int main() {                                           \
+        auto result = Spec::Types::SpecMain::RunDefault(); \
+        Print("EXIT CODE: {}", result);                    \
+        return result;                                     \
+    }
