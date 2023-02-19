@@ -19,11 +19,17 @@ namespace Spec {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description);
     }
 
+    void xit(const std::string& description, std::function<void(AsyncSpec&)>) {
+        Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description);
+    }
+
     void xit(const std::string& description, std::function<void()>) {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description);
     }
 
-    void xit(const std::string& description, std::unordered_map<std::string, std::any>, std::function<void()>) {
+    void
+    xit(const std::string& description, std::unordered_map<std::string, std::any>,
+        std::function<void()>) {
         Spec::Types::SpecDiscovery::GetGlobalInstance().DiscoverTest(description);
     }
 }

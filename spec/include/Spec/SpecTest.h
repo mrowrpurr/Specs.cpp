@@ -21,6 +21,7 @@ namespace Spec {
         std::shared_ptr<std::unordered_map<std::string, std::any>> _data;
         bool                                                       _todo                       = false;
         bool                                                       _automaticPromiseResolution = true;
+        bool                                                       _complete                   = false;
 
     public:
         SpecTest(const std::shared_ptr<SpecGroup>& parent, const std::function<void(SpecTest&)>& body)
@@ -59,10 +60,29 @@ namespace Spec {
         std::string                 GetDescription() { return _description; }
         std::string                 GetFullDescription();
 
-        void                                 Pass() { _promise->set_value(true); }
-        void                                 Fail() { _promise->set_value(false); }
-        void                                 Reset() { _promise = std::make_shared<std::promise<bool>>(); }
-        std::shared_ptr<std::promise<bool>>& GetPromise() { return _promise; }
+        bool IsComplete() { return _complete; }
+        void Complete() { _complete = true; }
+
+        void Pass() {
+            if (!_complete) _promise->set_value(true);
+            Complete();
+        }
+        void Fail() {
+            if (!_complete) _promise->set_value(false);
+            Complete();
+        }
+        void Fail(std::exception_ptr exception) {
+            if (!_complete) _promise->set_exception(exception);
+            Complete();
+        }
+        void Fail(const std::string& message) {
+            if (!_complete) _promise->set_exception(std::make_exception_ptr(std::runtime_error(message)));
+            Complete();
+        }
+        void Reset() {
+            _promise  = std::make_shared<std::promise<bool>>();
+            _complete = false;
+        }
 
         bool HasBody() { return _body.has_value(); }
 
