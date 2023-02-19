@@ -11,6 +11,7 @@ Describe("Something") {
 
     it("should do something") {
         // ...
+        test["blah"] = "blah";
     }
 
     it("should do something else") {
