@@ -1,3 +1,0 @@
-#include <Spec/Core.h>
-
-//
