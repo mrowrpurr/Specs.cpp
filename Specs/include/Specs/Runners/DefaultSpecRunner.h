@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Specs {
+namespace Specs::Runners {
 
     //! `Specs.cpp` default test runner (see also ParallelSpecRunner).
     class DefaultSpecRunner {};
