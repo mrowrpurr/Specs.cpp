@@ -4,6 +4,7 @@
 
 int main() {
     Specs::Application app;
+    auto               tests = app.GetTests();
 
     return 0;
 }

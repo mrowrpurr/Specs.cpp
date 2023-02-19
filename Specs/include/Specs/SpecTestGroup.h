@@ -37,10 +37,10 @@ namespace Specs {
         void SetParent(std::weak_ptr<SpecTestGroup> parent) { _parent = parent; }
 
         //! Gets the test cases in this test group.
-        std::vector<std::shared_ptr<SpecTestCase>>& GetTests() { return _tests; }
+        std::vector<std::shared_ptr<SpecTestCase>>& GetTestCases() { return _tests; }
 
         //! Gets the test groups in this test group.
-        std::vector<std::shared_ptr<SpecTestGroup>>& GetGroups() { return _groups; }
+        std::vector<std::shared_ptr<SpecTestGroup>>& GetTestGroups() { return _groups; }
 
         //! Gets the setup test cases in this test group.
         std::vector<std::shared_ptr<SpecTestCase>>& GetSetups() { return _setups; }
@@ -53,5 +53,23 @@ namespace Specs {
 
         //! Gets the group teardown test cases in this test group.
         std::vector<std::shared_ptr<SpecTestCase>>& GetGroupTeardowns() { return _groupTeardowns; }
+
+        //! Adds a test case to this test group.
+        void AddTestCase(std::shared_ptr<SpecTestCase> test) { _tests.push_back(test); }
+
+        //! Adds a test group to this test group.
+        void AddTestGroup(std::shared_ptr<SpecTestGroup> group) { _groups.push_back(group); }
+
+        //! Adds a setup test case to this test group.
+        void AddSetup(std::shared_ptr<SpecTestCase> setup) { _setups.push_back(setup); }
+
+        //! Adds a teardown test case to this test group.
+        void AddTeardown(std::shared_ptr<SpecTestCase> teardown) { _teardowns.push_back(teardown); }
+
+        //! Adds a group setup test case to this test group.
+        void AddGroupSetup(std::shared_ptr<SpecTestCase> groupSetup) { _groupSetups.push_back(groupSetup); }
+
+        //! Adds a group teardown test case to this test group.
+        void AddGroupTeardown(std::shared_ptr<SpecTestCase> groupTeardown) { _groupTeardowns.push_back(groupTeardown); }
     };
 }
