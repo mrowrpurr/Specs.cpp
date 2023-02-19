@@ -1,4 +1,6 @@
 Describe("Something") {
+    std::string ThisWouldBeSimplyAVariableInTheSameStackAsTheItBelow;
+
     setup {}
     teardown {}
 
