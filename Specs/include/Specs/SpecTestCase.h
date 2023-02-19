@@ -5,10 +5,11 @@
 #include <optional>
 #include <string>
 
-#include "Specs/SpecTestCaseParam.h"
 #include "Specs/SpecTestGroup.h"
 
 namespace Specs {
+
+    class SpecTestCaseParam;
 
     //! Represents a single test case.
     class SpecTestCase {
