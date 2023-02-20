@@ -2,7 +2,7 @@
 
 namespace Specs {
 
-    //! Interface for reporters of test suite results (SpecTestCaseResult and SpecTestGroupResult).
+    //! Interface for reporters. Provides callbacks for reporting test results.
     class ISpecReporter {
     public:
         // virtual BeginTestCase(std::shared_ptr<SpecTestCaseRun> testCaseRun) = 0;

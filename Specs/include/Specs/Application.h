@@ -12,27 +12,21 @@ constexpr auto Print = [](auto&&... args) { Specs::DSL::Components::Functions::P
 #include "Specs/ReporterOptions.h"
 #include "Specs/RunnerOptions.h"
 #include "Specs/SpecRegistry.h"
-#include "Specs/SpecTestGroupResult.h"
 
 namespace Specs {
 
-    //! Represents an application capable of running test suites and generating results.
+    //! Represents an application capable of running test suites.
     class Application : public std::enable_shared_from_this<Application> {
         std::shared_ptr<SpecRegistry>                       _registry;
         std::vector<std::shared_ptr<ISpecReporter>>         _reporters;
         std::vector<std::shared_ptr<ISpecExceptionHandler>> _exceptionHandlers;
         std::shared_ptr<ISpecRunner>                        _runner;
-        std::shared_ptr<SpecTestGroupResult>                _results;
         RunnerOptions                                       _runnerOptions;
         ReporterOptions                                     _reporterOptions;
 
     public:
         //! Creates a new application.
-        Application()
-            : _registry(std::make_shared<SpecRegistry>()), _results(std::make_shared<SpecTestGroupResult>()) {}
-
-        //! Gets the results for this application.
-        std::shared_ptr<SpecTestGroupResult> GetResults() { return _results; }
+        Application() : _registry(std::make_shared<SpecRegistry>()) {}
 
         //! Gets the registry for this application.
         std::shared_ptr<SpecRegistry> GetRegistry() { return _registry; }
@@ -79,8 +73,7 @@ namespace Specs {
         int Run() {
             if (!_runner) throw std::runtime_error("No runner set.");
             auto promise = _runner->RunSpecs(
-                _registry->GetRootTestGroup(), _results, _reporters, _exceptionHandlers, _runnerOptions,
-                _reporterOptions
+                _registry->GetRootTestGroup(), _reporters, _exceptionHandlers, _runnerOptions, _reporterOptions
             );
             promise.get_future().wait();
             return 69;  // TODO return 1/0 based on results

@@ -8,7 +8,6 @@
 #include "Specs/ReporterOptions.h"
 #include "Specs/RunnerOptions.h"
 #include "Specs/SpecTestGroup.h"
-#include "Specs/SpecTestGroupResult.h"
 
 namespace Specs {
 
@@ -17,8 +16,7 @@ namespace Specs {
     public:
         //! Runs the specified tests and returns a future that will be set when the tests are complete.
         virtual std::promise<void> RunSpecs(
-            std::shared_ptr<SpecTestGroup> tests, std::shared_ptr<SpecTestGroupResult> results,
-            std::vector<std::shared_ptr<ISpecReporter>>         reporters,
+            std::shared_ptr<SpecTestGroup> tests, std::vector<std::shared_ptr<ISpecReporter>> reporters,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers, RunnerOptions runnerOptions,
             ReporterOptions reporterOptions
         ) = 0;

@@ -9,8 +9,7 @@ namespace Specs::Runners {
     public:
         //! Runs the specified tests and returns a future that will be set when the tests are complete.
         std::promise<void> RunSpecs(
-            std::shared_ptr<SpecTestGroup> tests, std::shared_ptr<SpecTestGroupResult> results,
-            std::vector<std::shared_ptr<ISpecReporter>>         reporters,
+            std::shared_ptr<SpecTestGroup> tests, std::vector<std::shared_ptr<ISpecReporter>> reporters,
             std::vector<std::shared_ptr<ISpecExceptionHandler>> exceptionHandlers, RunnerOptions runnerOptions,
             ReporterOptions reporterOptions
         ) override {
