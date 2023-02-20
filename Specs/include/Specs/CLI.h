@@ -29,7 +29,7 @@ namespace Specs {
         }
 
         //! Adds a filter for test descriptions.
-        void AddFilter(const std::string& filter) { _options->GetRunnerOptions().AddFilter(filter); }
+        void AddFilter(const std::string& filter) { _app->GetRunnerOptions().AddFilter(filter); }
 
         //! Parses a single argument.
         void ParseArg(std::vector<std::string>& args) {
@@ -100,8 +100,16 @@ namespace Specs {
 
         //! Runs the application.
         int Run(int argc, char** argv) {
-            if (!Parse(argc, argv)) return 1;
-            return _app->Run();
+            try {
+                if (!Parse(argc, argv)) return 1;
+                return _app->Run();
+            } catch (std::exception& e) {
+                std::cerr << e.what() << std::endl;
+                return 1;
+            } catch (...) {
+                std::cerr << "Unknown error running application." << std::endl;
+                return 1;
+            }
         }
     };
 }

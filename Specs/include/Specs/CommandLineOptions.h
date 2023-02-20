@@ -15,8 +15,6 @@ namespace Specs {
     class CommandLineOptions {
         std::unordered_map<std::string, std::function<void(std::shared_ptr<Application>)>> _availableRunnerOptions;
         std::unordered_map<std::string, std::function<void(std::shared_ptr<Application>)>> _availableReporterOptions;
-        RunnerOptions                                                                      _runnerOptions;
-        ReporterOptions                                                                    _reporterOptions;
 
     public:
         //! Gets the singleton instance of the configuration options.
@@ -85,11 +83,5 @@ namespace Specs {
         void ApplyReporterOption(std::string name, std::shared_ptr<Application> app) {
             if (HasReporterOption(name)) _availableReporterOptions[name](app);
         }
-
-        //! Returns the RunnerOptions.
-        RunnerOptions& GetRunnerOptions() { return _runnerOptions; }
-
-        //! Returns the ReporterOptions.
-        ReporterOptions& GetReporterOptions() { return _reporterOptions; }
     };
 }

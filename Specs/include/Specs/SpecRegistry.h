@@ -48,5 +48,8 @@ namespace Specs {
             auto testGroup = std::make_shared<SpecTestGroup>(description, _rootTestGroup);
             _rootTestGroup->AddTestGroup(testGroup);
         }
+
+        //! Returns the root test group.
+        std::shared_ptr<SpecTestGroup> GetRootTestGroup() const { return _rootTestGroup; }
     };
 }
