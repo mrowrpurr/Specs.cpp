@@ -1,16 +1,6 @@
 #include <Specs/CLI.h>
 
-int main() {
+int main(int argc, char** argv) {
     Specs::CLI cli;
-
-    std::vector<std::string> arguments = {"specs.cpp", "--runner", "default", "--reporter",
-                                          "debug",     "--filter", "butts"};
-    std::vector<char*>       argv;
-    for (const auto& arg : arguments) argv.push_back((char*)arg.data());
-    argv.push_back(nullptr);
-
-    if (cli.Parse(argv.size() - 1, argv.data()))
-        Print("Parsed argument ok!");
-    else
-        Print("Parsing argument failed!");
+    cli.Run(argc, argv);
 }

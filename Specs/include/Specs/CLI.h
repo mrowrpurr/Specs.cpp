@@ -97,5 +97,11 @@ namespace Specs {
             args.erase(args.begin());
             return Parse(args);
         }
+
+        //! Runs the application.
+        int Run(int argc, char** argv) {
+            if (!Parse(argc, argv)) return 1;
+            return _app->Run();
+        }
     };
 }

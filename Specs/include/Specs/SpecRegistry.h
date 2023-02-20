@@ -5,7 +5,6 @@
 #include "Specs/SpecTestCase.h"
 #include "Specs/SpecTestCaseParam.h"
 #include "Specs/SpecTestGroup.h"
-#include "Specs/SpecTestGroupParam.h"
 
 namespace Specs {
 
@@ -38,9 +37,7 @@ namespace Specs {
         }
 
         //! Registers a test group with the given description and body.
-        void RegisterTestGroup(
-            const std::string& description, std::function<void(std::shared_ptr<SpecTestGroupParam>)> body
-        ) {
+        void RegisterTestGroup(const std::string& description, std::function<void()> body) {
             auto testGroup = std::make_shared<SpecTestGroup>(description, _rootTestGroup);
             _rootTestGroup->AddTestGroup(testGroup);
             // Optionally evaluate the body() here? To get the child test cases and groups registered?
