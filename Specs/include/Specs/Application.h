@@ -57,6 +57,15 @@ namespace Specs {
         std::vector<std::shared_ptr<ISpecExceptionHandler>>& GetExceptionHandlers() { return _exceptionHandlers; }
 
         //! Runs the application.
-        void Run();
+        int Run() {
+            // if (_runner == nullptr) {
+            //     throw std::runtime_error("No runner has been set.");
+            // }
+            // return _runner->Run(_registry, _reporters, _exceptionHandlers);
+            return 0;
+        }
+
+        //! TODO: Run the application with command line arguments.
+        int Run(int argc, char* argv[]) { return Run(); }
     };
 }
