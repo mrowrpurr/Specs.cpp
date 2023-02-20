@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Specs/Application.h"
-#include "Specs/ISpecReporter.h"
-#include "Specs/ISpecRunner.h"
 #include "Specs/Reporters/DebugReporter.h"
 #include "Specs/Reporters/DocumentationReporter.h"
 #include "Specs/Reporters/OneLineReporter.h"
@@ -22,16 +20,17 @@ namespace Specs {
          * This is where you should register available Runner and Reporter options.
          */
         static ConfigOptions& GetSingleton() {
-            static ConfigOptions globalInstance;
+            static ConfigOptions globalInstance = GetDefaultConfigOptions();
             return globalInstance;
         }
 
         //! Gets a ConfigOptions configured with the default options provided by `Specs.cpp`.
-        ConfigOptions GetDefaultConfigOptions() {
+        static ConfigOptions GetDefaultConfigOptions() {
             ConfigOptions options;
 
             options.AddRunnerOption("default", [](std::shared_ptr<Application> app) {
                 app->SetRunner<Runners::DefaultRunner>();
+                Print("You successfully set the runner to default!");
             });
             options.AddRunnerOption("parallel", [](std::shared_ptr<Application> app) {
                 app->SetRunner<Runners::ParallelRunner>();
@@ -39,6 +38,7 @@ namespace Specs {
 
             options.AddReporterOption("debug", [](std::shared_ptr<Application> app) {
                 app->AddReporter<Reporters::DebugReporter>();
+                Print("You successfully added the debug reporter!");
             });
             options.AddReporterOption("oneline", [](std::shared_ptr<Application> app) {
                 app->AddReporter<Reporters::OneLineReporter>();
@@ -67,14 +67,10 @@ namespace Specs {
         }
 
         //! Returns true if the specified Runner option exists.
-        bool HasRunnerOption(std::string name) {
-            return _availableRunnerOptions.find(name) != _availableRunnerOptions.end();
-        }
+        bool HasRunnerOption(std::string name) { return _availableRunnerOptions.contains(name); }
 
         //! Returns true if the specified Reporter option exists.
-        bool HasReporterOption(std::string name) {
-            return _availableReporterOptions.find(name) != _availableReporterOptions.end();
-        }
+        bool HasReporterOption(std::string name) { return _availableReporterOptions.contains(name); }
 
         //! Applies the specified Runner option to the Application.
         void ApplyRunnerOption(std::string name, std::shared_ptr<Application> app) {
