@@ -76,6 +76,9 @@ namespace Specs {
         CLI(std::shared_ptr<Application> app, std::shared_ptr<CommandLineOptions> options)
             : _app(app), _options(options) {}
 
+        //! Gets the application.
+        std::shared_ptr<Application> GetApplication() const { return _app; }
+
         //! Parses the command-line arguments.
         bool Parse(std::vector<std::string> args) {
             try {

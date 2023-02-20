@@ -35,6 +35,14 @@ namespace Specs {
         //! Sets the description of this test group.
         void SetDescription(std::string description) { _description = description; }
 
+        std::string GetFullDescription() {
+            if (_parent) {
+                return _parent->GetFullDescription() + " :: " + _description;
+            } else {
+                return _description;
+            }
+        }
+
         //! Gets the parent of this test group.
         std::weak_ptr<SpecTestGroup> GetParent() { return _parent; }
 

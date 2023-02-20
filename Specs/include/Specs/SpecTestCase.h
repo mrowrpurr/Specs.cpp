@@ -32,6 +32,15 @@ namespace Specs {
         //! Gets the description of this test case.
         std::string GetDescription() { return _description; }
 
+        //! Gets the full description of this test case including the parent's description.
+        std::string GetFullDescription() {
+            if (_parent) {
+                return _parent->GetFullDescription() + " :: " + _description;
+            } else {
+                return _description;
+            }
+        }
+
         //! Sets the description of this test case.
         void SetDescription(std::string description) { _description = description; }
 
