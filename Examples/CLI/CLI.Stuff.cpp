@@ -3,7 +3,8 @@
 int main() {
     Specs::CLI cli;
 
-    std::vector<std::string> arguments = {"specs.cpp", "--runner", "default", "--reporter", "debug"};
+    std::vector<std::string> arguments = {"specs.cpp", "--runner", "default", "--reporter",
+                                          "debug",     "--filter", "butts"};
     std::vector<char*>       argv;
     for (const auto& arg : arguments) argv.push_back((char*)arg.data());
     argv.push_back(nullptr);

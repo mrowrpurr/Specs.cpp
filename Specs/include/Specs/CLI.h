@@ -3,29 +3,33 @@
 #include <memory>
 
 #include "Specs/Application.h"
-#include "Specs/ConfigOptions.h"
+#include "Specs/CommandLineOptions.h"
 
 namespace Specs {
 
     //! Represents a command-line interface for the application.
     class CLI {
-        std::shared_ptr<Application>   _app;
-        std::shared_ptr<ConfigOptions> _options;
+        std::shared_ptr<Application>        _app;
+        std::shared_ptr<CommandLineOptions> _options;
 
         //! Sets the runner to use.
-        void SetRunner(std::string runnerName) {
+        void SetRunner(const std::string& runnerName) {
             if (_options->HasRunnerOption(runnerName))
                 _options->ApplyRunnerOption(runnerName, _app);
             else
                 throw std::runtime_error("Unknown runner: " + runnerName);
         }
 
-        void SetReporter(std::string reporterName) {
+        //! Sets the reporter to use.
+        void SetReporter(const std::string& reporterName) {
             if (_options->HasReporterOption(reporterName))
                 _options->ApplyReporterOption(reporterName, _app);
             else
                 throw std::runtime_error("Unknown reporter: " + reporterName);
         }
+
+        //! Adds a filter for test descriptions.
+        void AddFilter(const std::string& filter) { _options->GetRunnerOptions().AddFilter(filter); }
 
         //! Parses a single argument.
         void ParseArg(std::vector<std::string>& args) {
@@ -43,6 +47,11 @@ namespace Specs {
                     auto reporterName = args[0];
                     args.erase(args.begin());
                     SetReporter(reporterName);
+                } else if (arg == "--filter" || arg == "-f") {
+                    if (args.empty()) throw std::runtime_error("Missing filter.");
+                    auto filter = args[0];
+                    args.erase(args.begin());
+                    AddFilter(filter);
                 } else {
                     throw std::runtime_error("Unknown argument: " + arg);
                 }
@@ -57,14 +66,15 @@ namespace Specs {
         //! Creates a new CLI with an application.
         CLI()
             : _app(std::make_shared<Application>()),
-              _options(std::make_shared<ConfigOptions>(ConfigOptions::GetSingleton())) {}
+              _options(std::make_shared<CommandLineOptions>(CommandLineOptions::GetSingleton())) {}
 
         //! Creates a new CLI from an existing application.
         CLI(std::shared_ptr<Application> app)
-            : _app(app), _options(std::make_shared<ConfigOptions>(ConfigOptions::GetSingleton())) {}
+            : _app(app), _options(std::make_shared<CommandLineOptions>(CommandLineOptions::GetSingleton())) {}
 
         //! Creates a new CLI from an existing application and configuration options.
-        CLI(std::shared_ptr<Application> app, std::shared_ptr<ConfigOptions> options) : _app(app), _options(options) {}
+        CLI(std::shared_ptr<Application> app, std::shared_ptr<CommandLineOptions> options)
+            : _app(app), _options(options) {}
 
         //! Parses the command-line arguments.
         bool Parse(std::vector<std::string> args) {

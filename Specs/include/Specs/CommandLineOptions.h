@@ -1,32 +1,36 @@
 #pragma once
 
 #include "Specs/Application.h"
+#include "Specs/ReporterOptions.h"
 #include "Specs/Reporters/DebugReporter.h"
 #include "Specs/Reporters/DocumentationReporter.h"
 #include "Specs/Reporters/OneLineReporter.h"
+#include "Specs/RunnerOptions.h"
 #include "Specs/Runners/DefaultRunner.h"
 #include "Specs/Runners/ParallelRunner.h"
 
 namespace Specs {
 
     //! Represents the configuration options for the application.
-    class ConfigOptions {
+    class CommandLineOptions {
         std::unordered_map<std::string, std::function<void(std::shared_ptr<Application>)>> _availableRunnerOptions;
         std::unordered_map<std::string, std::function<void(std::shared_ptr<Application>)>> _availableReporterOptions;
+        RunnerOptions                                                                      _runnerOptions;
+        ReporterOptions                                                                    _reporterOptions;
 
     public:
         //! Gets the singleton instance of the configuration options.
         /**
          * This is where you should register available Runner and Reporter options.
          */
-        static ConfigOptions& GetSingleton() {
-            static ConfigOptions globalInstance = GetDefaultConfigOptions();
+        static CommandLineOptions& GetSingleton() {
+            static CommandLineOptions globalInstance = GetDefaultCommandLineOptions();
             return globalInstance;
         }
 
-        //! Gets a ConfigOptions configured with the default options provided by `Specs.cpp`.
-        static ConfigOptions GetDefaultConfigOptions() {
-            ConfigOptions options;
+        //! Gets a CommandLineOptions configured with the default options provided by `Specs.cpp`.
+        static CommandLineOptions GetDefaultCommandLineOptions() {
+            CommandLineOptions options;
 
             options.AddRunnerOption("default", [](std::shared_ptr<Application> app) {
                 app->SetRunner<Runners::DefaultRunner>();
@@ -81,5 +85,11 @@ namespace Specs {
         void ApplyReporterOption(std::string name, std::shared_ptr<Application> app) {
             if (HasReporterOption(name)) _availableReporterOptions[name](app);
         }
+
+        //! Returns the RunnerOptions.
+        RunnerOptions& GetRunnerOptions() { return _runnerOptions; }
+
+        //! Returns the ReporterOptions.
+        ReporterOptions& GetReporterOptions() { return _reporterOptions; }
     };
 }
