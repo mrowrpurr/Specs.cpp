@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "Spec/Types/ExceptionHandlers/DefaultExceptionHandler.h"
+#include "Spec/Types/ExceptionHandlers/FallbackExceptionHandler.h"
 #include "Spec/Types/ISpecExceptionHandler.h"
 #include "Spec/Types/ISpecReporter.h"
 #include "Spec/Types/ISpecRunner.h"
@@ -34,7 +34,7 @@ namespace Spec::Types {
             auto app = std::make_shared<SpecApp>();
             app->Discovery.SetRegistry(app->Registry);
             app->ExceptionHandlers.emplace_back(
-                std::make_shared<Spec::Types::ExceptionHandlers::DefaultExceptionHandler>()
+                std::make_shared<Spec::Types::ExceptionHandlers::FallbackExceptionHandler>()
             );
             auto& specExtensionRegistry = SpecExtensionsRegistry::GetRegistry();
             for (auto& handler : specExtensionRegistry.GetExceptionHandlers())

@@ -2,7 +2,8 @@
 
 #include <memory>
 
-#include "Specs/SpecTestCaseRun.h"
+#include "Specs/SpecTestCase.h"
+#include "Specs/SpecTestCaseResult.h"
 #include "Specs/SpecTestGroup.h"
 
 namespace Specs {
@@ -11,10 +12,10 @@ namespace Specs {
     class ISpecReporter {
     public:
         //! Called when a test case is starting.
-        virtual void BeginTestCase(std::shared_ptr<SpecTestCaseRun> testCaseRun) = 0;
+        virtual void BeginTestCase(std::shared_ptr<SpecTestCase> testCase) = 0;
 
         //! Called when a test case is ending.
-        virtual void EndTestCase(std::shared_ptr<SpecTestCaseRun> testCaseRun) = 0;
+        virtual void EndTestCase(std::shared_ptr<SpecTestCase> testCase, SpecTestCaseResult testResult) = 0;
 
         //! Called when a test group is starting.
         virtual void BeginTestGroup(std::shared_ptr<SpecTestGroup> testGroup) = 0;

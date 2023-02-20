@@ -10,7 +10,7 @@
 namespace Specs::Runners {
 
     //! `Specs.cpp` default test runner (see also ParallelSpecRunner).
-    class DefaultRunner : public ISpecRunner {
+    class QueueRunner : public ISpecRunner {
         std::mutex                                          _popTestCaseFromQueueMutex;
         std::queue<std::shared_ptr<SpecTestCase>>           _testCaseQueue;
         std::vector<std::shared_ptr<ISpecReporter>>         _reporters;
@@ -23,20 +23,47 @@ namespace Specs::Runners {
             for (auto& group : testGroup->GetTestGroups()) LoadQueue(group);
         }
 
+        bool ExecuteTestCaseBody(
+            std::shared_ptr<SpecTestCase> testCase, std::shared_ptr<SpecTestCaseParam> testCaseParam,
+            std::shared_ptr<SpecTestCaseRun> testCaseRun
+        ) {
+            try {
+                if (testCase->GetBody().has_value())
+                    testCase->GetBody().value()(testCaseParam);
+                else
+                    Print("No body for test case: " + testCase->GetFullDescription());
+                return true;
+            } catch (...) {
+                for (auto& exceptionHandler : _exceptionHandlers) {
+                    if (exceptionHandler->HandleException(std::current_exception(), testCaseRun->GetResult())) break;
+                }
+                return false;
+            }
+        }
+
         void RunTestCase(std::shared_ptr<SpecTestCase> testCase) {
-            Print("Running test case: " + testCase->GetFullDescription());
+            // Inform the reporters that the test case is starting
+            for (auto& reporter : _reporters) reporter->BeginTestCase(testCase);
 
             // Setup the test case run
             auto testCaseRun = std::make_shared<SpecTestCaseRun>(testCase);
 
-            // Inform the reporters that the test case is starting
-            for (auto& reporter : _reporters) reporter->BeginTestCase(testCaseRun);
+            // Setup the param for the test case
+            auto testCaseParam = std::make_shared<SpecTestCaseParam>(testCase, testCaseRun);
 
-            // Replace with exception handling...
-            // testCase->Run(testCaseRun);
+            // TODO - SETUP
+
+            // Execute the test case
+            if (ExecuteTestCaseBody(testCase, testCaseParam, testCaseRun)) {
+                testCaseRun->GetResult().Pass();
+            } else {
+                testCaseRun->GetResult().Fail();
+            }
+
+            // TODO - TEARDOWN
 
             // Inform the reporters that the test case is ending
-            for (auto& reporter : _reporters) reporter->EndTestCase(testCaseRun);
+            for (auto& reporter : _reporters) reporter->EndTestCase(testCase, testCaseRun->GetResult());
         }
 
         void RunNextTestCase() {
@@ -52,7 +79,6 @@ namespace Specs::Runners {
 
         //! Runs all of the tests in the queue.
         void RunTests() {
-            Print("Running tests...");
             while (!_testCaseQueue.empty()) RunNextTestCase();
         }
 
@@ -66,9 +92,10 @@ namespace Specs::Runners {
             _reporters         = reporters;
             _exceptionHandlers = exceptionHandlers;
 
-            Print("Loading test cases...");
+            Print("There are {} exception handlers", _exceptionHandlers.size());
+
             LoadQueue(tests);
-            Print("Running test cases...");
+
             std::promise<void> promise;
             RunTests();
             promise.set_value();

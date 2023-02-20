@@ -60,6 +60,12 @@ namespace Specs {
             _exceptionHandlers.push_back(exceptionHandler);
         }
 
+        //! Adds an exception handler of the specified type to the application.
+        template <typename T>
+        void AddExceptionHandler() {
+            AddExceptionHandler(std::make_shared<T>());
+        }
+
         //! Gets the exception handlers for this application.
         std::vector<std::shared_ptr<ISpecExceptionHandler>>& GetExceptionHandlers() { return _exceptionHandlers; }
 

@@ -1,13 +1,12 @@
 #pragma once
 
 #include "Specs/Application.h"
-#include "Specs/ReporterOptions.h"
 #include "Specs/Reporters/DebugReporter.h"
 #include "Specs/Reporters/DocumentationReporter.h"
 #include "Specs/Reporters/OneLineReporter.h"
-#include "Specs/RunnerOptions.h"
-#include "Specs/Runners/DefaultRunner.h"
 #include "Specs/Runners/ParallelRunner.h"
+#include "Specs/Runners/QueueRunner.h"
+#include "Specs/Runners/TreeRunner.h"
 
 namespace Specs {
 
@@ -30,9 +29,11 @@ namespace Specs {
         static CommandLineOptions GetDefaultCommandLineOptions() {
             CommandLineOptions options;
 
-            options.AddRunnerOption("default", [](std::shared_ptr<Application> app) {
-                app->SetRunner<Runners::DefaultRunner>();
-                Print("You successfully set the runner to default!");
+            options.AddRunnerOption("tree", [](std::shared_ptr<Application> app) {
+                app->SetRunner<Runners::TreeRunner>();
+            });
+            options.AddRunnerOption("queue", [](std::shared_ptr<Application> app) {
+                app->SetRunner<Runners::QueueRunner>();
             });
             options.AddRunnerOption("parallel", [](std::shared_ptr<Application> app) {
                 app->SetRunner<Runners::ParallelRunner>();
@@ -40,7 +41,6 @@ namespace Specs {
 
             options.AddReporterOption("debug", [](std::shared_ptr<Application> app) {
                 app->AddReporter<Reporters::DebugReporter>();
-                Print("You successfully added the debug reporter!");
             });
             options.AddReporterOption("oneline", [](std::shared_ptr<Application> app) {
                 app->AddReporter<Reporters::OneLineReporter>();

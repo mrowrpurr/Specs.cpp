@@ -7,7 +7,7 @@
 
 namespace Spec::Types::ExceptionHandlers {
 
-    class DefaultExceptionHandler : public ISpecExceptionHandler {
+    class FallbackExceptionHandler : public ISpecExceptionHandler {
     public:
         bool HandleException(std::exception_ptr exception, SpecTestResult& result) {
             try {

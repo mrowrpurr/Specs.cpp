@@ -4,6 +4,8 @@
 #include <memory>
 
 #include "Specs/SpecTestCase.h"
+#include "Specs/SpecTestCaseResult.h"
+#include "Specs/SpecTestCaseRun.h"
 
 namespace Specs {
 
@@ -11,6 +13,7 @@ namespace Specs {
     class SpecTestCaseRun {
         std::shared_ptr<std::promise<void>> _testCompletionPromise;
         std::shared_ptr<SpecTestCase>       _testCase;
+        SpecTestCaseResult                  _result;
 
     public:
         //! Creates a new test case run.
@@ -23,5 +26,8 @@ namespace Specs {
 
         //! Returns the test case.
         std::shared_ptr<SpecTestCase> GetTestCase() { return _testCase; }
+
+        //! Returns the result of the test case.
+        SpecTestCaseResult& GetResult() { return _result; }
     };
 }

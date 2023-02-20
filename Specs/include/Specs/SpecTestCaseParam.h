@@ -20,5 +20,10 @@ namespace Specs {
     class SpecTestCaseParam {
         std::shared_ptr<SpecTestCase>    _test;
         std::shared_ptr<SpecTestCaseRun> _run;
+
+    public:
+        //! Creates a new SpecTestCaseParam.
+        SpecTestCaseParam(std::shared_ptr<SpecTestCase> test, std::shared_ptr<SpecTestCaseRun> run)
+            : _test(test), _run(run) {}
     };
 }
