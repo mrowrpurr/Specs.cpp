@@ -1,5 +1,8 @@
 #pragma once
 
+#include <Specs/DSL/Components/Functions/Print.h>
+constexpr auto Print = [](auto&&... args) { Specs::DSL::Components::Functions::Print(args...); };
+
 #include <memory>
 #include <vector>
 
@@ -11,7 +14,7 @@
 namespace Specs {
 
     //! Represents an application capable of running test suites and generating results.
-    class Application {
+    class Application : public std::enable_shared_from_this<Application> {
         std::shared_ptr<SpecRegistry>                       _registry;
         std::vector<std::shared_ptr<ISpecReporter>>         _reporters;
         std::vector<std::shared_ptr<ISpecExceptionHandler>> _exceptionHandlers;
@@ -58,14 +61,8 @@ namespace Specs {
 
         //! Runs the application.
         int Run() {
-            // if (_runner == nullptr) {
-            //     throw std::runtime_error("No runner has been set.");
-            // }
-            // return _runner->Run(_registry, _reporters, _exceptionHandlers);
-            return 0;
+            Print("TODO: RUN THE APPLICATION");
+            return 420;
         }
-
-        //! TODO: Run the application with command line arguments.
-        int Run(int argc, char* argv[]) { return Run(); }
     };
 }

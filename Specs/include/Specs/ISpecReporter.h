@@ -3,5 +3,8 @@
 namespace Specs {
 
     //! Interface for reporters of test suite results (SpecTestCaseResult and SpecTestGroupResult).
-    class ISpecReporter {};
+    class ISpecReporter {
+    public:
+        // virtual BeginTestCase(std::shared_ptr<SpecTestCaseRun> testCaseRun) = 0;
+    };
 }

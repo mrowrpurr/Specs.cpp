@@ -20,11 +20,13 @@ namespace Specs {
         std::vector<std::shared_ptr<SpecTestCase>>  _groupTeardowns;
 
     public:
+        SpecTestGroup() = default;
+
         //! Creates a new SpecTestGroup
-        SpecTestGroup() : _parent(std::make_shared<SpecTestGroup>()) {}
+        // SpecTestGroup() : _parent(std::make_shared<SpecTestGroup>()) {}
 
         //! Creates a new SpecTestGroup with the given description and parent.
-        SpecTestGroup(const std::string& description, std::weak_ptr<SpecTestGroup> parent)
+        SpecTestGroup(const std::string& description, std::shared_ptr<SpecTestGroup> parent)
             : _description(description), _parent(parent) {}
 
         //! Gets the description of this test group.

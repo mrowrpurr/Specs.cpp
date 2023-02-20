@@ -21,7 +21,7 @@ namespace Specs {
         SpecRegistry() : _rootTestGroup(std::make_shared<SpecTestGroup>()) {}
 
         //! Creates a new SpecRegistry with the given test group.
-        explicit SpecRegistry(std::shared_ptr<SpecTestGroup> tests) : _rootTestGroup(tests) {}
+        // explicit SpecRegistry(std::shared_ptr<SpecTestGroup> tests) : _rootTestGroup(tests) {}
 
         //! Registers a test case with the given description and body.
         void RegisterTestCase(
