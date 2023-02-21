@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "Specs/SpecGlobalScope.h"
 #include "Specs/SpecTestCase.h"
 #include "Specs/SpecTestCaseParam.h"
 #include "Specs/SpecTestGroup.h"
@@ -19,8 +20,11 @@ namespace Specs {
         //! Creates a new SpecRegistry.
         SpecRegistry() : _rootTestGroup(std::make_shared<SpecTestGroup>()) {}
 
-        //! Creates a new SpecRegistry with the given test group.
-        // explicit SpecRegistry(std::shared_ptr<SpecTestGroup> tests) : _rootTestGroup(tests) {}
+        // ! Creates a new SpecRegistry with the given test group.
+        explicit SpecRegistry(std::shared_ptr<SpecTestGroup> tests) : _rootTestGroup(tests) {}
+
+        //! Returns a SpecRegistry using the currently configured global test group (see SpecGlobalGroup).
+        static SpecRegistry GlobalRegistry() { return SpecRegistry(SpecGlobalScope::Get().GetGlobalGroup()); }
 
         //! Registers a test case with the given description and body.
         std::shared_ptr<SpecTestCase> RegisterTestCase(

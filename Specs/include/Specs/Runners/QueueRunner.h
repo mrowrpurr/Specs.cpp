@@ -92,8 +92,6 @@ namespace Specs::Runners {
             _reporters         = reporters;
             _exceptionHandlers = exceptionHandlers;
 
-            Print("There are {} exception handlers", _exceptionHandlers.size());
-
             LoadQueue(tests);
 
             std::promise<void> promise;
