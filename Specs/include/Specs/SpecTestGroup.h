@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "Specs/SpecGlobalScope.h"
+
 namespace Specs {
 
     class SpecTestCase;
@@ -20,10 +22,8 @@ namespace Specs {
         std::vector<std::shared_ptr<SpecTestCase>>  _groupTeardowns;
 
     public:
-        SpecTestGroup() = default;
-
         //! Creates a new SpecTestGroup
-        // SpecTestGroup() : _parent(std::make_shared<SpecTestGroup>()) {}
+        SpecTestGroup() = default;
 
         //! Creates a new SpecTestGroup with the given description and parent.
         SpecTestGroup(const std::string& description, std::shared_ptr<SpecTestGroup> parent)
@@ -35,16 +35,20 @@ namespace Specs {
         //! Sets the description of this test group.
         void SetDescription(std::string description) { _description = description; }
 
+        //! Gets the full description of this test group including the parent's description.
         std::string GetFullDescription() {
-            if (_parent) {
-                return _parent->GetFullDescription() + " :: " + _description;
-            } else {
+            if (_parent && !_parent->IsRoot())
+                return _parent->GetFullDescription() + SpecGlobalScope::Get().GetTestDescriptionSeparator() +
+                       _description;
+            else
                 return _description;
-            }
         }
 
         //! Gets the parent of this test group.
         std::weak_ptr<SpecTestGroup> GetParent() { return _parent; }
+
+        //! Gets whether this test group is the root test group.
+        bool IsRoot() { return !_parent; }
 
         //! Sets the parent of this test group.
         void SetParent(std::shared_ptr<SpecTestGroup> parent) { _parent = parent; }

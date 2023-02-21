@@ -6,14 +6,15 @@
 #include <unordered_map>
 #include <vector>
 
-#include "Specs/SpecTestGroup.h"
-
 namespace Specs {
+
+    class SpecTestGroup;
 
     //! Managed everything in the global scope of a `Specs.cpp` application.
     class SpecGlobalScope {
         std::shared_ptr<SpecTestGroup>     _testGroup;
         std::vector<std::function<void()>> _codeBlocks;
+        std::string                        _testDescriptionSeparator = " :: ";
 
         SpecGlobalScope()                                  = default;
         ~SpecGlobalScope()                                 = default;
@@ -45,5 +46,11 @@ namespace Specs {
             for (auto& codeBlock : _codeBlocks) codeBlock();
             _testGroup = previousTestGroup;
         }
+
+        //! Gets the test description separator.
+        std::string GetTestDescriptionSeparator() const { return _testDescriptionSeparator; }
+
+        //! Sets the test description separator.
+        void SetTestDescriptionSeparator(const std::string& separator) { _testDescriptionSeparator = separator; }
     };
 }

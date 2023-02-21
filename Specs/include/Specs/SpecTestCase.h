@@ -5,6 +5,7 @@
 #include <optional>
 #include <string>
 
+#include "Specs/SpecGlobalScope.h"
 #include "Specs/SpecTestGroup.h"
 
 namespace Specs {
@@ -34,11 +35,11 @@ namespace Specs {
 
         //! Gets the full description of this test case including the parent's description.
         std::string GetFullDescription() {
-            if (_parent) {
-                return _parent->GetFullDescription() + " :: " + _description;
-            } else {
+            if (_parent && !_parent->IsRoot())
+                return _parent->GetFullDescription() + SpecGlobalScope::Get().GetTestDescriptionSeparator() +
+                       _description;
+            else
                 return _description;
-            }
         }
 
         //! Sets the description of this test case.

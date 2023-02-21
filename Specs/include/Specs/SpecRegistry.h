@@ -26,6 +26,14 @@ namespace Specs {
         //! Returns a SpecRegistry using the currently configured global test group (see SpecGlobalGroup).
         static SpecRegistry GlobalRegistry() { return SpecRegistry(SpecGlobalScope::Get().GetGlobalGroup()); }
 
+        static void UsingGlobalTestGroup(std::shared_ptr<SpecTestGroup> testGroup, std::function<void()> body) {
+            auto& globalScope       = SpecGlobalScope::Get();
+            auto  previousTestGroup = globalScope.GetGlobalGroup();
+            globalScope.SetGlobalGroup(testGroup);
+            body();
+            globalScope.SetGlobalGroup(previousTestGroup);
+        }
+
         //! Registers a test case with the given description and body.
         std::shared_ptr<SpecTestCase> RegisterTestCase(
             const std::string& description, std::function<void(std::shared_ptr<SpecTestCaseParam>)> body
@@ -61,11 +69,12 @@ namespace Specs {
             return testCase;
         }
 
-        //! Registers a test group with the given description and body.
+        //! Registers a test group with the given description and *immediately* executes the provided body.
         std::shared_ptr<SpecTestGroup> RegisterTestGroup(const std::string& description, std::function<void()> body) {
             auto testGroup = std::make_shared<SpecTestGroup>(description, _rootTestGroup);
             _rootTestGroup->AddTestGroup(testGroup);
-            // Optionally evaluate the body() here? To get the child test cases and groups registered?
+            // XXX Will there *ever* be a time when we don't want to evaluate this block right away?
+            UsingGlobalTestGroup(testGroup, body);
             return testGroup;
         }
 

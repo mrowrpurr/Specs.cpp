@@ -6,7 +6,6 @@
 #include "Specs/SpecRegistry.h"
 #include "Specs/SpecTestCase.h"
 
-
 namespace Specs::DSL::Components::Functions {
 
     //! Defines and registers a test.
