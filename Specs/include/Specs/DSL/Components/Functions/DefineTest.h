@@ -14,4 +14,9 @@ namespace Specs::DSL::Components::Functions {
     ) {
         return SpecRegistry::GlobalRegistry().RegisterTestCase(description, block);
     }
+
+    //! Defines and registers a test.
+    std::shared_ptr<SpecTestCase> DefineTest(const std::string& description, std::function<void()> block) {
+        return SpecRegistry::GlobalRegistry().RegisterTestCase(description, [block](auto) { block(); });
+    }
 }
