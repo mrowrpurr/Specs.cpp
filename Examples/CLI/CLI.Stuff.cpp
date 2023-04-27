@@ -1,6 +1,12 @@
 #include <Specs/BDD.h>
 #include <Specs/Setup.h>
 
+// [ ] Hook up the exception catcher for runtime_error and all fallback errors
+// [ ] Hook up the exception catcher for snowhouse
+// [ ] Provide a helper for defining a main()
+// [ ] Provide something you can call in your own main()
+// [ ] DO NOT YET support FILTERS, we'll do that AFTER getting version 0.1 working (all the above)
+
 int main(int argc, char** argv) {
     Specs::CLI cli;
     Specs::Setup(cli);
