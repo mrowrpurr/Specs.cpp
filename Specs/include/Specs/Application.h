@@ -57,7 +57,9 @@ namespace Specs {
 
         //! Adds an exception handler to the application.
         void AddExceptionHandler(std::shared_ptr<ISpecExceptionHandler> exceptionHandler) {
-            _exceptionHandlers.push_back(exceptionHandler);
+            // _exceptionHandlers.push_back(exceptionHandler);
+            // Add the exceptionHandler to the front of the vector so that it is the first to be called.
+            _exceptionHandlers.insert(_exceptionHandlers.begin(), exceptionHandler);
         }
 
         //! Adds an exception handler of the specified type to the application.
