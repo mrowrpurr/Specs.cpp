@@ -5,8 +5,8 @@
 #include <optional>
 #include <string>
 
-#include "Specs/SpecGlobalScope.h"
-#include "Specs/SpecTestGroup.h"
+#include "SpecGlobalScope.h"
+#include "SpecTestGroup.h"
 
 namespace Specs {
 

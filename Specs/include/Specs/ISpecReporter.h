@@ -2,9 +2,9 @@
 
 #include <memory>
 
-#include "Specs/SpecTestCase.h"
-#include "Specs/SpecTestCaseResult.h"
-#include "Specs/SpecTestGroup.h"
+#include "SpecTestCase.h"
+#include "SpecTestCaseResult.h"
+#include "SpecTestGroup.h"
 
 namespace Specs {
 

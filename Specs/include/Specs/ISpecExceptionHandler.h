@@ -2,7 +2,7 @@
 
 #include <exception>
 
-#include "Specs/SpecTestCaseResult.h"
+#include "SpecTestCaseResult.h"
 
 namespace Specs {
 

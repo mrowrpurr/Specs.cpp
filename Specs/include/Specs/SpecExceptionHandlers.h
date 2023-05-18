@@ -3,7 +3,7 @@
 #include <functional>
 #include <memory>
 
-#include "Specs/ISpecExceptionHandler.h"
+#include "ISpecExceptionHandler.h"
 
 namespace Specs {
 

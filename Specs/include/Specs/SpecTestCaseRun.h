@@ -3,9 +3,9 @@
 #include <future>
 #include <memory>
 
-#include "Specs/SpecTestCase.h"
-#include "Specs/SpecTestCaseResult.h"
-#include "Specs/SpecTestCaseRun.h"
+#include "SpecTestCase.h"
+#include "SpecTestCaseResult.h"
+#include "SpecTestCaseRun.h"
 
 namespace Specs {
 

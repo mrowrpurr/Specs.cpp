@@ -3,11 +3,11 @@
 #include <future>
 #include <queue>
 
-#include "Specs/ISpecExceptionHandler.h"
-#include "Specs/ISpecReporter.h"
-#include "Specs/ReporterOptions.h"
-#include "Specs/RunnerOptions.h"
-#include "Specs/SpecTestGroup.h"
+#include "ISpecExceptionHandler.h"
+#include "ISpecReporter.h"
+#include "ReporterOptions.h"
+#include "RunnerOptions.h"
+#include "SpecTestGroup.h"
 
 namespace Specs {
 

@@ -5,8 +5,8 @@
 
 #include <exception>
 
-#include "Specs/ISpecExceptionHandler.h"
-#include "Specs/SpecTestCaseResult.h"
+#include "../ISpecExceptionHandler.h"
+#include "../SpecTestCaseResult.h"
 
 namespace Specs::ExceptionHandlers {
 

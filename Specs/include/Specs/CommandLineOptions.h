@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Specs/Application.h"
-#include "Specs/Reporters/DebugReporter.h"
-#include "Specs/Reporters/DocumentationReporter.h"
-#include "Specs/Reporters/OneLineReporter.h"
-#include "Specs/Runners/ParallelRunner.h"
-#include "Specs/Runners/QueueRunner.h"
-#include "Specs/Runners/TreeRunner.h"
+#include "Application.h"
+#include "Reporters/DebugReporter.h"
+#include "Reporters/DocumentationReporter.h"
+#include "Reporters/OneLineReporter.h"
+#include "Runners/ParallelRunner.h"
+#include "Runners/QueueRunner.h"
+#include "Runners/TreeRunner.h"
 
 namespace Specs {
 

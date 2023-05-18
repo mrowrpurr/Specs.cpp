@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Specs/ISpecReporter.h"
+#include "../ISpecReporter.h"
 
 namespace Specs::Reporters {
 

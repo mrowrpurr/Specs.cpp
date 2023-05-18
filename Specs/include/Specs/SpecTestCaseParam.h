@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Specs/SpecTestCase.h"
-#include "Specs/SpecTestCaseRun.h"
+#include "SpecTestCase.h"
+#include "SpecTestCaseRun.h"
 
 namespace Specs {
 

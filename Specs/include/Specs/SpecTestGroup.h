@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "Specs/SpecGlobalScope.h"
+#include "SpecGlobalScope.h"
 
 namespace Specs {
 

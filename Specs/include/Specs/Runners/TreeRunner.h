@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Specs/ISpecRunner.h"
+#include "../ISpecRunner.h"
 
 namespace Specs::Runners {
 

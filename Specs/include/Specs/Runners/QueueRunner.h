@@ -2,9 +2,9 @@
 
 #include <queue>
 
-#include "Specs/ISpecRunner.h"
-#include "Specs/SpecTestCase.h"
-#include "Specs/SpecTestCaseRun.h"
+#include "../ISpecRunner.h"
+#include "../SpecTestCase.h"
+#include "../SpecTestCaseRun.h"
 
 //! Test runners.
 namespace Specs::Runners {

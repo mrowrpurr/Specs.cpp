@@ -2,10 +2,10 @@
 
 #include <memory>
 
-#include "Specs/SpecGlobalScope.h"
-#include "Specs/SpecTestCase.h"
-#include "Specs/SpecTestCaseParam.h"
-#include "Specs/SpecTestGroup.h"
+#include "SpecGlobalScope.h"
+#include "SpecTestCase.h"
+#include "SpecTestCaseParam.h"
+#include "SpecTestGroup.h"
 
 namespace Specs {
 
