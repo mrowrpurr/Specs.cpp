@@ -7,24 +7,25 @@
 namespace Specs::Reporters::Utilities {
 
     namespace Colors {
+        // TODO this shouldn't use the ANSI escape codes on Windows
         enum class Color {
-            None,
-            Black,
-            Red,
-            Green,
-            Yellow,
-            Blue,
-            Purple,
-            Cyan,
-            LightGray,
-            DarkGray,
-            LightRed,
-            LightGreen,
-            LightYellow,
-            LightBlue,
-            LightPurple,
-            LightCyan,
-            White
+            None        = 0,
+            Black       = 30,
+            Red         = 31,
+            Green       = 32,
+            Yellow      = 33,
+            Blue        = 34,
+            Purple      = 35,
+            Cyan        = 36,
+            LightGray   = 37,
+            DarkGray    = 90,
+            LightRed    = 91,
+            LightGreen  = 92,
+            LightYellow = 93,
+            LightBlue   = 94,
+            LightPurple = 95,
+            LightCyan   = 96,
+            White       = 97
         };
 
         namespace Unix {
@@ -98,7 +99,7 @@ namespace Specs::Reporters::Utilities {
                 output += ";";
             }
 
-            output += std::to_string(static_cast<uint8_t>(foreground) + 30);
+            output += std::to_string(static_cast<uint8_t>(foreground));
         }
 
         if (background != Colors::Color::None) {
@@ -106,7 +107,7 @@ namespace Specs::Reporters::Utilities {
                 output += ";";
             }
 
-            output += std::to_string(static_cast<uint8_t>(background) + 40);
+            output += std::to_string(static_cast<uint8_t>(background));
         }
 
         output += "m" + text + "\033[0m";
