@@ -1,6 +1,6 @@
 add_requires("vcpkg::snowhouse")
 
-target("CLI.Stuff")
+target("Specs - Example")
     set_kind("binary")
     add_deps("Specs")
     add_files("CLI.Stuff.cpp")
