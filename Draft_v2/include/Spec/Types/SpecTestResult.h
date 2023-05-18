@@ -1,6 +1,7 @@
 #pragma once
 
-#include <format>
+#include <string_format.h>
+
 #include <memory>
 #include <optional>
 
@@ -66,7 +67,7 @@ namespace Spec::Types {
         std::string GetFailureMessage() { return _failure.GetMessage(); }
         std::string GetFailureMessageWithFileLocation() {
             if (_failure.HasFileLocation()) {
-                return std::format(
+                return string_format(
                     "{} ({}:{})", _failure.GetMessage(), _failure.GetFileName(), _failure.GetLineNumber()
                 );
             } else {

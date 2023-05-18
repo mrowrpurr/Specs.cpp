@@ -1,13 +1,13 @@
 #pragma once
 
-#include <format>
+#include <string_format.h>
+
 #include <iostream>
 
 namespace Specs::DSL::Components::Functions {
 
     template <class... Args>
     void Print(const std::string_view text, Args&&... args) {
-        std::cout << std::vformat(text, std::make_format_args(args...))
-                  << std::endl;
+        std::cout << string_format(text, args...);
     }
 }

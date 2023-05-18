@@ -6,3 +6,5 @@ cmake-build*
 .vscode/settings.json
 docs
 doxygen-awesome-css
+.xmake
+compile_commands

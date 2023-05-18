@@ -6,12 +6,12 @@ constexpr auto Print = [](auto&&... args) { Specs::DSL::Components::Functions::P
 #include <memory>
 #include <vector>
 
-#include "Specs/ISpecExceptionHandler.h"
-#include "Specs/ISpecReporter.h"
-#include "Specs/ISpecRunner.h"
-#include "Specs/ReporterOptions.h"
-#include "Specs/RunnerOptions.h"
-#include "Specs/SpecRegistry.h"
+#include "ISpecExceptionHandler.h"
+#include "ISpecReporter.h"
+#include "ISpecRunner.h"
+#include "ReporterOptions.h"
+#include "RunnerOptions.h"
+#include "SpecRegistry.h"
 
 namespace Specs {
 

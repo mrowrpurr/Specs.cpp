@@ -1,9 +1,9 @@
 #pragma once
 
 #include <snowhouse/snowhouse.h>
+#include <string_format.h>
 
 #include <exception>
-#include <format>
 
 #include "Specs/ISpecExceptionHandler.h"
 #include "Specs/SpecTestCaseResult.h"
@@ -16,7 +16,7 @@ namespace Specs::ExceptionHandlers {
             try {
                 std::rethrow_exception(exception);
             } catch (const snowhouse::AssertionException& e) {
-                testResult.SetFailureMessage(std::format("[{}:{}] {}", e.file(), e.line(), e.what()));
+                testResult.SetFailureMessage(string_format("[{}:{}] {}", e.file(), e.line(), e.what()));
                 return true;
             } catch (...) {
                 return false;

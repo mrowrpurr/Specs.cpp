@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "Specs/Application.h"
-#include "Specs/CommandLineOptions.h"
+#include "Application.h"
+#include "CommandLineOptions.h"
 
 namespace Specs {
 
