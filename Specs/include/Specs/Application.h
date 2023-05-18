@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Specs/DSL/Components/Functions/Print.h>
-constexpr auto Print = [](auto&&... args) { Specs::DSL::Components::Functions::Print(args...); };
+#include "DSL/Components/Functions/Print.h"
+// constexpr auto Print = [](auto&&... args) { Specs::DSL::Components::Functions::Print(args...); };
 
 #include <memory>
 #include <vector>

@@ -4,6 +4,7 @@
 
 #include "Application.h"
 #include "CommandLineOptions.h"
+#include "DSL/Components/Functions/Print.h"
 
 namespace Specs {
 
@@ -35,7 +36,7 @@ namespace Specs {
         void ParseArg(std::vector<std::string>& args) {
             auto arg = args[0];
             args.erase(args.begin());
-            Print("Parsing argument: " + arg);
+            Print("Parsing argument: {}", arg);
             try {
                 if (arg == "--runner" || arg == "-u") {
                     if (args.empty()) throw std::runtime_error("Missing runner name.");

@@ -1,5 +1,8 @@
 #pragma once
 
+#include <string>
+
+#include "../DSL/Components/Functions/Print.h"
 #include "../ISpecReporter.h"
 
 namespace Specs::Reporters {
@@ -9,17 +12,17 @@ namespace Specs::Reporters {
         std::string _indent;
 
         void BeginTestCase(std::shared_ptr<SpecTestCase> testCase) override {
-            Print(_indent + testCase->GetFullDescription());
+            Print("{}{}", _indent, testCase->GetFullDescription());
         }
 
         void EndTestCase(std::shared_ptr<SpecTestCase> testCase, SpecTestCaseResult testResult) override {
             if (!testResult.Passed()) {
-                Print(_indent + "  " + testResult.GetFailureMessage());
+                Print("{}  {}", _indent, testResult.GetFailureMessage());
             }
         }
 
         void BeginTestGroup(std::shared_ptr<SpecTestGroup> testGroup) override {
-            Print(_indent + testGroup->GetFullDescription());
+            Print("{}{}", _indent, testGroup->GetFullDescription());
             _indent += "  ";
         }
 

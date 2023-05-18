@@ -2,6 +2,7 @@
 
 #include <queue>
 
+#include "../DSL/Components/Functions/Print.h"
 #include "../ISpecRunner.h"
 #include "../SpecTestCase.h"
 #include "../SpecTestCaseRun.h"
@@ -31,7 +32,7 @@ namespace Specs::Runners {
                 if (testCase->GetBody().has_value())
                     testCase->GetBody().value()(testCaseParam);
                 else
-                    Print("No body for test case: " + testCase->GetFullDescription());
+                    Print("No body for test case: {}", testCase->GetFullDescription());
                 return true;
             } catch (...) {
                 for (auto& exceptionHandler : _exceptionHandlers) {
