@@ -9,14 +9,14 @@
 namespace Specs::DSL::Components::Functions {
 
     //! Defines and registers a test.
-    std::shared_ptr<SpecTestCase> DefineTest(
+    inline std::shared_ptr<SpecTestCase> DefineTest(
         const std::string& description, std::function<void(std::shared_ptr<SpecTestCaseParam>)> block
     ) {
         return SpecRegistry::GlobalRegistry().RegisterTestCase(description, block);
     }
 
     //! Defines and registers a test.
-    std::shared_ptr<SpecTestCase> DefineTest(const std::string& description, std::function<void()> block) {
+    inline std::shared_ptr<SpecTestCase> DefineTest(const std::string& description, std::function<void()> block) {
         return SpecRegistry::GlobalRegistry().RegisterTestCase(description, [block](auto) { block(); });
     }
 }

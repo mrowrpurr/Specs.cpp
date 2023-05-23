@@ -12,4 +12,4 @@ add_repositories("MrowrLib https://github.com/MrowrLib/Packages")
 add_requires("string_format", "fmt")
 
 includes("Specs/xmake.lua")
-includes("**/xmake.lua")
+-- includes("**/xmake.lua")

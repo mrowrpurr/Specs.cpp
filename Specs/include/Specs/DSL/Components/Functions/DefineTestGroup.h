@@ -9,7 +9,7 @@
 namespace Specs::DSL::Components::Functions {
 
     //! Defines and registers a test group.
-    std::shared_ptr<SpecTestGroup> DefineTestGroup(const std::string& description, std::function<void()> body) {
+    inline std::shared_ptr<SpecTestGroup> DefineTestGroup(const std::string& description, std::function<void()> body) {
         return SpecRegistry::GlobalRegistry().RegisterTestGroup(description, body);
     }
 }
