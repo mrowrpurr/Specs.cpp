@@ -44,7 +44,9 @@ namespace Specs {
         }
 
         //! Adds a reporter to the application.
-        void AddReporter(std::shared_ptr<ISpecReporter> reporter) { _reporters.push_back(reporter); }
+        void AddReporter(std::shared_ptr<ISpecReporter> reporter) {
+            _reporters.push_back(reporter);
+        }
 
         //! Adds a reporter of the specified type to the application.
         template <typename T>
@@ -58,7 +60,8 @@ namespace Specs {
         //! Adds an exception handler to the application.
         void AddExceptionHandler(std::shared_ptr<ISpecExceptionHandler> exceptionHandler) {
             // _exceptionHandlers.push_back(exceptionHandler);
-            // Add the exceptionHandler to the front of the vector so that it is the first to be called.
+            // Add the exceptionHandler to the front of the vector so that it is the first to be
+            // called.
             _exceptionHandlers.insert(_exceptionHandlers.begin(), exceptionHandler);
         }
 
@@ -69,7 +72,9 @@ namespace Specs {
         }
 
         //! Gets the exception handlers for this application.
-        std::vector<std::shared_ptr<ISpecExceptionHandler>>& GetExceptionHandlers() { return _exceptionHandlers; }
+        std::vector<std::shared_ptr<ISpecExceptionHandler>>& GetExceptionHandlers() {
+            return _exceptionHandlers;
+        }
 
         //! Gets the runner options for this application.
         RunnerOptions& GetRunnerOptions() { return _runnerOptions; }
@@ -81,10 +86,12 @@ namespace Specs {
         int Run() {
             if (!_runner) throw std::runtime_error("No runner set.");
             auto promise = _runner->RunSpecs(
-                _registry->GetRootTestGroup(), _reporters, _exceptionHandlers, _runnerOptions, _reporterOptions
+                _registry->GetRootTestGroup(), _reporters, _exceptionHandlers, _runnerOptions,
+                _reporterOptions
             );
             promise.get_future().wait();
-            return 69;  // TODO return 1/0 based on results
+            // return 69;  // TODO return 1/0 based on results
+            return 0;
         }
     };
 }
