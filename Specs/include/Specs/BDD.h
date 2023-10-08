@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CLI.h"
+#include "DSL/BDD.h"
 
 namespace Specs {
 

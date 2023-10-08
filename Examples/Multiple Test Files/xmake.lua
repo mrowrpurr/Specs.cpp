@@ -1,0 +1,5 @@
+target("Example - Multiple Files")
+    set_kind("binary")
+    add_deps("Specs")
+    add_files("*.cpp")
+    add_packages("mrowr_log", "spdlog")

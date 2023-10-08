@@ -1,4 +1,5 @@
 #include <Specs/BDD.h>
+#include <Specs/DSL/BDD.h>
 #include <Specs/ExceptionHandlers/SnowhouseExceptionHandler.h>
 #include <Specs/Setup.h>
 #include <snowhouse/snowhouse.h>
