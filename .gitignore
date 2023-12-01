@@ -1,0 +1,10 @@
+build
+.idea
+cmake-build*
+.vs
+*.pdb
+.vscode/settings.json
+docs
+doxygen-awesome-css
+.xmake
+compile_commands
