@@ -1,6 +1,8 @@
-// #include <Specs/BDD.h>
+#define spec_name Test1
 
-// Describe("A group of tests") {
-//     it("should pass", []() { AssertThat(1, Is().EqualTo(1)); });
-//     it("should fail", []() { AssertThat(1, Is().EqualTo(2)); });
-// }
+#include <Specs/SpecHelper.h>
+
+Describe("1ONE1 A group of tests") {
+    it("1ONE1 should pass", []() { AssertThat(1, Is().EqualTo(1)); });
+    it("1ONE1 should fail", []() { AssertThat(1, Is().EqualTo(111)); });
+}
