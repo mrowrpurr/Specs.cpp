@@ -238,7 +238,6 @@ namespace SpecsCpp {
                 auto future = _currentRunResultPromise->get_future();
 
                 if (_timeoutMs > 0) {
-                    _Log_("WAITING for {}ms", _timeoutMs);
                     if (future.wait_for(std::chrono::milliseconds(_timeoutMs)) ==
                         std::future_status::timeout) {
                         auto result = SpecRunResult::timeout(spec, spec);
