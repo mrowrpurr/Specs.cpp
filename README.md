@@ -78,7 +78,7 @@ TestAsync("Slow things") {
     - [Available Built-in Syntax](#available-built-in-syntax)
       - [`Test("...") { ... }`](#test---)
       - [`TestAsync("...") { ...; done() }`](#testasync---done-)
-      - [`TestGroup("...");`](#testgroup)
+      - [`SetTestGroup("...");`](#settestgroup)
       - [`Setup { ... }`](#setup---)
       - [`Teardown { ... }`](#teardown---)
       - [`Config { ... }`](#config---)
@@ -579,7 +579,7 @@ These are added to the global test group (_or the test group defined by `TestGro
 
 The code block must call the `done()` callback when the test is complete.
 
-#### `TestGroup("...");`
+#### `SetTestGroup("...");`
 
 Global top-level macro for defining a test group.
 
@@ -640,6 +640,8 @@ Instead, use the `test`, `setup`, and `teardown` functions.
 You can also use the `describe` function to define nested groups.
 
 #### `DescribeFn(UniqueToken) { ... }`
+
+> Alias: `TestGroup`
 
 > Allows you to forgo the `spec_file` define if you only use lambda functions.
 
