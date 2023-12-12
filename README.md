@@ -290,6 +290,9 @@ One test group per file using `SetTestGroup` and multiple top-level `Test` macro
 
 #include <Specs.h>
 
+// Important
+// Without this, Setup/Teardown will run across ALL of your test files
+// This scopes everything in this file under a single test group
 SetTestGroup("My Group of Tests");
 
 Setup { /* Setup Code */ }
