@@ -73,7 +73,7 @@ namespace SpecsCpp {
                 output += string_format("{} not run", result->not_run());
             }
 
-            Colors::PrintColor(string_format("\n{}", output), foregroundColor, backgroundColor);
+            Colors::PrintColor(string_format("\n{}\n", output), foregroundColor, backgroundColor);
         }
     };
 }
