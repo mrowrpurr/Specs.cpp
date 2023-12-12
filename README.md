@@ -585,6 +585,25 @@ Global top-level macro for defining a test group.
 
 When used, the top-level macros `Test`, `Setup`, and `Teardown` (_etc_) will be added to this group instead of the global group.
 
+```cpp
+#include <Specs.h>
+
+// With this, everything in this file will be scoped under a 'My Group of Tests' test group
+SetTestGroup("My Group of Tests");
+
+Setup {
+  // Setup code goes here... (scoped to this file!)
+}
+
+Teardown {
+  // Teardown code goes here... (scoped to this file!)
+}
+
+Test("Something") {
+  // Test code goes here...
+}
+```
+
 #### `Setup { ... }`
 
 Global top-level macro for defining setup code blocks.
