@@ -13,7 +13,7 @@ namespace _Specs_DLL_Configuration {
         SpecsCpp::ExceptionHandlers::StdExceptionExceptionHandler();
 }
 
-Configure {
+Configure(_Specs_DLL_ExceptionHandlers_Config_) {
     if (auto* specsEnv = SpecsCpp::global_spec_environment().get()) {
         specsEnv->local_exception_handlers()->register_exception_handler(
             &_Specs_DLL_Configuration::cStringExceptionHandler

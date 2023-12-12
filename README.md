@@ -47,12 +47,12 @@ TestAsync("Slow things") {
       - [With Assertion Library Integration](#with-assertion-library-integration)
         - [`xmake.lua`](#xmakelua-1)
     - [vcpkg / CMake](#vcpkg--cmake)
-- [Documentation](#documentation)
-  - [Spec Files](#spec-files)
+- [`Specs.cpp` Usage Documentation](#specscpp-usage-documentation)
+  - [Creating Test Files](#creating-test-files)
     - [Single test file](#single-test-file)
       - [`MySpecs.cpp`](#myspecscpp)
     - [Multiple .cpp test files](#multiple-cpp-test-files)
-      - [`RunSpecs.cpp`](#runspecscpp)
+      - [`main.cpp`](#maincpp)
       - [`MySpecs.One.cpp`](#myspecsonecpp)
       - [`MySpecs.Two.cpp`](#myspecstwocpp)
   - [Choosing Assertion Library](#choosing-assertion-library)
@@ -169,11 +169,13 @@ For `snowhouse` or `libassert` integration, you need to "_bring your own_" versi
 TODO - Coming Soon!
 ```
 
-# Documentation
+# `Specs.cpp` Usage Documentation
 
-## Spec Files
+## Creating Test Files
 
 ### Single test file
+
+Example of using only a single test file for your test suite.
 
 #### `MySpecs.cpp`
 
@@ -189,7 +191,9 @@ Test("Something") {
 
 ### Multiple .cpp test files
 
-#### `RunSpecs.cpp`
+More common example of using multiple `.cpp` files for your test suite.
+
+#### `main.cpp`
 
 ```cpp
 // When using multiple files, <Specs/Main.h> should be included in a single file
@@ -222,6 +226,17 @@ Test("Something Else") {
     // Test code goes here...
 }
 ```
+
+The `spec_file` define has a few aliases which you can use instead:
+- `#define spec_file SpecOne`
+- `#define spec_name SpecOne`
+- `#define spec_context SpecOne`
+
+Any of the above will work.
+
+This define provides support for multiple `.cpp` files to use the top-level macros such as `Test`, `Setup`, and `Teardown` (_etc_).
+
+> _Note: this is due to the fact that the `__COUNTER__` macro does not provide unique counts across multiple compilation units (`.cpp`)._
 
 ## Choosing Assertion Library
 

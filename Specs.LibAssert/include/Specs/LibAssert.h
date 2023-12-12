@@ -1,9 +1,10 @@
 #pragma once
 
-#if __has_include(<assert.hpp>)
-    #include <Specs/DSLs.h>  // IWYU pragma: keep
+#include <assert.hpp>
 
-    #include "LibAssertCustomHandler.h"  // IWYU pragma: keep
-    #include "LibAssertIncludes.h"       // IWYU pragma: keep
-
-#endif
+inline void libassert_specs_handler(
+    libassert::assert_type type, ASSERTION fatal, const libassert::assertion_printer& printer
+) {
+    std::string message = printer(libassert::utility::terminal_width(120));
+    throw message.c_str();
+}

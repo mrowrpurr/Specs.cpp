@@ -7,6 +7,10 @@
 //////////////
 //////////////
 
+TestGroup(TestGroup1) {
+    test("some test", []() { AssertThat(1, Equals(1)); });
+}
+
 SetupAsync {
     _Log_("HI from async SETUP");
     // assert(1 == 2);
