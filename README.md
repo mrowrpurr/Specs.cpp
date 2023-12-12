@@ -293,6 +293,9 @@ One test group per file using `SetTestGroup` and multiple top-level `Test` macro
 // Important
 // Without this, Setup/Teardown will run across ALL of your test files
 // This scopes everything in this file under a single test group
+//
+// Note: if you use this in one file, you should use it in ALL files
+//       so that each file's components are properly scoped under 1 group per file
 SetTestGroup("My Group of Tests");
 
 Setup { /* Setup Code */ }

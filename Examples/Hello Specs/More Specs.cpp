@@ -2,7 +2,9 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
-SetTestGroup("Different Group!");
+SetTestGroup("More Specs");
+
+Setup { _Log_("More Specs setup"); }
 
 Test("MORE Something") { _Log_("YOU CALLED the Something TEST!"); }
 

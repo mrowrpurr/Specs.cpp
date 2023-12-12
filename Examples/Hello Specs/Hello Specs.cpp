@@ -7,18 +7,20 @@
 //////////////
 //////////////
 
+SetTestGroup("Hello Specs");
+
 DescribeFn(TestGroup1) {
     test("some test", []() { AssertThat(1, Equals(1)); });
 }
 
-Setup { _Log_("HI from SETUP in Hello Specs"); }
+// Setup { _Log_("HI from SETUP in Hello Specs"); }
 
-SetupAsync {
-    _Log_("HI from async SETUP");
-    // assert(1 == 2);
-    // throw "Foo!";
-    done();
-}
+// SetupAsync {
+//     _Log_("HI from async SETUP");
+//     // assert(1 == 2);
+//     // throw "Foo!";
+//     done();
+// }
 
 TeardownAsync {
     _Log_("HI from async TEARDOWN");
