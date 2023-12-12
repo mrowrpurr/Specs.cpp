@@ -7,9 +7,11 @@
 //////////////
 //////////////
 
-TestGroup(TestGroup1) {
+DescribeFn(TestGroup1) {
     test("some test", []() { AssertThat(1, Equals(1)); });
 }
+
+Setup { _Log_("HI from SETUP in Hello Specs"); }
 
 SetupAsync {
     _Log_("HI from async SETUP");

@@ -10,6 +10,7 @@
 #include "DSLs/TopLevel/Config.h"         // IWYU pragma: keep
 #include "DSLs/TopLevel/Configure.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/Describe.h"       // IWYU pragma: keep
+#include "DSLs/TopLevel/DescribeFn.h"     // IWYU pragma: keep
 #include "DSLs/TopLevel/It.h"             // IWYU pragma: keep
 #include "DSLs/TopLevel/SetTestGroup.h"   // IWYU pragma: keep
 #include "DSLs/TopLevel/Setup.h"          // IWYU pragma: keep
@@ -21,6 +22,5 @@
 #include "DSLs/TopLevel/Test.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/TestAsync.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/TestGroup.h"      // IWYU pragma: keep
-
 
 using SpecDone = SpecsCpp::SpecDone;

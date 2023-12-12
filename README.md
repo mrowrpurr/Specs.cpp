@@ -58,6 +58,12 @@ TestAsync("Slow things") {
   - [Choosing Assertion Library](#choosing-assertion-library)
     - [Using Snowhouse assertions](#using-snowhouse-assertions)
     - [Using libassert assertions](#using-libassert-assertions)
+  - [Test Syntax Styles](#test-syntax-styles)
+    - [Top-Level Macros](#top-level-macros)
+      - [One Test Group](#one-test-group)
+      - [Multiple Test Groups](#multiple-test-groups)
+    - [Lambda Functions](#lambda-functions)
+      - [Without `spec_file` define](#without-spec_file-define)
   - [Command-Line Options](#command-line-options)
     - [Filtering Tests by Name](#filtering-tests-by-name)
     - [Random Ordering](#random-ordering)
@@ -259,6 +265,140 @@ Test("...") {
 
 Test("...") {
     assert(69 == 420);
+}
+```
+
+## Test Syntax Styles
+
+As you'll read more about in the [Syntax](#syntax) section, there are a few different syntax styles available for defining tests.
+
+To customize the available style syntax, see [Choosing Available Syntax](#choosing-available-syntax).
+
+### Top-Level Macros
+
+#### One Test Group
+
+One test group per file using `SetTestGroup` and multiple top-level `Test` macros.
+
+> The `Test` macro has built-in aliases: `Spec` and `It`.
+
+```cpp
+// spec_file is only required if you mave multiple separate .cpp files containing tests
+#define spec_file MySpecs
+
+#include <Specs.h>
+
+SetTestGroup("My Group of Tests");
+
+Setup { /* Setup Code */ }
+Teardown { /* Teardown Code */ }
+
+Test("Name of a test") {
+  // Test code goes here...
+}
+
+Test("Name of a test") {
+  // Test code goes here...
+}
+
+// Alias for Test
+It("Can do something") {
+  // Test code goes here...
+}
+
+// Alias for Test
+Spec("Can do something else") {
+  // Test code goes here...
+}
+```
+
+#### Multiple Test Groups
+
+Multiple test groups in the same file using `Describe`.
+
+> Note: you cannot use top-level macros _inside_ a `Describe` block.
+
+```cpp
+#define spec_file MySpecs
+
+#include <Specs.h>
+
+Setup { /* Global Setup Code */ }
+
+Describe("Test Group 1") {
+  // Lambda Functions go here for defining setup/teardown/tests and child groups
+}
+
+Describe("Test Group 2") {
+  // Lambda Functions go here for defining setup/teardown/tests and child groups
+}
+
+// Alias which takes a token instead of a string for description.
+// If you only use this type of DescribeFn, then you no longer need to define spec_file.
+DescribeFn(TestGroup3) {
+  // Lambda Functions go here for defining setup/teardown/tests and child groups
+}
+```
+
+### Lambda Functions
+
+```cpp
+#define spec_file MySpecs
+
+#include <Specs.h>
+
+Describe("My test group") {
+
+  setup([]() { /* Setup Code */ });
+  teardown([]() { /* Teardown Code */ });
+
+  it("Name of a test", []() {
+    // Test code goes here...
+  });
+
+  describe("Inner Group", []() {
+
+    setup([]() { /* Setup Code */ });
+    teardown([]() { /* Teardown Code */ });
+
+    it("Name of a test", []() {
+      // Test code goes here...
+    });
+
+  });
+}
+```
+
+#### Without `spec_file` define
+
+If you are using lambda functions and you want to forgo the `spec_file` define, you can do so by using the `DescribeFn` function (_alias: `TestGroup`_)
+
+```cpp
+#include <Specs.h>
+
+// Instead of taking a string descripteion, DescribeFn takes a token
+// which is used to generate a unique name for the group.
+//
+// Note: if you use any top-level macros such as Test, Setup, Teardown, etc
+// then you still will need to add a #define spec_file MySpecs
+//
+// But if you ONLY use the lambda functions, DescribeFn allows you to
+// forgo the spec_file define.
+DescribeFn(MyTestGroup) {
+  setup([]() { /* Setup Code */ });
+  teardown([]() { /* Teardown Code */ });
+  test("Name of a test", []() {
+    // Test code goes here...
+  });
+}
+
+// Or, you can use the TestGroup alias:
+TestGroup(MyTestGroup2) {
+  setup([]() { /* Setup Code */ });
+  teardown([]() { /* Teardown Code */ });
+  test("Name of a test", []() {
+    // Test code goes here...
+  });
 }
 ```
 
