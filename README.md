@@ -107,6 +107,7 @@ TestAsync("Slow things") {
     - [Parallel Runner](#parallel-runner)
     - [Create Custom Runner](#create-custom-runner)
   - [Spec Introspection / Data Model](#spec-introspection--data-model)
+- [TODO Wishlist](#todo-wishlist)
 - [License](#license)
 
 
@@ -788,6 +789,26 @@ TODO
 ### Create Custom Runner
 
 ## Spec Introspection / Data Model
+
+# TODO Wishlist
+
+There are a few features which I hope to add in the future!
+
+- [ ] Ability to "tag" tests (and setup/teardown/groups) with metadata
+  - _For example, to customize a test's timeout or tag multiple tests with a tag that can be executed in isolation_
+  - ```cpp
+    #include <Specs.h>
+
+    // Uncertain of the syntax, but here is some brainstorming:
+
+    tag("slow")
+    Test { /* ... */ }
+
+    meta("timeout", 30000)
+    Test { /* ... */ }
+    ```
+- [ ] Parallel test runner
+- [ ] Random order option for serial (_and later parallel_) test runner(s)
 
 # License
 
