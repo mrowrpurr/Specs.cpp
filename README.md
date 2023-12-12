@@ -6,7 +6,7 @@
 
 ---
 
-## What?
+# What?
 
 C++ test framework with simple syntax which supports async tests.
 
@@ -27,7 +27,7 @@ TestAsync("Slow things") {
 }
 ```
 
-## Why?
+# Why?
 
 1. I enjoy authoring testing frameworks.
 2. I wanted very simple, readable syntax for tests.
@@ -37,16 +37,16 @@ TestAsync("Slow things") {
 # Table of Contents
 
 - [Specs](#specs)
-  - [What?](#what)
-  - [Why?](#why)
+- [What?](#what)
+- [Why?](#why)
 - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-    - [xmake](#xmake)
-      - [Basic Install](#basic-install)
-        - [`xmake.lua`](#xmakelua)
-      - [With Assertion Library Integration](#with-assertion-library-integration)
-        - [`xmake.lua`](#xmakelua-1)
-    - [vcpkg / CMake](#vcpkg--cmake)
+- [Installation](#installation)
+  - [xmake](#xmake)
+    - [Basic Install](#basic-install)
+      - [`xmake.lua`](#xmakelua)
+    - [With Assertion Library Integration](#with-assertion-library-integration)
+      - [`xmake.lua`](#xmakelua-1)
+  - [vcpkg / CMake](#vcpkg--cmake)
 - [`Specs.cpp` Usage Documentation](#specscpp-usage-documentation)
   - [Creating Test Files](#creating-test-files)
     - [Single test file](#single-test-file)
@@ -74,56 +74,56 @@ TestAsync("Slow things") {
     - [Top-Level Setup and Teardown](#top-level-setup-and-teardown)
     - [Setup and Teardown inside groups](#setup-and-teardown-inside-groups)
   - [Async Tests](#async-tests)
-  - [Syntax](#syntax)
-    - [Available Built-in Syntax](#available-built-in-syntax)
-      - [`Test("...") { ... }`](#test---)
-      - [`TestAsync("...") { ...; done() }`](#testasync---done-)
-      - [`SetTestGroup("...");`](#settestgroup)
-      - [`UnsetTestGroup();`](#unsettestgroup)
-      - [`Setup { ... }`](#setup---)
-      - [`Teardown { ... }`](#teardown---)
-      - [`Config { ... }`](#config---)
-      - [`Configure(UniqueToken) { ... }`](#configureuniquetoken---)
-      - [`Describe("...") { ... }`](#describe---)
-      - [`DescribeFn(UniqueToken) { ... }`](#describefnuniquetoken---)
-      - [`test("...", []() { ... });`](#test----)
-      - [`test("...", [](auto done) { ...; done(); });`](#test-auto-done---done-)
-      - [`setup([]() { ... });`](#setup----1)
-      - [`setup([](auto done) { ...; done(); });`](#setupauto-done---done-)
-      - [`teardown([]() { ... });`](#teardown----1)
-      - [`teardown([](auto done) { ...; done(); });`](#teardownauto-done---done-)
-      - [`describe("...", []() { ... });`](#describe----)
-    - [Choosing Available Syntax](#choosing-available-syntax)
-    - [Build Your Own Syntax](#build-your-own-syntax)
+- [Syntax](#syntax)
+  - [Available Built-in Syntax](#available-built-in-syntax)
+    - [`Test("...") { ... }`](#test---)
+    - [`TestAsync("...") { ...; done() }`](#testasync---done-)
+    - [`SetTestGroup("...");`](#settestgroup)
+    - [`UnsetTestGroup();`](#unsettestgroup)
+    - [`Setup { ... }`](#setup---)
+    - [`Teardown { ... }`](#teardown---)
+    - [`Config { ... }`](#config---)
+    - [`Configure(UniqueToken) { ... }`](#configureuniquetoken---)
+    - [`Describe("...") { ... }`](#describe---)
+    - [`DescribeFn(UniqueToken) { ... }`](#describefnuniquetoken---)
+    - [`test("...", []() { ... });`](#test----)
+    - [`test("...", [](auto done) { ...; done(); });`](#test-auto-done---done-)
+    - [`setup([]() { ... });`](#setup----1)
+    - [`setup([](auto done) { ...; done(); });`](#setupauto-done---done-)
+    - [`teardown([]() { ... });`](#teardown----1)
+    - [`teardown([](auto done) { ...; done(); });`](#teardownauto-done---done-)
+    - [`describe("...", []() { ... });`](#describe----)
+  - [Choosing Available Syntax](#choosing-available-syntax)
+  - [Build Your Own Syntax](#build-your-own-syntax)
   - [Exception Handling](#exception-handling)
     - [Create Custom Exception Handler](#create-custom-exception-handler)
-  - [Spec Reporters](#spec-reporters)
-    - [Specifying reporter(s) via command-line](#specifying-reporters-via-command-line)
-    - [Default Console Reporter](#default-console-reporter)
-    - [JUnit XML Reporter](#junit-xml-reporter)
-    - [TAP Console Reporter](#tap-console-reporter)
-    - [Create Custom Reporter](#create-custom-reporter)
-  - [Spec Runners](#spec-runners)
-    - [Specifying runner via command-line](#specifying-runner-via-command-line)
-    - [Default Runner](#default-runner)
-    - [Parallel Runner](#parallel-runner)
-    - [Create Custom Runner](#create-custom-runner)
-  - [Spec Introspection / Data Model](#spec-introspection--data-model)
+- [Spec Reporters](#spec-reporters)
+  - [Specifying reporter(s) via command-line](#specifying-reporters-via-command-line)
+  - [Default Console Reporter](#default-console-reporter)
+  - [JUnit XML Reporter](#junit-xml-reporter)
+  - [TAP Console Reporter](#tap-console-reporter)
+  - [Create Custom Reporter](#create-custom-reporter)
+- [Spec Runners](#spec-runners)
+  - [Specifying runner via command-line](#specifying-runner-via-command-line)
+  - [Default Runner](#default-runner)
+  - [Parallel Runner](#parallel-runner)
+  - [Create Custom Runner](#create-custom-runner)
+- [Spec Introspection / Data Model](#spec-introspection--data-model)
 - [TODO Wishlist](#todo-wishlist)
 - [License](#license)
 
 
-## Installation
+# Installation
 
-### xmake
+## xmake
 
-#### Basic Install
+### Basic Install
 
 This is a barebones `Specs.cpp` installation with no assertion library integration.
 
 With this setup, any `std::exception` (_or literal string_) thrown will be caught and displayed as a test failure message.
 
-##### `xmake.lua`
+#### `xmake.lua`
 
 ```lua
 add_repositories("MrowrLib https://github.com/MrowrLib/Packages.git")
@@ -136,13 +136,13 @@ target("MySpecs")
     add_files("*.cpp")
 ```
 
-#### With Assertion Library Integration
+### With Assertion Library Integration
 
 We provide integrations for the `snowhouse` and `libassert` assertion libraries.
 
 See [Create Custom Exception Handler](#create-custom-exception-handler) for more information on how to create your own custom exception handler.
 
-##### `xmake.lua`
+#### `xmake.lua`
 
 ```lua
 add_repositories("MrowrLib https://github.com/MrowrLib/Packages.git")
@@ -172,7 +172,7 @@ target("MySpecs")
 
 For `snowhouse` or `libassert` integration, you need to "_bring your own_" version of the library. They are not automatic dependencies of the specs integration packages (_to not lock you into a specific version of these libraries_).
 
-### vcpkg / CMake
+## vcpkg / CMake
 
 ```
 TODO - Coming Soon!
@@ -568,17 +568,17 @@ You can configure the timeout via the `-t/--timeout` command-line option which t
 MySpecs.exe -t 3000
 ```
 
-## Syntax
+# Syntax
 
-### Available Built-in Syntax
+## Available Built-in Syntax
 
-#### `Test("...") { ... }`
+### `Test("...") { ... }`
 
 Global top-level macro for defining tests.
 
 These are added to the global test group (_or the test group defined by `TestGroup`, if used_).
 
-#### `TestAsync("...") { ...; done() }`
+### `TestAsync("...") { ...; done() }`
 
 Global top-level macro for defining asyncronous tests.
 
@@ -586,7 +586,7 @@ These are added to the global test group (_or the test group defined by `TestGro
 
 The code block must call the `done()` callback when the test is complete.
 
-#### `SetTestGroup("...");`
+### `SetTestGroup("...");`
 
 Global top-level macro for defining a test group.
 
@@ -611,13 +611,13 @@ Test("Something") {
 }
 ```
 
-#### `UnsetTestGroup();`
+### `UnsetTestGroup();`
 
 When you use `SetTestGroup("...")`, the defined test group is used across all files _**until**_ `SetTestGroup("...")` is called again with a new group.
 
 If you would prefer to simply unset the current test group and return to the global test group, you can use `UnsetTestGroup()`.
 
-#### `Setup { ... }`
+### `Setup { ... }`
 
 Global top-level macro for defining setup code blocks.
 
@@ -627,7 +627,7 @@ These are added to the global test group (_or the test group defined by `TestGro
 > 
 > If you only want your `Setup` and `Teardown` to run for your specific file, please use [`SetTestGroup`](#settestgroup) so all of your file is scoped to one test group.
 
-#### `Teardown { ... }`
+### `Teardown { ... }`
 
 Global top-level macro for defining teardown code blocks.
 
@@ -637,7 +637,7 @@ These are added to the global test group (_or the test group defined by `TestGro
 > 
 > If you only want your `Setup` and `Teardown` to run for your specific file, please use [`SetTestGroup`](#settestgroup) so all of your file is scoped to one test group.
 
-#### `Config { ... }`
+### `Config { ... }`
 
 Global top-level macro for configuring the test runner (_or anything you like!_).
 
@@ -649,7 +649,7 @@ If you use `Config` in multiple `.cpp` files, you should use `Configure` instead
 
 > Using `Config` in multiple `.cpp` files will result in a linker error.
 
-#### `Configure(UniqueToken) { ... }`
+### `Configure(UniqueToken) { ... }`
 
 Global top-level macro for configuring the test runner (_or anything you like!_).
 
@@ -667,7 +667,7 @@ Configure(Database) {
 
 > The unique token is for uniqueness across multiple `.cpp` files.
 
-#### `Describe("...") { ... }`
+### `Describe("...") { ... }`
 
 Global top-level macro for defining a test group.
 
@@ -679,7 +679,7 @@ Instead, use the `test`, `setup`, and `teardown` functions.
 
 You can also use the `describe` function to define nested groups.
 
-#### `DescribeFn(UniqueToken) { ... }`
+### `DescribeFn(UniqueToken) { ... }`
 
 > Alias: `TestGroup`
 
@@ -695,13 +695,13 @@ Instead, use the `test`, `setup`, and `teardown` functions.
 
 You can also use the `describe` function to define nested groups.
 
-#### `test("...", []() { ... });`
+### `test("...", []() { ... });`
 
 > Aliases: `spec()` and `it()`
 
 Function for defining tests inside a `Describe`/`describe` code block.
 
-#### `test("...", [](auto done) { ...; done(); });`
+### `test("...", [](auto done) { ...; done(); });`
 
 > Aliases: `spec()` and `it()`
 
@@ -714,27 +714,27 @@ If you don't want to use `auto`, the full signature of the lambda is:
 test("...", [](SpecDone done) { ...; done(); });
 ```
 
-#### `setup([]() { ... });`
+### `setup([]() { ... });`
 
 Function for defining setup code blocks inside a `Describe`/`describe` code block.
 
-#### `setup([](auto done) { ...; done(); });`
+### `setup([](auto done) { ...; done(); });`
 
 Function for defining asyncronous setup code blocks inside a `Describe`/`describe` code block.
 
-#### `teardown([]() { ... });`
+### `teardown([]() { ... });`
 
 Function for defining teardown code blocks inside a `Describe`/`describe` code block.
 
-#### `teardown([](auto done) { ...; done(); });`
+### `teardown([](auto done) { ...; done(); });`
 
 Function for defining asyncronous teardown code blocks inside a `Describe`/`describe` code block.
 
-#### `describe("...", []() { ... });`
+### `describe("...", []() { ... });`
 
 Function for defining nested groups inside a `Describe`/`describe` code block.
 
-### Choosing Available Syntax
+## Choosing Available Syntax
 
 By default, all of the above syntax is available.
 
@@ -770,7 +770,7 @@ You can pick and choose which macros and functions are available by including th
 #include <DSLs/TopLevel/SetTestGroup.h>
 ```
 
-### Build Your Own Syntax
+## Build Your Own Syntax
 
 ```
 TODO - document this - Advanced Usage
@@ -836,41 +836,41 @@ Test("Something") {
 }
 ```
 
-## Spec Reporters
+# Spec Reporters
 
-### Specifying reporter(s) via command-line
+## Specifying reporter(s) via command-line
 
-### Default Console Reporter
+## Default Console Reporter
 
-### JUnit XML Reporter
-
-```
-TODO
-```
-
-### TAP Console Reporter
+## JUnit XML Reporter
 
 ```
 TODO
 ```
 
-### Create Custom Reporter
-
-## Spec Runners
-
-### Specifying runner via command-line
-
-### Default Runner
-
-### Parallel Runner
+## TAP Console Reporter
 
 ```
 TODO
 ```
 
-### Create Custom Runner
+## Create Custom Reporter
 
-## Spec Introspection / Data Model
+# Spec Runners
+
+## Specifying runner via command-line
+
+## Default Runner
+
+## Parallel Runner
+
+```
+TODO
+```
+
+## Create Custom Runner
+
+# Spec Introspection / Data Model
 
 # TODO Wishlist
 
