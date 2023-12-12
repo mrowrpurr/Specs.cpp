@@ -144,8 +144,8 @@ add_requires("specs_cpp")
 add_requires("vcpkg::snowhouse", "specs_cpp_snowhouse")
 
 -- For integration with libassert assertion library:
-add_requires("specs_cpp_libassert")
 add_requires("libassert_latest", { configs = { lowercase = true } })
+add_requires("specs_cpp_libassert")
 
 target("MySpecs")
     set_kind("binary")
