@@ -373,17 +373,18 @@ Describe("My test group") {
 
 If you are using lambda functions and you want to forgo the `spec_file` define, you can do so by using the `DescribeFn` function (_alias: `TestGroup`_)
 
+> Instead of taking a string descripteion, DescribeFn takes a token
+> which is used to generate a unique name for the group.
+> 
+> Note: if you use any top-level macros such as Test, Setup, Teardown, etc
+> then you still will need to add a #define spec_file MySpecs
+> 
+> But if you ONLY use the lambda functions, DescribeFn allows you to
+> forgo the spec_file define.
+
 ```cpp
 #include <Specs.h>
 
-// Instead of taking a string descripteion, DescribeFn takes a token
-// which is used to generate a unique name for the group.
-//
-// Note: if you use any top-level macros such as Test, Setup, Teardown, etc
-// then you still will need to add a #define spec_file MySpecs
-//
-// But if you ONLY use the lambda functions, DescribeFn allows you to
-// forgo the spec_file define.
 DescribeFn(MyTestGroup) {
   setup([]() { /* Setup Code */ });
   teardown([]() { /* Teardown Code */ });
@@ -669,8 +670,10 @@ You can pick and choose which macros and functions are available by including th
 #include <DSLs/Functions/teardown.h>
 
 // Include any of the available top-level macros
+#include <DSLs/TopLevel/Config.h>
 #include <DSLs/TopLevel/Configure.h>
 #include <DSLs/TopLevel/Describe.h>
+#include <DSLs/TopLevel/DescribeFn.h>
 #include <DSLs/TopLevel/Setup.h>
 #include <DSLs/TopLevel/SetupAsync.h>
 #include <DSLs/TopLevel/Spec.h> // Spec() { ... } is an alias for Test()
@@ -680,7 +683,8 @@ You can pick and choose which macros and functions are available by including th
 #include <DSLs/TopLevel/Test.h>
 #include <DSLs/TopLevel/It.h> // It() { ... } is an alias for Test()
 #include <DSLs/TopLevel/TestAsync.h>
-#include <DSLs/TopLevel/TestGroup.h>
+#include <DSLs/TopLevel/TestGroup.h> // Alias for DescribeFn()
+#include <DSLs/TopLevel/SetTestGroup.h>
 ```
 
 ### Build Your Own Syntax
