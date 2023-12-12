@@ -591,11 +591,19 @@ Global top-level macro for defining setup code blocks.
 
 These are added to the global test group (_or the test group defined by `TestGroup`, if used_).
 
+> **Note:** if you have multiple files, the `Setup` and `Teardown` blocks are shared across all files.
+> 
+> If you only want your `Setup` and `Teardown` to run for your specific file, please use [`SetTestGroup`](#settestgroup) so all of your file is scoped to one test group.
+
 #### `Teardown { ... }`
 
 Global top-level macro for defining teardown code blocks.
 
 These are added to the global test group (_or the test group defined by `TestGroup`, if used_).
+
+> **Note:** if you have multiple files, the `Setup` and `Teardown` blocks are shared across all files.
+> 
+> If you only want your `Setup` and `Teardown` to run for your specific file, please use [`SetTestGroup`](#settestgroup) so all of your file is scoped to one test group.
 
 #### `Config { ... }`
 
