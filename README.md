@@ -81,8 +81,10 @@ TestAsync("Slow things") {
       - [`TestGroup("...");`](#testgroup)
       - [`Setup { ... }`](#setup---)
       - [`Teardown { ... }`](#teardown---)
-      - [`Configure { ... }`](#configure---)
+      - [`Config { ... }`](#config---)
+      - [`Configure(UniqueToken) { ... }`](#configureuniquetoken---)
       - [`Describe("...") { ... }`](#describe---)
+      - [`DescribeFn(UniqueToken) { ... }`](#describefnuniquetoken---)
       - [`test("...", []() { ... });`](#test----)
       - [`test("...", [](auto done) { ...; done(); });`](#test-auto-done---done-)
       - [`setup([]() { ... });`](#setup----1)
@@ -90,7 +92,6 @@ TestAsync("Slow things") {
       - [`teardown([]() { ... });`](#teardown----1)
       - [`teardown([](auto done) { ...; done(); });`](#teardownauto-done---done-)
       - [`describe("...", []() { ... });`](#describe----)
-      - [`TODO: spec metadata macros and functions`](#todo-spec-metadata-macros-and-functions)
     - [Choosing Available Syntax](#choosing-available-syntax)
     - [Build Your Own Syntax](#build-your-own-syntax)
   - [Exception Handling](#exception-handling)
@@ -596,7 +597,7 @@ Global top-level macro for defining teardown code blocks.
 
 These are added to the global test group (_or the test group defined by `TestGroup`, if used_).
 
-#### `Configure { ... }`
+#### `Config { ... }`
 
 Global top-level macro for configuring the test runner (_or anything you like!_).
 
@@ -604,11 +605,47 @@ This code block is executed before tests are run.
 
 It can be used for any miscellaneous setup code.
 
+If you use `Config` in multiple `.cpp` files, you should use `Configure` instead.
+
+> Using `Config` in multiple `.cpp` files will result in a linker error.
+
+#### `Configure(UniqueToken) { ... }`
+
+Global top-level macro for configuring the test runner (_or anything you like!_).
+
+This code block is executed before tests are run.
+
+It can be used for any miscellaneous setup code.
+
+You must provide any kind of unique token to describe what you are configuring:
+
+```cpp
+Configure(Database) {
+  // ...
+}
+```
+
+> The unique token is for uniqueness across multiple `.cpp` files.
+
 #### `Describe("...") { ... }`
 
 Global top-level macro for defining a test group.
 
-Defined a code block in which you can define tests, setup, and teardown code blocks using functions.
+Defines a code block in which you can define tests, setup, and teardown code blocks using functions.
+
+Global top-level macros such as `Test`, `Setup`, and `Teardown` (_etc_) cannot be used inside this code block.
+
+Instead, use the `test`, `setup`, and `teardown` functions.
+
+You can also use the `describe` function to define nested groups.
+
+#### `DescribeFn(UniqueToken) { ... }`
+
+> Allows you to forgo the `spec_file` define if you only use lambda functions.
+
+Global top-level macro for defining a test group.
+
+Defines a code block in which you can define tests, setup, and teardown code blocks using functions.
 
 Global top-level macros such as `Test`, `Setup`, and `Teardown` (_etc_) cannot be used inside this code block.
 
@@ -618,9 +655,13 @@ You can also use the `describe` function to define nested groups.
 
 #### `test("...", []() { ... });`
 
+> Aliases: `spec()` and `it()`
+
 Function for defining tests inside a `Describe`/`describe` code block.
 
 #### `test("...", [](auto done) { ...; done(); });`
+
+> Aliases: `spec()` and `it()`
 
 Function for defining asyncronous inside a `Describe`/`describe` code block.
 
@@ -651,8 +692,6 @@ Function for defining asyncronous teardown code blocks inside a `Describe`/`desc
 
 Function for defining nested groups inside a `Describe`/`describe` code block.
 
-#### `TODO: spec metadata macros and functions`
-
 ### Choosing Available Syntax
 
 By default, all of the above syntax is available.
@@ -667,6 +706,7 @@ You can pick and choose which macros and functions are available by including th
 #include <DSLs/Functions/describe.h>
 #include <DSLs/Functions/test.h>
 #include <DSLs/Functions/it.h> // it() { ... } is an alias for test()
+#include <DSLs/Functions/spec.h> // spec() { ... } is an alias for test()
 #include <DSLs/Functions/setup.h>
 #include <DSLs/Functions/teardown.h>
 
