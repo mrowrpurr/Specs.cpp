@@ -124,13 +124,21 @@ namespace SpecsCpp {
             register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 
-        void register_top_level_group(std::string_view description) {
+        void clear_top_level_group() {
             if (auto* group = get()) {
                 // Is there another top-level group? Let's pop it off
                 if (_currentTopLevelGroup) {
                     while (get() != _currentTopLevelGroup) pop();
                     if (get() == _currentTopLevelGroup) pop();
                 }
+                _currentTopLevelGroup = nullptr;
+            }
+        }
+
+        void register_top_level_group(std::string_view description) {
+            if (auto* group = get()) {
+                // Is there another top-level group? Let's pop it off
+                clear_top_level_group();
 
                 auto  specGroup       = std::make_unique<SpecGroup>(get(), description);
                 auto* specGroupPtr    = specGroup.get();

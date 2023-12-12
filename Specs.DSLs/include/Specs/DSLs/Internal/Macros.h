@@ -127,8 +127,12 @@
 
 // (global) Describe group (top-level with name, no block)
 
-// #define _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(symbol) \
-
 #define _SPEC_MACRO_DEFINE_TOP_LEVEL_GROUP(symbol, description)            \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(symbol \
     ){[]() { SpecsCpp::GlobalSpecGroup::instance().register_top_level_group(description); }};
+
+// (global) Unset Describe group (top-level with name, no block)
+
+#define _SPEC_MACRO_UNSET_TOP_LEVEL_GROUP(symbol)                          \
+    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(symbol \
+    ){[]() { SpecsCpp::GlobalSpecGroup::instance().clear_top_level_group(); }};

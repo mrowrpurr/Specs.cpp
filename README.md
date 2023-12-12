@@ -79,6 +79,7 @@ TestAsync("Slow things") {
       - [`Test("...") { ... }`](#test---)
       - [`TestAsync("...") { ...; done() }`](#testasync---done-)
       - [`SetTestGroup("...");`](#settestgroup)
+      - [`UnsetTestGroup();`](#unsettestgroup)
       - [`Setup { ... }`](#setup---)
       - [`Teardown { ... }`](#teardown---)
       - [`Config { ... }`](#config---)
@@ -609,6 +610,12 @@ Test("Something") {
   // Test code goes here...
 }
 ```
+
+#### `UnsetTestGroup();`
+
+When you use `SetTestGroup("...")`, the defined test group is used across all files _**until**_ `SetTestGroup("...")` is called again with a new group.
+
+If you would prefer to simply unset the current test group and return to the global test group, you can use `UnsetTestGroup()`.
 
 #### `Setup { ... }`
 
