@@ -1,6 +1,7 @@
 set(LIBRARY_NAME specs)
 
 add_library(${LIBRARY_NAME} INTERFACE)
+
 target_include_directories(${LIBRARY_NAME} INTERFACE
     # The C++ interfaces
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.API/include>
@@ -121,6 +122,9 @@ install(FILES
 # Allows linking to specs::specs_main to automatically add a main() entrypoint to your specs
 
 add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+
+target_compile_features(specs_main PRIVATE cxx_std_17)
+
 target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
 install(TARGETS specs_main
