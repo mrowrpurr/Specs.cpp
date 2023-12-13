@@ -121,7 +121,7 @@ install(FILES
 # Allows linking to specs::specs_main to automatically add a main() entrypoint to your specs
 
 add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-target_link_libraries(specs_main PUBLIC specs::specs)
+target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
 install(TARGETS specs_main
     EXPORT ${LIBRARY_NAME}Targets
