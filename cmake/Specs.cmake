@@ -123,7 +123,9 @@ install(FILES
 
 add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
-target_compile_features(specs_main PRIVATE cxx_std_17)
+# Note: C++17 would be ok if `fmt` is used, but this library relies on <string_format.h>
+# which requires EITHER fmt OR C++20 (for the <format> header)
+target_compile_features(specs_main PRIVATE cxx_std_20)
 
 target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
