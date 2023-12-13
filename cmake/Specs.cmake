@@ -28,6 +28,23 @@ target_include_directories(${LIBRARY_NAME} INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
+find_package(function_pointer CONFIG REQUIRED)
+find_package(global_macro_functions CONFIG REQUIRED)
+find_package(collections CONFIG REQUIRED)
+find_package(_Log_ CONFIG REQUIRED)
+find_package(string_format CONFIG REQUIRED)
+find_package(cxxopts CONFIG REQUIRED)
+
+target_link_libraries(
+    ${LIBRARY_NAME} INTERFACE
+    function_pointer::function_pointer
+    global_macro_functions::global_macro_functions
+    collections::collections
+    _Log_::_Log_
+    string_format::string_format
+    cxxopts::cxxopts
+)
+
 include(GNUInstallDirs)
 install(TARGETS ${LIBRARY_NAME}
     EXPORT ${LIBRARY_NAME}Targets

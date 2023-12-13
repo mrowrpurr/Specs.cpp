@@ -6,6 +6,12 @@ target_include_directories(${LIBRARY_NAME} INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
+find_package(string_format CONFIG REQUIRED)
+target_link_libraries(
+    ${LIBRARY_NAME} INTERFACE
+    string_format::string_format
+)
+
 include(GNUInstallDirs)
 install(TARGETS ${LIBRARY_NAME}
     EXPORT ${LIBRARY_NAME}Targets
