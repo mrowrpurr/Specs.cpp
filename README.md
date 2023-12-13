@@ -2,7 +2,12 @@
 
 # Specs
 
-> Async BDD C++ Test Framework
+> **Beautiful C++ Test Framework**
+>
+> - _Syntax is simple and configurable_
+> - _Supports asyncronous tests_
+> - _Supports runnings tests from shared libraries_
+> - _Supports any C++ assertion library_ (e.g. `snowhouse` or `libassert`)
 
 ---
 
