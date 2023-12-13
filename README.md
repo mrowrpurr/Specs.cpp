@@ -902,8 +902,11 @@ There are a few features which I hope to add in the future!
     meta("timeout", 30000)
     Test { /* ... */ }
     ```
-- [ ] Parallel test runner
+- [ ] Parallel test runner!
 - [ ] Random order option for serial (_and later parallel_) test runner(s)
+- [ ] Provide a `Print()` macro for use in tests to always show provided output
+  - [ ] Consider not using `_Log_` as a dependency because many of my _tested projects_ use it
+- [ ] Capture `STDOUT`/`STDERR` in tests (_and provide ways to assert on their output / output in results_)
 
 # License
 
