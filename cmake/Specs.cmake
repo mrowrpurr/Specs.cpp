@@ -1,0 +1,93 @@
+set(LIBRARY_NAME specs)
+
+add_library(${LIBRARY_NAME} INTERFACE)
+target_include_directories(${LIBRARY_NAME} INTERFACE
+    # The C++ interfaces
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.API/include>
+
+    # Support for shared DLLs
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.DLL/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.DllLoader/include>
+
+    # Core implementation classes for main interfaces
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.Implementations/include>
+
+    # Available Runners and Reporters
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.Runners/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.Reporters/include>
+
+    # main() entrypoint
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.Main/include>
+
+    # DSLs for defining specs
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.DSLs/include>
+
+    # Provides <Specs.h> helper header
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs/include>
+
+    $<INSTALL_INTERFACE:include>
+)
+
+include(GNUInstallDirs)
+install(TARGETS ${LIBRARY_NAME}
+    EXPORT ${LIBRARY_NAME}Targets
+    INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+)
+
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+    # The C++ interfaces
+    install(DIRECTORY Specs.API/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+    # Support for shared DLLs
+    install(DIRECTORY Specs.DLL/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+    install(DIRECTORY Specs.DllLoader/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+    # Core implementation classes for main interfaces
+    install(DIRECTORY Specs.Implementations/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+    # Available Runners and Reporters
+    install(DIRECTORY Specs.Runners/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+    install(DIRECTORY Specs.Reporters/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+    # main() entrypoint
+    install(DIRECTORY Specs.Main/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+    # DSLs for defining specs
+    install(DIRECTORY Specs.DSLs/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+    # Provides <Specs.h> helper header
+    install(DIRECTORY Specs/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+endif()
+
+install(EXPORT ${LIBRARY_NAME}Targets
+    FILE ${LIBRARY_NAME}Targets.cmake
+    NAMESPACE ${namespace}::
+    DESTINATION share/${LIBRARY_NAME}
+)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    ${LIBRARY_NAME}ConfigVersion.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+
+string(CONCAT config_cmake_in
+    "@PACKAGE_INIT@\n"
+    "include(\"\${CMAKE_CURRENT_LIST_DIR}/${LIBRARY_NAME}Targets.cmake\")\n"
+)
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}Config.cmake.in" "${config_cmake_in}")
+
+configure_package_config_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}Config.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}Config.cmake"
+    INSTALL_DESTINATION share/${LIBRARY_NAME}
+    PATH_VARS CMAKE_INSTALL_PREFIX
+    NO_CHECK_REQUIRED_COMPONENTS_MACRO
+)
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}Config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}ConfigVersion.cmake"
+    DESTINATION share/${LIBRARY_NAME}
+)

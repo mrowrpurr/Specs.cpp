@@ -889,6 +889,7 @@ TODO
 
 There are a few features which I hope to add in the future!
 
+- [ ] `vcpkg` / CMake distribution
 - [ ] Ability to "tag" tests (and setup/teardown/groups) with metadata
   - _For example, to customize a test's timeout or tag multiple tests with a tag that can be executed in isolation_
   - ```cpp
