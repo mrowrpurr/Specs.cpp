@@ -23,7 +23,7 @@
 #include "DSLs/TopLevel/Test.h"            // IWYU pragma: keep
 #include "DSLs/TopLevel/TestAsync.h"       // IWYU pragma: keep
 #include "DSLs/TopLevel/TestGroup.h"       // IWYU pragma: keep
+#include "DSLs/TopLevel/TestGroupFn.h"     // IWYU pragma: keep
 #include "DSLs/TopLevel/UnsetTestGroup.h"  // IWYU pragma: keep
-
 
 using SpecDone = SpecsCpp::SpecDone;

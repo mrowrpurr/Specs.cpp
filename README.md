@@ -13,6 +13,8 @@ C++ test framework with simple syntax which supports async tests.
 ```cpp
 #include <Specs.h>
 
+TestGroup("My Tests");
+
 Setup { /* Setup Code */ }
 Teardown { /* Teardown Code */ }
 
@@ -31,8 +33,11 @@ TestAsync("Slow things") {
 
 1. I enjoy authoring testing frameworks.
 2. I wanted very simple, readable syntax for tests.
-3. I needed to write async tests.
+3. I wanted to use existing assertion libraries.
+4. I needed to write async tests.
+5. I needed to be able to load and run tests from shared libraries.
 
+> _I'm proud of the result and I hope you enjoy using it!_
 
 # Table of Contents
 
@@ -78,7 +83,7 @@ TestAsync("Slow things") {
   - [Available Built-in Syntax](#available-built-in-syntax)
     - [`Test("...") { ... }`](#test---)
     - [`TestAsync("...") { ...; done() }`](#testasync---done-)
-    - [`SetTestGroup("...");`](#settestgroup)
+    - [`TestGroup("...");`](#testgroup)
     - [`UnsetTestGroup();`](#unsettestgroup)
     - [`Setup { ... }`](#setup---)
     - [`Teardown { ... }`](#teardown---)
@@ -281,7 +286,7 @@ To customize the available style syntax, see [Choosing Available Syntax](#choosi
 
 #### One Test Group
 
-One test group per file using `SetTestGroup` and multiple top-level `Test` macros.
+One test group per file using `TestGroup` and multiple top-level `Test` macros.
 
 > The `Test` macro has built-in aliases: `Spec` and `It`.
 
@@ -297,7 +302,7 @@ One test group per file using `SetTestGroup` and multiple top-level `Test` macro
 //
 // Note: if you use this in one file, you should use it in ALL files
 //       so that each file's components are properly scoped under 1 group per file
-SetTestGroup("My Group of Tests");
+TestGroup("My Group of Tests");
 
 Setup { /* Setup Code */ }
 Teardown { /* Teardown Code */ }
@@ -402,8 +407,8 @@ DescribeFn(MyTestGroup) {
   });
 }
 
-// Or, you can use the TestGroup alias:
-TestGroup(MyTestGroup2) {
+// Or, you can use the TestGroupFn alias:
+TestGroupFn(MyTestGroup2) {
   setup([]() { /* Setup Code */ });
   teardown([]() { /* Teardown Code */ });
   test("Name of a test", []() {
@@ -586,7 +591,9 @@ These are added to the global test group (_or the test group defined by `TestGro
 
 The code block must call the `done()` callback when the test is complete.
 
-### `SetTestGroup("...");`
+### `TestGroup("...");`
+
+> Alias: `SetTestGroup("...");`
 
 Global top-level macro for defining a test group.
 
@@ -596,7 +603,7 @@ When used, the top-level macros `Test`, `Setup`, and `Teardown` (_etc_) will be 
 #include <Specs.h>
 
 // With this, everything in this file will be scoped under a 'My Group of Tests' test group
-SetTestGroup("My Group of Tests");
+TestGroup("My Group of Tests");
 
 Setup {
   // Setup code goes here... (scoped to this file!)
@@ -613,7 +620,7 @@ Test("Something") {
 
 ### `UnsetTestGroup();`
 
-When you use `SetTestGroup("...")`, the defined test group is used across all files _**until**_ `SetTestGroup("...")` is called again with a new group.
+When you use `TestGroup("...")`, the defined test group is used across all files _**until**_ `TestGroup("...")` is called again with a new group.
 
 If you would prefer to simply unset the current test group and return to the global test group, you can use `UnsetTestGroup()`.
 
@@ -625,7 +632,7 @@ These are added to the global test group (_or the test group defined by `TestGro
 
 > **Note:** if you have multiple files, the `Setup` and `Teardown` blocks are shared across all files.
 > 
-> If you only want your `Setup` and `Teardown` to run for your specific file, please use [`SetTestGroup`](#settestgroup) so all of your file is scoped to one test group.
+> If you only want your `Setup` and `Teardown` to run for your specific file, please use [`TestGroup`](#testgroup) so all of your file is scoped to one test group.
 
 ### `Teardown { ... }`
 
@@ -635,7 +642,7 @@ These are added to the global test group (_or the test group defined by `TestGro
 
 > **Note:** if you have multiple files, the `Setup` and `Teardown` blocks are shared across all files.
 > 
-> If you only want your `Setup` and `Teardown` to run for your specific file, please use [`SetTestGroup`](#settestgroup) so all of your file is scoped to one test group.
+> If you only want your `Setup` and `Teardown` to run for your specific file, please use [`TestGroup`](#testgroup) so all of your file is scoped to one test group.
 
 ### `Config { ... }`
 
@@ -681,7 +688,7 @@ You can also use the `describe` function to define nested groups.
 
 ### `DescribeFn(UniqueToken) { ... }`
 
-> Alias: `TestGroup`
+> Alias: `TestGroupFn(UniqueToken)`
 
 > Allows you to forgo the `spec_file` define if you only use lambda functions.
 
@@ -766,7 +773,8 @@ You can pick and choose which macros and functions are available by including th
 #include <DSLs/TopLevel/Test.h>
 #include <DSLs/TopLevel/It.h> // It() { ... } is an alias for Test()
 #include <DSLs/TopLevel/TestAsync.h>
-#include <DSLs/TopLevel/TestGroup.h> // Alias for DescribeFn()
+#include <DSLs/TopLevel/TestGroup.h> // Alias for SetTestGroup
+#include <DSLs/TopLevel/TestGroupFn.h> // Alias for DescribeFn()
 #include <DSLs/TopLevel/SetTestGroup.h>
 ```
 
