@@ -115,3 +115,23 @@ install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}ConfigVersion.cmake"
     DESTINATION share/${LIBRARY_NAME}
 )
+
+# Add a specs_main target:
+
+# Allows linking to specs::specs_main to automatically add a main() entrypoint to your specs
+
+add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+target_link_libraries(specs_main PUBLIC specs::specs)
+
+install(TARGETS specs_main
+    EXPORT ${LIBRARY_NAME}Targets
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+install(EXPORT ${LIBRARY_NAME}Targets
+    FILE ${LIBRARY_NAME}Targets.cmake
+    NAMESPACE ${namespace}::
+    DESTINATION share/${LIBRARY_NAME}
+)
