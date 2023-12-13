@@ -29,6 +29,10 @@ target_include_directories(${LIBRARY_NAME} INTERFACE
 )
 
 find_package(function_pointer CONFIG REQUIRED)
+
+# Debugging...
+message(STATUS "Found function_pointer: ${function_pointer_FOUND}")
+
 find_package(global_macro_functions CONFIG REQUIRED)
 find_package(collections CONFIG REQUIRED)
 find_package(_Log_ CONFIG REQUIRED)
