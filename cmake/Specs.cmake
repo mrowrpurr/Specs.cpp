@@ -29,10 +29,6 @@ target_include_directories(${LIBRARY_NAME} INTERFACE
 )
 
 find_package(function_pointer CONFIG REQUIRED)
-
-# Debugging...
-message(STATUS "Found function_pointer: ${function_pointer_FOUND}")
-
 find_package(global_macro_functions CONFIG REQUIRED)
 find_package(collections CONFIG REQUIRED)
 find_package(_Log_ CONFIG REQUIRED)
@@ -95,6 +91,13 @@ write_basic_package_version_file(
 
 string(CONCAT config_cmake_in
     "@PACKAGE_INIT@\n"
+    "include(CMakeFindDependencyMacro)\n"
+    "find_dependency(function_pointer CONFIG)\n"
+    "find_dependency(global_macro_functions CONFIG)\n"
+    "find_dependency(collections CONFIG)\n"
+    "find_dependency(_Log_ CONFIG)\n"
+    "find_dependency(string_format CONFIG)\n"
+    "find_dependency(cxxopts CONFIG)\n"
     "include(\"\${CMAKE_CURRENT_LIST_DIR}/${LIBRARY_NAME}Targets.cmake\")\n"
 )
 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}Config.cmake.in" "${config_cmake_in}")
