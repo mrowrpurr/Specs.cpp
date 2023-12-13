@@ -57,6 +57,10 @@ TestAsync("Slow things") {
     - [With Assertion Library Integration](#with-assertion-library-integration)
       - [`xmake.lua`](#xmakelua-1)
   - [vcpkg / CMake](#vcpkg--cmake)
+    - [`CMakeLists.txt`](#cmakeliststxt)
+    - [`vcpkg.json`](#vcpkgjson)
+    - [`vcpkg-configuration.json`](#vcpkg-configurationjson)
+    - [`libassert`](#libassert)
 - [`Specs.cpp` Usage Documentation](#specscpp-usage-documentation)
   - [Creating Test Files](#creating-test-files)
     - [Single test file](#single-test-file)
@@ -184,9 +188,90 @@ For `snowhouse` or `libassert` integration, you need to "_bring your own_" versi
 
 ## vcpkg / CMake
 
+### `CMakeLists.txt`
+
+```cmake
+add_executable(MyTests tests.cpp)
+
+# Find specs and link it to your target
+find_package(specs CONFIG REQUIRED)
+target_link_libraries(MyTests PRIVATE specs::specs)
 ```
-TODO - Coming Soon!
+
+Optionally, add `snowhouse` and the `specs` adapter for `snowhouse`:
+
+```cmake
+# Find snowhouse (header-only) and link it to your target
+find_path(SNOWHOUSE_INCLUDE_DIRS "snowhouse/assert.h")
+target_include_directories(MyTests PRIVATE ${SNOWHOUSE_INCLUDE_DIRS})
+
+# Find and link the specs adapter for snowhouse
+find_package(specs_snowhouse CONFIG REQUIRED)
+target_link_libraries(MySpecs PRIVATE specs::specs specs::specs_snowhouse)
 ```
+
+### `vcpkg.json`
+
+```json
+{
+    "dependencies": [
+        "specs"
+    ]
+}
+```
+
+And if you want to use `snowhouse` assertions:
+
+```json
+{
+    "dependencies": [
+        "specs",
+        "snowhouse",
+        "specs-snowhouse"
+    ]
+}
+```
+
+### `vcpkg-configuration.json`
+
+```json
+{
+    "default-registry": {
+        "kind": "git",
+        "repository": "https://github.com/microsoft/vcpkg.git",
+        "baseline": "ff6867374598312866fecfc64736a334591ceace"
+    },
+    "registries": [
+        {
+            "kind": "git",
+            "repository": "https://github.com/MrowrLib/Packages.git",
+            "baseline": "bc470bd6c6344d04298cfebd432fd9046407eeb0",
+            "packages": [
+                "specs",
+                "specs-snowhouse",
+                "specs-libassert",
+                "mrowr-specs-snowhouse",
+                "mrowr-function-pointer",
+                "mrowr-global-macro-functions",
+                "mrowr-collections",
+                "mrowr-log",
+                "mrowr-string-format"
+            ]
+        }
+    ]
+}
+```
+
+> _Update the default-registry baseline to the latest commit from https://github.com/microsoft/vcpkg_  
+> _Update the MrowrLib/Packages baseline to the latest commit from https://github.com/MrowrLib/Packages_
+
+### `libassert`
+
+While `libassert` is available in the public `xmake` package registry, it is not currently available via `vcpkg`.
+
+You can read the [How To Use This Library](https://github.com/jeremy-rifkin/libassert?tab=readme-ov-file#how-to-use-this-library) section of the `libassert` GitHub README on ways to use the library.
+
+Once you have it installed, the steps to use the `specs` adapter for `libassert` should be the same as those steps shown for `snowhouse` above.
 
 # `Specs.cpp` Usage Documentation
 
@@ -889,7 +974,6 @@ TODO
 
 There are a few features which I hope to add in the future!
 
-- [ ] `vcpkg` / CMake distribution
 - [ ] Ability to "tag" tests (and setup/teardown/groups) with metadata
   - _For example, to customize a test's timeout or tag multiple tests with a tag that can be executed in isolation_
   - ```cpp
@@ -908,6 +992,7 @@ There are a few features which I hope to add in the future!
 - [ ] Provide a `Print()` macro for use in tests to always show provided output
   - [ ] Consider not using `_Log_` as a dependency because many of my _tested projects_ use it
 - [ ] Capture `STDOUT`/`STDERR` in tests (_and provide ways to assert on their output / output in results_)
+- [ ] Host a `libassert` `vcpkg` port in the `MrowrLib/Packages` registry
 
 # License
 
