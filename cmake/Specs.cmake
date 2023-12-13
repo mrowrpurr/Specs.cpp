@@ -2,6 +2,21 @@ set(LIBRARY_NAME specs)
 
 add_library(${LIBRARY_NAME} INTERFACE)
 
+add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+
+# Note: C++17 would be ok if `fmt` is used, but this library relies on <string_format.h>
+# which requires EITHER fmt OR C++20 (for the <format> header)
+target_compile_features(specs_main PRIVATE cxx_std_20)
+
+target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
+
+install(TARGETS specs_main
+    EXPORT ${LIBRARY_NAME}Targets
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
 target_include_directories(${LIBRARY_NAME} INTERFACE
     # The C++ interfaces
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.API/include>
@@ -114,30 +129,5 @@ configure_package_config_file(
 install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}Config.cmake"
     "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}ConfigVersion.cmake"
-    DESTINATION share/${LIBRARY_NAME}
-)
-
-# Add a specs_main target:
-
-# Allows linking to specs::specs_main to automatically add a main() entrypoint to your specs
-
-add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-
-# Note: C++17 would be ok if `fmt` is used, but this library relies on <string_format.h>
-# which requires EITHER fmt OR C++20 (for the <format> header)
-target_compile_features(specs_main PRIVATE cxx_std_20)
-
-target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
-
-install(TARGETS specs_main
-    EXPORT ${LIBRARY_NAME}Targets
-    ARCHIVE DESTINATION lib
-    LIBRARY DESTINATION lib
-    RUNTIME DESTINATION bin
-)
-
-install(EXPORT ${LIBRARY_NAME}Targets
-    FILE ${LIBRARY_NAME}Targets.cmake
-    NAMESPACE ${namespace}::
     DESTINATION share/${LIBRARY_NAME}
 )
