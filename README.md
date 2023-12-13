@@ -128,11 +128,11 @@ With this setup, any `std::exception` (_or literal string_) thrown will be caugh
 ```lua
 add_repositories("MrowrLib https://github.com/MrowrLib/Packages.git")
 
-add_requires("specs_cpp")
+add_requires("specs")
 
 target("MySpecs")
     set_kind("binary")
-    add_packages("specs_cpp")
+    add_packages("specs")
     add_files("*.cpp")
 ```
 
@@ -147,25 +147,25 @@ See [Create Custom Exception Handler](#create-custom-exception-handler) for more
 ```lua
 add_repositories("MrowrLib https://github.com/MrowrLib/Packages.git")
 
-add_requires("specs_cpp")
+add_requires("specs")
 
 -- For integration with snowhouse assertion library:
-add_requires("vcpkg::snowhouse", "specs_cpp_snowhouse")
+add_requires("vcpkg::snowhouse", "specs_snowhouse")
 
 -- For integration with libassert assertion library:
 add_requires("libassert_latest", { configs = { lowercase = true } })
-add_requires("specs_cpp_libassert")
+add_requires("specs_libassert")
 
 target("MySpecs")
     set_kind("binary")
-    add_packages("specs_cpp")
+    add_packages("specs")
     add_files("*.cpp")
 
     -- For integration with snowhouse assertion library:
-    add_packages("vcpkg::snowhouse", "specs_cpp_snowhouse")
+    add_packages("vcpkg::snowhouse", "specs_snowhouse")
 
     -- For integration with libassert assertion library:
-    add_packages("libassert_latest", "specs_cpp_libassert")
+    add_packages("libassert_latest", "specs_libassert")
 ```
 
 > _Note: as of 12/1/23 the `libassert` xmake package wasn't working for me, so I hosted `libassert_latest` on the `MrowrLib` xmake package registry which uses the latest version from GitHub and currently works for me._
