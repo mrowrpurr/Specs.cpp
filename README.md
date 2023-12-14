@@ -248,7 +248,7 @@ And if you want to use `snowhouse` assertions:
         {
             "kind": "git",
             "repository": "https://github.com/MrowrLib/Packages.git",
-            "baseline": "bc470bd6c6344d04298cfebd432fd9046407eeb0",
+            "baseline": "03e48cd08771b97a493dffb38b1ef17a49e8b21c",
             "packages": [
                 "specs",
                 "specs-snowhouse",
