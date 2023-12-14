@@ -2,109 +2,24 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
-// TODO - Async :)
+class DestroyMe {
+public:
+    DestroyMe() { _Log_("DestroyMe::DestroyMe()"); }
+    ~DestroyMe() { _Log_("DestroyMe::~DestroyMe()"); }
+};
 
-//////////////
-//////////////
-
-// TestTemplate("Cool Template") {
-//     setup([]() { _Log_("TEMPLATE Setup!"); });
-//     teardown([]() { _Log_("TEMPLATE Teardown!"); });
-// }
-
-DefineTemplate("Cool Template");
-Setup { _Log_("!!! HI from the defined COOL TEMPLATE setup"); }
-Teardown { _Log_("!!! HI from the defined COOL TEMPLATE teardown"); }
-
-DefineTemplate("Another Template");
-Setup { _Log_("!!! HI from the defined ANOTHER TEMPLATE setup"); }
-Teardown { _Log_("!!! HI from the defined ANOTHER TEMPLATE teardown"); }
-
-TestGroup("Hello Specs");
-
-UseTemplate("Cool Template");
-UseTemplate("Another Template");
-
-DescribeFn(TestGroup1) {
-    test("some test", []() { AssertThat(1, Equals(1)); });
+Setup {
+    current_spec->var("answer", 42);
+    current_spec->var_text("c-string", "Hello, World!");
+    current_spec->var("destroy_me", new DestroyMe());
 }
 
-// Setup { _Log_("HI from SETUP in Hello Specs"); }
-
-SetupAsync {
-    _Log_(
-        "~~~ HI from async SETUP in group '{}' and for spec '{}'",
-        current_setup->group()->description(), current_spec->description()
-    );
-    done();
+Test("First test") {
+    //
+    _Log_("The answer is {}", current_spec->var<int>("answer"));
+    _Log_("The c-string is {}", current_spec->var_text("c-string"));
 }
 
-TeardownAsync {
-    _Log_("HI from async TEARDOWN");
-    done();
-}
-
-// Tag("Foo", "Bar");  // <--- metadata for specs
-// Tags({
-//     {"Foo",  "Bar"     },
-//     {"Blah", "Whatever"},
-// });
-TestAsync("Testing something async") {
-    _Log_("YOU CALLED the Testing something async TEST!");
-    // done();
-}
-
-Describe("Some Specs") {
-    // FULL list of possible variables for it/setup/teardown
-    // it("Something ASYNC", [](SpecsCpp::ISpecComponent* component, SpecsCpp::ISpec* spec,
-    //                          SpecsCpp::SpecCodeBlock::SpecCodeBlockAsyncDoneFn* doneFn) {
-    //     _Log_("YOU CALLED the Something ASYNC TEST!");
-    // });
-
-    // tag("timeout", 30000);
-    setup([](SpecDone done) {
-        _Log_("HI from async SETUP");
-        done();
-    });
-
-    teardown([](SpecDone done) {
-        _Log_("HI from async TEARDOWN");
-        done();
-    });
-
-    // tags({
-    //     {"foo",  "bar"     },
-    //     {"blah", "whatever"},
-    // });
-    test("Something Async", [](SpecDone done) {
-        _Log_("YOU CALLED the Something ASYNC TEST!");
-        // throw "KABOOM before done was called";
-        // assert(1 == 69);
-        AssertThat(1, Equals(69));
-        done();
-    });
-}
-
-Describe("DESCRIBE") {
-    setup([]() { _Log_("HI from SETUP"); });
-    teardown([]() { _Log_("HI from TEARDOWN"); });
-    // it("IT 1", []() { _Log_("HI from IT 1"); });
-
-    describe("CHILD", []() {
-        setup([]() {
-            _Log_(">> HI from SETUP");
-            // throw "BOOM!";
-        });
-        teardown([]() { _Log_(">> HI from TEARDOWN"); });
-        // it("IT 2", []() { _Log_(">> HI from IT 2"); });
-
-        describe("CHILD 2", []() {
-            setup([]() { _Log_(">>>> HI from SETUP"); });
-            teardown([]() { _Log_(">>>> HI from TEARDOWN"); });
-            it("IT 3", []() {
-                _Log_("~~>>>> HI from IT 3");
-                // AssertThat(1, Equals(69));
-            });
-        });
-    });
+Test("Second Test") {
+    //
 }

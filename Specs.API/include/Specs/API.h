@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <exception>  // <--- only for LOCAL Exception Handler implementation
+#include <type_traits>
 
 namespace SpecsCpp {
 
@@ -150,6 +151,45 @@ namespace SpecsCpp {
                    virtual public ISpecHasCodeBlock {
         virtual ~ISpec()                                   = default;
         virtual ISpecVariableCollection* variables() const = 0;
+
+        // Variable helpers:
+
+        ISpecVariableCollection* vars() const { return variables(); }
+
+        IVoidPointer* var(const char* name) const { return variables()->get(name); }
+
+        template <typename T, typename std::enable_if<!std::is_pointer<T>::value, int>::type = 0>
+        T var(const char* name) const {
+            return *var(name)->as<T>();
+        }
+
+        template <typename T, typename std::enable_if<std::is_pointer<T>::value, int>::type = 0>
+        T* var(const char* name) const {
+            return var(name)->as<T>();
+        }
+
+        template <typename T>
+        T* var(const char* name, T* value) {
+            variables()->set(name, new VoidPointer<T>(value));
+            return value;
+        }
+
+        template <typename T>
+        void var(const char* name, T&& value) {
+            variables()->set(name, new VoidPointer<T>(new T(std::forward<T>(value))));
+        }
+
+        const char* var_text(const char* name) {
+            char* value = var(name)->as<char>();
+            return value ? value : nullptr;
+        }
+
+        const char* var_text(const char* name, const char* value) {
+            char* copy = new char[strlen(value) + 1];
+            strcpy_s(copy, strlen(value) + 1, value);
+            variables()->set(name, new VoidPointer<char>(copy));
+            return var_text(name);
+        }
     };
 
     // This cannot be implemented across DLL boundaries, it's only for LOCAL use witha LOCAL
