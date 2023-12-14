@@ -7,6 +7,6 @@ UnsetTestGroup();
 
 Setup { _Log_("3x More More More Specs"); }
 
-TestGroup(TestGroup2) {
+TestGroupFn(TestGroup2) {
     test("some MORE test", []() { AssertThat(1, Equals(1)); });
 }

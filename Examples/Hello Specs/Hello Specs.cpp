@@ -7,7 +7,23 @@
 //////////////
 //////////////
 
-SetTestGroup("Hello Specs");
+// TestTemplate("Cool Template") {
+//     setup([]() { _Log_("TEMPLATE Setup!"); });
+//     teardown([]() { _Log_("TEMPLATE Teardown!"); });
+// }
+
+DefineTemplate("Cool Template");
+Setup { _Log_("!!! HI from the defined COOL TEMPLATE setup"); }
+Teardown { _Log_("!!! HI from the defined COOL TEMPLATE teardown"); }
+
+DefineTemplate("Another Template");
+Setup { _Log_("!!! HI from the defined ANOTHER TEMPLATE setup"); }
+Teardown { _Log_("!!! HI from the defined ANOTHER TEMPLATE teardown"); }
+
+TestGroup("Hello Specs");
+
+UseTemplate("Cool Template");
+UseTemplate("Another Template");
 
 DescribeFn(TestGroup1) {
     test("some test", []() { AssertThat(1, Equals(1)); });

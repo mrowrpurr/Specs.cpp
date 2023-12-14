@@ -2,7 +2,9 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
-SetTestGroup("More Specs");
+TestGroup("More Specs");
+
+UseTemplate("Cool Template");
 
 Setup { _Log_("More Specs setup"); }
 

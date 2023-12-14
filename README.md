@@ -78,16 +78,19 @@ TestAsync("Slow things") {
       - [Multiple Test Groups](#multiple-test-groups)
     - [Lambda Functions](#lambda-functions)
       - [Without `spec_file` define](#without-spec_file-define)
-  - [Command-Line Options](#command-line-options)
-    - [Filtering Tests by Name](#filtering-tests-by-name)
-    - [Random Ordering](#random-ordering)
-    - [Loading Tests from Shared Libraries (`.dll/.so`)](#loading-tests-from-shared-libraries-dllso)
-      - [Define specs in a shared library](#define-specs-in-a-shared-library)
-        - [`MySpecs.cpp`](#myspecscpp-1)
   - [Setup and Teardown](#setup-and-teardown)
     - [Top-Level Setup and Teardown](#top-level-setup-and-teardown)
     - [Setup and Teardown inside groups](#setup-and-teardown-inside-groups)
   - [Async Tests](#async-tests)
+  - [Shared Spec Templates](#shared-spec-templates)
+    - [Defining Shared Templates](#defining-shared-templates)
+    - [Using Shared Templates](#using-shared-templates)
+- [Command-Line Options](#command-line-options)
+  - [Filtering Tests by Name](#filtering-tests-by-name)
+  - [Random Ordering](#random-ordering)
+  - [Loading Tests from Shared Libraries (`.dll/.so`)](#loading-tests-from-shared-libraries-dllso)
+    - [Define specs in a shared library](#define-specs-in-a-shared-library)
+      - [`MySpecs.cpp`](#myspecscpp-1)
 - [Syntax](#syntax)
   - [Available Built-in Syntax](#available-built-in-syntax)
     - [`Test("...") { ... }`](#test---)
@@ -512,67 +515,6 @@ TestGroupFn(MyTestGroup2) {
 }
 ```
 
-## Command-Line Options
-
-```
-Specs.cpp command line options
-Usage:
-  Specs.cpp [OPTION...]
-
-  -n, --name arg           Filter name of test/group to run
-  -s, --spec arg           Filter name of test to run
-  -g, --group arg          Filter name of group to run
-  -r, --pattern arg        Regex pattern filter of test/group to run
-      --spec-pattern arg   Regex pattern filter of test to run
-      --group-pattern arg  Regex pattern filter of group to run
-  -l, --list               List all tests and groups
-      --dll arg            Load specs from provided .dll/.so file path
-  -h, --help               Print usage
-```
-
-### Filtering Tests by Name
-
-Running your test suite with `-n/--name something` will only run tests which contain `"something"` in the test name. This includes the spec group name(s).
-
-To only filter on the name of the test itself, use `-s/--spec`.
-
-To only filter on the name of the spec group, use `-g/--group`.
-
-You can provide regex patterns to filter on names using `-r/--pattern`, `--spec-pattern`, and `--group-pattern`.
-
-Like `-n/--name`, `-r/--pattern` will filter on both the test name and spec group name(s).
-
-### Random Ordering
-
-```
-TODO ~ Not implemented yet
-```
-
-### Loading Tests from Shared Libraries (`.dll/.so`)
-
-You can organize your tests into shared libraries and load them at runtime.
-
-#### Define specs in a shared library
-
-
-##### `MySpecs.cpp`
-
-```cpp
-// Instead of using <Specs/Main.h> for your console/binary entrypoint,
-// for a shared library you include <Specs/DLL.h> which defines the shared library entrypoint.
-#include <Specs/DLL.h>
-
-Test("Something") {
-    // Test code goes here...
-}
-```
-
-Then, to load the shared library at runtime, run any Specs executable and pass the path to the shared library using `--dll` or `--so`:
-
-```sh
-MySpecs.exe --dll SomeSpecs.dll --dll SomeOtherSpecs.dll
-```
-
 ## Setup and Teardown
 
 Whenever a test is run, the following sequence of events occurs:
@@ -687,6 +629,130 @@ You can configure the timeout via the `-t/--timeout` command-line option which t
 ```sh
 # Set timeout to 3 seconds
 MySpecs.exe -t 3000
+```
+
+## Shared Spec Templates
+
+You may find yourself wanting to define a set of tests or setup/teardown blocks which you can reuse across multiple test files.
+
+### Defining Shared Templates
+
+You can define a shared spec template using the `DefineTemplate` macro.
+
+```cpp
+DefineTemplate("Database Template");
+
+Setup {
+  // Database setup code goes here...
+}
+
+Teardown {
+  // Database teardown code goes here...
+}
+
+Test("Database connection OK") {
+  // Test code goes here...
+}
+```
+
+You can define multiple templates in the same file:
+
+```cpp
+DefineTemplate("Database Template");
+
+Setup { /* ... */ }
+Teardown { /* ... */ }
+
+DefineTemplate("Another Template");
+
+Setup { /* ... */ }
+Teardown { /* ... */ }
+```
+
+> _Note: to "clear" the global context so a template is no longer being defined, either use `TestGroup` or `UnsetTestGroup`_
+
+### Using Shared Templates
+
+Then, wherever you want to use one or more templates, use the `UseTemplate` macro or the `use_template` function:
+
+```cpp
+TestGroup("My Tests");
+
+UseTemplate("Database Template");
+UseTemplate("Another Template");
+```
+
+Or in nested group:
+
+```cpp
+Describe("Some Tests") {
+    use_template("Database Template");
+    // ...
+    describe("Inner Group", []() {
+        // ...
+        use_template("Another Template");
+    });
+}
+```
+
+# Command-Line Options
+
+```
+Specs.cpp command line options
+Usage:
+  Specs.cpp [OPTION...]
+
+  -n, --name arg           Filter name of test/group to run
+  -s, --spec arg           Filter name of test to run
+  -g, --group arg          Filter name of group to run
+  -r, --pattern arg        Regex pattern filter of test/group to run
+      --spec-pattern arg   Regex pattern filter of test to run
+      --group-pattern arg  Regex pattern filter of group to run
+  -l, --list               List all tests and groups
+      --dll arg            Load specs from provided .dll/.so file path
+  -h, --help               Print usage
+```
+
+## Filtering Tests by Name
+
+Running your test suite with `-n/--name something` will only run tests which contain `"something"` in the test name. This includes the spec group name(s).
+
+To only filter on the name of the test itself, use `-s/--spec`.
+
+To only filter on the name of the spec group, use `-g/--group`.
+
+You can provide regex patterns to filter on names using `-r/--pattern`, `--spec-pattern`, and `--group-pattern`.
+
+Like `-n/--name`, `-r/--pattern` will filter on both the test name and spec group name(s).
+
+## Random Ordering
+
+```
+TODO ~ Not implemented yet
+```
+
+## Loading Tests from Shared Libraries (`.dll/.so`)
+
+You can organize your tests into shared libraries and load them at runtime.
+
+### Define specs in a shared library
+
+#### `MySpecs.cpp`
+
+```cpp
+// Instead of using <Specs/Main.h> for your console/binary entrypoint,
+// for a shared library you include <Specs/DLL.h> which defines the shared library entrypoint.
+#include <Specs/DLL.h>
+
+Test("Something") {
+    // Test code goes here...
+}
+```
+
+Then, to load the shared library at runtime, run any Specs executable and pass the path to the shared library using `--dll` or `--so`:
+
+```sh
+MySpecs.exe --dll SomeSpecs.dll --dll SomeOtherSpecs.dll
 ```
 
 # Syntax

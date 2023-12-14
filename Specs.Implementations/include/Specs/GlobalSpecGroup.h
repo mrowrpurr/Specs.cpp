@@ -9,8 +9,10 @@
 #include <Specs/SpecTeardown.h>
 #include <Specs/SpecTest.h>
 #include <_Log_.h>
+#include <collections.h>
 
 #include <memory>
+#include <string>
 #include <string_view>
 #include <vector>
 
@@ -26,6 +28,8 @@ namespace SpecsCpp {
         std::vector<std::unique_ptr<SpecSetup>>    _registeredSetups;
         std::vector<std::unique_ptr<SpecTeardown>> _registeredTeardowns;
         std::vector<std::unique_ptr<SpecGroup>>    _registeredGroups;
+
+        collections_map<std::string, std::unique_ptr<SpecGroup>> _testTemplateGroups;
 
     public:
         GlobalSpecGroup() {
@@ -47,6 +51,7 @@ namespace SpecsCpp {
         ISpecGroup* get() const {
             return _currentGroupStack.empty() ? nullptr : _currentGroupStack.back();
         }
+        void set(ISpecGroup* group) { _currentGroupStack.back() = group; }
         void push(ISpecGroup* group) { _currentGroupStack.push_back(group); }
         void pop() { _currentGroupStack.pop_back(); }
 
@@ -61,7 +66,6 @@ namespace SpecsCpp {
             }
         }
 
-        // TODO
         void register_group(
             std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock
         ) {
@@ -80,6 +84,20 @@ namespace SpecsCpp {
             }
         }
 
+        void register_template(
+            std::string_view templateName, std::unique_ptr<SpecCodeBlock> codeBlock
+        ) {
+            auto  templateGroup    = std::make_unique<SpecGroup>(nullptr, templateName);
+            auto* templateGroupPtr = templateGroup.get();
+
+            auto* currentGroup = get();
+            set(templateGroupPtr);
+            codeBlock->run(templateGroupPtr, nullptr, nullptr);
+            set(currentGroup);
+
+            _testTemplateGroups[templateName.data()] = std::move(templateGroup);
+        }
+
         void register_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
                 auto Setup = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
@@ -94,6 +112,10 @@ namespace SpecsCpp {
                 _registeredTeardowns.push_back(std::move(Teardown));
                 group->add_teardown(_registeredTeardowns.back().get());
             }
+        }
+
+        void register_template_fn(std::string_view templateName, FunctionPointer<void()> body) {
+            register_template(templateName, std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 
         void register_group_fn(std::string_view description, FunctionPointer<void()> body) {
@@ -136,16 +158,40 @@ namespace SpecsCpp {
         }
 
         void register_top_level_group(std::string_view description) {
-            if (auto* group = get()) {
-                // Is there another top-level group? Let's pop it off
-                clear_top_level_group();
+            clear_top_level_group();
 
+            if (auto* group = get()) {
                 auto  specGroup       = std::make_unique<SpecGroup>(get(), description);
                 auto* specGroupPtr    = specGroup.get();
                 _currentTopLevelGroup = specGroupPtr;
                 _registeredGroups.push_back(std::move(specGroup));
                 group->add_group(specGroupPtr);
                 push(specGroupPtr);
+            }
+        }
+
+        void register_top_level_template(std::string_view templateName) {
+            clear_top_level_group();
+
+            if (auto* group = get()) {
+                auto  specGroup       = std::make_unique<SpecGroup>(get(), templateName);
+                auto* specGroupPtr    = specGroup.get();
+                _currentTopLevelGroup = specGroupPtr;
+                _testTemplateGroups[templateName.data()] = std::move(specGroup);
+                push(specGroupPtr);
+            }
+        }
+
+        void use_template(std::string_view templateName) {
+            if (auto* group = get()) {
+                auto found = _testTemplateGroups.find(templateName.data());
+                if (found == _testTemplateGroups.end()) {
+                    _Error_("Test template not found: {}", templateName);
+                    return;
+                }
+
+                auto* templateGroup = found->second.get();
+                group->merge(templateGroup);
             }
         }
     };
