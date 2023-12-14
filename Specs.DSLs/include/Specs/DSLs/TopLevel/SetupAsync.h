@@ -2,4 +2,4 @@
 
 #include "../Internal/Macros.h"
 
-#define SetupAsync _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_SETUP(_AsyncSetupDSLMacro_)
+#define SetupAsync _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_SETUP(_SetupAsyncDSLMacro_)

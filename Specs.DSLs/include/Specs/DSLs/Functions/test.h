@@ -16,3 +16,9 @@ inline void test(std::string_view description, std::function<void(SpecsCpp::Spec
         description, function_pointer(std::move(body))
     );
 }
+
+inline void test(std::string_view description, std::function<void(SpecsCpp::ISpecGroup*)> body) {
+    SpecsCpp::GlobalSpecGroup::instance().register_spec_fn(
+        description, function_pointer(std::move(body))
+    );
+}

@@ -85,12 +85,11 @@ TestAsync("Slow things") {
   - [Shared Spec Templates](#shared-spec-templates)
     - [Defining Shared Templates](#defining-shared-templates)
     - [Using Shared Templates](#using-shared-templates)
-- [Command-Line Options](#command-line-options)
-  - [Filtering Tests by Name](#filtering-tests-by-name)
-  - [Random Ordering](#random-ordering)
-  - [Loading Tests from Shared Libraries (`.dll/.so`)](#loading-tests-from-shared-libraries-dllso)
-    - [Define specs in a shared library](#define-specs-in-a-shared-library)
-      - [`MySpecs.cpp`](#myspecscpp-1)
+  - [Spec Info and Variables](#spec-info-and-variables)
+    - [Spec Variables](#spec-variables)
+      - [Set variable value](#set-variable-value)
+      - [Get variable values](#get-variable-values)
+    - [Group Variables](#group-variables)
 - [Syntax](#syntax)
   - [Available Built-in Syntax](#available-built-in-syntax)
     - [`Test("...") { ... }`](#test---)
@@ -693,6 +692,72 @@ Describe("Some Tests") {
         use_template("Another Template");
     });
 }
+```
+
+## Spec Info and Variables
+
+The currently running test is available via the `current_spec` variable.
+
+```cpp
+Test("Some Test") {
+  std::cout << "Current test description: " << current_spec->description() << std::endl;
+}
+```
+
+This is available in `Setup` and `Teardown` blocks as well.
+
+### Spec Variables
+
+If you want to store some data for the duration of a test, you can use the `current_spec.var()` functions.
+
+#### Set variable value
+
+```cpp
+Setup {
+  // Simple types
+  current_spec->var("The answer", 42);
+
+  // Complex type pointers
+  current_spec->var("Some object", new SomeObject());
+
+  // Helper specifically for strings
+  current_spec->var_text("Some string", "Hello, World!");
+}
+```
+
+#### Get variable values
+
+```cpp
+Test("Some Test") {
+  // Simple types
+  int theAnswer = current_spec->var<int>("The answer");
+
+  // Complex type pointers
+  SomeObject* someObject = current_spec->var<SomeObject*>("Some object");
+
+  // Helper specifically for strings
+  const char* someString = current_spec->var_text("Some string");
+}
+```
+
+Spec variables live for the duration of the test and are destroyed when the test is complete.
+
+### Group Variables
+
+Similarly, you can store data for the duration of a group using the `current_group.var()` functions.
+
+```cpp
+Setup {
+    // Group objects are destroyed after the entire group has been executed
+    if (! current_group->has_var("Some object")) {
+        current_group->var("Some object", new SomeObject());
+    }
+}
+
+Test("Some Test") {
+    SomeObject* someObject = current_group->var<SomeObject*>("Some object");
+}
+```
 ```
 
 # Command-Line Options

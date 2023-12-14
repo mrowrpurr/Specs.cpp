@@ -1,5 +1,6 @@
 #pragma once
 
+#include <_Log_.h>
 #include <function_pointer.h>
 #include <void_pointer.h>
 
@@ -35,6 +36,17 @@ namespace SpecsCpp {
         Spec,
         Setup,
         Teardown,
+    };
+
+    struct ISpecVariableCollection {
+        using ForEachVariableFn = IFunctionPointer<void(IVoidPointer*)>;
+
+        virtual ~ISpecVariableCollection()                               = default;
+        virtual void          set(const char* name, IVoidPointer*)       = 0;
+        virtual bool          exists(const char* name) const             = 0;
+        virtual IVoidPointer* get(const char* name) const                = 0;
+        virtual void          foreach_variable(ForEachVariableFn*) const = 0;
+        virtual void          clear()                                    = 0;
     };
 
     struct ISpecComponent {
@@ -98,65 +110,23 @@ namespace SpecsCpp {
         virtual void run(ISpecComponent*, ISpec*, ISpecRunResultCallbackFn*) = 0;
     };
 
-    struct ISpecHasCodeBlock {
-        virtual ~ISpecHasCodeBlock()               = default;
-        virtual ISpecCodeBlock* code_block() const = 0;
-    };
-
-    struct ISpecSetup : virtual public ISpecComponent, virtual public ISpecHasCodeBlock {
-        virtual ~ISpecSetup() = default;
-    };
-
-    struct ISpecTeardown : virtual public ISpecComponent, virtual public ISpecHasCodeBlock {
-        virtual ~ISpecTeardown() = default;
-    };
-
-    struct ISpecDocumented {
-        virtual ~ISpecDocumented()                   = default;
-        virtual const char* description() const      = 0;
-        virtual const char* full_description() const = 0;
-    };
-
-    struct ISpecGroup : virtual public ISpecComponent, virtual public ISpecDocumented {
-        using ForEachGroupFn    = IFunctionPointer<void(ISpecGroup*)>;
-        using ForEachSpecFn     = IFunctionPointer<void(ISpec*)>;
-        using ForEachSetupFn    = IFunctionPointer<void(ISpecSetup*)>;
-        using ForEachTeardownFn = IFunctionPointer<void(ISpecTeardown*)>;
-
-        virtual ~ISpecGroup()                                   = default;
-        virtual void add_group(ISpecGroup*)                     = 0;
-        virtual void add_spec(ISpec*)                           = 0;
-        virtual void add_setup(ISpecSetup*)                     = 0;
-        virtual void add_teardown(ISpecTeardown*)               = 0;
-        virtual void foreach_group(ForEachGroupFn*) const       = 0;
-        virtual void foreach_spec(ForEachSpecFn*) const         = 0;
-        virtual void foreach_setup(ForEachSetupFn*) const       = 0;
-        virtual void foreach_teardown(ForEachTeardownFn*) const = 0;
-        virtual void merge(ISpecGroup*)                         = 0;
-    };
-
-    struct ISpecVariableCollection {
-        using ForEachVariableFn = IFunctionPointer<void(IVoidPointer*)>;
-
-        virtual ~ISpecVariableCollection()                               = default;
-        virtual void          set(const char* name, IVoidPointer*)       = 0;
-        virtual bool          exists(const char* name) const             = 0;
-        virtual IVoidPointer* get(const char* name) const                = 0;
-        virtual void          foreach_variable(ForEachVariableFn*) const = 0;
-    };
-
-    // TODO: add a built-in property for defining a test which should be SKIPPED (pending test)
-    struct ISpec : virtual public ISpecComponent,
-                   virtual public ISpecDocumented,
-                   virtual public ISpecHasCodeBlock {
-        virtual ~ISpec()                                   = default;
+    struct ISpecHasVariables {
+        virtual ~ISpecHasVariables()                       = default;
         virtual ISpecVariableCollection* variables() const = 0;
 
         // Variable helpers:
 
         ISpecVariableCollection* vars() const { return variables(); }
 
-        IVoidPointer* var(const char* name) const { return variables()->get(name); }
+        bool has_var(const char* name) const { return variables()->exists(name); }
+
+        IVoidPointer* var(const char* name) const {
+            if (!variables()->exists(name)) {
+                _Log_("Variable '{}' does not exist", name);
+                return nullptr;
+            }
+            return variables()->get(name);
+        }
 
         template <typename T, typename std::enable_if<!std::is_pointer<T>::value, int>::type = 0>
         T var(const char* name) const {
@@ -190,6 +160,52 @@ namespace SpecsCpp {
             variables()->set(name, new VoidPointer<char>(copy));
             return var_text(name);
         }
+    };
+
+    struct ISpecHasCodeBlock {
+        virtual ~ISpecHasCodeBlock()               = default;
+        virtual ISpecCodeBlock* code_block() const = 0;
+    };
+
+    struct ISpecSetup : virtual public ISpecComponent, virtual public ISpecHasCodeBlock {
+        virtual ~ISpecSetup() = default;
+    };
+
+    struct ISpecTeardown : virtual public ISpecComponent, virtual public ISpecHasCodeBlock {
+        virtual ~ISpecTeardown() = default;
+    };
+
+    struct ISpecDocumented {
+        virtual ~ISpecDocumented()                   = default;
+        virtual const char* description() const      = 0;
+        virtual const char* full_description() const = 0;
+    };
+
+    struct ISpecGroup : virtual public ISpecComponent,
+                        virtual public ISpecDocumented,
+                        virtual public ISpecHasVariables {
+        using ForEachGroupFn    = IFunctionPointer<void(ISpecGroup*)>;
+        using ForEachSpecFn     = IFunctionPointer<void(ISpec*)>;
+        using ForEachSetupFn    = IFunctionPointer<void(ISpecSetup*)>;
+        using ForEachTeardownFn = IFunctionPointer<void(ISpecTeardown*)>;
+
+        virtual ~ISpecGroup()                                   = default;
+        virtual void add_group(ISpecGroup*)                     = 0;
+        virtual void add_spec(ISpec*)                           = 0;
+        virtual void add_setup(ISpecSetup*)                     = 0;
+        virtual void add_teardown(ISpecTeardown*)               = 0;
+        virtual void foreach_group(ForEachGroupFn*) const       = 0;
+        virtual void foreach_spec(ForEachSpecFn*) const         = 0;
+        virtual void foreach_setup(ForEachSetupFn*) const       = 0;
+        virtual void foreach_teardown(ForEachTeardownFn*) const = 0;
+        virtual void merge(ISpecGroup*)                         = 0;
+    };
+
+    struct ISpec : virtual public ISpecComponent,
+                   virtual public ISpecDocumented,
+                   virtual public ISpecHasCodeBlock,
+                   virtual public ISpecHasVariables {
+        virtual ~ISpec() = default;
     };
 
     // This cannot be implemented across DLL boundaries, it's only for LOCAL use witha LOCAL

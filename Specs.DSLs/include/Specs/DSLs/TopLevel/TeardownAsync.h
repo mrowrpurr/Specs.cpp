@@ -2,4 +2,4 @@
 
 #include "../Internal/Macros.h"
 
-#define TeardownAsync _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_TEARDOWN(_AsyncTeardownDSLMacro_)
+#define TeardownAsync _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_TEARDOWN(_TeardownAsyncDSLMacro_)

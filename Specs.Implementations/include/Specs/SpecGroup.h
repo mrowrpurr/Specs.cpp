@@ -8,6 +8,7 @@
 
 #include "SpecComponent.h"
 #include "SpecDocumented.h"
+#include "SpecVariableCollection.h"
 
 namespace SpecsCpp {
 
@@ -18,6 +19,8 @@ namespace SpecsCpp {
         std::vector<ISpec*>         _specs;
         std::vector<ISpecSetup*>    _setups;
         std::vector<ISpecTeardown*> _teardowns;
+
+        std::unique_ptr<SpecVariableCollection> _variables;
 
         void merge_child_groups(ISpecGroup* other) { add_group(other); }
         void merge_specs(ISpec* other) { add_spec(other); }
@@ -35,7 +38,9 @@ namespace SpecsCpp {
 
     public:
         SpecGroup(ISpecGroup* parent = nullptr, std::string_view description = "")
-            : SpecComponent(SpecComponentType::Group, parent), SpecDocumented(description) {
+            : SpecComponent(SpecComponentType::Group, parent),
+              SpecDocumented(description),
+              _variables(std::make_unique<SpecVariableCollection>(parent)) {
             if (parent == nullptr || !parent->full_description()) _fullDescription = description;
             else
                 _fullDescription =
@@ -78,5 +83,7 @@ namespace SpecsCpp {
             other->foreach_setup(&_merge_setups_fn);
             other->foreach_teardown(&_merge_teardowns_fn);
         }
+
+        ISpecVariableCollection* variables() const override { return _variables.get(); }
     };
 }

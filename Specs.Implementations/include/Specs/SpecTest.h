@@ -20,7 +20,8 @@ namespace SpecsCpp {
                      public SpecDocumented,
                      public SpecHasCodeBlock {
         std::string                             _fullDescription;
-        std::unique_ptr<SpecVariableCollection> _variables;
+        std::unique_ptr<SpecVariableCollection> _variables =
+            std::make_unique<SpecVariableCollection>();
 
     public:
         SpecTest(
@@ -29,8 +30,7 @@ namespace SpecsCpp {
         )
             : SpecComponent(SpecComponentType::Spec, parent),
               SpecDocumented(description),
-              SpecHasCodeBlock(std::move(codeBlock)),
-              _variables(std::make_unique<SpecVariableCollection>()) {
+              SpecHasCodeBlock(std::move(codeBlock)) {
             if (parent == nullptr || !parent->full_description()) _fullDescription = description;
             else
                 _fullDescription =

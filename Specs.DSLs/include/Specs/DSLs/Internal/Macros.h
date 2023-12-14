@@ -72,17 +72,18 @@
 
 // (global) Setup
 
-#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP_BODY(symbol, count)                                                         \
-    inline void                                                                                                                 \
-        _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*); \
-    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[](                               \
-                                                                                              ) {                               \
-        SpecsCpp::GlobalSpecGroup::instance().register_setup_fn(                                                                \
-            _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)                                           \
-        );                                                                                                                      \
-    }};                                                                                                                         \
-    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(                                      \
-        SpecsCpp::ISpecComponent * current_setup, SpecsCpp::ISpec * current_spec                                                \
+#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP_BODY(symbol, count)                                                                                \
+    inline void                                                                                                                                        \
+        _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(SpecsCpp::ISpecGroup*, SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*); \
+    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[](                                                      \
+                                                                                              ) {                                                      \
+        SpecsCpp::GlobalSpecGroup::instance().register_setup_fn(                                                                                       \
+            _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)                                                                  \
+        );                                                                                                                                             \
+    }};                                                                                                                                                \
+    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(                                                             \
+        SpecsCpp::ISpecGroup * current_group, SpecsCpp::ISpecComponent * current_setup,                                                                \
+        SpecsCpp::ISpec * current_spec                                                                                                                 \
     )
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP(symbol) \
@@ -92,7 +93,7 @@
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_SETUP_BODY(symbol, count)                     \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, SpecsCpp::SpecDone                           \
+        SpecsCpp::ISpecGroup*, SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, SpecsCpp::SpecDone    \
     );                                                                                            \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \
                                                                                               ) { \
@@ -101,8 +102,8 @@
         );                                                                                        \
     }};                                                                                           \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::ISpecComponent * current_setup, SpecsCpp::ISpec * current_spec,                 \
-        SpecsCpp::SpecDone done                                                                   \
+        SpecsCpp::ISpecGroup * current_group, SpecsCpp::ISpecComponent * current_setup,           \
+        SpecsCpp::ISpec * current_spec, SpecsCpp::SpecDone done                                   \
     )
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_SETUP(symbol) \
@@ -110,16 +111,28 @@
 
 // (global) Teardown
 
-#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_TEARDOWN             \
-    _GLOBAL_MACRO_FUNCTIONS_REGISTER_NEW_FUNCTION(                 \
-        SpecsCpp::GlobalSpecGroup::instance().register_teardown_fn \
+#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_TEARDOWN_BODY(symbol, count)                                                                             \
+    inline void                                                                                                                                        \
+        _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(SpecsCpp::ISpecGroup*, SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*); \
+    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[](                                                      \
+                                                                                              ) {                                                      \
+        SpecsCpp::GlobalSpecGroup::instance().register_teardown_fn(                                                                                    \
+            _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)                                                                  \
+        );                                                                                                                                             \
+    }};                                                                                                                                                \
+    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(                                                             \
+        SpecsCpp::ISpecGroup * current_group, SpecsCpp::ISpecComponent * current_teardown,                                                             \
+        SpecsCpp::ISpec * current_spec                                                                                                                 \
     )
+
+#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_TEARDOWN(symbol) \
+    _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_TEARDOWN_BODY(symbol, __COUNTER__)
 
 // (global) Async Teardown
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_TEARDOWN_BODY(symbol, count)                  \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::SpecDone                                                                        \
+        SpecsCpp::ISpecGroup*, SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, SpecsCpp::SpecDone    \
     );                                                                                            \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \
                                                                                               ) { \
@@ -128,7 +141,8 @@
         );                                                                                        \
     }};                                                                                           \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::SpecDone done                                                                   \
+        SpecsCpp::ISpecGroup * current_group, SpecsCpp::ISpecComponent * current_teardown,        \
+        SpecsCpp::ISpec * current_spec, SpecsCpp::SpecDone done                                   \
     )
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_TEARDOWN(symbol) \

@@ -140,6 +140,18 @@ namespace SpecsCpp {
             register_spec(description, std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 
+        void register_spec_fn(
+            std::string_view description, FunctionPointer<void(ISpecGroup*)> body
+        ) {
+            register_spec(description, std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
+        void register_spec_fn(
+            std::string_view description, FunctionPointer<void(ISpecGroup*, SpecDone)> body
+        ) {
+            register_spec(description, std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
         void register_setup_fn(FunctionPointer<void()> body) {
             register_setup(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
@@ -156,6 +168,16 @@ namespace SpecsCpp {
             register_setup(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 
+        void register_setup_fn(FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*)> body) {
+            register_setup(std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
+        void register_setup_fn(
+            FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*, SpecDone)> body
+        ) {
+            register_setup(std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
         void register_teardown_fn(FunctionPointer<void()> body) {
             register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
@@ -165,6 +187,21 @@ namespace SpecsCpp {
         }
 
         void register_teardown_fn(FunctionPointer<void(ISpecComponent*, ISpec*)> body) {
+            register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
+        void register_teardown_fn(FunctionPointer<void(ISpecComponent*, ISpec*, SpecDone)> body) {
+            register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
+        void register_teardown_fn(FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*)> body
+        ) {
+            register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
+        void register_teardown_fn(
+            FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*, SpecDone)> body
+        ) {
             register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 

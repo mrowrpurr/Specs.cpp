@@ -225,6 +225,7 @@ namespace SpecsCpp {
                         group->foreach_teardown(&_forEachTeardownInGroupFn);
                     }
 
+                    spec->variables()->clear();
                     return;
                 }
 
@@ -245,6 +246,7 @@ namespace SpecsCpp {
                         auto specFinalResult = SpecRunResult::failed(spec, spec);
                         _reporters->report_spec_result(specFinalResult.get());
                         _resultTotalCounts.increment_failed();
+                        spec->variables()->clear();
                         return;
                     }
                 }
@@ -265,6 +267,7 @@ namespace SpecsCpp {
                     auto specFinalResult = SpecRunResult::passed(spec, spec);
                     _reporters->report_spec_result(specFinalResult.get());
                 }
+                spec->variables()->clear();
             }
 
             FunctionPointer<void(ISpec*)> _forEachSpecInGroupFn{
@@ -274,6 +277,7 @@ namespace SpecsCpp {
             void foreach_group_in_group(ISpecGroup* group) {
                 group->foreach_spec(&_forEachSpecInGroupFn);
                 group->foreach_group(&_forEachGroupInGroupFn);
+                group->variables()->clear();
             }
 
             FunctionPointer<void(ISpecGroup*)> _forEachGroupInGroupFn{
