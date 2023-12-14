@@ -19,4 +19,4 @@
         SpecsCpp::ISpec * current_spec                                                            \
     )
 
-#define _SPEC_TEST(symbol, specDescription) _SPEC_TEST_BODY(symbol, specDescription, __COUNTER__)
+#define _SPEC_TEST(specDescription) _SPEC_TEST_BODY(_SPEC_TEST_, specDescription, __COUNTER__)

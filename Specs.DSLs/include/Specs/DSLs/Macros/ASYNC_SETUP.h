@@ -20,4 +20,4 @@
         SpecsCpp::ISpec * current_spec, SpecsCpp::SpecDone done                                   \
     )
 
-#define _SPEC_ASYNC_SETUP(symbol) __SPEC_ASYNC_SETUP_BODY(symbol, __COUNTER__)
+#define _SPEC_ASYNC_SETUP() __SPEC_ASYNC_SETUP_BODY(_SPEC_ASYNC_SETUP_, __COUNTER__)

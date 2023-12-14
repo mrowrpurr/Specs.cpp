@@ -20,4 +20,4 @@
         SpecsCpp::ISpec * current_spec, SpecsCpp::SpecDone done                                   \
     )
 
-#define _SPEC_ASYNC_TEARDOWN(symbol) _SPEC_ASYNC_TEARDOWN_BODY(symbol, __COUNTER__)
+#define _SPEC_ASYNC_TEARDOWN() _SPEC_ASYNC_TEARDOWN_BODY(_SPEC_ASYNC_TEARDOWN_, __COUNTER__)

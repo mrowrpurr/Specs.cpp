@@ -20,5 +20,5 @@
         SpecsCpp::SpecDone done                                                                   \
     )
 
-#define _SPEC_ASYNC_TEST(symbol, specDescription) \
-    __SPEC_ASYNC_TEST_BODY(symbol, specDescription, __COUNTER__)
+#define _SPEC_ASYNC_TEST(specDescription) \
+    __SPEC_ASYNC_TEST_BODY(_SPEC_ASYNC_TEST_, specDescription, __COUNTER__)

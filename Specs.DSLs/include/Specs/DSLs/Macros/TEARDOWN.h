@@ -18,4 +18,4 @@
         SpecsCpp::ISpec * current_spec                                                                                                                 \
     )
 
-#define _SPEC_TEARDOWN(symbol) __SPEC_TEARDOWN_BODY(symbol, __COUNTER__)
+#define _SPEC_TEARDOWN() __SPEC_TEARDOWN_BODY(_SPEC_TEARDOWN_, __COUNTER__)

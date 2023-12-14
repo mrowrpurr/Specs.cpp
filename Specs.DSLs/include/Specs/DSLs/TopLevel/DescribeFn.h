@@ -2,4 +2,4 @@
 
 #include "../Macros/GROUP.h"
 
-#define DescribeFn(token) _SPEC_GROUP(token, #token)
+#define DescribeFn(symbol) __SPEC_GROUP_BODY(symbol, #symbol, __COUNTER__)

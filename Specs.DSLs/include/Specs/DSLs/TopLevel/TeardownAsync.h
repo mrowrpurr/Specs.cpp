@@ -2,4 +2,4 @@
 
 #include "../Macros/ASYNC_TEARDOWN.h"
 
-#define TeardownAsync _SPEC_ASYNC_TEARDOWN(_TeardownAsyncDSLMacro_)
+#define TeardownAsync _SPEC_ASYNC_TEARDOWN()

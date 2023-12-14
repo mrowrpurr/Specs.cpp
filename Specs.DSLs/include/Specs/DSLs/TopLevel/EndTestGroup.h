@@ -2,4 +2,4 @@
 
 #include "../Macros/UNSET_CURRENT_GROUP.h"
 
-#define UnsetTestGroup() _SPEC_UNSET_CURRENT_GROUP()
+#define EndTestGroup() _SPEC_UNSET_CURRENT_GROUP()

@@ -15,5 +15,5 @@
     }};                                                                                           \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)()
 
-#define _SPEC_GROUP(symbol, specGroupDescription) \
-    __SPEC_GROUP_BODY(symbol, specGroupDescription, __COUNTER__)
+#define _SPEC_GROUP(specGroupDescription) \
+    __SPEC_GROUP_BODY(_SPEC_GROUP_, specGroupDescription, __COUNTER__)

@@ -2,4 +2,4 @@
 
 #include "../Macros/GROUP.h"
 
-#define Describe(description) _SPEC_GROUP(_DescribeDSLMacro_, description)
+#define Describe(description) _SPEC_GROUP(description)

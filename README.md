@@ -116,6 +116,7 @@ TestAsync("Slow things") {
     - [`teardown([](auto done) { ...; done(); });`](#teardownauto-done---done-)
     - [`describe("...", []() { ... });`](#describe----)
   - [Choosing Available Syntax](#choosing-available-syntax)
+    - [`SpecHelper.h`](#spechelperh)
   - [Build Your Own Syntax](#build-your-own-syntax)
   - [Exception Handling](#exception-handling)
     - [Create Custom Exception Handler](#create-custom-exception-handler)
@@ -999,42 +1000,153 @@ By default, all of the above syntax is available.
 
 You can pick and choose which macros and functions are available by including them directly from `<Specs/DSLs/*.h>`.
 
+Take a look at [`Specs.DSLs/include/Specs/DSLs.h`](Specs.DSLs/include/Specs/DSLs.h) to see the full syntax that's included by default.
+
+> At the time of writing, it looks like this:
+> ```cpp
+> #pragma once
+> 
+> #include <Specs/SpecDone.h>
+> 
+> #include "DSLs/Functions/describe.h"       // IWYU pragma: keep
+> #include "DSLs/Functions/it.h"             // IWYU pragma: keep
+> #include "DSLs/Functions/setup.h"          // IWYU pragma: keep
+> #include "DSLs/Functions/spec.h"           // IWYU pragma: keep
+> #include "DSLs/Functions/teardown.h"       // IWYU pragma: keep
+> #include "DSLs/Functions/test.h"           // IWYU pragma: keep
+> #include "DSLs/TopLevel/Config.h"          // IWYU pragma: keep
+> #include "DSLs/TopLevel/Configure.h"       // IWYU pragma: keep
+> #include "DSLs/TopLevel/DefineTemplate.h"  // IWYU pragma: keep
+> #include "DSLs/TopLevel/Describe.h"        // IWYU pragma: keep
+> #include "DSLs/TopLevel/DescribeFn.h"      // IWYU pragma: keep
+> #include "DSLs/TopLevel/It.h"              // IWYU pragma: keep
+> #include "DSLs/TopLevel/SetTestGroup.h"    // IWYU pragma: keep
+> #include "DSLs/TopLevel/Setup.h"           // IWYU pragma: keep
+> #include "DSLs/TopLevel/SetupAsync.h"      // IWYU pragma: keep
+> #include "DSLs/TopLevel/Spec.h"            // IWYU pragma: keep
+> #include "DSLs/TopLevel/SpecAsync.h"       // IWYU pragma: keep
+> #include "DSLs/TopLevel/Specs.h"           // IWYU pragma: keep
+> #include "DSLs/TopLevel/SpecsFn.h"         // IWYU pragma: keep
+> #include "DSLs/TopLevel/Teardown.h"        // IWYU pragma: keep
+> #include "DSLs/TopLevel/TeardownAsync.h"   // IWYU pragma: keep
+> #include "DSLs/TopLevel/Test.h"            // IWYU pragma: keep
+> #include "DSLs/TopLevel/TestAsync.h"       // IWYU pragma: keep
+> #include "DSLs/TopLevel/TestGroup.h"       // IWYU pragma: keep
+> #include "DSLs/TopLevel/TestGroupFn.h"     // IWYU pragma: keep
+> #include "DSLs/TopLevel/TestTemplate.h"    // IWYU pragma: keep
+> #include "DSLs/TopLevel/TestTemplateFn.h"  // IWYU pragma: keep
+> #include "DSLs/TopLevel/UnsetTestGroup.h"  // IWYU pragma: keep
+> #include "DSLs/TopLevel/UseTemplate.h"     // IWYU pragma: keep
+> 
+> using SpecDone = SpecsCpp::SpecDone;
+> 
+> using namespace SpecsCpp::DSLs::Functions;
+> ```
+
+To customize the macros and functions which are available to you, simply replace `#include <Specs.>` in your code with includes of the specific macros and functions you want to use.
+
+For example, we recommend you create a `SpecHelper.h` which you include from all of your spec files. To customize your syntax, it might include this:
+
+### `SpecHelper.h`
+
 ```cpp
-// Do not include <Specs.h> because that includes ALL of the available DSLs
-// #include <Specs.h>
+#pragma once
 
-// Include any of the available functions
-#include <DSLs/Functions/describe.h>
-#include <DSLs/Functions/test.h>
-#include <DSLs/Functions/it.h> // it() { ... } is an alias for test()
-#include <DSLs/Functions/spec.h> // spec() { ... } is an alias for test()
-#include <DSLs/Functions/setup.h>
-#include <DSLs/Functions/teardown.h>
-
-// Include any of the available top-level macros
-#include <DSLs/TopLevel/Config.h>
-#include <DSLs/TopLevel/Configure.h>
-#include <DSLs/TopLevel/Describe.h>
-#include <DSLs/TopLevel/DescribeFn.h>
-#include <DSLs/TopLevel/Setup.h>
-#include <DSLs/TopLevel/SetupAsync.h>
-#include <DSLs/TopLevel/Spec.h> // Spec() { ... } is an alias for Test()
-#include <DSLs/TopLevel/SpecAsync.h>
-#include <DSLs/TopLevel/Teardown.h>
-#include <DSLs/TopLevel/TeardownAsync.h>
-#include <DSLs/TopLevel/Test.h>
-#include <DSLs/TopLevel/It.h> // It() { ... } is an alias for Test()
-#include <DSLs/TopLevel/TestAsync.h>
-#include <DSLs/TopLevel/TestGroup.h> // Alias for SetTestGroup
-#include <DSLs/TopLevel/TestGroupFn.h> // Alias for DescribeFn()
-#include <DSLs/TopLevel/SetTestGroup.h>
+// We only use the TestGroup, Setup, Teardown, Test, and TestAsync macros in our tests
+// and we don't need any of the other parts of the Specs DSL (with extra icky macros etc!)
+#include "DSLs/TopLevel/Setup.h"           // IWYU pragma: keep
+#include "DSLs/TopLevel/Teardown.h"        // IWYU pragma: keep
+#include "DSLs/TopLevel/Test.h"            // IWYU pragma: keep
+#include "DSLs/TopLevel/TestAsync.h"       // IWYU pragma: keep
+#include "DSLs/TopLevel/TestGroup.h"       // IWYU pragma: keep
 ```
+
+That's it.
 
 ## Build Your Own Syntax
 
 ```
-TODO - document this - Advanced Usage
-``````
+TODO - (document this with some examples)
+```
+
+Do you want to bring your own preferred syntax DSL for writing tests?
+
+Maybe you want this syntax:
+
+```cpp
+BeforeEach { /* Setup code goes here */ }
+AfterEach { /* Teardown code goes here */ }
+
+Example("First Example") {
+    // Test code goes here...
+}
+
+Example("Second Example") {
+    // Test code goes here...
+}
+
+Examples("Example Group") {
+  before_each([]() { /* Setup code goes here */ });
+  after_each([]() { /* Teardown code goes here */ });
+
+  example("one example", []() {
+    // Test code goes here...
+  });
+
+  example("this one is async", [](auto done) {
+    // Test code goes here...
+    done();
+  });
+}
+```
+
+We recommend you look at how the existing macros and functions are defined.
+They are built to allow you to easily create your own syntax.
+
+For example, to implement the above syntax, you could do this:
+
+```cpp
+// Define the BeforeEach block macro
+#include <Specs/DSLs/Macros/SETUP.h>
+#define BeforeEach _SPEC_SETUP()
+
+// Define the AfterEach block macro
+#include <Specs/DSLs/Macros/TEARDOWN.h>
+#define AfterEach _SPEC_TEARDOWN()
+
+// Define the Example test macro
+#include <Specs/DSLs/Macros/TEST.h>
+#define Example(description) _SPEC_TEST(description)
+
+// Define the Examples group macro
+#include <Specs/DSLs/Macros/DESCRIBE.h>
+#define Examples(description) _SPEC_DESCRIBE(description)
+
+// Define the before_each function
+#include <Specs/DSLs/Functions/setup.h>
+inline void before_each(std::function<void()> body) {
+    SpecsCpp::DSLs::Functions::setup(body);
+}
+
+// Define the after_each function
+#include <Specs/DSLs/Functions/teardown.h>
+inline void after_each(std::function<void()> body) {
+    SpecsCpp::DSLs::Functions::teardown(body);
+}
+
+// Define the example function
+#include <Specs/DSLs/Functions/test.h>
+inline void example(std::string description, std::function<void()> body) {
+    SpecsCpp::DSLs::Functions::test(description, body);
+}
+
+// Add async example() support by adding overload of function that takes SpecDone
+inline void example(std::string description, std::function<void(SpecDone)> body) {
+    SpecsCpp::DSLs::Functions::test(description, body);
+}
+```
+
+That's it!
 
 ## Exception Handling
 

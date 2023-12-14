@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Specs/DSLs.h>  // IWYU pragma: keep
+#include <Specs/DSLs.h>
 #include <Specs/ExceptionHandlers/CStringExceptionHandler.h>
 #include <Specs/ExceptionHandlers/StdExceptionExceptionHandler.h>
 
@@ -13,7 +13,7 @@ namespace _Specs_DLL_Configuration {
         SpecsCpp::ExceptionHandlers::StdExceptionExceptionHandler();
 }
 
-Configure(_Specs_DLL_ExceptionHandlers_Config_) {
+Configure {
     if (auto* specsEnv = SpecsCpp::global_spec_environment().get()) {
         specsEnv->local_exception_handlers()->register_exception_handler(
             &_Specs_DLL_Configuration::cStringExceptionHandler

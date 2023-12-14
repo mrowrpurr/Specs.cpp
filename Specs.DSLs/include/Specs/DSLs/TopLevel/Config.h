@@ -2,4 +2,4 @@
 
 #include "../Macros/CODE_BLOCK.h"
 
-#define Config _SPEC_CODE_BLOCK(_ConfigDSLMacro_)
+#define Config _SPEC_CODE_BLOCK()

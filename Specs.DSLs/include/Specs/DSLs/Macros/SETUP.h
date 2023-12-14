@@ -18,4 +18,4 @@
         SpecsCpp::ISpec * current_spec                                                                                                                 \
     )
 
-#define _SPEC_SETUP(symbol) __SPEC_SETUP_BODY(symbol, __COUNTER__)
+#define _SPEC_SETUP() __SPEC_SETUP_BODY(_SPEC_SETUP_, __COUNTER__)
