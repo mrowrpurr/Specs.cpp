@@ -299,10 +299,10 @@ Test("Something") {
 
 More common example of using multiple `.cpp` files for your test suite.
 
-#### `main.cpp`
-
 When using multiple files, `<Specs/Main.h>` can be included in a single file
-which could be a spec file or its own separate file, e.g. `RunSpecs.cpp` or `main.cpp`:
+which could be a spec file or its own separate file, e.g. `RunSpecs.cpp` or `main.cpp`.
+
+#### `main.cpp`
 
 ```cpp
 #include <Specs/Main.h>
