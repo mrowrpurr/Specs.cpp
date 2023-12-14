@@ -384,7 +384,7 @@ Test("Something Else") {
 }
 ```
 
-The `spec_name` macro is a shorthand for doing the following 2 things:
+The `spec_name` define is a shorthand for doing the following 2 things:
 - `#define spec_file` to support multiple `.cpp` files
 - `TestGroup("...")` to define a test group for everything in the current file
 
@@ -525,7 +525,7 @@ Describe("My test group") {
 
 If you are using lambda functions and you want to forgo the `spec_file` define, you can do so by using the `DescribeFn` function (_alias: `TestGroup`_)
 
-> Instead of taking a string descripteion, DescribeFn takes a token
+> Instead of taking a string description, DescribeFn takes a token
 > which is used to generate a unique name for the group.
 > 
 > Note: if you use any top-level macros such as Test, Setup, Teardown, etc
