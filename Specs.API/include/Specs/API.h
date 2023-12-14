@@ -1,6 +1,7 @@
 #pragma once
 
 #include <function_pointer.h>
+#include <void_pointer.h>
 
 #include <cstdint>
 #include <exception>  // <--- only for LOCAL Exception Handler implementation
@@ -11,6 +12,7 @@ namespace SpecsCpp {
     struct ISpecGroup;
     struct ISpecComponent;
 
+    // TODO: rename to make clear that it's a string pair (or update to not be a string value)
     struct ISpecKeyValue {
         virtual ~ISpecKeyValue()          = default;
         virtual const char* key() const   = 0;
@@ -132,11 +134,22 @@ namespace SpecsCpp {
         virtual void merge(ISpecGroup*)                         = 0;
     };
 
+    struct ISpecVariableCollection {
+        using ForEachVariableFn = IFunctionPointer<void(IVoidPointer*)>;
+
+        virtual ~ISpecVariableCollection()                               = default;
+        virtual void          set(const char* name, IVoidPointer*)       = 0;
+        virtual bool          exists(const char* name) const             = 0;
+        virtual IVoidPointer* get(const char* name) const                = 0;
+        virtual void          foreach_variable(ForEachVariableFn*) const = 0;
+    };
+
     // TODO: add a built-in property for defining a test which should be SKIPPED (pending test)
     struct ISpec : virtual public ISpecComponent,
                    virtual public ISpecDocumented,
                    virtual public ISpecHasCodeBlock {
-        virtual ~ISpec() = default;
+        virtual ~ISpec()                                   = default;
+        virtual ISpecVariableCollection* variables() const = 0;
     };
 
     // This cannot be implemented across DLL boundaries, it's only for LOCAL use witha LOCAL

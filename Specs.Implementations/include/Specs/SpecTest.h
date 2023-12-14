@@ -3,6 +3,7 @@
 #include <Specs/API.h>
 #include <string_format.h>
 
+#include <memory>
 #include <string>
 #include <string_view>
 
@@ -10,6 +11,7 @@
 #include "SpecComponent.h"
 #include "SpecDocumented.h"
 #include "SpecHasCodeBlock.h"
+#include "SpecVariableCollection.h"
 
 namespace SpecsCpp {
 
@@ -17,7 +19,8 @@ namespace SpecsCpp {
                      public SpecComponent,
                      public SpecDocumented,
                      public SpecHasCodeBlock {
-        std::string _fullDescription;
+        std::string                             _fullDescription;
+        std::unique_ptr<SpecVariableCollection> _variables;
 
     public:
         SpecTest(
@@ -26,7 +29,8 @@ namespace SpecsCpp {
         )
             : SpecComponent(SpecComponentType::Spec, parent),
               SpecDocumented(description),
-              SpecHasCodeBlock(std::move(codeBlock)) {
+              SpecHasCodeBlock(std::move(codeBlock)),
+              _variables(std::make_unique<SpecVariableCollection>()) {
             if (parent == nullptr || !parent->full_description()) _fullDescription = description;
             else
                 _fullDescription =
@@ -36,5 +40,7 @@ namespace SpecsCpp {
         const char* full_description() const override {
             return _fullDescription.empty() ? nullptr : _fullDescription.c_str();
         }
+
+        ISpecVariableCollection* variables() const override { return _variables.get(); }
     };
 }

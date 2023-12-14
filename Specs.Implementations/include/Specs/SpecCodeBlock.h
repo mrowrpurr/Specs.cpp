@@ -88,6 +88,50 @@ namespace SpecsCpp {
             mark_async();
         }
 
+        SpecCodeBlock(FunctionPointer<void(ISpec*)> body)
+            : _managedBody(
+                  std::make_unique<
+                      FunctionPointer<void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
+                      [body](
+                          ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone
+                      ) { body.invoke(spec); }
+                  )
+              ) {}
+
+        SpecCodeBlock(FunctionPointer<void(ISpec*, SpecDone)> body)
+            : _managedBody(
+                  std::make_unique<
+                      FunctionPointer<void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
+                      [body](
+                          ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone
+                      ) { body.invoke(spec, SpecDone{asyncDone}); }
+                  )
+              ) {
+            mark_async();
+        }
+
+        SpecCodeBlock(FunctionPointer<void(ISpecComponent*, ISpec*)> body)
+            : _managedBody(
+                  std::make_unique<
+                      FunctionPointer<void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
+                      [body](
+                          ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone
+                      ) { body.invoke(self, spec); }
+                  )
+              ) {}
+
+        SpecCodeBlock(FunctionPointer<void(ISpecComponent*, ISpec*, SpecDone)> body)
+            : _managedBody(
+                  std::make_unique<
+                      FunctionPointer<void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
+                      [body](
+                          ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone
+                      ) { body.invoke(self, spec, SpecDone{asyncDone}); }
+                  )
+              ) {
+            mark_async();
+        }
+
         bool is_async() const override { return _async; }
         void mark_async(bool async = true) override { _async = async; }
 

@@ -130,6 +130,16 @@ namespace SpecsCpp {
             register_spec(description, std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 
+        void register_spec_fn(std::string_view description, FunctionPointer<void(ISpec*)> body) {
+            register_spec(description, std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
+        void register_spec_fn(
+            std::string_view description, FunctionPointer<void(ISpec*, SpecDone)> body
+        ) {
+            register_spec(description, std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
         void register_setup_fn(FunctionPointer<void()> body) {
             register_setup(std::make_unique<SpecCodeBlock>(std::move(body)));
         }

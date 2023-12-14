@@ -8,7 +8,10 @@ UseTemplate("Cool Template");
 
 Setup { _Log_("More Specs setup"); }
 
-Test("MORE Something") { _Log_("YOU CALLED the Something TEST!"); }
+Test("MORE Something") {
+    _Log_("YOU CALLED the Something TEST!");
+    _Log_("! THE NAME OF THIS SPEC IS ! {}", current_spec->description());
+}
 
 Spec("MORE Something else") {
     _Log_("YOU CALLED the Something else TEST! Gonna throw...");

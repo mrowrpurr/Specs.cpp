@@ -33,7 +33,9 @@
 // (global) Spec
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SPEC_BODY(symbol, specDescription, count)           \
-    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)();      \
+    inline void                                                                                   \
+        _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(SpecsCpp::      \
+                                                                                      ISpec*);    \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \
                                                                                               ) { \
         SpecsCpp::GlobalSpecGroup::instance().register_spec_fn(                                   \
@@ -41,7 +43,9 @@
             _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)             \
         );                                                                                        \
     }};                                                                                           \
-    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)()
+    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
+        SpecsCpp::ISpec * current_spec                                                            \
+    )
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SPEC(symbol, specDescription) \
     _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SPEC_BODY(symbol, specDescription, __COUNTER__)
