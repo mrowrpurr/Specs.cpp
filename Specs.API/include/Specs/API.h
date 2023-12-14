@@ -134,7 +134,7 @@ namespace SpecsCpp {
         }
 
         template <typename T, typename std::enable_if<std::is_pointer<T>::value, int>::type = 0>
-        T* var(const char* name) const {
+        T var(const char* name) const {
             return var(name)->as<T>();
         }
 
