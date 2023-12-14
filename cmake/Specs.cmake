@@ -10,13 +10,6 @@ target_compile_features(specs_main PRIVATE cxx_std_20)
 
 target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
-install(TARGETS specs_main
-    EXPORT ${LIBRARY_NAME}Targets
-    ARCHIVE DESTINATION lib
-    LIBRARY DESTINATION lib
-    RUNTIME DESTINATION bin
-)
-
 target_include_directories(${LIBRARY_NAME} INTERFACE
     # The C++ interfaces
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.API/include>
