@@ -41,12 +41,14 @@ namespace SpecsCpp {
     struct ISpecVariableCollection {
         using ForEachVariableFn = IFunctionPointer<void(IVoidPointer*)>;
 
-        virtual ~ISpecVariableCollection()                               = default;
-        virtual void          set(const char* name, IVoidPointer*)       = 0;
-        virtual bool          exists(const char* name) const             = 0;
-        virtual IVoidPointer* get(const char* name) const                = 0;
-        virtual void          foreach_variable(ForEachVariableFn*) const = 0;
-        virtual void          clear()                                    = 0;
+        virtual ~ISpecVariableCollection() = default;
+        virtual void          set(const char* name, IVoidPointer*, bool destructable = true) = 0;
+        virtual void          unset(const char* name)                                        = 0;
+        virtual bool          is_destructable(const char* name) const                        = 0;
+        virtual bool          exists(const char* name) const                                 = 0;
+        virtual IVoidPointer* get(const char* name) const                                    = 0;
+        virtual void          foreach_variable(ForEachVariableFn*) const                     = 0;
+        virtual void          clear()                                                        = 0;
     };
 
     struct ISpecComponent {
@@ -141,14 +143,14 @@ namespace SpecsCpp {
         }
 
         template <typename T>
-        T* var(const char* name, T* value) {
-            variables()->set(name, new VoidPointer<T>(value));
+        T* var(const char* name, T* value, bool destructable = true) {
+            variables()->set(name, new VoidPointer<T>(value), destructable);
             return value;
         }
 
         template <typename T>
-        void var(const char* name, T&& value) {
-            variables()->set(name, new VoidPointer<T>(new T(std::forward<T>(value))));
+        void var(const char* name, T&& value, bool destructable = true) {
+            variables()->set(name, new VoidPointer<T>(new T(std::forward<T>(value))), destructable);
         }
 
         const char* var_text(const char* name) {
