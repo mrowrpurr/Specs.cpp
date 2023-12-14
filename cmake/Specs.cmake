@@ -2,13 +2,13 @@ set(LIBRARY_NAME specs)
 
 add_library(${LIBRARY_NAME} INTERFACE)
 
-add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+# add_library(specs_main STATIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
-# Note: C++17 would be ok if `fmt` is used, but this library relies on <string_format.h>
-# which requires EITHER fmt OR C++20 (for the <format> header)
-target_compile_features(specs_main PRIVATE cxx_std_20)
+# # Note: C++17 would be ok if `fmt` is used, but this library relies on <string_format.h>
+# # which requires EITHER fmt OR C++20 (for the <format> header)
+# target_compile_features(specs_main PRIVATE cxx_std_20)
 
-target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
+# target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
 target_include_directories(${LIBRARY_NAME} INTERFACE
     # The C++ interfaces
@@ -56,13 +56,13 @@ target_link_libraries(
 
 include(GNUInstallDirs)
 
-install(TARGETS specs_main
-    EXPORT ${LIBRARY_NAME}Targets
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
-)
+# install(TARGETS specs_main
+#     EXPORT ${LIBRARY_NAME}Targets
+#     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+#     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#     RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+# )
 
 install(TARGETS ${LIBRARY_NAME}
     EXPORT ${LIBRARY_NAME}Targets
