@@ -90,6 +90,12 @@ TestAsync("Slow things") {
       - [Set variable value](#set-variable-value)
       - [Get variable values](#get-variable-values)
     - [Group Variables](#group-variables)
+- [Command-Line Options](#command-line-options)
+  - [Filtering Tests by Name](#filtering-tests-by-name)
+  - [Random Ordering](#random-ordering)
+  - [Loading Tests from Shared Libraries (`.dll/.so`)](#loading-tests-from-shared-libraries-dllso)
+    - [Define specs in a shared library](#define-specs-in-a-shared-library)
+      - [`MySpecs.cpp`](#myspecscpp-1)
 - [Syntax](#syntax)
   - [Available Built-in Syntax](#available-built-in-syntax)
     - [`Test("...") { ... }`](#test---)
@@ -757,7 +763,6 @@ Setup {
 Test("Some Test") {
     SomeObject* someObject = current_group->var<SomeObject*>("Some object");
 }
-```
 ```
 
 # Command-Line Options
