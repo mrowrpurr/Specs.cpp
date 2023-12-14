@@ -207,7 +207,7 @@ target_include_directories(MyTests PRIVATE ${SNOWHOUSE_INCLUDE_DIRS})
 
 # Find and link the specs adapter for snowhouse
 find_package(specs_snowhouse CONFIG REQUIRED)
-target_link_libraries(MySpecs PRIVATE specs::specs specs::specs_snowhouse)
+target_link_libraries(MySpecs PRIVATE specs::specs_snowhouse)
 ```
 
 ### `vcpkg.json`
