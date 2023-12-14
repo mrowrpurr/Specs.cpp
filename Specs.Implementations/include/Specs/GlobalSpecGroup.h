@@ -148,11 +148,19 @@ namespace SpecsCpp {
             register_setup(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 
+        void register_setup_fn(FunctionPointer<void(ISpecComponent*, ISpec*)> body) {
+            register_setup(std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
         void register_teardown_fn(FunctionPointer<void()> body) {
             register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 
         void register_teardown_fn(FunctionPointer<void(SpecDone)> body) {
+            register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
+        }
+
+        void register_teardown_fn(FunctionPointer<void(ISpecComponent*, ISpec*)> body) {
             register_teardown(std::make_unique<SpecCodeBlock>(std::move(body)));
         }
 

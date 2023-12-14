@@ -72,10 +72,21 @@
 
 // (global) Setup
 
-#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP             \
-    _GLOBAL_MACRO_FUNCTIONS_REGISTER_NEW_FUNCTION(              \
-        SpecsCpp::GlobalSpecGroup::instance().register_setup_fn \
+#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP_BODY(symbol, count)                                                         \
+    inline void                                                                                                                 \
+        _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*); \
+    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[](                               \
+                                                                                              ) {                               \
+        SpecsCpp::GlobalSpecGroup::instance().register_setup_fn(                                                                \
+            _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)                                           \
+        );                                                                                                                      \
+    }};                                                                                                                         \
+    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(                                      \
+        SpecsCpp::ISpecComponent * current_setup, SpecsCpp::ISpec * current_spec                                                \
     )
+
+#define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP(symbol) \
+    _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP_BODY(symbol, __COUNTER__)
 
 // (global) Async Setup
 
