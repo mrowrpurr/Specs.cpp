@@ -388,6 +388,8 @@ The `spec_name` macro is a shorthand for doing the following 2 things:
 - `#define spec_file` to support multiple `.cpp` files
 - `TestGroup("...")` to define a test group for everything in the current file
 
+**Highly recommended** to use `spec_name` to organize your tests into groups.
+
 ## Choosing Assertion Library
 
 ### Using Snowhouse assertions
