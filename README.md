@@ -16,19 +16,19 @@
 C++ test framework with simple syntax which supports async tests.
 
 ```cpp
-#include <Specs.h>
+#define spec_name My_Tests
 
-TestGroup("My Tests");
+#include <Specs.h>
 
 Setup { /* Setup Code */ }
 Teardown { /* Teardown Code */ }
 
-Test("Something") {
+Test("Some thing") {
     assert(69 == 420);
     AssertThat(69, Equals(69));
 }
 
-TestAsync("Slow things") {
+TestAsync("Slow thing") {
     // Do something slow...
     done();
 }
@@ -69,6 +69,9 @@ TestAsync("Slow things") {
       - [`main.cpp`](#maincpp)
       - [`MySpecs.One.cpp`](#myspecsonecpp)
       - [`MySpecs.Two.cpp`](#myspecstwocpp)
+    - [Using `spec_name` to describe test group](#using-spec_name-to-describe-test-group)
+      - [`MySpecs.One.cpp`](#myspecsonecpp-1)
+      - [`MySpecs.Two.cpp`](#myspecstwocpp-1)
   - [Choosing Assertion Library](#choosing-assertion-library)
     - [Using Snowhouse assertions](#using-snowhouse-assertions)
     - [Using libassert assertions](#using-libassert-assertions)
@@ -328,6 +331,8 @@ When using multiple files, you MUST\* label each file with a `spec_file` identif
 
 #include <Specs.h>
 
+TestGroup("My Tests");
+
 Test("Something") {
     // Test code goes here...
 }
@@ -340,21 +345,48 @@ Test("Something") {
 
 #include <Specs.h>
 
+TestGroup("More Tests");
+
 Test("Something Else") {
     // Test code goes here...
 }
 ```
 
-The `spec_file` define has a few aliases which you can use instead:
-- `#define spec_file SpecOne`
-- `#define spec_name SpecOne`
-- `#define spec_context SpecOne`
-
-Any of the above will work.
-
 This define provides support for multiple `.cpp` files to use the top-level macros such as `Test`, `Setup`, and `Teardown` (_etc_).
 
 > _Note: this is due to the fact that the `__COUNTER__` macro does not provide unique counts across multiple compilation units (`.cpp`)._
+
+### Using `spec_name` to describe test group
+
+While multiple `.cpp` files **require** `spec_file`, you can optionally use `spec_name` instead to describe the test group.
+
+#### `MySpecs.One.cpp`
+
+```cpp
+#define spec_name MyTests
+
+#include <Specs.h>
+
+Test("Something") {
+    // Test code goes here...
+}
+```
+
+#### `MySpecs.Two.cpp`
+
+```cpp
+#define spec_name MoreTests
+
+#include <Specs.h>
+
+Test("Something Else") {
+    // Test code goes here...
+}
+```
+
+The `spec_name` macro is a shorthand for doing the following 2 things:
+- `#define spec_file` to support multiple `.cpp` files
+- `TestGroup("...")` to define a test group for everything in the current file
 
 ## Choosing Assertion Library
 

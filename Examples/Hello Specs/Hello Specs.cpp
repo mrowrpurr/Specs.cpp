@@ -1,15 +1,20 @@
-#define spec_file HelloSpecs
+#define spec_name HelloSpecs
 
 #include "SpecHelper.h"  // IWYU pragma: keep
-
-BeginTestGroup("Hello Specs");
 
 Config { _Log_("Hi from config"); }
 Config { _Log_("Hi from another config"); }
 Configure { _Log_("Hi from configure"); }
 
+class Dog {
+public:
+    Dog() { _Log_("Hi from Dog constructor"); }
+    ~Dog() { _Log_("Hi from Dog destructor"); }
+};
+
 Setup {
     if (!current_group->has_var("number")) current_group->var("number", 42);
+    current_spec->var("dog", new Dog(), false);
 }
 SetupAsync { done(); }
 
