@@ -10,6 +10,11 @@ target_compile_features(specs_main PRIVATE cxx_std_20)
 
 target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
+set_target_properties(specs_main PROPERTIES
+    IMPORTED_LOCATION_DEBUG "${CMAKE_CURRENT_SOURCE_DIR}/debug/lib/specs_main.lib"
+    IMPORTED_LOCATION_RELEASE "${CMAKE_CURRENT_SOURCE_DIR}/lib/specs_main.lib"
+)
+
 install(TARGETS specs_main
     EXPORT ${LIBRARY_NAME}Targets
     ARCHIVE DESTINATION lib
