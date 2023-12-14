@@ -24,9 +24,11 @@ namespace SpecsCpp {
 
         // A place to store some memory! These go here and never leave :)
         std::vector<std::unique_ptr<SpecTest>>     _registeredSpecs;
-        std::vector<std::unique_ptr<SpecSetup>>    _registeredSetups;
-        std::vector<std::unique_ptr<SpecTeardown>> _registeredTeardowns;
+        std::vector<std::unique_ptr<SpecSetup>>    _registeredsetups;
+        std::vector<std::unique_ptr<SpecTeardown>> _registeredteardowns;
         std::vector<std::unique_ptr<SpecGroup>>    _registeredGroups;
+        std::vector<std::unique_ptr<SpecSetup>>    _registeredOneTimesetups;
+        std::vector<std::unique_ptr<SpecTeardown>> _registeredOneTimeteardowns;
 
         collections_map<std::string, std::unique_ptr<SpecGroup>> _testTemplateGroups;
 
@@ -99,17 +101,37 @@ namespace SpecsCpp {
 
         void register_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
-                auto Setup = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
-                _registeredSetups.push_back(std::move(Setup));
-                group->add_setup(_registeredSetups.back().get());
+                auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
+                auto* setupPtr = setup.get();
+                _registeredsetups.push_back(std::move(setup));
+                group->add_setup(setupPtr);
             }
         }
 
         void register_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
-                auto Teardown = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
-                _registeredTeardowns.push_back(std::move(Teardown));
-                group->add_teardown(_registeredTeardowns.back().get());
+                auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
+                auto* teardownPtr = teardown.get();
+                _registeredteardowns.push_back(std::move(teardown));
+                group->add_teardown(teardownPtr);
+            }
+        }
+
+        void register_one_time_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
+            if (auto* group = get()) {
+                auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
+                auto* setupPtr = setup.get();
+                _registeredOneTimesetups.push_back(std::move(setup));
+                group->add_one_time_setup(setupPtr);
+            }
+        }
+
+        void register_one_time_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
+            if (auto* group = get()) {
+                auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
+                auto* teardownPtr = teardown.get();
+                _registeredOneTimeteardowns.push_back(std::move(teardown));
+                group->add_one_time_teardown(teardownPtr);
             }
         }
 

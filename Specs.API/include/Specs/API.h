@@ -193,16 +193,20 @@ namespace SpecsCpp {
         using ForEachSetupFn    = IFunctionPointer<void(ISpecSetup*)>;
         using ForEachTeardownFn = IFunctionPointer<void(ISpecTeardown*)>;
 
-        virtual ~ISpecGroup()                                   = default;
-        virtual void add_group(ISpecGroup*)                     = 0;
-        virtual void add_spec(ISpec*)                           = 0;
-        virtual void add_setup(ISpecSetup*)                     = 0;
-        virtual void add_teardown(ISpecTeardown*)               = 0;
-        virtual void foreach_group(ForEachGroupFn*) const       = 0;
-        virtual void foreach_spec(ForEachSpecFn*) const         = 0;
-        virtual void foreach_setup(ForEachSetupFn*) const       = 0;
-        virtual void foreach_teardown(ForEachTeardownFn*) const = 0;
-        virtual void merge(ISpecGroup*)                         = 0;
+        virtual ~ISpecGroup()                                            = default;
+        virtual void add_group(ISpecGroup*)                              = 0;
+        virtual void add_spec(ISpec*)                                    = 0;
+        virtual void add_setup(ISpecSetup*)                              = 0;
+        virtual void add_teardown(ISpecTeardown*)                        = 0;
+        virtual void add_one_time_setup(ISpecSetup*)                     = 0;
+        virtual void add_one_time_teardown(ISpecTeardown*)               = 0;
+        virtual void foreach_group(ForEachGroupFn*) const                = 0;
+        virtual void foreach_spec(ForEachSpecFn*) const                  = 0;
+        virtual void foreach_setup(ForEachSetupFn*) const                = 0;
+        virtual void foreach_teardown(ForEachTeardownFn*) const          = 0;
+        virtual void foreach_one_time_setup(ForEachSetupFn*) const       = 0;
+        virtual void foreach_one_time_teardown(ForEachTeardownFn*) const = 0;
+        virtual void merge(ISpecGroup*)                                  = 0;
     };
 
     struct ISpec : virtual public ISpecComponent,

@@ -137,4 +137,92 @@ namespace SpecsCpp::DSLs::GlobalInterface {
         GlobalSpecGroup::instance().register_teardown(std::make_unique<SpecCodeBlock>(std::move(body
         )));
     }
+
+    /* One-time Setup */
+
+    inline void register_one_time_setup_fn(FunctionPointer<void()> body) {
+        GlobalSpecGroup::instance().register_one_time_setup(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_setup_fn(FunctionPointer<void(SpecDone)> body) {
+        GlobalSpecGroup::instance().register_one_time_setup(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_setup_fn(FunctionPointer<void(ISpecComponent*, ISpec*)> body) {
+        GlobalSpecGroup::instance().register_one_time_setup(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_setup_fn(
+        FunctionPointer<void(ISpecComponent*, ISpec*, SpecDone)> body
+    ) {
+        GlobalSpecGroup::instance().register_one_time_setup(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_setup_fn(
+        FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*)> body
+    ) {
+        GlobalSpecGroup::instance().register_one_time_setup(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_setup_fn(
+        FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*, SpecDone)> body
+    ) {
+        GlobalSpecGroup::instance().register_one_time_setup(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    /* One-time Teardown */
+
+    inline void register_one_time_teardown_fn(FunctionPointer<void()> body) {
+        GlobalSpecGroup::instance().register_one_time_teardown(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_teardown_fn(FunctionPointer<void(SpecDone)> body) {
+        GlobalSpecGroup::instance().register_one_time_teardown(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_teardown_fn(FunctionPointer<void(ISpecComponent*, ISpec*)> body) {
+        GlobalSpecGroup::instance().register_one_time_teardown(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_teardown_fn(
+        FunctionPointer<void(ISpecComponent*, ISpec*, SpecDone)> body
+    ) {
+        GlobalSpecGroup::instance().register_one_time_teardown(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_teardown_fn(
+        FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*)> body
+    ) {
+        GlobalSpecGroup::instance().register_one_time_teardown(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void register_one_time_teardown_fn(
+        FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*, SpecDone)> body
+    ) {
+        GlobalSpecGroup::instance().register_one_time_teardown(
+            std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
 }

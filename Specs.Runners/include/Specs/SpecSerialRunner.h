@@ -275,8 +275,21 @@ namespace SpecsCpp {
             };
 
             void foreach_group_in_group(ISpecGroup* group) {
+                // TODO group these into an inline function:
+                _currentSpec       = nullptr;
+                _currentSpecFailed = false;
+                _currentSpecFailureMessage.clear();
+                _currentResult = nullptr;
+
+                // Run the group's one time setups
+                group->foreach_one_time_setup(&_forEachSetupInGroupFn);
+
                 group->foreach_spec(&_forEachSpecInGroupFn);
                 group->foreach_group(&_forEachGroupInGroupFn);
+
+                // Run the group's one time teardowns
+                group->foreach_one_time_teardown(&_forEachTeardownInGroupFn);
+
                 group->variables()->clear();
             }
 
@@ -286,8 +299,23 @@ namespace SpecsCpp {
 
             void run_group(ISpecGroup* group) {
                 if (should_run_group(group)) {
+                    // TODO group these into an inline function:
+                    _currentSpec       = nullptr;
+                    _currentSpecFailed = false;
+                    _currentSpecFailureMessage.clear();
+                    _currentResult = nullptr;
+
+                    // Run the group's one time setups
+                    group->foreach_one_time_setup(&_forEachSetupInGroupFn);
+
+                    // Run the specs
                     group->foreach_spec(&_forEachSpecInGroupFn);
+
+                    // Run any child groups
                     group->foreach_group(&_forEachGroupInGroupFn);
+
+                    // Run the group's one time teardowns
+                    group->foreach_one_time_teardown(&_forEachTeardownInGroupFn);
                 }
             }
 

@@ -19,6 +19,8 @@ namespace SpecsCpp {
         std::vector<ISpec*>         _specs;
         std::vector<ISpecSetup*>    _setups;
         std::vector<ISpecTeardown*> _teardowns;
+        std::vector<ISpecSetup*>    _oneTimeSetups;
+        std::vector<ISpecTeardown*> _oneTimeTeardowns;
 
         std::unique_ptr<SpecVariableCollection> _variables;
 
@@ -26,6 +28,8 @@ namespace SpecsCpp {
         void merge_specs(ISpec* other) { add_spec(other); }
         void merge_setups(ISpecSetup* other) { add_setup(other); }
         void merge_teardowns(ISpecTeardown* other) { add_teardown(other); }
+        void merge_one_time_setups(ISpecSetup* other) { add_one_time_setup(other); }
+        void merge_one_time_teardowns(ISpecTeardown* other) { add_one_time_teardown(other); }
 
         FunctionPointer<void(ISpecGroup*)> _merge_child_groups_fn =
             function_pointer(this, &SpecGroup::merge_child_groups);
@@ -35,6 +39,10 @@ namespace SpecsCpp {
             function_pointer(this, &SpecGroup::merge_setups);
         FunctionPointer<void(ISpecTeardown*)> _merge_teardowns_fn =
             function_pointer(this, &SpecGroup::merge_teardowns);
+        FunctionPointer<void(ISpecSetup*)> _merge_one_time_setups_fn =
+            function_pointer(this, &SpecGroup::merge_one_time_setups);
+        FunctionPointer<void(ISpecTeardown*)> _merge_one_time_teardowns_fn =
+            function_pointer(this, &SpecGroup::merge_one_time_teardowns);
 
     public:
         SpecGroup(ISpecGroup* parent = nullptr, std::string_view description = "")
@@ -47,11 +55,6 @@ namespace SpecsCpp {
                     string_format("{} > {}", parent->full_description(), description);
         }
 
-        std::vector<ISpecGroup*>&    groups() { return _childGroups; }
-        std::vector<ISpec*>&         specs() { return _specs; }
-        std::vector<ISpecSetup*>&    Setups() { return _setups; }
-        std::vector<ISpecTeardown*>& Teardowns() { return _teardowns; }
-
         void foreach_group(ForEachGroupFn* callback) const override {
             for (auto* group : _childGroups) callback->invoke(group);
         }
@@ -61,17 +64,29 @@ namespace SpecsCpp {
         }
 
         void foreach_setup(ForEachSetupFn* callback) const override {
-            for (auto* Setup : _setups) callback->invoke(Setup);
+            for (auto* setup : _setups) callback->invoke(setup);
         }
 
         void foreach_teardown(ForEachTeardownFn* callback) const override {
-            for (auto* Teardown : _teardowns) callback->invoke(Teardown);
+            for (auto* teardown : _teardowns) callback->invoke(teardown);
+        }
+
+        void foreach_one_time_setup(ForEachSetupFn* callback) const override {
+            for (auto* setup : _oneTimeSetups) callback->invoke(setup);
+        }
+
+        void foreach_one_time_teardown(ForEachTeardownFn* callback) const override {
+            for (auto* teardown : _oneTimeTeardowns) callback->invoke(teardown);
         }
 
         void add_group(ISpecGroup* group) override { _childGroups.push_back(group); }
         void add_spec(ISpec* spec) override { _specs.push_back(spec); }
-        void add_setup(ISpecSetup* Setup) override { _setups.push_back(Setup); }
-        void add_teardown(ISpecTeardown* Teardown) override { _teardowns.push_back(Teardown); }
+        void add_setup(ISpecSetup* setup) override { _setups.push_back(setup); }
+        void add_teardown(ISpecTeardown* teardown) override { _teardowns.push_back(teardown); }
+        void add_one_time_setup(ISpecSetup* setup) override { _oneTimeSetups.push_back(setup); }
+        void add_one_time_teardown(ISpecTeardown* teardown) override {
+            _oneTimeTeardowns.push_back(teardown);
+        }
 
         const char* full_description() const override {
             return _fullDescription.empty() ? nullptr : _fullDescription.c_str();
@@ -82,6 +97,8 @@ namespace SpecsCpp {
             other->foreach_spec(&_merge_specs_fn);
             other->foreach_setup(&_merge_setups_fn);
             other->foreach_teardown(&_merge_teardowns_fn);
+            other->foreach_one_time_setup(&_merge_one_time_setups_fn);
+            other->foreach_one_time_teardown(&_merge_one_time_teardowns_fn);
         }
 
         ISpecVariableCollection* variables() const override { return _variables.get(); }

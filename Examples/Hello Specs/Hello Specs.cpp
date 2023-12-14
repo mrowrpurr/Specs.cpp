@@ -2,33 +2,16 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
-Config { _Log_("Hi from config"); }
-Config { _Log_("Hi from another config"); }
-Configure { _Log_("Hi from configure"); }
+Setup { _Log_("Hello from Setup"); }
 
-class Dog {
-public:
-    Dog() { _Log_("Hi from Dog constructor"); }
-    ~Dog() { _Log_("Hi from Dog destructor"); }
-};
+Teardown { _Log_("Hello from Teardown"); }
 
-Setup {
-    if (!current_group->has_var("number")) current_group->var("number", 42);
-    current_spec->var("dog", new Dog(), false);
-}
-SetupAsync { done(); }
+GroupSetup { _Log_("Hello from GroupSetup"); }
 
-Teardown { _Log_("Hi from teardown"); }
-TeardownAsync { done(); }
+GroupTeardown { _Log_("Hello from GroupTeardown"); }
 
-Describe("Child Group") {
-    test("Child Test", [](SpecsCpp::ISpecGroup* group) {
-        AssertThat(group->var<int>("number"), Equals(42));
-    });
-}
+Test("Test One") { _Log_("Hello from Test One"); }
 
-DescribeFn(SomeSymbolHere) {
-    it("should be able to use a function as a test", []() { AssertThat(true, Equals(true)); });
-}
+Test("Test Two") { _Log_("Hello from Test Two"); }
 
-EndTestGroup();
+Test("Test Three") { _Log_("Hello from Test Three"); }
