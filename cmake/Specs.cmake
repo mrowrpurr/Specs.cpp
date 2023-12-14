@@ -11,7 +11,7 @@ target_compile_features(specs_main PRIVATE cxx_std_20)
 target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
 install(TARGETS specs_main
-    EXPORT specs_mainTargets
+    EXPORT ${LIBRARY_NAME}Targets
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
     RUNTIME DESTINATION bin
@@ -62,6 +62,15 @@ target_link_libraries(
 )
 
 include(GNUInstallDirs)
+
+install(TARGETS specs_main
+    EXPORT ${LIBRARY_NAME}Targets
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
 install(TARGETS ${LIBRARY_NAME}
     EXPORT ${LIBRARY_NAME}Targets
     INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
