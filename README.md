@@ -647,6 +647,7 @@ SetupAsync {
     /* Setup Code... */
     done();
 }
+
 TeardownAsync {
     /* Teardown Code... */
     done();
@@ -664,22 +665,18 @@ Or using the lambda syntax:
 ```cpp
 Describe("Some tests") {
 
+  setup([](auto done) { /* Setup Code... */ done(); });
+  teardown([](auto done) { /* Teardown Code... */ done(); });
+
   // Not asyncronous
-  test("Something", []() {
-    /* Test Code... */
-  });
+  test("Something", []() { /* Test Code... */ });
 
   // Asyncronous
-  test("Something", [](auto done) {
-    /* Test Code... */
-    done();
-  });
+  test("Something", [](auto done) { /* Test Code... */ done(); });
 
   // You can use `auto` or `SpecDone` for the done callback
-  test("Something", [](SpecDone done) {
-    /* Test Code... */
-    done();
-  });
+  test("Something", [](SpecDone done) { /* Test Code... */ done(); });
+
 }
 ```
 
