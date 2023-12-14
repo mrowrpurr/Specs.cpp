@@ -12,9 +12,9 @@ target_link_libraries(specs_main PUBLIC ${LIBRARY_NAME})
 
 install(TARGETS specs_main
     EXPORT ${LIBRARY_NAME}Targets
-    ARCHIVE DESTINATION lib/$<CONFIG>
-    LIBRARY DESTINATION lib/$<CONFIG>
-    RUNTIME DESTINATION bin/$<CONFIG>
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
 )
 
 target_include_directories(${LIBRARY_NAME} INTERFACE
