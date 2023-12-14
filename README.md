@@ -653,10 +653,34 @@ TeardownAsync {
 }
 
 // Tests can be async
-TestAsync("Something", [](SpecDone done) {
+TestAsync("Something") {
     /* Test Code... */
     done();
-});
+}
+```
+
+Or using the lambda syntax:
+
+```cpp
+Describe("Some tests") {
+
+  // Not asyncronous
+  test("Something", []() {
+    /* Test Code... */
+  });
+
+  // Asyncronous
+  test("Something", [](auto done) {
+    /* Test Code... */
+    done();
+  });
+
+  // You can use `auto` or `SpecDone` for the done callback
+  test("Something", [](SpecDone done) {
+    /* Test Code... */
+    done();
+  });
+}
 ```
 
 When tests (_and setup/teardown code blocks_) are run, if the `done()` callback is not called within the timeout period (_default: 5 seconds_), then the test is marked as failed.
