@@ -92,7 +92,7 @@
 
 #define _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_SETUP_BODY(symbol, count)                     \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::SpecDone                                                                        \
+        SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, SpecsCpp::SpecDone                           \
     );                                                                                            \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \
                                                                                               ) { \
@@ -101,6 +101,7 @@
         );                                                                                        \
     }};                                                                                           \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
+        SpecsCpp::ISpecComponent * current_setup, SpecsCpp::ISpec * current_spec,                 \
         SpecsCpp::SpecDone done                                                                   \
     )
 

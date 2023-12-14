@@ -31,12 +31,13 @@ DescribeFn(TestGroup1) {
 
 // Setup { _Log_("HI from SETUP in Hello Specs"); }
 
-// SetupAsync {
-//     _Log_("HI from async SETUP");
-//     // assert(1 == 2);
-//     // throw "Foo!";
-//     done();
-// }
+SetupAsync {
+    _Log_(
+        "~~~ HI from async SETUP in group '{}' and for spec '{}'",
+        current_setup->group()->description(), current_spec->description()
+    );
+    done();
+}
 
 TeardownAsync {
     _Log_("HI from async TEARDOWN");
