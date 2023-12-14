@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/SETUP.h"
 
-#define Setup _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SETUP(_SetupDSLMacro_)
+#define Setup _SPEC_SETUP(_SetupDSLMacro_)

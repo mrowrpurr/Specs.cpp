@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/CODE_BLOCK.h"
 
-#define SpecsFn(token) _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_CODE_BLOCK(token)
+#define SpecsFn(token) _SPEC_CODE_BLOCK(token)

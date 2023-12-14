@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/USE_TEMPLATE.h"
 
-#define UseTemplate(templateName) _SPEC_MACRO_USE_TEST_TEMPLATE(_UseTemplateDSLMacro_, templateName)
+#define UseTemplate(templateName) _SPEC_USE_TEMPLATE(_UseTemplateDSLMacro_, templateName)

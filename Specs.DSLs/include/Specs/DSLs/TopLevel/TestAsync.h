@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/ASYNC_TEST.h"
 
-#define TestAsync(description) \
-    _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_SPEC(_TestAsyncDSLMacro_, description)
+#define TestAsync(description) _SPEC_ASYNC_TEST(_TestAsyncDSLMacro_, description)

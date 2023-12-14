@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/CODE_BLOCK.h"
 
-#define Configure(configureContextToken) \
-    _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_CODE_BLOCK(configureContextToken)
+#define Configure(configureContextToken) _SPEC_CODE_BLOCK(configureContextToken)

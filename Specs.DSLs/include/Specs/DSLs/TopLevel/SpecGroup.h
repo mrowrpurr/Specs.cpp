@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/DECLARE_GROUP.h"
 
-#define SpecGroup(description) _SPEC_MACRO_DEFINE_TOP_LEVEL_GROUP(_SpecGroupDSLMacro_, description)
+#define SpecGroup(description) _SPEC_DECLARE_GROUP(_SpecGroupDSLMacro_, description)

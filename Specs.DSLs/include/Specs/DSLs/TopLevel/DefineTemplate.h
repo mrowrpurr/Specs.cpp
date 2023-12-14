@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/DECLARE_TEMPLATE.h"
 
-#define DefineTemplate(templateName) \
-    _SPEC_MACRO_DEFINE_TOP_LEVEL_TEMPLATE(_DefineTemplateDSLMacro_, templateName)
+#define DefineTemplate(templateName) _SPEC_DECLARE_TEMPLATE(_DefineTemplateDSLMacro_, templateName)

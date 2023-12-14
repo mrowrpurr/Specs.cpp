@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/TEST.h"
 
-#define Test(description) _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SPEC(_TestDSLMacro_, description)
+#define Test(description) _SPEC_TEST(_TestDSLMacro_, description)

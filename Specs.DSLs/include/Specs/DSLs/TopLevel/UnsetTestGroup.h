@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/UNSET_CURRENT_GROUP.h"
 
-#define UnsetTestGroup() _SPEC_MACRO_UNSET_TOP_LEVEL_GROUP(_UnsetTestGroupDSLMacro_)
+#define UnsetTestGroup() _SPEC_UNSET_CURRENT_GROUP(_UnsetTestGroupDSLMacro_)

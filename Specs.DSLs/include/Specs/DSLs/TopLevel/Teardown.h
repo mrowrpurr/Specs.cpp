@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/TEARDOWN.h"
 
-#define Teardown _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_TEARDOWN(_TeardownDSLMacro_)
+#define Teardown _SPEC_TEARDOWN(_TeardownDSLMacro_)

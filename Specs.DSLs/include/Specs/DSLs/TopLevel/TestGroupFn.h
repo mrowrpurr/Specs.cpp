@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/GROUP.h"
 
-#define TestGroupFn(token) _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SPEC_GROUP(token, #token)
+#define TestGroupFn(token) _SPEC_GROUP(token, #token)

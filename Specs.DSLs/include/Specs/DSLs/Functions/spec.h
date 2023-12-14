@@ -5,14 +5,19 @@
 
 #include <functional>
 
-inline void spec(std::string_view description, std::function<void()> body) {
-    SpecsCpp::GlobalSpecGroup::instance().register_spec_fn(
-        description, function_pointer(std::move(body))
-    );
-}
+#include "../GlobalInterface.h"
 
-inline void spec(std::string_view description, std::function<void(SpecsCpp::SpecDone)> body) {
-    SpecsCpp::GlobalSpecGroup::instance().register_spec_fn(
-        description, function_pointer(std::move(body))
-    );
+namespace SpecsCpp::DSLs::Functions {
+
+    inline void spec(std::string_view description, std::function<void()> body) {
+        SpecsCpp::DSLs::GlobalInterface::register_spec_fn(
+            description, function_pointer(std::move(body))
+        );
+    }
+
+    inline void spec(std::string_view description, std::function<void(SpecsCpp::SpecDone)> body) {
+        SpecsCpp::DSLs::GlobalInterface::register_spec_fn(
+            description, function_pointer(std::move(body))
+        );
+    }
 }

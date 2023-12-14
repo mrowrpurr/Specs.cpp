@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/GROUP.h"
 
-#define Describe(description) \
-    _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_SPEC_GROUP(_DescribeDSLMacro_, description)
+#define Describe(description) _SPEC_GROUP(_DescribeDSLMacro_, description)

@@ -5,10 +5,15 @@
 
 #include <functional>
 
-inline void setup(std::function<void()> body) {
-    SpecsCpp::GlobalSpecGroup::instance().register_setup_fn(function_pointer(std::move(body)));
-}
+#include "../GlobalInterface.h"
 
-inline void setup(std::function<void(SpecsCpp::SpecDone)> body) {
-    SpecsCpp::GlobalSpecGroup::instance().register_setup_fn(function_pointer(std::move(body)));
+namespace SpecsCpp::DSLs::Functions {
+
+    inline void setup(std::function<void()> body) {
+        SpecsCpp::DSLs::GlobalInterface::register_setup_fn(function_pointer(std::move(body)));
+    }
+
+    inline void setup(std::function<void(SpecsCpp::SpecDone)> body) {
+        SpecsCpp::DSLs::GlobalInterface::register_setup_fn(function_pointer(std::move(body)));
+    }
 }

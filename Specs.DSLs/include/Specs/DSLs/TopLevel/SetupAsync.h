@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/ASYNC_SETUP.h"
 
-#define SetupAsync _SPEC_MACRO_FUNCTIONS_REGISTER_GLOBAL_ASYNC_SETUP(_SetupAsyncDSLMacro_)
+#define SetupAsync _SPEC_ASYNC_SETUP(_SetupAsyncDSLMacro_)

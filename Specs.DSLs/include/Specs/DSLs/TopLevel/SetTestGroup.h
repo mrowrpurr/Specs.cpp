@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Internal/Macros.h"
+#include "../Macros/DECLARE_GROUP.h"
 
-#define SetTestGroup(description) \
-    _SPEC_MACRO_DEFINE_TOP_LEVEL_GROUP(_SetTestGroupDSLMacro_, description)
+#define SetTestGroup(description) _SPEC_DECLARE_GROUP(_SetTestGroupDSLMacro_, description)

@@ -3,8 +3,8 @@
 #include <Specs/DllLoader.h>
 #include <Specs/ExceptionHandlers/CStringExceptionHandler.h>
 #include <Specs/ExceptionHandlers/StdExceptionExceptionHandler.h>
+#include <Specs/GlobalSpecCodeBlocks.h>
 #include <Specs/GlobalSpecEnvironment.h>
-#include <Specs/GlobalSpecFunctionDefinitionBlocks.h>
 #include <Specs/GlobalSpecGroup.h>
 #include <Specs/SpecDebugReporter.h>
 #include <Specs/SpecEnvironment.h>
@@ -14,6 +14,7 @@
 
 #include <cxxopts.hpp>
 #include <filesystem>
+
 
 namespace SpecsCpp {
 
@@ -119,7 +120,7 @@ namespace SpecsCpp {
             _specs.local_exception_handlers()->register_exception_handler(
                 &_stdExceptionExceptionHandler
             );
-            GlobalSpecFunctionDefinitionBlocks::instance().run_code_blocks();
+            GlobalSpecCodeBlocks::instance().run_code_blocks();
 
             if (result.count("dll")) {
                 for (auto& dll : result["dll"].as<std::vector<std::string>>()) {

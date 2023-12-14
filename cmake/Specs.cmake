@@ -29,6 +29,7 @@ target_include_directories(${LIBRARY_NAME} INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.Main/include>
 
     # DSLs for defining specs
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.Globals/include>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.DSLs/include>
 
     # Provides <Specs.h> helper header
@@ -88,6 +89,7 @@ if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     install(DIRECTORY Specs.Main/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
     # DSLs for defining specs
+    install(DIRECTORY Specs.Globals/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
     install(DIRECTORY Specs.DSLs/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
     # Provides <Specs.h> helper header

@@ -6,6 +6,7 @@ target("EXE run loaded DLLs")
     add_deps(
         "Specs.DllLoader",
         "Specs.Implementations",
+        "Specs.Globals",
         "Specs.Runners",
         "Specs.Reporters"
     )
