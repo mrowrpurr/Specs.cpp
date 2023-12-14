@@ -284,9 +284,11 @@ Example of using only a single test file for your test suite.
 #### `MySpecs.cpp`
 
 ```cpp
-// When using only 1 file, include Specs along with the provided main() function:
-#include <Specs.h>
+// Provides main() entrypoint automatically
 #include <Specs/Main.h>
+
+// Include the main Specs framework
+#include <Specs.h>
 
 Test("Something") {
     // Test code goes here...
@@ -299,19 +301,22 @@ More common example of using multiple `.cpp` files for your test suite.
 
 #### `main.cpp`
 
+When using multiple files, <Specs/Main.h> can be included in a single file
+which could be a spec file or its own separate file, e.g. `RunSpecs.cpp` or `main.cpp`:
+
 ```cpp
-// When using multiple files, <Specs/Main.h> should be included in a single file
-// which could be a spec file or its own separate file, e.g. RunSpecs.cpp
 #include <Specs/Main.h>
 ```
 
 #### `MySpecs.One.cpp`
 
-```cpp
-// When using multiple files, label each file with a spec_file identifier:
-#define spec_file MySpecsOne // <-- must be defined BEFORE including <Specs.h>
+When using multiple files, you MUST\* label each file with a `spec_file` identifier:
 
-// When using multiple files, instead of including main(), just include <Specs.h>
+> \* _... unless you use the DescribeFn syntax as described below in [Without `spec_file` define](#without-spec_file-define)_
+
+```cpp
+#define spec_file One // <--- MUST be BEFORE the <Specs.h> include
+
 #include <Specs.h>
 
 Test("Something") {
@@ -322,7 +327,7 @@ Test("Something") {
 #### `MySpecs.Two.cpp`
 
 ```cpp
-#define spec_file MySpecsTwo
+#define spec_file Two
 
 #include <Specs.h>
 
