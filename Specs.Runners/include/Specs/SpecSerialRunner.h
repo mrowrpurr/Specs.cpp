@@ -51,7 +51,6 @@ namespace SpecsCpp {
             inline bool description_matches(const char* description, const char* filter) {
                 if (!filter || !description) return false;
                 bool result = strstr(description, filter) != nullptr;
-                _Log_("Does description '{}' match filter '{}' -> {}", description, filter, result);
                 return strstr(description, filter) != nullptr;
             }
 
