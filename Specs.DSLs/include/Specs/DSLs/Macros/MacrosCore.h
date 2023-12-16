@@ -14,11 +14,8 @@
     #include <Specs/GlobalSpecGroup.h>
     #include <global_macro_functions.h>
 
-    #define _SPECS_CORE_STRINGIZE_CORE(symbol) #symbol
-    #define _SPECS_CORE_STRINGIZE(symbol) _SPECS_CORE_STRINGIZE_CORE(symbol)
-
 // clang-format off
-_GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_SPEC_GROUP_FROM_SPEC_FILE_){[](){ SpecsCpp::GlobalSpecGroup::instance().register_top_level_group(_SPECS_CORE_STRINGIZE(spec_name)); }};
+_GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_SPEC_GROUP_FROM_SPEC_FILE_){[](){ SpecsCpp::GlobalSpecGroup::instance().register_top_level_group(_GLOBAL_MACRO_FUNCTIONS_STRINGIZE(spec_name)); }};
 // clang-format on
 
 #endif
