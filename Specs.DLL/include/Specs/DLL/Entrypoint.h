@@ -6,9 +6,12 @@
 #include <Specs/GlobalSpecGroup.h>
 #include <_Log_.h>
 
-
+#ifdef _WIN32
 extern "C" __declspec(dllexport
 ) SpecsCpp::ISpecGroup* SpecsCpp_Load(SpecsCpp::ISpecEnvironment* globalSpecEnvironment) {
+#else
+extern "C" SpecsCpp::ISpecGroup* SpecsCpp_Load(SpecsCpp::ISpecEnvironment* globalSpecEnvironment) {
+#endif
     try {
         SpecsCpp::global_spec_environment().set(globalSpecEnvironment);
         SpecsCpp::GlobalSpecCodeBlocks::instance().run_code_blocks();
