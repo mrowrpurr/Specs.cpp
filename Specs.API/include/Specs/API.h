@@ -5,7 +5,7 @@
 #include <void_pointer.h>
 
 #include <cstdint>
-#include <exception>  // <--- only for LOCAL Exception Handler implementation
+#include <exception>
 #include <type_traits>
 
 namespace SpecsCpp {
@@ -160,7 +160,13 @@ namespace SpecsCpp {
 
         const char* var_text(const char* name, const char* value) {
             char* copy = new char[strlen(value) + 1];
+
+#ifdef _WIN32
             strcpy_s(copy, strlen(value) + 1, value);
+#else
+            strcpy(copy, value);
+#endif
+
             variables()->set(name, new VoidPointer<char>(copy));
             return var_text(name);
         }
