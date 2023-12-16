@@ -4,7 +4,7 @@ target("EXE run loaded DLLs")
     set_kind("binary")
     add_files("*.cpp")
     add_deps(
-        "Specs.DllLoader",
+        "Specs.LibraryLoader",
         "Specs.Implementations",
         "Specs.Globals",
         "Specs.Runners",

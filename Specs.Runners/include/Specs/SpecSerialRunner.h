@@ -17,7 +17,7 @@ namespace SpecsCpp {
         class SpecSuiteRunInstance {
             SpecSuiteRunResult       _resultTotalCounts;
             ISpecReporterCollection* _reporters;
-            ISpecKeyValueCollection* _options;
+            ISpecKeyValueCollection* _options = nullptr;
 
             int _timeoutMs = 0;
 
@@ -29,24 +29,33 @@ namespace SpecsCpp {
             std::string                                    _currentSpecFailureMessage;
 
             inline const char* filter_text() const {
+                if (!_options) return nullptr;
                 return _options->get(DESCRIPTION_FILTER_OPTION_KEY);
             }
             inline const char* group_filter_text() const {
+                if (!_options) return nullptr;
                 return _options->get(GROUP_DESCRIPTION_FILTER_OPTION_KEY);
             }
             inline const char* spec_filter_text() const {
+                if (!_options) return nullptr;
                 return _options->get(SPEC_DESCRIPTION_FILTER_OPTION_KEY);
             }
             inline const char* regex_filter_text() const {
+                if (!_options) return nullptr;
                 return _options->get(DESCRIPTION_REGEX_FILTER_OPTION_KEY);
             }
             inline const char* group_regex_filter_text() const {
+                if (!_options) return nullptr;
                 return _options->get(GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
             }
             inline const char* spec_regex_filter_text() const {
+                if (!_options) return nullptr;
                 return _options->get(SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
             }
-            inline bool list_only() const { return _options->has(LIST_TEST_NAMES_OPTION_KEY); }
+            inline bool list_only() const {
+                if (!_options) return false;
+                return _options->has(LIST_TEST_NAMES_OPTION_KEY);
+            }
 
             inline bool description_matches(const char* description, const char* filter) {
                 if (!filter || !description) return false;
@@ -337,7 +346,7 @@ namespace SpecsCpp {
             ISpecGroup* group, ISpecReporterCollection* reporters, ISpecKeyValueCollection* options,
             ISpecSuiteRunResultCallbackFn* callback
         ) override {
-            if (options->has(DEFAULT_TIMEOUT_MS_OPTION_KEY)) {
+            if (options && options->has(DEFAULT_TIMEOUT_MS_OPTION_KEY)) {
                 int timeoutMs = std::stoi(options->get(DEFAULT_TIMEOUT_MS_OPTION_KEY));
                 _Log_("Configured timeout milliseconds: {}", timeoutMs);
                 SpecSuiteRunInstance(reporters, options, timeoutMs).run(group, callback);

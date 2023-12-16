@@ -16,7 +16,7 @@ target_include_directories(${LIBRARY_NAME} INTERFACE
 
     # Support for shared DLLs
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.DLL/include>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.DllLoader/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.LibraryLoader/include>
 
     # Core implementation classes for main interfaces
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Specs.Implementations/include>
@@ -76,7 +76,7 @@ if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     # Support for shared DLLs
     install(DIRECTORY Specs.DLL/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-    install(DIRECTORY Specs.DllLoader/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+    install(DIRECTORY Specs.LibraryLoader/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
     # Core implementation classes for main interfaces
     install(DIRECTORY Specs.Implementations/include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")

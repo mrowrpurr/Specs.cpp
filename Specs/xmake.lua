@@ -6,6 +6,6 @@ target("Specs")
         "Specs.Implementations",
         "Specs.Reporters",
         "Specs.Runners",
-        "Specs.DllLoader"
+        "Specs.LibraryLoader"
     )
     add_includedirs("include", { public = true })

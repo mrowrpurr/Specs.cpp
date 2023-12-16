@@ -8,6 +8,6 @@ target("Specs.Console")
         "Specs.Main",
         "Specs.Reporters",
         "Specs.Runners",
-        "Specs.DllLoader"
+        "Specs.LibraryLoader"
     )
     add_packages("unordered_dense", "spdlog")

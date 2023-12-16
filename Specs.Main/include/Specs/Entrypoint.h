@@ -1,11 +1,11 @@
 #pragma once
 
-#include <Specs/DllLoader.h>
 #include <Specs/ExceptionHandlers/CStringExceptionHandler.h>
 #include <Specs/ExceptionHandlers/StdExceptionExceptionHandler.h>
 #include <Specs/GlobalSpecCodeBlocks.h>
 #include <Specs/GlobalSpecEnvironment.h>
 #include <Specs/GlobalSpecGroup.h>
+#include <Specs/LibraryLoader.h>
 #include <Specs/SpecDebugReporter.h>
 #include <Specs/SpecEnvironment.h>
 #include <Specs/SpecReporterCollection.h>
@@ -14,7 +14,6 @@
 
 #include <cxxopts.hpp>
 #include <filesystem>
-
 
 namespace SpecsCpp {
 
@@ -27,7 +26,7 @@ namespace SpecsCpp {
         SpecDebugReporter      _reporter;
         SpecReporterCollection _reporters;
         SpecKeyValueCollection _runnerOptions;
-        DllLoader              _dllLoader{&_specs};
+        LibraryLoader          _LibraryLoader{&_specs};
 
         ExceptionHandlers::CStringExceptionHandler      _cStringExceptionHandler;
         ExceptionHandlers::StdExceptionExceptionHandler _stdExceptionExceptionHandler;
@@ -56,7 +55,7 @@ namespace SpecsCpp {
                 ("spec-pattern", "Regex pattern filter of test to run", cxxopts::value<std::string>())
                 ("group-pattern", "Regex pattern filter of group to run", cxxopts::value<std::string>())
                 ("l,list", "List all tests and groups", cxxopts::value<bool>()->default_value("false"))
-                ("dll,so", "Load specs from provided .dll/.so file path", cxxopts::value<std::vector<std::string>>())
+                ("dll,so", "Load specs from provided shared library", cxxopts::value<std::vector<std::string>>())
                 ("t,timeout", "Timeout in milliseconds for each test", cxxopts::value<int>())
                 ("h,help", "Print usage");
 
@@ -128,7 +127,7 @@ namespace SpecsCpp {
                         _Log_("Specs.cpp: Error: Spec dll/so file not found: " + dll);
                         return 1;
                     }
-                    if (auto* dllRootSpecGroup = _dllLoader.load(dll)) {
+                    if (auto* dllRootSpecGroup = _LibraryLoader.load(dll)) {
                         _specs.root_group()->merge(dllRootSpecGroup);
                     } else {
                         _Log_("Specs.cpp: Error: Failed to load group from dll/so file: " + dll);
