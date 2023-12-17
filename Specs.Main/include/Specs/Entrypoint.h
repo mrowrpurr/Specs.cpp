@@ -55,7 +55,7 @@ namespace SpecsCpp {
                 ("spec-pattern", "Regex pattern filter of test to run", cxxopts::value<std::string>())
                 ("group-pattern", "Regex pattern filter of group to run", cxxopts::value<std::string>())
                 ("l,list", "List all tests and groups", cxxopts::value<bool>()->default_value("false"))
-                ("dll,so", "Load specs from provided shared library", cxxopts::value<std::vector<std::string>>())
+                ("dll,so", "Load tests from shared library (--dll,--so)", cxxopts::value<std::vector<std::string>>())
                 ("t,timeout", "Timeout in milliseconds for each test", cxxopts::value<int>())
                 ("h,help", "Print usage");
 
