@@ -155,7 +155,6 @@ namespace SpecsCpp {
                 auto* specGroupPtr    = specGroup.get();
                 _currentTopLevelGroup = specGroupPtr;
                 _registeredGroups.push_back(std::move(specGroup));
-                _Log_("Add top level group {} to {}", description, group->description());
                 group->add_group(specGroupPtr);
                 push(specGroupPtr);
             }
@@ -186,7 +185,6 @@ namespace SpecsCpp {
                 auto* specGroupPtr = specGroup.get();
                 _currentFileGroup  = specGroupPtr;
                 _registeredGroups.push_back(std::move(specGroup));
-                _Log_("Add file group {} to {}", description, group->description());
                 group->add_group(specGroupPtr);
                 push(specGroupPtr);
             }
