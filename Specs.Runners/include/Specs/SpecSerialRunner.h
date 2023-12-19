@@ -22,9 +22,9 @@ namespace SpecsCpp {
 
     class SpecSerialRunner : public ISpecRunner {
         class SpecSuiteRunInstance {
-            SpecSuiteRunResult       _resultTotalCounts;
-            ISpecReporterCollection* _reporters;
-            ISpecKeyValueCollection* _options = nullptr;
+            SpecSuiteRunResult        _resultTotalCounts;
+            ISpecReporterCollection*  _reporters;
+            ISpecDataValueCollection* _options = nullptr;
 
             int _timeoutMs = 0;
 
@@ -37,31 +37,32 @@ namespace SpecsCpp {
 
             inline const char* filter_text() const {
                 if (!_options) return nullptr;
-                return _options->get(DESCRIPTION_FILTER_OPTION_KEY);
+                return _options->get_string(DESCRIPTION_FILTER_OPTION_KEY);
             }
             inline const char* group_filter_text() const {
                 if (!_options) return nullptr;
-                return _options->get(GROUP_DESCRIPTION_FILTER_OPTION_KEY);
+                return _options->get_string(GROUP_DESCRIPTION_FILTER_OPTION_KEY);
             }
             inline const char* spec_filter_text() const {
                 if (!_options) return nullptr;
-                return _options->get(SPEC_DESCRIPTION_FILTER_OPTION_KEY);
+                return _options->get_string(SPEC_DESCRIPTION_FILTER_OPTION_KEY);
             }
             inline const char* regex_filter_text() const {
                 if (!_options) return nullptr;
-                return _options->get(DESCRIPTION_REGEX_FILTER_OPTION_KEY);
+                return _options->get_string(DESCRIPTION_REGEX_FILTER_OPTION_KEY);
             }
             inline const char* group_regex_filter_text() const {
                 if (!_options) return nullptr;
-                return _options->get(GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
+                return _options->get_string(GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
             }
             inline const char* spec_regex_filter_text() const {
                 if (!_options) return nullptr;
-                return _options->get(SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
+                return _options->get_string(SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
             }
             inline bool list_only() const {
                 if (!_options) return false;
-                return _options->has(LIST_TEST_NAMES_OPTION_KEY);
+                return _options->has(LIST_TEST_NAMES_OPTION_KEY) &&
+                       _options->get_bool(LIST_TEST_NAMES_OPTION_KEY);
             }
 
             inline bool description_matches(const char* description, const char* filter) {
@@ -80,7 +81,7 @@ namespace SpecsCpp {
                 if (strlen(group->description()) == 0) return true;
 
                 if (group->skip()) return false;
-                if (group->meta_data()->has("skip")) return false;
+                if (group->data()->has("skip")) return false;
                 if (description_matches(group->full_description(), filter_text())) return true;
                 if (description_matches(group->description(), group_filter_text())) return true;
                 if (regex_description_matches(group->full_description(), regex_filter_text()))
@@ -95,7 +96,7 @@ namespace SpecsCpp {
 
             inline bool should_run_spec(ISpec* spec) {
                 if (spec->skip()) return false;
-                if (spec->meta_data()->has("skip")) return false;
+                if (spec->data()->has("skip")) return false;
                 if (description_matches(spec->full_description(), filter_text())) return true;
                 if (description_matches(spec->description(), spec_filter_text())) return true;
                 if (regex_description_matches(spec->full_description(), regex_filter_text()))
@@ -336,7 +337,7 @@ namespace SpecsCpp {
 
         public:
             SpecSuiteRunInstance(
-                ISpecReporterCollection* reporters, ISpecKeyValueCollection* options,
+                ISpecReporterCollection* reporters, ISpecDataValueCollection* options,
                 int timeoutMs = 5000
             )
                 : _reporters(reporters), _options(options), _timeoutMs(timeoutMs) {}
@@ -353,11 +354,11 @@ namespace SpecsCpp {
 
     public:
         void run(
-            ISpecGroup* group, ISpecReporterCollection* reporters, ISpecKeyValueCollection* options,
-            ISpecSuiteRunResultCallbackFn* callback
+            ISpecGroup* group, ISpecReporterCollection* reporters,
+            ISpecDataValueCollection* options, ISpecSuiteRunResultCallbackFn* callback
         ) override {
             if (options && options->has(DEFAULT_TIMEOUT_MS_OPTION_KEY)) {
-                int timeoutMs = std::stoi(options->get(DEFAULT_TIMEOUT_MS_OPTION_KEY));
+                int timeoutMs = options->get(DEFAULT_TIMEOUT_MS_OPTION_KEY)->int_value();
                 _Log_("Configured timeout milliseconds: {}", timeoutMs);
                 SpecSuiteRunInstance(reporters, options, timeoutMs).run(group, callback);
             } else {

@@ -14,21 +14,80 @@ namespace SpecsCpp {
     struct ISpecGroup;
     struct ISpecComponent;
 
-    // TODO: rename to make clear that it's a string pair (or update to not be a string value)
-    struct ISpecKeyValue {
-        virtual ~ISpecKeyValue()          = default;
-        virtual const char* key() const   = 0;
-        virtual const char* value() const = 0;
+    enum class SpecDataValueType {
+        Boolean,
+        Integer,
+        UnsignedInteger,
+        Float,
+        String,
+        Pointer,
     };
 
-    struct ISpecKeyValueCollection {
-        using ForEachMetaDataFn = IFunctionPointer<void(ISpecKeyValue*)>;
+    struct ISpecDataValue {
+        virtual ~ISpecDataValue() = default;
 
-        virtual ~ISpecKeyValueCollection()                             = default;
-        virtual void        add(const char* key, const char* value)    = 0;
-        virtual bool        has(const char* key) const                 = 0;
-        virtual const char* get(const char* key) const                 = 0;
-        virtual void        foreach_metadata(ForEachMetaDataFn*) const = 0;
+        virtual SpecDataValueType type() const = 0;
+
+        virtual const char* key() const      = 0;
+        virtual void        key(const char*) = 0;
+
+        virtual bool         bool_value() const               = 0;
+        virtual void         bool_value(bool)                 = 0;
+        virtual int          int_value() const                = 0;
+        virtual void         int_value(int)                   = 0;
+        virtual unsigned int unsigned_int_value() const       = 0;
+        virtual void         unsigned_int_value(unsigned int) = 0;
+        virtual double       float_value() const              = 0;
+        virtual void         float_value(double)              = 0;
+        virtual const char*  string_value() const             = 0;
+        virtual void         string_value(const char*)        = 0;
+        virtual void*        pointer_value() const            = 0;
+        virtual void         pointer_value(void*)             = 0;
+        virtual void         pointer_value(IVoidPointer*)     = 0;
+
+        virtual bool is_bool() const         = 0;
+        virtual bool is_int() const          = 0;
+        virtual bool is_unsigned_int() const = 0;
+        virtual bool is_float() const        = 0;
+        virtual bool is_string() const       = 0;
+        virtual bool is_pointer() const      = 0;
+    };
+
+    struct ISpecDataValueCollection {
+        using ForEachSpecDataFn = IFunctionPointer<void(ISpecDataValue*)>;
+
+        virtual ~ISpecDataValueCollection() = default;
+
+        virtual void            add(ISpecDataValue*)        = 0;
+        virtual bool            has(const char* name) const = 0;
+        virtual ISpecDataValue* get(const char* name) const = 0;
+
+        virtual bool get_bool(const char* name) const {
+            if (!has(name)) return false;
+            return get(name)->bool_value();
+        }
+        virtual int get_int(const char* name) const {
+            if (!has(name)) return 0;
+            return get(name)->int_value();
+        }
+        virtual unsigned int get_unsigned_int(const char* name) const {
+            if (!has(name)) return 0;
+            return get(name)->unsigned_int_value();
+        }
+        virtual double get_float(const char* name) const {
+            if (!has(name)) return 0.0;
+            return get(name)->float_value();
+        }
+        virtual const char* get_string(const char* name) const {
+            if (!has(name)) return nullptr;
+            return get(name)->string_value();
+        }
+        virtual void* get_pointer(const char* name) const {
+            if (!has(name)) return nullptr;
+            return get(name)->pointer_value();
+        }
+
+        virtual void foreach(ForEachSpecDataFn*) const = 0;
     };
 
     enum class SpecComponentType {
@@ -52,12 +111,12 @@ namespace SpecsCpp {
     };
 
     struct ISpecComponent {
-        virtual ~ISpecComponent()                                       = default;
-        virtual ISpecGroup*              group() const                  = 0;
-        virtual ISpecKeyValueCollection* meta_data() const              = 0;
-        virtual SpecComponentType        type() const                   = 0;
-        virtual bool                     skip() const                   = 0;
-        virtual void                     mark_skipped(bool skip = true) = 0;
+        virtual ~ISpecComponent()                                        = default;
+        virtual ISpecGroup*               group() const                  = 0;
+        virtual ISpecDataValueCollection* data() const                   = 0;
+        virtual SpecComponentType         type() const                   = 0;
+        virtual bool                      skip() const                   = 0;
+        virtual void                      mark_skipped(bool skip = true) = 0;
     };
 
     enum class RunResultStatus {
@@ -307,7 +366,7 @@ namespace SpecsCpp {
 
         virtual ~ISpecRunner() = default;
         virtual void
-        run(ISpecGroup*, ISpecReporterCollection*, ISpecKeyValueCollection* options,
+        run(ISpecGroup*, ISpecReporterCollection*, ISpecDataValueCollection* options,
             ISpecSuiteRunResultCallbackFn*) = 0;
     };
 
@@ -328,7 +387,7 @@ namespace SpecsCpp {
         virtual ISpecRunnerCollection*                runners() const                  = 0;
         virtual ISpecReporterCollection*              reporters() const                = 0;
         virtual void
-        run(ISpecRunner*, ISpecReporterCollection*, ISpecKeyValueCollection*,
+        run(ISpecRunner*, ISpecReporterCollection*, ISpecDataValueCollection*,
             ISpecSuiteRunResultCallbackFn*) = 0;
     };
 }

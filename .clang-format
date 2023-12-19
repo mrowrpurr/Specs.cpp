@@ -16,5 +16,11 @@ PointerAlignment: Left
 ReferenceAlignment: Left
 AlignAfterOpenBracket: BlockIndent
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+# SpaceBeforeParens: ControlStatements
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterFunctionDefinitionName: false
+  AfterForeachMacros: false
 
 ...

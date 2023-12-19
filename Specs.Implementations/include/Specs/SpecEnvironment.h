@@ -36,7 +36,7 @@ namespace SpecsCpp {
 
         void run(
             ISpecRunner* runner, ISpecReporterCollection* reporters,
-            ISpecKeyValueCollection* options, ISpecSuiteRunResultCallbackFn* callback
+            ISpecDataValueCollection* options, ISpecSuiteRunResultCallbackFn* callback
         ) override {
             runner->run(root_group(), reporters, options, callback);
         }
