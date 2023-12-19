@@ -219,5 +219,10 @@ namespace SpecsCpp {
                 group->merge(templateGroup);
             }
         }
+
+        void use_templates(std::vector<std::string_view> templateNames) {
+            if (auto* group = get())
+                for (auto& templateName : templateNames) use_template(templateName);
+        }
     };
 }

@@ -2,4 +2,4 @@
 
 #include "../Macros/TEMPLATE.h"
 
-#define TestTemplate(templateName) _SPEC_TEMPLATE(templateName)
+#define TestTemplate(testTemplateSymbol) _SPEC_TEMPLATE(testTemplateSymbol)

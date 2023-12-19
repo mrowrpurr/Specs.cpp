@@ -4,6 +4,8 @@
 
 TestGroup("Group 1");
 
+UseTemplates("Template A", "Template_B");
+
 Test("Test One") { _Log_("Hello from Test One"); }
 
 Test("Test Two") { _Log_("Hello from Test Two"); }

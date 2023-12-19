@@ -2,4 +2,4 @@
 
 #include "../Macros/TEMPLATE.h"
 
-#define TestTemplateFn(symbol) __SPEC_TEMPLATE_BODY(symbol, #symbol, __COUNTER__)
+#define TestTemplateFn(testTemplateSymbol) _SPEC_TEMPLATE(testTemplateSymbol)
