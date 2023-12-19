@@ -20,6 +20,7 @@ namespace SpecsCpp {
     class GlobalSpecGroup {
         std::vector<ISpecGroup*> _currentGroupStack;
 
+        ISpecGroup* _currentFileGroup     = nullptr;
         ISpecGroup* _currentTopLevelGroup = nullptr;
 
         // A place to store some memory! These go here and never leave :)
@@ -154,13 +155,48 @@ namespace SpecsCpp {
                 auto* specGroupPtr    = specGroup.get();
                 _currentTopLevelGroup = specGroupPtr;
                 _registeredGroups.push_back(std::move(specGroup));
+                _Log_("Add top level group {} to {}", description, group->description());
                 group->add_group(specGroupPtr);
                 push(specGroupPtr);
             }
         }
 
-        void register_top_level_template(std::string_view templateName) {
+        void clear_file_group() {
+            if (auto* group = get()) {
+                // Is there another top-level group? Let's pop it off
+                if (_currentFileGroup) {
+                    while (get() != _currentFileGroup) pop();
+                    if (get() == _currentFileGroup) pop();
+                }
+                _currentFileGroup = nullptr;
+            }
+        }
+
+        void register_file_group(std::string_view description, bool removeUnderscores = true) {
             clear_top_level_group();
+            clear_file_group();
+
+            if (auto* group = get()) {
+                std::string descriptionText{description};
+                if (removeUnderscores) {
+                    std::replace(descriptionText.begin(), descriptionText.end(), '_', ' ');
+                    description = descriptionText;
+                }
+                auto  specGroup    = std::make_unique<SpecGroup>(get(), descriptionText);
+                auto* specGroupPtr = specGroup.get();
+                _currentFileGroup  = specGroupPtr;
+                _registeredGroups.push_back(std::move(specGroup));
+                _Log_("Add file group {} to {}", description, group->description());
+                group->add_group(specGroupPtr);
+                push(specGroupPtr);
+            }
+        }
+
+        void register_top_level_template(
+            std::string_view templateName, bool clearFileGroup = true
+        ) {
+            clear_top_level_group();
+            if (clearFileGroup) clear_file_group();
 
             if (auto* group = get()) {
                 auto  specGroup       = std::make_unique<SpecGroup>(get(), templateName);
