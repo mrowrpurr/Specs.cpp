@@ -263,14 +263,15 @@ namespace SpecsCpp {
     };
 
     struct ISpecReporter {
-        virtual ~ISpecReporter()                         = default;
-        virtual void report_start()                      = 0;
-        virtual void report_spec_begin(ISpec*)           = 0;
-        virtual void report_setup(ISpecRunResult*)       = 0;
-        virtual void report_spec(ISpecRunResult*)        = 0;
-        virtual void report_teardown(ISpecRunResult*)    = 0;
-        virtual void report_spec_result(ISpecRunResult*) = 0;
-        virtual void report_suite(ISpecSuiteRunResult*)  = 0;
+        virtual ~ISpecReporter()                                = default;
+        virtual void report_start()                             = 0;
+        virtual void report_suite_begin(unsigned int specCount) = 0;
+        virtual void report_spec_begin(ISpec*)                  = 0;
+        virtual void report_setup(ISpecRunResult*)              = 0;
+        virtual void report_spec(ISpecRunResult*)               = 0;
+        virtual void report_teardown(ISpecRunResult*)           = 0;
+        virtual void report_spec_result(ISpecRunResult*)        = 0;
+        virtual void report_suite_result(ISpecSuiteRunResult*)  = 0;
     };
 
     struct ISpecReporterCollection {
@@ -282,13 +283,13 @@ namespace SpecsCpp {
         virtual ISpecReporter* get(const char* name) const                = 0;
         virtual void           foreach_reporter(ForEachReporterFn*) const = 0;
 
-        virtual void report_start()                      = 0;
-        virtual void report_spec_begin(ISpec*)           = 0;
-        virtual void report_setup(ISpecRunResult*)       = 0;
-        virtual void report_spec(ISpecRunResult*)        = 0;
-        virtual void report_teardown(ISpecRunResult*)    = 0;
-        virtual void report_spec_result(ISpecRunResult*) = 0;
-        virtual void report_suite(ISpecSuiteRunResult*)  = 0;
+        virtual void report_start()                            = 0;
+        virtual void report_spec_begin(ISpec*)                 = 0;
+        virtual void report_setup(ISpecRunResult*)             = 0;
+        virtual void report_spec(ISpecRunResult*)              = 0;
+        virtual void report_teardown(ISpecRunResult*)          = 0;
+        virtual void report_spec_result(ISpecRunResult*)       = 0;
+        virtual void report_suite_result(ISpecSuiteRunResult*) = 0;
     };
 
     using ISpecSuiteRunResultCallbackFn = IFunctionPointer<void(ISpecSuiteRunResult*)>;

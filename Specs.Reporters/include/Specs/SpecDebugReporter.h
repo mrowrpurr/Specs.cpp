@@ -11,6 +11,8 @@ namespace SpecsCpp {
     class SpecDebugReporter : public ISpecReporter {
         void report_start() override { _Log_(">>>> START SUITE"); }
 
+        void report_suite_begin(unsigned int specCount) override {}
+
         void report_spec_begin(ISpec* spec) override {}
 
         void report_setup(ISpecRunResult* result) override {}
@@ -52,7 +54,7 @@ namespace SpecsCpp {
             }
         }
 
-        void report_suite(ISpecSuiteRunResult* result) override {
+        void report_suite_result(ISpecSuiteRunResult* result) override {
             Colors::Color foregroundColor = Colors::Color::White;
             Colors::Color backgroundColor = Colors::Color::Yellow;
 

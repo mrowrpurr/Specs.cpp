@@ -51,8 +51,8 @@ namespace SpecsCpp {
             for (const auto& [name, reporter] : _reporters) reporter->report_spec_result(result);
         }
 
-        void report_suite(ISpecSuiteRunResult* result) override {
-            for (const auto& [name, reporter] : _reporters) reporter->report_suite(result);
+        void report_suite_result(ISpecSuiteRunResult* result) override {
+            for (const auto& [name, reporter] : _reporters) reporter->report_suite_result(result);
         }
     };
 }

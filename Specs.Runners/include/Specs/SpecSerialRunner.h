@@ -13,6 +13,13 @@
 
 namespace SpecsCpp {
 
+    // TODO: separate a bunch of common code into a SpecRunner class
+    // which the parallel runner will also inherit from :)
+    //
+    // Also: perhaps go ahead and build a full list of all specs to be
+    // run before running any of them, so we can print out a summary BEFORE running
+    // and also this lets us do randomization :)
+
     class SpecSerialRunner : public ISpecRunner {
         class SpecSuiteRunInstance {
             SpecSuiteRunResult       _resultTotalCounts;
@@ -335,8 +342,11 @@ namespace SpecsCpp {
                 : _reporters(reporters), _options(options), _timeoutMs(timeoutMs) {}
 
             void run(ISpecGroup* group, ISpecSuiteRunResultCallbackFn* callback) {
+                // TODO : put all of the specs into a Queue and we can call report_suite_begin()
+                // with count
+
                 run_group(group);
-                _reporters->report_suite(&_resultTotalCounts);
+                _reporters->report_suite_result(&_resultTotalCounts);
                 if (callback) callback->invoke(&_resultTotalCounts);
             }
         };
