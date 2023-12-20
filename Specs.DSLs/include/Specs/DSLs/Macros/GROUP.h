@@ -8,7 +8,7 @@
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)();      \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \
                                                                                               ) { \
-        SpecsCpp::DSLs::GlobalInterface::register_group_fn(                                       \
+        SpecsCpp::DSLs::GlobalInterface::define_group_fn(                                         \
             specGroupDescription,                                                                 \
             _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)             \
         );                                                                                        \

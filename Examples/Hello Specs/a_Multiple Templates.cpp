@@ -4,8 +4,8 @@
 
 DefineTemplate("Template A");
 
-Setup { _Log_("Hello from Setup in TEMPLATE A"); }
+// Setup { _Log_("Hello from Setup in TEMPLATE A"); }
 
 TestTemplateFn(Template_B);
 
-Setup { _Log_("Hello from Setup in TEMPLATE B"); }
+// Setup { _Log_("Hello from Setup in TEMPLATE B"); }

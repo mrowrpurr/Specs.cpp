@@ -6,4 +6,4 @@
 
 #define _SPEC_DECLARE_GROUP(description)                                                 \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_SPEC_DECLARE_GROUP_ \
-    ){[]() { SpecsCpp::GlobalSpecGroup::instance().register_top_level_group(description); }};
+    ){[]() { SpecsCpp::GlobalSpecGroup::instance().declare_top_level_group(description); }};

@@ -19,9 +19,12 @@ namespace SpecsCpp {
 
     class GlobalSpecGroup {
         std::vector<ISpecGroup*> _currentGroupStack;
+        std::vector<ISpecGroup*> _savedGroupStack;
 
         ISpecGroup* _currentFileGroup     = nullptr;
+        ISpecGroup* _savedFileGroup       = nullptr;
         ISpecGroup* _currentTopLevelGroup = nullptr;
+        ISpecGroup* _savedTopLevelGroup   = nullptr;
 
         // A place to store some memory! These go here and never leave :)
         std::vector<std::unique_ptr<SpecTest>>     _registeredSpecs;
@@ -57,7 +60,27 @@ namespace SpecsCpp {
         void push(ISpecGroup* group) { _currentGroupStack.push_back(group); }
         void pop() { _currentGroupStack.pop_back(); }
 
-        void register_template(
+        void clear_group_stack() {
+            _currentGroupStack.clear();
+
+            // This makes the current group / file notes no longer valid
+            _currentFileGroup     = nullptr;
+            _currentTopLevelGroup = nullptr;
+        }
+
+        void save_group_stack() {
+            _savedFileGroup     = _currentFileGroup;
+            _savedTopLevelGroup = _currentTopLevelGroup;
+            _savedGroupStack    = _currentGroupStack;
+        }
+
+        void restore_group_stack() {
+            _currentFileGroup     = _savedFileGroup;
+            _currentTopLevelGroup = _savedTopLevelGroup;
+            _currentGroupStack    = _savedGroupStack;
+        }
+
+        void define_template(
             std::string_view templateName, std::unique_ptr<SpecCodeBlock> codeBlock
         ) {
             auto  templateGroup    = std::make_unique<SpecGroup>(nullptr, templateName);
@@ -71,9 +94,7 @@ namespace SpecsCpp {
             _testTemplateGroups[templateName.data()] = std::move(templateGroup);
         }
 
-        void register_group(
-            std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock
-        ) {
+        void define_group(std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
                 auto  specGroup    = std::make_unique<SpecGroup>(get(), description);
                 auto* specGroupPtr = specGroup.get();
@@ -85,23 +106,24 @@ namespace SpecsCpp {
                 codeBlock->run(group, nullptr, nullptr);
                 pop();
             } else {
-                _Log_("register_group() called but no group is active!");
+                _Log_("define_group() called but no group is active!");
             }
         }
 
-        void register_spec(std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_spec(std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
                 auto  spec = std::make_unique<SpecTest>(get(), description, std::move(codeBlock));
                 auto* specPtr = spec.get();
                 _registeredSpecs.push_back(std::move(spec));
                 group->add_spec(specPtr);
             } else {
-                _Log_("register_spec() called but no group is active!");
+                _Log_("define_spec() called but no group is active!");
             }
         }
 
-        void register_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
+                _Log_("Adding setup to group: {}", group->description());
                 auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
                 auto* setupPtr = setup.get();
                 _registeredsetups.push_back(std::move(setup));
@@ -109,7 +131,7 @@ namespace SpecsCpp {
             }
         }
 
-        void register_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
                 auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
                 auto* teardownPtr = teardown.get();
@@ -118,7 +140,7 @@ namespace SpecsCpp {
             }
         }
 
-        void register_one_time_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_one_time_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
                 auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
                 auto* setupPtr = setup.get();
@@ -127,7 +149,7 @@ namespace SpecsCpp {
             }
         }
 
-        void register_one_time_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_one_time_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
                 auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
                 auto* teardownPtr = teardown.get();
@@ -147,7 +169,7 @@ namespace SpecsCpp {
             }
         }
 
-        void register_top_level_group(std::string_view description) {
+        void declare_top_level_group(std::string_view description) {
             clear_top_level_group();
 
             if (auto* group = get()) {
@@ -171,7 +193,7 @@ namespace SpecsCpp {
             }
         }
 
-        void register_file_group(std::string_view description, bool removeUnderscores = true) {
+        void declare_file_group(std::string_view description, bool removeUnderscores = true) {
             clear_top_level_group();
             clear_file_group();
 
@@ -190,18 +212,23 @@ namespace SpecsCpp {
             }
         }
 
-        void register_top_level_template(
-            std::string_view templateName, bool clearFileGroup = true
+        void declare_top_level_template(
+            std::string_view templateName, bool clearFileGroup = false
         ) {
             clear_top_level_group();
             if (clearFileGroup) clear_file_group();
 
             if (auto* group = get()) {
-                auto  specGroup       = std::make_unique<SpecGroup>(get(), templateName);
-                auto* specGroupPtr    = specGroup.get();
-                _currentTopLevelGroup = specGroupPtr;
-                _testTemplateGroups[templateName.data()] = std::move(specGroup);
-                push(specGroupPtr);
+                auto foundExisting = _testTemplateGroups.find(templateName.data());
+                if (foundExisting != _testTemplateGroups.end()) {
+                    clear_group_stack();  // The top-level things should NOT be registered anywhere
+                } else {
+                    auto  specGroup       = std::make_unique<SpecGroup>(get(), templateName);
+                    auto* specGroupPtr    = specGroup.get();
+                    _currentTopLevelGroup = specGroupPtr;
+                    _testTemplateGroups[templateName.data()] = std::move(specGroup);
+                    push(specGroupPtr);
+                }
             }
         }
 

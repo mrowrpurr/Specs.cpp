@@ -10,10 +10,10 @@
 namespace SpecsCpp::DSLs::Functions {
 
     inline void setup(std::function<void()> body) {
-        SpecsCpp::DSLs::GlobalInterface::register_setup_fn(function_pointer(std::move(body)));
+        SpecsCpp::DSLs::GlobalInterface::define_setup_fn(function_pointer(std::move(body)));
     }
 
     inline void setup(std::function<void(SpecsCpp::SpecDone)> body) {
-        SpecsCpp::DSLs::GlobalInterface::register_setup_fn(function_pointer(std::move(body)));
+        SpecsCpp::DSLs::GlobalInterface::define_setup_fn(function_pointer(std::move(body)));
     }
 }

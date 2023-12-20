@@ -15,5 +15,6 @@ Test("Test Three") { _Log_("Hello from Test Three"); }
 TestGroup("Group 2");
 
 UseTemplate("The_Template_Name");
+UseTemplate("SpecHelper Template");
 
 Test("Test Four") { _Log_("Hello from Test Four"); }

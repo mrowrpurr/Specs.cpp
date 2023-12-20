@@ -11,7 +11,7 @@
     );                                                                                            \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \
                                                                                               ) { \
-        SpecsCpp::DSLs::GlobalInterface::register_setup_fn(                                       \
+        SpecsCpp::DSLs::GlobalInterface::define_setup_fn(                                         \
             _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)             \
         );                                                                                        \
     }};                                                                                           \

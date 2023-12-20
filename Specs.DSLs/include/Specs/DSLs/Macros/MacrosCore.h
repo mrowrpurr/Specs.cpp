@@ -15,7 +15,7 @@
     #include <global_macro_functions.h>
 
 _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_SPEC_GROUP_FROM_SPEC_FILE_){[]() {
-    SpecsCpp::GlobalSpecGroup::instance().register_file_group(
+    SpecsCpp::GlobalSpecGroup::instance().declare_file_group(
         _GLOBAL_MACRO_FUNCTIONS_STRINGIZE(spec_name)
     );
 }};
@@ -27,7 +27,7 @@ _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_SPEC_GROUP_FROM
     #include <global_macro_functions.h>
 
 _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_SPEC_GROUP_FROM_SPEC_FILE_){[]() {
-    SpecsCpp::GlobalSpecGroup::instance().register_top_level_template(
+    SpecsCpp::GlobalSpecGroup::instance().declare_top_level_template(
         _GLOBAL_MACRO_FUNCTIONS_STRINGIZE(spec_template), true
     );
 }};

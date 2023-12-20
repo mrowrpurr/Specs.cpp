@@ -9,6 +9,7 @@
 #include "DSLs/Functions/teardown.h"           // IWYU pragma: keep
 #include "DSLs/Functions/test.h"               // IWYU pragma: keep
 #include "DSLs/TopLevel/BeginTestGroup.h"      // IWYU pragma: keep
+#include "DSLs/TopLevel/BeginTestTemplate.h"   // IWYU pragma: keep
 #include "DSLs/TopLevel/Config.h"              // IWYU pragma: keep
 #include "DSLs/TopLevel/Configure.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/ConfigureFn.h"         // IWYU pragma: keep
@@ -16,6 +17,7 @@
 #include "DSLs/TopLevel/Describe.h"            // IWYU pragma: keep
 #include "DSLs/TopLevel/DescribeFn.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/EndTestGroup.h"        // IWYU pragma: keep
+#include "DSLs/TopLevel/EndTestTemplate.h"     // IWYU pragma: keep
 #include "DSLs/TopLevel/GroupSetup.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/GroupSetupAsync.h"     // IWYU pragma: keep
 #include "DSLs/TopLevel/GroupTeardown.h"       // IWYU pragma: keep
