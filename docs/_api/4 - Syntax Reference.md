@@ -1,3 +1,0 @@
-# Syntax Reference
-
-sdfsfs

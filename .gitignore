@@ -12,4 +12,4 @@ _site
 .jekyll-metadata
 Gemfile.lock
 
-docs/api
+docs
