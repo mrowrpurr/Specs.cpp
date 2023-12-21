@@ -7,7 +7,7 @@
 
 #define __SPEC_ASYNC_TEST_BODY(symbol, specDescription, count)                                    \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::SpecDone                                                                        \
+        SpecsCpp::ISpec*, SpecsCpp::SpecDone                                                      \
     );                                                                                            \
     _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \
                                                                                               ) { \
@@ -17,7 +17,7 @@
         );                                                                                        \
     }};                                                                                           \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::SpecDone done                                                                   \
+        [[maybe_unused]] SpecsCpp::ISpec * current_spec, SpecsCpp::SpecDone done                  \
     )
 
 #define _SPEC_ASYNC_TEST(specDescription) \

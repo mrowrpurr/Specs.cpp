@@ -99,14 +99,16 @@ namespace SpecsCpp {
               ) {}
 
         SpecCodeBlock(FunctionPointer<void(ISpecGroup*)> body)
-            : _managedBody(
-                  std::make_unique<
-                      FunctionPointer<void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
-                      [body](
-                          ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone
-                      ) { body.invoke(self->group()); }
-                  )
-              ) {}
+            : _managedBody(std::make_unique<FunctionPointer<
+                               void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
+                  [body](ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone) {
+                      // If 'self' is a group, invoke the body with it, otherwise invoke with the
+                      // group() of self, if any
+                      if (auto* group = dynamic_cast<ISpecGroup*>(self)) body.invoke(group);
+                      else if (auto* group = self->group()) _Log_("AFTER");
+                      ;
+                  }
+              )) {}
 
         SpecCodeBlock(FunctionPointer<void(ISpecGroup*, SpecDone)> body)
             : _managedBody(

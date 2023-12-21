@@ -103,7 +103,7 @@ namespace SpecsCpp {
 
                 // Evaluate the group block (with this group being the 'current group')
                 push(specGroupPtr);
-                codeBlock->run(group, nullptr, nullptr);
+                codeBlock->run(specGroupPtr, nullptr, nullptr);
                 pop();
             } else {
                 _Log_("define_group() called but no group is active!");

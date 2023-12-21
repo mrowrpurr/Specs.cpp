@@ -16,7 +16,7 @@
         );                                                                                        \
     }};                                                                                           \
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \
-        SpecsCpp::ISpec * current_spec                                                            \
+        [[maybe_unused]] SpecsCpp::ISpec * current_spec                                           \
     )
 
 #define _SPEC_TEST(specDescription) _SPEC_TEST_BODY(_SPEC_TEST_, specDescription, __COUNTER__)
