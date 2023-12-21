@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🏃‍♀️_20running_20specs_0',['🏃‍♀️ Running specs',['../md__documentation_2_running_specs.html',1,'']]]
+  ['🎓_20write_20your_20first_20spec_0',['🎓 Write your first spec',['../md__documentation_2_write_your_first_spec.html',1,'']]]
 ];

@@ -27,21 +27,22 @@ var NAVTREE =
   [ "Specs", "index.html", [
     [ "What?", "index.html#autotoc_md1", null ],
     [ "Why?", "index.html#autotoc_md2", null ],
+    [ "✨ Quick Start", "md__documentation_2_quick_start.html", null ],
     [ "⬇️ Installing Specs", "md__documentation_2_installing.html", [
-      [ "C++17", "md__documentation_2_installing.html#autotoc_md4", null ],
-      [ "xmake", "md__documentation_2_installing.html#autotoc_md5", null ],
-      [ "vcpkg", "md__documentation_2_installing.html#autotoc_md6", null ]
+      [ "C++17", "md__documentation_2_installing.html#autotoc_md5", null ],
+      [ "xmake", "md__documentation_2_installing.html#autotoc_md6", null ],
+      [ "vcpkg", "md__documentation_2_installing.html#autotoc_md7", null ]
     ] ],
     [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
-      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md8", [
-        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md9", null ],
-        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md10", null ]
+      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md9", [
+        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md10", null ],
+        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md11", null ]
       ] ]
     ] ],
     [ "🎓 Write your first spec", "md__documentation_2_write_your_first_spec.html", null ],
     [ "🏃‍♀️ Running specs", "md__documentation_2_running_specs.html", [
-      [ "foo", "md__documentation_2_running_specs.html#autotoc_md13", null ],
-      [ "bar", "md__documentation_2_running_specs.html#autotoc_md14", null ]
+      [ "foo", "md__documentation_2_running_specs.html#autotoc_md14", null ],
+      [ "bar", "md__documentation_2_running_specs.html#autotoc_md15", null ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
     [ "📖 Syntax Reference", "md__documentation_2_syntax_reference.html", null ],
@@ -84,11 +85,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_p_i_8h.html",
-"_print_color_8h.html#ae56fb3cabeebcf7aa18597f31ae37676",
+"_print_color_8h.html#a710499b33e1c7256c823756a3963ab95acf4c2a4bf7c328c4e51f902350475343",
 "class_specs_cpp_1_1_library_loader.html#aadf50eef53dcebc987fe59cf4f0210b0",
 "class_specs_cpp_1_1_spec_run_result.html#a224a564363983c5f47ed301b17918869",
-"namespace_specs_cpp_1_1_colors.html#ae56fb3cabeebcf7aa18597f31ae37676af9a96fb667261a141d10021a66d6ad0f",
-"struct_specs_cpp_1_1_i_spec_documented.html#ac9dee288a3529f5c1e52f0a33025a9e7"
+"namespace_specs_cpp_1_1_colors.html#ae56fb3cabeebcf7aa18597f31ae37676ae90dfb84e30edf611e326eeb04d680de",
+"struct_specs_cpp_1_1_i_spec_documented.html#a5ca8c059216a13df58bb828d7410d609"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -18,6 +18,7 @@ var namespace_specs_cpp_1_1_d_s_ls =
     ] ],
     [ "GlobalInterface", "namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html", [
       [ "define_group_fn", "namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a9d81d98162ff5e45e7bb3c5c6ee52034", null ],
+      [ "define_group_fn", "namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a67fbdd1b47737b586e686129ab53e705", null ],
       [ "define_one_time_setup_fn", "namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a673b004ce2a706db3c5370dc536838cb", null ],
       [ "define_one_time_setup_fn", "namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a644dd58bf0710e17bffa0b0941701ed4", null ],
       [ "define_one_time_setup_fn", "namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a89632826a52af8c04310b100a11b9c78", null ],

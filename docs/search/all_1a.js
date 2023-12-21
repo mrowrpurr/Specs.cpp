@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['⬇️_20installing_20specs_0',['⬇️ Installing Specs',['../md__documentation_2_installing.html',1,'']]]
+  ['✔️_20assertion_20libraries_0',['✔️ Assertion Libraries',['../md__documentation_2_assertion_libraries.html',1,'']]]
 ];
