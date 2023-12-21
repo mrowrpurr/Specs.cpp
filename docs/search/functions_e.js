@@ -1,8 +1,0 @@
-var searchData=
-[
-  ['passed_0',['passed',['../struct_specs_cpp_1_1_i_spec_suite_run_result.html#abddda1fdfc76f45bdc54e466e6182074',1,'SpecsCpp::ISpecSuiteRunResult::passed()'],['../class_specs_cpp_1_1_spec_run_result.html#aaeec61ed01062f13c774f436b696850a',1,'SpecsCpp::SpecRunResult::passed()'],['../class_specs_cpp_1_1_spec_suite_run_result.html#ab0c124ec6f193ee5b68b7f77d9d1cb0b',1,'SpecsCpp::SpecSuiteRunResult::passed()']]],
-  ['pointer_5fvalue_1',['pointer_value',['../struct_specs_cpp_1_1_i_spec_data_value.html#a73fa9933c75089eb10419c11a474b5f2',1,'SpecsCpp::ISpecDataValue::pointer_value() const =0'],['../struct_specs_cpp_1_1_i_spec_data_value.html#aad3ae76363a52e15c929d131e381f836',1,'SpecsCpp::ISpecDataValue::pointer_value(void *)=0'],['../struct_specs_cpp_1_1_i_spec_data_value.html#a566741a255df1e8bdc802fa1d1530cda',1,'SpecsCpp::ISpecDataValue::pointer_value(IVoidPointer *)=0'],['../class_specs_cpp_1_1_spec_data_value.html#a0427678514e2432ec884fbb22b3564de',1,'SpecsCpp::SpecDataValue::pointer_value() const override'],['../class_specs_cpp_1_1_spec_data_value.html#a58cdbf4efa686fe01b4496a79f79c3c2',1,'SpecsCpp::SpecDataValue::pointer_value(void *value) override'],['../class_specs_cpp_1_1_spec_data_value.html#a531f813a6b5481f4d0a34d1aaba49402',1,'SpecsCpp::SpecDataValue::pointer_value(IVoidPointer *value) override']]],
-  ['pop_2',['pop',['../class_specs_cpp_1_1_global_spec_group.html#a02b226250515817b7f9405e912d0dfe7',1,'SpecsCpp::GlobalSpecGroup']]],
-  ['printcolor_3',['PrintColor',['../namespace_specs_cpp_1_1_colors.html#a04527dfbf1fd6ae9eed4cf6dd57bede6',1,'SpecsCpp::Colors']]],
-  ['push_4',['push',['../class_specs_cpp_1_1_global_spec_group.html#a0c572d84cfbf4e63eb0c6b61503773d0',1,'SpecsCpp::GlobalSpecGroup']]]
-];
