@@ -910,6 +910,7 @@ WARN_LOGFILE           =
 
 INPUT                  =    \
                             Documentation/README.md \
+                            Documentation/QuickStart.md \
                             Documentation/Installing.md \
                             Documentation/AssertionLibraries.md \
                             Documentation/WriteYourFirstSpec.md \
