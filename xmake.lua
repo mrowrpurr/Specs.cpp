@@ -4,5 +4,5 @@ set_languages("c++20")
 
 add_repositories("MrowrLib https://github.com/MrowrLib/Packages")
 
-includes("Specs/*/xmake.lua")
+includes("*/xmake.lua")
 includes("Examples/**/xmake.lua")
