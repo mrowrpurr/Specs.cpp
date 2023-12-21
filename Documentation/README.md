@@ -30,7 +30,6 @@ TestAsync("Slow thing") {
 }
 ```
 
-
 # Why?
 
 1. I enjoy authoring testing frameworks.
