@@ -1048,7 +1048,6 @@ Take a look at [`Specs.DSLs/include/Specs/DSLs.h`](Specs.DSLs/include/Specs/DSLs
 > #include "DSLs/Functions/spec.h"           // IWYU pragma: keep
 > #include "DSLs/Functions/teardown.h"       // IWYU pragma: keep
 > #include "DSLs/Functions/test.h"           // IWYU pragma: keep
-> #include "DSLs/TopLevel/Config.h"          // IWYU pragma: keep
 > #include "DSLs/TopLevel/Configure.h"       // IWYU pragma: keep
 > #include "DSLs/TopLevel/DefineTemplate.h"  // IWYU pragma: keep
 > #include "DSLs/TopLevel/Describe.h"        // IWYU pragma: keep

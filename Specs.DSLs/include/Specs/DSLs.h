@@ -10,7 +10,6 @@
 #include "DSLs/Functions/test.h"               // IWYU pragma: keep
 #include "DSLs/TopLevel/BeginTestGroup.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/BeginTestTemplate.h"   // IWYU pragma: keep
-#include "DSLs/TopLevel/Config.h"              // IWYU pragma: keep
 #include "DSLs/TopLevel/Configure.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/ConfigureFn.h"         // IWYU pragma: keep
 #include "DSLs/TopLevel/DefineTemplate.h"      // IWYU pragma: keep
