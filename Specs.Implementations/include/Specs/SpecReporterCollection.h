@@ -15,7 +15,10 @@ namespace SpecsCpp {
             _reporters[name] = reporter;
         }
 
-        bool has(const char* name) const override { return _reporters.contains(name); }
+        bool has(const char* name) const override {
+            auto found = _reporters.find(name);
+            return found != _reporters.end();
+        }
 
         ISpecReporter* get(const char* name) const override {
             auto found = _reporters.find(name);

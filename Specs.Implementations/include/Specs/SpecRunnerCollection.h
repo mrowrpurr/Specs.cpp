@@ -5,7 +5,6 @@
 
 #include <string>
 
-
 namespace SpecsCpp {
 
     class SpecRunnerCollection : public ISpecRunnerCollection {
@@ -14,7 +13,10 @@ namespace SpecsCpp {
     public:
         void add(const char* name, ISpecRunner* runner) override { _runners[name] = runner; }
 
-        bool has(const char* name) const override { return _runners.contains(name); }
+        bool has(const char* name) const override {
+            auto found = _runners.find(name);
+            return found != _runners.end();
+        }
 
         ISpecRunner* get(const char* name) const override {
             auto found = _runners.find(name);
