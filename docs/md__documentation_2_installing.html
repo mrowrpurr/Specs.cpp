@@ -104,8 +104,31 @@ $(document).ready(function(){initNavTree('md__documentation_2_installing.html','
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
 <ul><li class="level1"><a href="#autotoc_md5">C++17</a></li>
-<li class="level1"><a href="#autotoc_md6">xmake</a></li>
-<li class="level1"><a href="#autotoc_md7">vcpkg</a></li>
+<li class="level1"><a href="#autotoc_md6">xmake</a><ul><li class="level2"><a href="#autotoc_md7">Verify</a></li>
+<li class="level2"><a href="#autotoc_md8">Assertion Library Support</a></li>
+<li class="level2"><a href="#autotoc_md9">Snowhouse</a><ul><li class="level3"><a href="#autotoc_md10">Verify</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md11">libassert</a><ul><li class="level3"><a href="#autotoc_md12">Verify</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md13">vcpkg</a><ul><ul><li class="level3"><a href="#autotoc_md14">vcpkg.json</a></li>
+</ul>
+<li class="level2"><a href="#autotoc_md15">vcpkg-configuration.json</a></li>
+<li class="level2"><a href="#autotoc_md16">CMakeLists.txt</a></li>
+<li class="level2"><a href="#autotoc_md17">Verify</a></li>
+<li class="level2"><a href="#autotoc_md18">Assertion Library Support</a><ul><li class="level3"><a href="#autotoc_md19">Snowhouse</a><ul><li class="level4"><a href="#autotoc_md20">vcpkg.json</a></li>
+<li class="level4"><a href="#autotoc_md21">CMakeLists.txt</a></li>
+<li class="level4"><a href="#autotoc_md22">Verify</a></li>
+</ul>
+</li>
+<li class="level3"><a href="#autotoc_md23">LibAssert</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="textblock"><p><a class="anchor" id="autotoc_md4"></a></p>
@@ -127,30 +150,330 @@ C++17</h1>
 <h1><a class="anchor" id="autotoc_md6"></a>
 xmake</h1>
 <p>The following is an <code>xmake.lua</code> example which sets up a <code>Specs</code> test suite:</p>
+<div class="fragment"><div class="line">-- <span class="comment"># C++17 is required (but requires adding the &#39;fmt&#39; library if used)</span></div>
+<div class="line">-- <span class="comment"># C++20 works out-of-the-box without any additional dependencies</span></div>
+<div class="line">set_languages(<span class="stringliteral">&quot;c++20&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># Add the MrowrLib xmake repository which provides the packages:</span></div>
+<div class="line">-- <span class="comment"># specs, specs_snowhouse, specs_libassert, and libassert_latest</span></div>
+<div class="line">add_repositories(<span class="stringliteral">&quot;MrowrLib https://github.com/MrowrLib/Packages&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># Add dependency on &#39;specs&#39;</span></div>
+<div class="line">add_requires(<span class="stringliteral">&quot;specs&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># Create an executable target which will execute your specs when run</span></div>
+<div class="line">target(<span class="stringliteral">&quot;MyTests&quot;</span>)</div>
+<div class="line">    set_kind(<span class="stringliteral">&quot;binary&quot;</span>)</div>
+<div class="line">    add_files(<span class="stringliteral">&quot;*.cpp&quot;</span>)</div>
+<div class="line">    add_packages(<span class="stringliteral">&quot;specs&quot;</span>)</div>
+</div><!-- fragment --><p><em>That's it!</em></p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Verify</h2>
+<p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_main_2include_2_specs_2_main_8h.html">Specs/Main.h</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example test&quot;</span>) {</div>
+<div class="line">    <span class="keywordflow">throw</span> <span class="stringliteral">&quot;Kaboom, this failed!&quot;</span>;</div>
+<div class="line">}</div>
+<div class="ttc" id="a_specs_8_main_2include_2_specs_2_main_8h_html"><div class="ttname"><a href="_specs_8_main_2include_2_specs_2_main_8h.html">Main.h</a></div></div>
+<div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
+</div><!-- fragment --><p>Then build and run your test target.</p>
+<p>You should see the following output:</p>
+<div class="fragment"><div class="line">[FAILED] Example test</div>
+<div class="line"> </div>
+<div class="line">Kaboom, this failed!</div>
+<div class="line"> </div>
+<div class="line">1 failed</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Assertion Library Support</h2>
+<p>By default, <code>Specs</code> will catch any <code>std::exception</code> (<em>or literal string</em>) thrown and display it as a test failure message.</p>
+<p>If you want to integrate with an assertion library, we provide integrations for the <code>snowhouse</code> and <code>libassert</code> assertion libraries.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Snowhouse</h2>
+<p>If you want to install the the <code>Snowhouse</code> assertion library with <code>Specs</code> support:</p>
 <div class="fragment"><div class="line">add_repositories(<span class="stringliteral">&quot;MrowrLib https://github.com/MrowrLib/Packages.git&quot;</span>)</div>
 <div class="line"> </div>
 <div class="line">add_requires(<span class="stringliteral">&quot;specs&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># Install snowhouse</span></div>
+<div class="line">-- <span class="comment"># Here we use the official vcpkg package registry to install snowhouse</span></div>
+<div class="line">add_requires(<span class="stringliteral">&quot;vcpkg::snowhouse&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># Install the Spec adapter for snowhouse</span></div>
+<div class="line">add_requires(<span class="stringliteral">&quot;specs_snowhouse&quot;</span>)</div>
 <div class="line"> </div>
 <div class="line">target(<span class="stringliteral">&quot;MyProject.Tests&quot;</span>)</div>
 <div class="line">    set_kind(<span class="stringliteral">&quot;binary&quot;</span>)</div>
 <div class="line">    add_packages(<span class="stringliteral">&quot;specs&quot;</span>)</div>
 <div class="line">    add_files(<span class="stringliteral">&quot;*.cpp&quot;</span>)</div>
-</div><!-- fragment --><p><em>That's it!</em></p>
+<div class="line"> </div>
+<div class="line">    -- <span class="comment"># Add the snowhouse and specs_snowhouse packages to your target</span></div>
+<div class="line">    add_packages(<span class="stringliteral">&quot;vcpkg::snowhouse&quot;</span>, <span class="stringliteral">&quot;specs_snowhouse&quot;</span>)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md10"></a>
+Verify</h3>
+<p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_main_2include_2_specs_2_main_8h.html">Specs/Main.h</a>&gt;</span>      <span class="comment">// Provides the main() function for running Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>           <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span> <span class="comment">// Provides Snowhouse support</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example Snowhouse test&quot;</span>) {</div>
+<div class="line">    AssertThat(69, Equals(420));</div>
+<div class="line">}</div>
+<div class="ttc" id="a_snowhouse_8h_html"><div class="ttname"><a href="_snowhouse_8h.html">Snowhouse.h</a></div></div>
+</div><!-- fragment --><p>Then build and run your test target.</p>
+<p>You should see the following output:</p>
+<div class="fragment"><div class="line">[FAILED] Example Snowhouse test</div>
+<div class="line"> </div>
+<div class="line">Expected: equal to 420</div>
+<div class="line">Actual: 69</div>
+<div class="line"> </div>
+<div class="line">1 failed</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+libassert</h2>
+<p>If you want to install the the <code>libassert</code> assertion library with <code>Specs</code> support:</p>
+<div class="fragment"><div class="line">add_repositories(<span class="stringliteral">&quot;MrowrLib https://github.com/MrowrLib/Packages.git&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">add_requires(<span class="stringliteral">&quot;specs&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># Install snowhouse</span></div>
+<div class="line">-- <span class="comment"># Here we use the official xmake package registry to install libassert</span></div>
+<div class="line">-- <span class="comment"># (Optional) we are using the &#39;lowercase&#39; option which provides an &#39;assert()&#39; macro rather than &#39;ASSERT()&#39;</span></div>
+<div class="line">add_requires(<span class="stringliteral">&quot;libassert&quot;</span>, { configs = { lowercase = true } })</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># Install the Spec adapter for libassert</span></div>
+<div class="line">add_requires(<span class="stringliteral">&quot;specs_libassert&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">target(<span class="stringliteral">&quot;MyProject.Tests&quot;</span>)</div>
+<div class="line">    set_kind(<span class="stringliteral">&quot;binary&quot;</span>)</div>
+<div class="line">    add_packages(<span class="stringliteral">&quot;specs&quot;</span>)</div>
+<div class="line">    add_files(<span class="stringliteral">&quot;*.cpp&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">    -- <span class="comment"># Add the libassert and specs_libassert packages to your target</span></div>
+<div class="line">    add_packages(<span class="stringliteral">&quot;libassert&quot;</span>, <span class="stringliteral">&quot;specs_libassert&quot;</span>)</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;<b>Note:</b> at the time of writing, I was having trouble getting <code>libassert</code> to build from the official <code>xmake</code> registry.</p>
+<p>If you run into problems, feel free to use the latest version of <code>libassert</code> from the <code>MrowrLib</code> registry (using the <code>libassert_latest</code> package):</p>
+<div class="fragment"><div class="line">add_requires(<span class="stringliteral">&quot;libassert_latest&quot;</span>, { configs = { lowercase = true } })</div>
+<div class="line"> </div>
+<div class="line">-- <span class="comment"># ...</span></div>
+<div class="line">target(<span class="stringliteral">&quot;MyProject.Tests&quot;</span>)</div>
+<div class="line">    -- <span class="comment"># ...</span></div>
+<div class="line">    -- <span class="comment"># Add the libassert and specs_libassert packages to your target</span></div>
+<div class="line">    add_packages(<span class="stringliteral">&quot;libassert_latest&quot;</span>, <span class="stringliteral">&quot;specs_libassert&quot;</span>)</div>
+</div><!-- fragment --> </blockquote>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Verify</h3>
+<p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_main_2include_2_specs_2_main_8h.html">Specs/Main.h</a>&gt;</span>      <span class="comment">// Provides the main() function for running Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>           <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_lib_assert_8h.html">Specs/LibAssert.h</a>&gt;</span> <span class="comment">// Provides libassert support</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example libassert test&quot;</span>) {</div>
+<div class="line">    assert(69 == 420);</div>
+<div class="line">}</div>
+<div class="ttc" id="a_lib_assert_8h_html"><div class="ttname"><a href="_lib_assert_8h.html">LibAssert.h</a></div></div>
+</div><!-- fragment --><p>Then run <code>xmake run MyProject.Tests</code> and you should see the following output:</p>
+<blockquote class="doxtable">
+<p>&zwj;<b>Note:</b> failed <code>libassert</code> assertions show a huge, colorful stack trace </p>
+</blockquote>
+<div class="fragment"><div class="line">[FAILED] Example libassert test</div>
+<div class="line"> </div>
+<div class="line">Assertion failed at LibAssert.Test.cpp:6: void __cdecl __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec *):</div>
+<div class="line">    assert(69 == 420);</div>
+<div class="line"> </div>
+<div class="line">Stack trace:</div>
+<div class="line">#  1 LibAssert.Test.cpp             6 __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec*)</div>
+<div class="line">#  2 StaticFunctionPointer.h       33 FunctionPointers::StaticFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeImpl&lt;0&gt;(std::integer_sequence&lt;unsigned __int64, 0&gt;, FunctionPointers::IFunctionPoi</div>
+<div class="line">                                      nterValue**)</div>
+<div class="line">#  3 StaticFunctionPointer.h       45 FunctionPointers::StaticFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
+<div class="line">#  4 FunctionPointer.h             44 FunctionPointers::FunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
+<div class="line">#  5 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invoke(SpecsCpp::ISpec*)</div>
+<div class="line">#  6 SpecCodeBlock.h             97</div>
+<div class="line">#  7 type_traits                 1762</div>
+<div class="line">#  8 functional                  839</div>
+<div class="line">#  9 functional                   883 std::_Func_class&lt;void, SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *&gt;::operator()(SpecsCpp::ISpecCompone</div>
+<div class="line">                                      nt*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt;*)</div>
+<div class="line"># 10 FunctionalFunctionPointer.h   34 FunctionPointers::FunctionalFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;</div>
+<div class="line">                                      ::invokeImpl&lt;0, 1, 2&gt;(std::integer_sequence&lt;unsigned __int64, 0, 1, 2&gt;, FunctionPointers::IFunctionPointerValue**)</div>
+<div class="line"># 11 FunctionalFunctionPointer.h   46 FunctionPointers::FunctionalFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;</div>
+<div class="line">                                      ::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
+<div class="line"># 12 FunctionPointer.h             44 FunctionPointers::FunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;::invokeWi</div>
+<div class="line">                                      thArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
+<div class="line"># 13 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;::invoke(</div>
+<div class="line">                                      SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt;*)</div>
+<div class="line"># 14 SpecCodeBlock.h              215 SpecsCpp::SpecCodeBlock::run(SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecRunResult *)&gt;*)</div>
+<div class="line"># 15 SpecSerialRunner.h           253 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::foreach_spec_in_group(SpecsCpp::ISpec*)</div>
+<div class="line"># 16 MemberFunctionPointer.h       28 FunctionPointers::MemberFunctionPointer&lt;SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance, void, SpecsCpp::ISpec *&gt;::invokeImpl&lt;0&gt;(std::integer_sequence&lt;unsigned _</div>
+<div class="line">                                      _int64, 0&gt;, FunctionPointers::IFunctionPointerValue**)</div>
+<div class="line"># 17 MemberFunctionPointer.h       43 FunctionPointers::MemberFunctionPointer&lt;SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance, void, SpecsCpp::ISpec *&gt;::invokeWithArgsArray(FunctionPointers::IFunctio</div>
+<div class="line">                                      nPointerValue**)</div>
+<div class="line"># 18 FunctionPointer.h             44 FunctionPointers::FunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
+<div class="line"># 19 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invoke(SpecsCpp::ISpec*)</div>
+<div class="line"># 20 SpecGroup.h                   63 SpecsCpp::SpecGroup::foreach_spec(FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;*)</div>
+<div class="line"># 21 SpecSerialRunner.h           328 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::run_group(SpecsCpp::ISpecGroup*)</div>
+<div class="line"># 22 SpecSerialRunner.h           349 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::run(SpecsCpp::ISpecGroup*, FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecSuiteRunResult *)&gt;*)  </div>
+<div class="line"># 23 SpecSerialRunner.h           365 SpecsCpp::SpecSerialRunner::run(SpecsCpp::ISpecGroup*, SpecsCpp::ISpecReporterCollection*, SpecsCpp::ISpecDataValueCollection*, FunctionPointers::IFunctionPointer</div>
+<div class="line">                                      &lt;void __cdecl(SpecsCpp::ISpecSuiteRunResult *)&gt;*)</div>
+<div class="line"># 24 Entrypoint.h                 140 SpecsCpp::Entrypoint::main(int, char**)</div>
+<div class="line"># 25 Main.h                         5 main(int, char**)</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">1 failed</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
+vcpkg</h1>
+<blockquote class="doxtable">
+<p>&zwj;In this example, we use a <code>vcpkg.json</code> file to manage our <code>vcpkg</code> dependencies.</p>
+<p>See <a href="https://learn.microsoft.com/en-us/vcpkg/concepts/manifest-mode">vcpkg Manifest Mode</a> for more information. </p>
+</blockquote>
+<p>To install <code>Specs</code> using <code>vcpkg</code>, you will need to:</p>
+<ul>
+<li>Add <code>specs</code> as a dependency in your <code>vcpkg.json</code></li>
+<li>Add the <a href="https://github.com/MrowrLib/Packages.git"><code>MrowrLib/Packages</code></a> registry to your <code>vcpkg-configuration.json</code></li>
+<li>Link <code>specs::specs</code> in your test target in your <code>CMakelists.txt</code></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md14"></a>
+vcpkg.json</h3>
+<p>Add <code>specs</code> as a dependency in your <code>vcpkg.json</code>:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    <span class="stringliteral">&quot;dependencies&quot;</span>: [</div>
+<div class="line">        <span class="stringliteral">&quot;specs&quot;</span></div>
+<div class="line">    ]</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+vcpkg-configuration.json</h2>
+<p>Add the <a href="https://github.com/MrowrLib/Packages.git"><code>MrowrLib/Packages</code></a> registry to your <code>vcpkg-configuration.json</code>, including a full list of all <code>Specs</code> dependencies from the registry:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    <span class="stringliteral">&quot;default-registry&quot;</span>: {</div>
+<div class="line">        <span class="stringliteral">&quot;kind&quot;</span>: <span class="stringliteral">&quot;git&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;repository&quot;</span>: <span class="stringliteral">&quot;https://github.com/microsoft/vcpkg.git&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;baseline&quot;</span>: <span class="stringliteral">&quot;ff6867374598312866fecfc64736a334591ceace&quot;</span></div>
+<div class="line">    },</div>
+<div class="line">    <span class="stringliteral">&quot;registries&quot;</span>: [</div>
+<div class="line">        {</div>
+<div class="line">            <span class="stringliteral">&quot;kind&quot;</span>: <span class="stringliteral">&quot;git&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;repository&quot;</span>: <span class="stringliteral">&quot;https://github.com/MrowrLib/Packages.git&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;baseline&quot;</span>: <span class="stringliteral">&quot;ac82d18115a4bd208aa3382408a95294c5cb869d&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;packages&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;specs&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;specs-snowhouse&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;specs-libassert&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;mrowr-specs-snowhouse&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;mrowr-function-pointer&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;mrowr-global-macro-functions&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;mrowr-collections&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;mrowr-log&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;mrowr-string-format&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;mrowr-void-pointer&quot;</span></div>
+<div class="line">            ]</div>
+<div class="line">        }</div>
+<div class="line">    ]</div>
+<div class="line">}</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;<b>Note:</b> you will want to update the <code>baseline</code> values in <a href="vcpkg-configuration.json"><code>vcpkg-configuration.json</code></a> for:</p><ul>
+<li>the <code>default-registry</code> registry: this should be the latest commit SHA of <a href="https://github.com/microsoft/vcpkg/commits/master/"><code>microsoft/vcpkg</code></a></li>
+<li>the <a href="https://github.com/MrowrLib/Packages/commits/main/"><code>MrowrLib/Packages</code></a> registry: this should be the latest commit SHA of <a href="https://github.com/MrowrLib/Packages/commits/main/"><code>MrowrLib/Packages</code></a> </li>
+</ul>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md16"></a>
+CMakeLists.txt</h2>
+<div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.21)</div>
+<div class="line"> </div>
+<div class="line">project(MyTests)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Create an executable target which will execute your specs when run</span></div>
+<div class="line">add_executable(</div>
+<div class="line">    ${PROJECT_NAME}</div>
+<div class="line">    Test.cpp</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># C++17 is required (but requires adding the &#39;fmt&#39; library if used)</span></div>
+<div class="line"><span class="comment"># C++20 works out-of-the-box without any additional dependencies</span></div>
+<div class="line">target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20) </div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Add dependency on &#39;specs&#39;</span></div>
+<div class="line">find_package(specs CONFIG REQUIRED)</div>
+<div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
+Verify</h2>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_main_2include_2_specs_2_main_8h.html">Specs/Main.h</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example test&quot;</span>) { <span class="keywordflow">throw</span> <span class="stringliteral">&quot;Kaboom, this failed!&quot;</span>; }</div>
-<div class="ttc" id="a_specs_8_main_2include_2_specs_2_main_8h_html"><div class="ttname"><a href="_specs_8_main_2include_2_specs_2_main_8h.html">Main.h</a></div></div>
-<div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example test&quot;</span>) {</div>
+<div class="line">    <span class="keywordflow">throw</span> <span class="stringliteral">&quot;Kaboom, this failed!&quot;</span>;</div>
+<div class="line">}</div>
 </div><!-- fragment --><p>Then run <code>xmake run MyProject.Tests</code> and you should see the following output:</p>
 <div class="fragment"><div class="line">[FAILED] Example test</div>
 <div class="line"> </div>
 <div class="line">Kaboom, this failed!</div>
 <div class="line"> </div>
 <div class="line">1 failed</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
-vcpkg</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+Assertion Library Support</h2>
+<p>By default, <code>Specs</code> will catch any <code>std::exception</code> (<em>or literal string</em>) thrown and display it as a test failure message.</p>
+<p>If you want to integrate with an assertion library, we provide integrations for the <code>snowhouse</code> and <code>libassert</code> assertion libraries.</p>
+<h3><a class="anchor" id="autotoc_md19"></a>
+Snowhouse</h3>
+<p>If you want to install the the <code>Snowhouse</code> assertion library with <code>Specs</code> support:</p>
+<ul>
+<li>Add <code>specs-snowhouse</code> to your <code>vcpkg.json</code></li>
+<li>Link <code>specs::specs_snowhouse</code> in your test target in your <code>CMakelists.txt</code></li>
+</ul>
+<h4><a class="anchor" id="autotoc_md20"></a>
+vcpkg.json</h4>
+<p>Here we add <code>snowhouse</code> from the official <code>vcpkg</code> registry, and <code>specs-snowhouse</code> from the <code>MrowrLib/Packages</code> registry:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    <span class="stringliteral">&quot;dependencies&quot;</span>: [</div>
+<div class="line">        <span class="stringliteral">&quot;specs&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;snowhouse&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;specs-snowhouse&quot;</span></div>
+<div class="line">    ]</div>
+<div class="line">}</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md21"></a>
+CMakeLists.txt</h4>
+<div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.21)</div>
+<div class="line"> </div>
+<div class="line">project(MyTests)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Create an executable target which will execute your specs when run</span></div>
+<div class="line">add_executable(</div>
+<div class="line">    ${PROJECT_NAME}</div>
+<div class="line">    Test.cpp</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># C++17 is required (but requires adding the &#39;fmt&#39; library if used)</span></div>
+<div class="line"><span class="comment"># C++20 works out-of-the-box without any additional dependencies</span></div>
+<div class="line">target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20) </div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Add dependency on &#39;specs&#39;</span></div>
+<div class="line">find_package(specs CONFIG REQUIRED)</div>
+<div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs)</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md22"></a>
+Verify</h4>
+<p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_main_2include_2_specs_2_main_8h.html">Specs/Main.h</a>&gt;</span>      <span class="comment">// Provides the main() function for running Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>           <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span> <span class="comment">// Provides Snowhouse support</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example Snowhouse test&quot;</span>) {</div>
+<div class="line">    AssertThat(69, Equals(420));</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Then build and run your test target.</p>
+<p>You should see the following output:</p>
+<div class="fragment"><div class="line">[FAILED] Example Snowhouse test</div>
+<div class="line"> </div>
+<div class="line">Expected: equal to 420</div>
+<div class="line">Actual: 69</div>
+<div class="line"> </div>
+<div class="line">1 failed</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md23"></a>
+LibAssert</h3>
+<p>At the time of writing, I can't get the <code>vcpkg</code> version of <code>libassert</code> to build.</p>
+<p>I couldn't get the instructions on the <code>libassert</code> GitHub page to work either.</p>
+<p>For that reason, for now... you're on your own.</p>
+<p>Here is the <code>libassert</code> README: <a href="https://github.com/jeremy-rifkin/libassert">https://github.com/jeremy-rifkin/libassert</a></p>
+<p>Here is a recent bug report for the <code>vcpkg</code>: <a href="https://github.com/jeremy-rifkin/libassert/issues/75">https://github.com/jeremy-rifkin/libassert/issues/75</a> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

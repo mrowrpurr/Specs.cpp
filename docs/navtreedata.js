@@ -30,19 +30,41 @@ var NAVTREE =
     [ "✨ Quick Start", "md__documentation_2_quick_start.html", null ],
     [ "⬇️ Installing Specs", "md__documentation_2_installing.html", [
       [ "C++17", "md__documentation_2_installing.html#autotoc_md5", null ],
-      [ "xmake", "md__documentation_2_installing.html#autotoc_md6", null ],
-      [ "vcpkg", "md__documentation_2_installing.html#autotoc_md7", null ]
+      [ "xmake", "md__documentation_2_installing.html#autotoc_md6", [
+        [ "Verify", "md__documentation_2_installing.html#autotoc_md7", null ],
+        [ "Assertion Library Support", "md__documentation_2_installing.html#autotoc_md8", null ],
+        [ "Snowhouse", "md__documentation_2_installing.html#autotoc_md9", [
+          [ "Verify", "md__documentation_2_installing.html#autotoc_md10", null ]
+        ] ],
+        [ "libassert", "md__documentation_2_installing.html#autotoc_md11", [
+          [ "Verify", "md__documentation_2_installing.html#autotoc_md12", null ]
+        ] ]
+      ] ],
+      [ "vcpkg", "md__documentation_2_installing.html#autotoc_md13", [
+        [ "vcpkg-configuration.json", "md__documentation_2_installing.html#autotoc_md15", null ],
+        [ "CMakeLists.txt", "md__documentation_2_installing.html#autotoc_md16", null ],
+        [ "Verify", "md__documentation_2_installing.html#autotoc_md17", null ],
+        [ "Assertion Library Support", "md__documentation_2_installing.html#autotoc_md18", [
+          [ "vcpkg.json", "md__documentation_2_installing.html#autotoc_md14", null ],
+          [ "Snowhouse", "md__documentation_2_installing.html#autotoc_md19", [
+            [ "vcpkg.json", "md__documentation_2_installing.html#autotoc_md20", null ],
+            [ "CMakeLists.txt", "md__documentation_2_installing.html#autotoc_md21", null ],
+            [ "Verify", "md__documentation_2_installing.html#autotoc_md22", null ]
+          ] ],
+          [ "LibAssert", "md__documentation_2_installing.html#autotoc_md23", null ]
+        ] ]
+      ] ]
     ] ],
     [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
-      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md9", [
-        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md10", null ],
-        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md11", null ]
+      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md25", [
+        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md26", null ],
+        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md27", null ]
       ] ]
     ] ],
     [ "🎓 Write your first spec", "md__documentation_2_write_your_first_spec.html", null ],
     [ "🏃‍♀️ Running specs", "md__documentation_2_running_specs.html", [
-      [ "foo", "md__documentation_2_running_specs.html#autotoc_md14", null ],
-      [ "bar", "md__documentation_2_running_specs.html#autotoc_md15", null ]
+      [ "foo", "md__documentation_2_running_specs.html#autotoc_md30", null ],
+      [ "bar", "md__documentation_2_running_specs.html#autotoc_md31", null ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
     [ "📖 Syntax Reference", "md__documentation_2_syntax_reference.html", null ],
@@ -88,8 +110,8 @@ var NAVTREEINDEX =
 "_print_color_8h.html#a710499b33e1c7256c823756a3963ab95acf4c2a4bf7c328c4e51f902350475343",
 "class_specs_cpp_1_1_library_loader.html#aadf50eef53dcebc987fe59cf4f0210b0",
 "class_specs_cpp_1_1_spec_run_result.html#a224a564363983c5f47ed301b17918869",
-"namespace_specs_cpp_1_1_colors.html#ae56fb3cabeebcf7aa18597f31ae37676ae90dfb84e30edf611e326eeb04d680de",
-"struct_specs_cpp_1_1_i_spec_documented.html#a5ca8c059216a13df58bb828d7410d609"
+"namespace_specs_cpp.html#af49db017c7247695a869d10fb892ad02",
+"struct_specs_cpp_1_1_i_spec_data_value_collection.html#a7dc1e0479f49652fa789dd6f38c8fa44"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
