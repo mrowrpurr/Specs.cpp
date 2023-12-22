@@ -68,6 +68,11 @@ namespace SpecsCpp {
             _currentTopLevelGroup = nullptr;
         }
 
+        void reset_group_stack() {
+            clear_group_stack();
+            if (auto* rootGroup = root()) push(rootGroup);
+        }
+
         void save_group_stack() {
             _savedFileGroup     = _currentFileGroup;
             _savedTopLevelGroup = _currentTopLevelGroup;
@@ -123,7 +128,6 @@ namespace SpecsCpp {
 
         void define_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
             if (auto* group = get()) {
-                _Log_("Adding setup to group: {}", group->description());
                 auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
                 auto* setupPtr = setup.get();
                 _registeredsetups.push_back(std::move(setup));
