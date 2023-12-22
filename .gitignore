@@ -10,3 +10,5 @@ compile_commands
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
+
+docs
