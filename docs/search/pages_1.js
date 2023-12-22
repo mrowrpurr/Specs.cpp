@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['license_0',['LICENSE',['../md__documentation_2_l_i_c_e_n_s_e.html',1,'']]]
+  ['▶️_20command_2dline_20interface_0',['▶️ Command-Line Interface',['../md__documentation_2_c_l_i.html',1,'']]]
 ];

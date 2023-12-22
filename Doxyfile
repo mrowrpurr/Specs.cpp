@@ -913,13 +913,16 @@ INPUT                  =    \
                             Documentation/QuickStart.md \
                             Documentation/Installing.md \
                             Documentation/AssertionLibraries.md \
-                            Documentation/WriteYourFirstSpec.md \
-                            Documentation/RunningSpecs.md \
+                            Documentation/WritingTests.md \
+                            Documentation/RunningTests.md \
                             Documentation/CLI.md \
+                            Documentation/Templates.md \
+                            Documentation/Variables.md \
+                            Documentation/Exceptions.md \
                             Documentation/SyntaxReference.md \
-                            Documentation/GitHub.md \
-                            Documentation/LICENSE.md \
                             Documentation/CONTRIBUTING.md \
+                            Documentation/LICENSE.md \
+                            Documentation/GitHub.md \
                             Specs \
                             Specs.API \
                             Specs.Console \

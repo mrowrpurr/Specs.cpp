@@ -1,5 +1,0 @@
-# 🏃‍♀️ Running specs
-
-## foo
-
-## bar

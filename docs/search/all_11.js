@@ -23,6 +23,6 @@ var searchData=
   ['run_20',['run',['../struct_specs_cpp_1_1_i_spec_code_block.html#a3ff3eaeda4898eb4af7e2a5766f51eac',1,'SpecsCpp::ISpecCodeBlock::run()'],['../struct_specs_cpp_1_1_i_spec_runner.html#a8275d41346657dbe936e681719e3f7f0',1,'SpecsCpp::ISpecRunner::run()'],['../struct_specs_cpp_1_1_i_spec_environment.html#a5cd8b6d0ba606141a16ffc244e22cb6f',1,'SpecsCpp::ISpecEnvironment::run()'],['../class_specs_cpp_1_1_spec_code_block.html#a9c7b03e8054975fcf0829f4f6627b162',1,'SpecsCpp::SpecCodeBlock::run()'],['../class_specs_cpp_1_1_spec_serial_runner.html#a56048fd501b89e978b8a5be4c5ef0e2c',1,'SpecsCpp::SpecSerialRunner::run()'],['../class_specs_cpp_1_1_spec_environment.html#ad7251250451c15b7765888c439744580',1,'SpecsCpp::SpecEnvironment::run()']]],
   ['run_5fcode_5fblocks_21',['run_code_blocks',['../class_specs_cpp_1_1_global_spec_code_blocks.html#a817dae0dc73962f208078b08a757c53b',1,'SpecsCpp::GlobalSpecCodeBlocks']]],
   ['runners_22',['runners',['../struct_specs_cpp_1_1_i_spec_environment.html#a0cbccd884257e784143e701567e900a2',1,'SpecsCpp::ISpecEnvironment::runners()'],['../class_specs_cpp_1_1_spec_environment.html#a7310a05aacfaaf004b7c9505f0384fe8',1,'SpecsCpp::SpecEnvironment::runners()']]],
-  ['runningspecs_2emd_23',['RunningSpecs.md',['../_running_specs_8md.html',1,'']]],
+  ['runningtests_2emd_23',['RunningTests.md',['../_running_tests_8md.html',1,'']]],
   ['runresultstatus_24',['RunResultStatus',['../namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521d',1,'SpecsCpp']]]
 ];

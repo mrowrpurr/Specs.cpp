@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['✨_20quick_20start_0',['✨ Quick Start',['../md__documentation_2_quick_start.html',1,'']]]
+  ['🎓_20writing_20tests_0',['🎓 Writing Tests',['../md__documentation_2_writing_tests.html',1,'']]]
 ];

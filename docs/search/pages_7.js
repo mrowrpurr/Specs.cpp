@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🎓_20write_20your_20first_20spec_0',['🎓 Write your first spec',['../md__documentation_2_write_your_first_spec.html',1,'']]]
+  ['🐙_20github_20repository_0',['🐙 GitHub Repository',['../md__documentation_2_git_hub.html',1,'']]]
 ];

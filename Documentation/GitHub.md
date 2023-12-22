@@ -1,1 +1,1 @@
-# 🐙 Project Repository
+# 🐙 GitHub Repository

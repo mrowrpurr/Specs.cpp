@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📖_20syntax_20reference_0',['📖 Syntax Reference',['../md__documentation_2_syntax_reference.html',1,'']]]
+  ['💖_20license_20_280bsd_29_0',['💖 LICENSE (0BSD)',['../md__documentation_2_l_i_c_e_n_s_e.html',1,'']]]
 ];

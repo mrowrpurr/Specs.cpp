@@ -61,16 +61,19 @@ var NAVTREE =
         [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md27", null ]
       ] ]
     ] ],
-    [ "🎓 Write your first spec", "md__documentation_2_write_your_first_spec.html", null ],
-    [ "🏃‍♀️ Running specs", "md__documentation_2_running_specs.html", [
-      [ "foo", "md__documentation_2_running_specs.html#autotoc_md30", null ],
-      [ "bar", "md__documentation_2_running_specs.html#autotoc_md31", null ]
+    [ "🎓 Writing Tests", "md__documentation_2_writing_tests.html", null ],
+    [ "🏃‍♀️ Running Tests", "md__documentation_2_running_tests.html", [
+      [ "foo", "md__documentation_2_running_tests.html#autotoc_md30", null ],
+      [ "bar", "md__documentation_2_running_tests.html#autotoc_md31", null ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
+    [ "📋 Shared Code Templates", "md__documentation_2_templates.html", null ],
+    [ "💲 Test Variables", "md__documentation_2_variables.html", null ],
+    [ "💥 Exception Handling", "md__documentation_2_exceptions.html", null ],
     [ "📖 Syntax Reference", "md__documentation_2_syntax_reference.html", null ],
-    [ "🐙 Project Repository", "md__documentation_2_git_hub.html", null ],
-    [ "LICENSE", "md__documentation_2_l_i_c_e_n_s_e.html", null ],
-    [ "CONTRIBUTING", "md__documentation_2_c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
+    [ "🤝 CONTRIBUTING", "md__documentation_2_c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
+    [ "💖 LICENSE (0BSD)", "md__documentation_2_l_i_c_e_n_s_e.html", null ],
+    [ "🐙 GitHub Repository", "md__documentation_2_git_hub.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -110,8 +113,8 @@ var NAVTREEINDEX =
 "_print_color_8h.html#a710499b33e1c7256c823756a3963ab95acf4c2a4bf7c328c4e51f902350475343",
 "class_specs_cpp_1_1_library_loader.html#aadf50eef53dcebc987fe59cf4f0210b0",
 "class_specs_cpp_1_1_spec_run_result.html#a224a564363983c5f47ed301b17918869",
-"namespace_specs_cpp.html#af49db017c7247695a869d10fb892ad02",
-"struct_specs_cpp_1_1_i_spec_data_value_collection.html#a7dc1e0479f49652fa789dd6f38c8fa44"
+"namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7",
+"struct_specs_cpp_1_1_i_spec_data_value_collection.html#a635bf112b45432a329f8abf70653e54c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
