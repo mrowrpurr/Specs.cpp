@@ -102,10 +102,124 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
   <div class="headertitle"><div class="title">🎓 Writing Tests</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md28"></a> It's time to write a test!</p>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md29">Creating a project</a><ul><li class="level2"><a href="#autotoc_md30">Entrypoint</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md31">Creating test files</a><ul><li class="level2"><a href="#autotoc_md32">Test file #define header</a><ul><li class="level3"><a href="#autotoc_md33">#define spec_context</a></li>
+<li class="level3"><a href="#autotoc_md34">#define spec_file</a></li>
+<li class="level3"><a href="#autotoc_md35">#define spec_name</a></li>
+<li class="level3"><a href="#autotoc_md36">#define spec_template</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md37">Tests</a><ul><li class="level2"><a href="#autotoc_md38">Test Assertions</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md39">Asyncronous Tests</a></li>
+<li class="level1"><a href="#autotoc_md40">Setup and Teardown</a><ul><li class="level2"><a href="#autotoc_md41">Asyncronous Setup and Teardown</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md42">Test Groups</a></li>
+</ul>
+</div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md28"></a></p>
+<p>It's time to write your first tests!</p>
 <blockquote class="doxtable">
 <p>&zwj;<em>This assumes that you have completed the steps outlines in <a class="el" href="md__documentation_2_installing.html">Installing Specs</a></em> </p>
 </blockquote>
+<p>This page will cover:</p>
+<ul>
+<li>Creating a project</li>
+<li>Creating test files</li>
+<li>Defining tests with <code>Test</code> and <code>TestAsync</code></li>
+<li>Defining setup and teardown code with <code>Setup</code> and <code>Teardown</code></li>
+<li>Defining groups of tests with <code>TestGroup</code> and <code>Describe</code></li>
+</ul>
+<blockquote class="doxtable">
+<p>&zwj;For more detailed information on the syntax of the test files, see <a class="el" href="md__documentation_2_syntax_reference.html">Syntax Reference</a> </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md29"></a>
+Creating a project</h1>
+<p>To create tests, you will need to either:</p><ul>
+<li>Create a binary/executable project (<em>the tests will run when you run the executable</em>)</li>
+<li>Create a shared library (<em>a separate <code>Specs.exe</code> test runner can load multiple shared libraries of tests</em>)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md30"></a>
+Entrypoint</h2>
+<p>Create a new file named <code>main.cpp</code>.</p>
+<p>Assuming you are creating a binary project, add the following code to <code>main.cpp</code>:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_main_2include_2_specs_2_main_8h.html">Specs/Main.h</a>&gt;</span></div>
+<div class="ttc" id="a_specs_8_main_2include_2_specs_2_main_8h_html"><div class="ttname"><a href="_specs_8_main_2include_2_specs_2_main_8h.html">Main.h</a></div></div>
+</div><!-- fragment --><p>This will define the <code><a class="el" href="_specs_8_main_2include_2_specs_2_main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a></code> entrypoint for the executable.</p>
+<p>If you are creating a shared library, add the following code to <code>main.cpp</code>:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_shared_library_8h.html">Specs/SharedLibrary.h</a>&gt;</span></div>
+<div class="ttc" id="a_shared_library_8h_html"><div class="ttname"><a href="_shared_library_8h.html">SharedLibrary.h</a></div></div>
+</div><!-- fragment --><p>This will define the entrypoint function used by the <code>Specs</code> test loader, e.g. when loading one or more shared libraries of tests from a <code>Specs.exe</code> test runner.</p>
+<blockquote class="doxtable">
+<p>&zwj;To learn more about grouping specs into shared libraries, see <a class="el" href="md__documentation_2_shared_libraries.html">Shared Libraries</a> </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md31"></a>
+Creating test files</h1>
+<p>Now you are ready to define a file with one or more tests.</p>
+<p>Create a new file named <code>MyFirstTests.cpp</code>.</p>
+<p>Add the following code to <code>MyFirstTests.cpp</code>:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_First_Tests</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Tests go here...</span></div>
+</div><!-- fragment --><p>This defines a new group of tests with the description <code>"My First Tests"</code>.</p>
+<p>Any tests defined in this file will be added to this group.</p>
+<h2><a class="anchor" id="autotoc_md32"></a>
+Test file #define header</h2>
+<p>Every <code>.cpp</code> file containing tests must have one of these unique <code>#define</code> at the top of the file:</p>
+<ul>
+<li><code>#define spec_context UNIQUE_NAME</code></li>
+<li><code>#define spec_file UNIQUE_NAME</code></li>
+<li><code>#define spec_name UNIQUE_NAME</code></li>
+<li><code>#define spec_template UNIQUE_NAME</code></li>
+</ul>
+<h3><a class="anchor" id="autotoc_md33"></a>
+#define spec_context</h3>
+<p>Using <code>#define spec_context UNIQUE_NAME</code> will ensure that the <code>Test</code>, <code>Setup</code>, <code>Teardown</code>, <code>etc</code> macros defined in this file do not conflict with macros defined in other files.</p>
+<p>That's it, though. The content in your file might be added to a group of tests from <em>another file</em>, because <code>spec_context</code> does not define a group nor does it clear the currently active group.</p>
+<p><b>Use of <code>spec_context</code> is not recommended.</b></p>
+<h3><a class="anchor" id="autotoc_md34"></a>
+#define spec_file</h3>
+<p>If you <code>#define spec_file UNIQUE_NAME</code>, then the tests in the file are added to a global group.</p>
+<p>The tests (<em>and setup/teardown code</em>) in this file will be run for all tests.</p>
+<p>This could be useful for defining global setup/teardown code:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_file Global_Setup_Teardown</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a>() {</div>
+<div class="line">    <span class="comment">// Global setup code goes here...</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a>() {</div>
+<div class="line">    <span class="comment">// Global teardown code goes here...</span></div>
+<div class="line">}</div>
+<div class="ttc" id="a_top_level_2setup_8h_html_a5cba18a3777f6dcb45611cce54d9c765"><div class="ttname"><a href="_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a></div><div class="ttdeci">#define Setup</div><div class="ttdef"><b>Definition</b> Setup.h:5</div></div>
+<div class="ttc" id="a_top_level_2teardown_8h_html_a681e4480b1c3df2b80d6d24721659b04"><div class="ttname"><a href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a></div><div class="ttdeci">#define Teardown</div><div class="ttdef"><b>Definition</b> Teardown.h:5</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md35"></a>
+#define spec_name</h3>
+<h3><a class="anchor" id="autotoc_md36"></a>
+#define spec_template</h3>
+<h1><a class="anchor" id="autotoc_md37"></a>
+Tests</h1>
+<h2><a class="anchor" id="autotoc_md38"></a>
+Test Assertions</h2>
+<h1><a class="anchor" id="autotoc_md39"></a>
+Asyncronous Tests</h1>
+<h1><a class="anchor" id="autotoc_md40"></a>
+Setup and Teardown</h1>
+<h2><a class="anchor" id="autotoc_md41"></a>
+Asyncronous Setup and Teardown</h2>
+<h1><a class="anchor" id="autotoc_md42"></a>
+Test Groups</h1>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

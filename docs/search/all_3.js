@@ -15,7 +15,7 @@ var searchData=
   ['configurefn_12',['ConfigureFn',['../_configure_fn_8h.html#af486dce5580f55426373371c35fb9595',1,'ConfigureFn.h']]],
   ['configurefn_2eh_13',['ConfigureFn.h',['../_configure_fn_8h.html',1,'']]],
   ['contributing_2emd_14',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.html',1,'']]],
-  ['copy_15',['copy',['../class_specs_cpp_1_1_spec_run_result.html#a831588624a6082eee10ff6221f25e70f',1,'SpecsCpp::SpecRunResult::copy()'],['../struct_specs_cpp_1_1_i_spec_run_result.html#ae600795493c7a4d40904fa3e34d7e290',1,'SpecsCpp::ISpecRunResult::copy()']]],
+  ['copy_15',['copy',['../struct_specs_cpp_1_1_i_spec_run_result.html#ae600795493c7a4d40904fa3e34d7e290',1,'SpecsCpp::ISpecRunResult::copy()'],['../class_specs_cpp_1_1_spec_run_result.html#a831588624a6082eee10ff6221f25e70f',1,'SpecsCpp::SpecRunResult::copy()']]],
   ['create_5fbool_16',['create_bool',['../class_specs_cpp_1_1_spec_data_value.html#a0bc7bc64f58797473ceb68e46eae51d7',1,'SpecsCpp::SpecDataValue']]],
   ['create_5ffloat_17',['create_float',['../class_specs_cpp_1_1_spec_data_value.html#a8d5bb1b5a36517c1acba3941a00623dc',1,'SpecsCpp::SpecDataValue']]],
   ['create_5fint_18',['create_int',['../class_specs_cpp_1_1_spec_data_value.html#ad00acd41a79f64d9588c6638742ccd33',1,'SpecsCpp::SpecDataValue']]],
@@ -26,5 +26,6 @@ var searchData=
   ['cstringexceptionhandler_23',['cStringExceptionHandler',['../namespace___specs___d_l_l___configuration.html#afdfa855edc7ff59f6a79f18b9a8f76a5',1,'_Specs_DLL_Configuration']]],
   ['cstringexceptionhandler_24',['CStringExceptionHandler',['../class_specs_cpp_1_1_exception_handlers_1_1_c_string_exception_handler.html',1,'SpecsCpp::ExceptionHandlers']]],
   ['cstringexceptionhandler_2eh_25',['CStringExceptionHandler.h',['../_c_string_exception_handler_8h.html',1,'']]],
-  ['cyan_26',['Cyan',['../namespace_specs_cpp_1_1_colors.html#ae56fb3cabeebcf7aa18597f31ae37676a023c239d2f2538f140a20e72c7b73f20',1,'SpecsCpp::Colors::Cyan'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a6c09f408be24e973fddbb8a4bf66e410a023c239d2f2538f140a20e72c7b73f20',1,'SpecsCpp::Colors::Unix::Cyan'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a0fe80c6766df30126af443011064cae2a023c239d2f2538f140a20e72c7b73f20',1,'SpecsCpp::Colors::Unix::Cyan']]]
+  ['customsyntax_2emd_26',['CustomSyntax.md',['../_custom_syntax_8md.html',1,'']]],
+  ['cyan_27',['Cyan',['../namespace_specs_cpp_1_1_colors.html#ae56fb3cabeebcf7aa18597f31ae37676a023c239d2f2538f140a20e72c7b73f20',1,'SpecsCpp::Colors::Cyan'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a6c09f408be24e973fddbb8a4bf66e410a023c239d2f2538f140a20e72c7b73f20',1,'SpecsCpp::Colors::Unix::Cyan'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a0fe80c6766df30126af443011064cae2a023c239d2f2538f140a20e72c7b73f20',1,'SpecsCpp::Colors::Unix::Cyan']]]
 ];

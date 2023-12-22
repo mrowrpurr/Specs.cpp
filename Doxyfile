@@ -919,7 +919,10 @@ INPUT                  =    \
                             Documentation/Templates.md \
                             Documentation/Variables.md \
                             Documentation/Exceptions.md \
+                            Documentation/SharedLibraries.md \
                             Documentation/SyntaxReference.md \
+                            Documentation/CustomSyntax.md \
+                            Documentation/Macros.md \
                             Documentation/CONTRIBUTING.md \
                             Documentation/LICENSE.md \
                             Documentation/GitHub.md \

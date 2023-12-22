@@ -61,16 +61,39 @@ var NAVTREE =
         [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md27", null ]
       ] ]
     ] ],
-    [ "🎓 Writing Tests", "md__documentation_2_writing_tests.html", null ],
+    [ "🎓 Writing Tests", "md__documentation_2_writing_tests.html", [
+      [ "Creating a project", "md__documentation_2_writing_tests.html#autotoc_md29", [
+        [ "Entrypoint", "md__documentation_2_writing_tests.html#autotoc_md30", null ]
+      ] ],
+      [ "Creating test files", "md__documentation_2_writing_tests.html#autotoc_md31", [
+        [ "Test file #define header", "md__documentation_2_writing_tests.html#autotoc_md32", [
+          [ "#define spec_context", "md__documentation_2_writing_tests.html#autotoc_md33", null ],
+          [ "#define spec_file", "md__documentation_2_writing_tests.html#autotoc_md34", null ],
+          [ "#define spec_name", "md__documentation_2_writing_tests.html#autotoc_md35", null ],
+          [ "#define spec_template", "md__documentation_2_writing_tests.html#autotoc_md36", null ]
+        ] ]
+      ] ],
+      [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md37", [
+        [ "Test Assertions", "md__documentation_2_writing_tests.html#autotoc_md38", null ]
+      ] ],
+      [ "Asyncronous Tests", "md__documentation_2_writing_tests.html#autotoc_md39", null ],
+      [ "Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md40", [
+        [ "Asyncronous Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md41", null ]
+      ] ],
+      [ "Test Groups", "md__documentation_2_writing_tests.html#autotoc_md42", null ]
+    ] ],
     [ "🏃‍♀️ Running Tests", "md__documentation_2_running_tests.html", [
-      [ "foo", "md__documentation_2_running_tests.html#autotoc_md30", null ],
-      [ "bar", "md__documentation_2_running_tests.html#autotoc_md31", null ]
+      [ "foo", "md__documentation_2_running_tests.html#autotoc_md44", null ],
+      [ "bar", "md__documentation_2_running_tests.html#autotoc_md45", null ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
     [ "📋 Shared Code Templates", "md__documentation_2_templates.html", null ],
     [ "💲 Test Variables", "md__documentation_2_variables.html", null ],
     [ "💥 Exception Handling", "md__documentation_2_exceptions.html", null ],
+    [ "💾 Shared Libraries", "md__documentation_2_shared_libraries.html", null ],
     [ "📖 Syntax Reference", "md__documentation_2_syntax_reference.html", null ],
+    [ "🖋️ Customizing Syntax", "md__documentation_2_custom_syntax.html", null ],
+    [ "✏️ Available Macros", "md__documentation_2_macros.html", null ],
     [ "🤝 CONTRIBUTING", "md__documentation_2_c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
     [ "💖 LICENSE (0BSD)", "md__documentation_2_l_i_c_e_n_s_e.html", null ],
     [ "🐙 GitHub Repository", "md__documentation_2_git_hub.html", null ],
@@ -111,10 +134,11 @@ var NAVTREEINDEX =
 [
 "_a_p_i_8h.html",
 "_print_color_8h.html#a710499b33e1c7256c823756a3963ab95acf4c2a4bf7c328c4e51f902350475343",
-"class_specs_cpp_1_1_library_loader.html#aadf50eef53dcebc987fe59cf4f0210b0",
-"class_specs_cpp_1_1_spec_run_result.html#a224a564363983c5f47ed301b17918869",
-"namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7",
-"struct_specs_cpp_1_1_i_spec_data_value_collection.html#a635bf112b45432a329f8abf70653e54c"
+"class_specs_cpp_1_1_library_loader.html#a11379f5235bd44f756811d7ac72eeb07",
+"class_specs_cpp_1_1_spec_reporter_collection.html#af1f088d06ffb515a9e850d59d58ffd8a",
+"namespace___specs___snowhouse___configuration.html#a6083ba6660a4b20b8efe52f6ade6f325",
+"struct_specs_cpp_1_1_i_spec_data_value.html#aad3ae76363a52e15c929d131e381f836",
+"struct_specs_cpp_1_1_i_spec_variable_collection.html#a1ab4387a96e645e236f02ee1e4ebe3d2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

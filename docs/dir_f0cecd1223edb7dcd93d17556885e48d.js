@@ -12,6 +12,7 @@ var dir_f0cecd1223edb7dcd93d17556885e48d =
     [ "MacrosCore.h", "_macros_core_8h.html", null ],
     [ "ONE_TIME_SETUP.h", "_o_n_e___t_i_m_e___s_e_t_u_p_8h.html", "_o_n_e___t_i_m_e___s_e_t_u_p_8h" ],
     [ "ONE_TIME_TEARDOWN.h", "_o_n_e___t_i_m_e___t_e_a_r_d_o_w_n_8h.html", "_o_n_e___t_i_m_e___t_e_a_r_d_o_w_n_8h" ],
+    [ "RESET_CURRENT_GROUP_STACK.h", "_r_e_s_e_t___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h.html", "_r_e_s_e_t___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h" ],
     [ "RESTORE_CURRENT_GROUP_STACK.h", "_r_e_s_t_o_r_e___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h.html", "_r_e_s_t_o_r_e___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h" ],
     [ "SAVE_CURRENT_GROUP_STACK.h", "_s_a_v_e___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h.html", "_s_a_v_e___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h" ],
     [ "SETUP.h", "_macros_2setup_8h.html", "_macros_2setup_8h" ],

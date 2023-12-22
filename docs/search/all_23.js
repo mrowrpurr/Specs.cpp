@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📋_20shared_20code_20templates_0',['📋 Shared Code Templates',['../md__documentation_2_templates.html',1,'']]]
+  ['💲_20test_20variables_0',['💲 Test Variables',['../md__documentation_2_variables.html',1,'']]]
 ];

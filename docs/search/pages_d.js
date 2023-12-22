@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🤝_20contributing_0',['🤝 CONTRIBUTING',['../md__documentation_2_c_o_n_t_r_i_b_u_t_i_n_g.html',1,'']]]
+  ['📋_20shared_20code_20templates_0',['📋 Shared Code Templates',['../md__documentation_2_templates.html',1,'']]]
 ];

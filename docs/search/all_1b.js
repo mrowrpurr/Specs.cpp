@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['✨_20quick_20start_0',['✨ Quick Start',['../md__documentation_2_quick_start.html',1,'']]]
+  ['✔️_20assertion_20libraries_0',['✔️ Assertion Libraries',['../md__documentation_2_assertion_libraries.html',1,'']]]
 ];
