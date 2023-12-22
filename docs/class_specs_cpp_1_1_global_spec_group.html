@@ -155,8 +155,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a321ff290fbf4a4e629b27a23c9415693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc6c9842ff22573d574830141aed8de4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_global_spec_group.html#adc6c9842ff22573d574830141aed8de4">declare_file_group</a> (std::string_view description, bool removeUnderscores=true)</td></tr>
 <tr class="separator:adc6c9842ff22573d574830141aed8de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3de7f71dea38d94ae70cd92f24ae6c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_global_spec_group.html#a3de7f71dea38d94ae70cd92f24ae6c8e">declare_top_level_template</a> (std::string_view templateName, bool clearFileGroup=false)</td></tr>
-<tr class="separator:a3de7f71dea38d94ae70cd92f24ae6c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af89cbbd93b40b31923d67b2ce345198e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_global_spec_group.html#af89cbbd93b40b31923d67b2ce345198e">declare_top_level_template</a> (std::string_view templateName, bool clearFileGroup=false, bool removeUnderscores=true)</td></tr>
+<tr class="separator:af89cbbd93b40b31923d67b2ce345198e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86ed9dfed0b359f3e51cb7bd0ff23b19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_global_spec_group.html#a86ed9dfed0b359f3e51cb7bd0ff23b19">use_template</a> (std::string_view templateName)</td></tr>
 <tr class="separator:a86ed9dfed0b359f3e51cb7bd0ff23b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d5da07c4124e60982533daad444f69b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_global_spec_group.html#a0d5da07c4124e60982533daad444f69b">use_templates</a> (std::vector&lt; std::string_view &gt; templateNames)</td></tr>
@@ -357,8 +357,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3de7f71dea38d94ae70cd92f24ae6c8e" name="a3de7f71dea38d94ae70cd92f24ae6c8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3de7f71dea38d94ae70cd92f24ae6c8e">&#9670;&#160;</a></span>declare_top_level_template()</h2>
+<a id="af89cbbd93b40b31923d67b2ce345198e" name="af89cbbd93b40b31923d67b2ce345198e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af89cbbd93b40b31923d67b2ce345198e">&#9670;&#160;</a></span>declare_top_level_template()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -376,7 +376,13 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>clearFileGroup</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>clearFileGroup</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>removeUnderscores</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

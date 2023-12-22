@@ -7,7 +7,7 @@ var class_specs_cpp_1_1_global_spec_group =
     [ "clear_top_level_group", "class_specs_cpp_1_1_global_spec_group.html#a0fc4496366c1c4c0dd4628737bcc1d78", null ],
     [ "declare_file_group", "class_specs_cpp_1_1_global_spec_group.html#adc6c9842ff22573d574830141aed8de4", null ],
     [ "declare_top_level_group", "class_specs_cpp_1_1_global_spec_group.html#a9936470579806585c52f1096fdbe868f", null ],
-    [ "declare_top_level_template", "class_specs_cpp_1_1_global_spec_group.html#a3de7f71dea38d94ae70cd92f24ae6c8e", null ],
+    [ "declare_top_level_template", "class_specs_cpp_1_1_global_spec_group.html#af89cbbd93b40b31923d67b2ce345198e", null ],
     [ "define_group", "class_specs_cpp_1_1_global_spec_group.html#a650ac5691c57beddbd8c03f6efbec21b", null ],
     [ "define_one_time_setup", "class_specs_cpp_1_1_global_spec_group.html#ac6a51126c0207da40b7e484bd6baf18d", null ],
     [ "define_one_time_teardown", "class_specs_cpp_1_1_global_spec_group.html#afd5628576e431eb270caba8742d3f9fa", null ],

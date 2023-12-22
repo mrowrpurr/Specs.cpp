@@ -217,20 +217,26 @@ namespace SpecsCpp {
         }
 
         void declare_top_level_template(
-            std::string_view templateName, bool clearFileGroup = false
+            std::string_view templateName, bool clearFileGroup = false,
+            bool removeUnderscores = true
         ) {
             clear_top_level_group();
             if (clearFileGroup) clear_file_group();
 
             if (auto* group = get()) {
-                auto foundExisting = _testTemplateGroups.find(templateName.data());
+                std::string descriptionText{templateName};
+                if (removeUnderscores) {
+                    std::replace(descriptionText.begin(), descriptionText.end(), '_', ' ');
+                    templateName = descriptionText;
+                }
+                auto foundExisting = _testTemplateGroups.find(descriptionText.data());
                 if (foundExisting != _testTemplateGroups.end()) {
                     clear_group_stack();  // The top-level things should NOT be registered anywhere
                 } else {
-                    auto  specGroup       = std::make_unique<SpecGroup>(get(), templateName);
+                    auto  specGroup       = std::make_unique<SpecGroup>(get(), descriptionText);
                     auto* specGroupPtr    = specGroup.get();
                     _currentTopLevelGroup = specGroupPtr;
-                    _testTemplateGroups[templateName.data()] = std::move(specGroup);
+                    _testTemplateGroups[descriptionText] = std::move(specGroup);
                     push(specGroupPtr);
                 }
             }

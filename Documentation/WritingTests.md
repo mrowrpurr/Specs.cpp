@@ -105,7 +105,70 @@ Teardown() {
 
 ### #define spec_name
 
+If you `#define spec_name UNIQUE_NAME`, then the tests in the file are added to a group with the description of `UNIQUE_NAME`.
+
+> _Note: underscores in `UNIQUE_NAME` are replaced with spaces in the description._
+
+This is a good way to define a group of tests that are related to each other.
+
+```cpp
+#define spec_name My_Tests_About_Some_Feature
+
+#include <Specs.h>
+
+// Tests go here...
+```
+
+And, for example, in another file...
+
+```cpp
+#define spec_name My_Tests_About_Another_Feature
+
+#include <Specs.h>
+
+// Tests go here...
+```
+
 ### #define spec_template
+
+`Specs` supports defining templates.
+
+> To learn more about templates, see [Shared Code Templates](Templates.md)
+
+Templates are a way of defining `Setup` and `Teardown` and `Test` code that can be shared and reused by multiple test groups.
+
+If you `#define spec_template UNIQUE_NAME`, then the tests in the file are added to a template with the description of `UNIQUE_NAME`.
+
+> _Note: underscores in `UNIQUE_NAME` are replaced with spaces in the description._
+
+This is a good way to define a template that can be used by multiple test groups.
+
+```cpp
+#define spec_template My_Shared_Setup_And_Teardown
+
+#include <Specs.h>
+
+Setup() {
+    // Shared setup code goes here...
+}
+
+Teardown() {
+    // Shared teardown code goes here...
+}
+```
+
+And then, in another test file...
+
+```cpp
+#define spec_name My_Tests_About_Some_Feature
+
+#include <Specs.h>
+
+// This imports the shared Setup/Teardown/etc into this group
+UseTemplate("My Shared Setup And Teardown");
+
+// Tests go here...
+```
 
 # Tests
 

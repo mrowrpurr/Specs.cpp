@@ -206,9 +206,56 @@ Test file #define header</h2>
 <div class="ttc" id="a_top_level_2teardown_8h_html_a681e4480b1c3df2b80d6d24721659b04"><div class="ttname"><a href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a></div><div class="ttdeci">#define Teardown</div><div class="ttdef"><b>Definition</b> Teardown.h:5</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md35"></a>
 #define spec_name</h3>
-<h3><a class="anchor" id="autotoc_md36"></a>
+<p>If you <code>#define spec_name UNIQUE_NAME</code>, then the tests in the file are added to a group with the description of <code>UNIQUE_NAME</code>.</p>
+<blockquote class="doxtable">
+<p>&zwj;<em>Note: underscores in <code>UNIQUE_NAME</code> are replaced with spaces in the description.</em> </p>
+</blockquote>
+<p>This is a good way to define a group of tests that are related to each other.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_Tests_About_Some_Feature</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Tests go here...</span></div>
+</div><!-- fragment --><p>And, for example, in another file...</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_Tests_About_Another_Feature</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Tests go here...</span></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md36"></a>
 #define spec_template</h3>
-<h1><a class="anchor" id="autotoc_md37"></a>
+<p><code>Specs</code> supports defining templates.</p>
+<blockquote class="doxtable">
+<p>&zwj;To learn more about templates, see <a class="el" href="md__documentation_2_templates.html">Shared Code Templates</a> </p>
+</blockquote>
+<p>Templates are a way of defining <code>Setup</code> and <code>Teardown</code> and <code>Test</code> code that can be shared and reused by multiple test groups.</p>
+<p>If you <code>#define spec_template UNIQUE_NAME</code>, then the tests in the file are added to a template with the description of <code>UNIQUE_NAME</code>.</p>
+<blockquote class="doxtable">
+<p>&zwj;<em>Note: underscores in <code>UNIQUE_NAME</code> are replaced with spaces in the description.</em> </p>
+</blockquote>
+<p>This is a good way to define a template that can be used by multiple test groups.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_template My_Shared_Setup_And_Teardown</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a>() {</div>
+<div class="line">    <span class="comment">// Shared setup code goes here...</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a>() {</div>
+<div class="line">    <span class="comment">// Shared teardown code goes here...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>And then, in another test file...</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_Tests_About_Some_Feature</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// This imports the shared Setup/Teardown/etc into this group</span></div>
+<div class="line"><a class="code hl_define" href="_use_template_8h.html#a32cd46f9c57ff2913ecdbbc5c4d0d05b">UseTemplate</a>(<span class="stringliteral">&quot;My Shared Setup And Teardown&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Tests go here...</span></div>
+<div class="ttc" id="a_use_template_8h_html_a32cd46f9c57ff2913ecdbbc5c4d0d05b"><div class="ttname"><a href="_use_template_8h.html#a32cd46f9c57ff2913ecdbbc5c4d0d05b">UseTemplate</a></div><div class="ttdeci">#define UseTemplate(templateName)</div><div class="ttdef"><b>Definition</b> UseTemplate.h:5</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md37"></a>
 Tests</h1>
 <h2><a class="anchor" id="autotoc_md38"></a>
 Test Assertions</h2>
