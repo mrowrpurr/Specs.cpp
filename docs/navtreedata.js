@@ -81,19 +81,26 @@ var NAVTREE =
       [ "Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md41", [
         [ "Asyncronous Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md42", null ]
       ] ],
-      [ "Test Groups", "md__documentation_2_writing_tests.html#autotoc_md43", null ]
+      [ "Test Groups", "md__documentation_2_writing_tests.html#autotoc_md43", [
+        [ "Unique test group for each file", "md__documentation_2_writing_tests.html#autotoc_md44", null ],
+        [ "Nesting child groups", "md__documentation_2_writing_tests.html#autotoc_md45", [
+          [ "TestGroup", "md__documentation_2_writing_tests.html#autotoc_md46", null ],
+          [ "BeginTestGroup / EndTestGroup", "md__documentation_2_writing_tests.html#autotoc_md47", null ],
+          [ "Describe", "md__documentation_2_writing_tests.html#autotoc_md48", null ]
+        ] ]
+      ] ]
     ] ],
     [ "🏃‍♀️ Running Tests", "md__documentation_2_running_tests.html", [
-      [ "foo", "md__documentation_2_running_tests.html#autotoc_md45", null ],
-      [ "bar", "md__documentation_2_running_tests.html#autotoc_md46", null ]
+      [ "foo", "md__documentation_2_running_tests.html#autotoc_md50", null ],
+      [ "bar", "md__documentation_2_running_tests.html#autotoc_md51", null ]
     ] ],
     [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
-      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md48", [
-        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md49", [
-          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md50", null ],
-          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md51", null ]
+      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md53", [
+        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md54", [
+          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md55", null ],
+          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md56", null ]
         ] ],
-        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md52", null ]
+        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md57", null ]
       ] ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
@@ -143,12 +150,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_p_i_8h.html",
-"_print_color_8h.html#ae56fb3cabeebcf7aa18597f31ae37676a023c239d2f2538f140a20e72c7b73f20",
-"class_specs_cpp_1_1_global_spec_group.html#af89cbbd93b40b31923d67b2ce345198e",
-"class_specs_cpp_1_1_spec_reporter_collection.html#a69c5c05bf1b2be7baa67c00e5ea2660e",
-"md__documentation_2_writing_tests.html#autotoc_md34",
-"struct_specs_cpp_1_1_i_spec_data_value.html#a7b9df25e7639db0a317916c752323733",
-"struct_specs_cpp_1_1_i_spec_suite_run_result.html#a3fd62197344ab639d37a0cd236b0c2d1"
+"_print_color_8h.html#a710499b33e1c7256c823756a3963ab95a852721aa5fc738dfedff2945d71da439",
+"class_specs_cpp_1_1_global_spec_group.html#ad2130951f474a6fbd9f45c365ef7e2c7",
+"class_specs_cpp_1_1_spec_reporter_collection.html#a0e0627c44fb67e08059d3a2b57ddd6c9",
+"md__documentation_2_variables.html",
+"struct_specs_cpp_1_1_i_spec_data_value.html#a566741a255df1e8bdc802fa1d1530cda",
+"struct_specs_cpp_1_1_i_spec_runner_collection.html#ab4be0106570adf4b6c7e76a6ff6fb679"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

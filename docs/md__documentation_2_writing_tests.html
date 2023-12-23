@@ -123,7 +123,14 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
 <li class="level1"><a href="#autotoc_md41">Setup and Teardown</a><ul><li class="level2"><a href="#autotoc_md42">Asyncronous Setup and Teardown</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md43">Test Groups</a></li>
+<li class="level1"><a href="#autotoc_md43">Test Groups</a><ul><li class="level2"><a href="#autotoc_md44">Unique test group for each file</a></li>
+<li class="level2"><a href="#autotoc_md45">Nesting child groups</a><ul><li class="level3"><a href="#autotoc_md46">TestGroup</a></li>
+<li class="level3"><a href="#autotoc_md47">BeginTestGroup / EndTestGroup</a></li>
+<li class="level3"><a href="#autotoc_md48">Describe</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="textblock"><p><a class="anchor" id="autotoc_md27"></a></p>
@@ -451,6 +458,46 @@ Asyncronous Setup and Teardown</h2>
 <div class="ttc" id="a_teardown_async_8h_html_a5843afae630c9773fbd3c715255d8dcf"><div class="ttname"><a href="_teardown_async_8h.html#a5843afae630c9773fbd3c715255d8dcf">TeardownAsync</a></div><div class="ttdeci">#define TeardownAsync</div><div class="ttdef"><b>Definition</b> TeardownAsync.h:5</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md43"></a>
 Test Groups</h1>
+<p>Grouping your tests is a critical part of writing tests.</p>
+<p>It is recommended to use <code>#define spec_name UNIQUE_NAME</code> to define a group for each <code>.cpp</code> file containing tests.</p>
+<h2><a class="anchor" id="autotoc_md44"></a>
+Unique test group for each file</h2>
+<p><code>TestsOne.cpp</code></p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name Tests_One</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test 1&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p><code>TestsTwo.cpp</code></p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name Tests_Two</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test 2&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>In the above code:</p>
+<ul>
+<li><code>Tests_One</code> is a defined as a group containing one test named <code>Test 1</code></li>
+<li><code>Tests_Two</code> is a defined as a group containing one test named <code>Test 2</code></li>
+</ul>
+<p>This works great, but what if you want to group your tests into sub-groups?</p>
+<h2><a class="anchor" id="autotoc_md45"></a>
+Nesting child groups</h2>
+<p>Once you need to define sub-groups, there are 2 separate syntaxes to choose from:</p>
+<ol type="1">
+<li><code>TestGroup</code> defines a new top-level group (<em>within the file group defined via spec_name</em>)</li>
+<li><code>BeginTestGroup</code>/<code>EndTestGroup</code> define nested groups</li>
+<li><code>Describe</code> defines a nested group and child tests/groups/setups/teardowns are defined using a lambda syntax</li>
+</ol>
+<h3><a class="anchor" id="autotoc_md46"></a>
+TestGroup</h3>
+<h3><a class="anchor" id="autotoc_md47"></a>
+BeginTestGroup / EndTestGroup</h3>
+<h3><a class="anchor" id="autotoc_md48"></a>
+Describe</h3>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

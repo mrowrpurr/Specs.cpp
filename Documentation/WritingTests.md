@@ -395,3 +395,54 @@ TestAsync("Test Something Async!") {
 ```
 
 # Test Groups
+
+Grouping your tests is a critical part of writing tests.
+
+It is recommended to use `#define spec_name UNIQUE_NAME` to define a group for each `.cpp` file containing tests.
+
+## Unique test group for each file
+
+`TestsOne.cpp`
+
+```cpp
+#define spec_name Tests_One
+
+#include <Specs.h>
+
+Test("Test 1") {
+    // Test code and assertions go here...
+}
+```
+
+`TestsTwo.cpp`
+
+```cpp
+#define spec_name Tests_Two
+
+#include <Specs.h>
+
+Test("Test 2") {
+    // Test code and assertions go here...
+}
+```
+
+In the above code:
+
+- `Tests_One` is a defined as a group containing one test named `Test 1`
+- `Tests_Two` is a defined as a group containing one test named `Test 2`
+
+This works great, but what if you want to group your tests into sub-groups?
+
+## Nesting child groups
+
+Once you need to define sub-groups, there are 2 separate syntaxes to choose from:
+
+1. `TestGroup` defines a new top-level group (_within the file group defined via spec_name_)
+2. `BeginTestGroup`/`EndTestGroup` define nested groups
+3. `Describe` defines a nested group and child tests/groups/setups/teardowns are defined using a lambda syntax
+
+### TestGroup
+
+### BeginTestGroup / EndTestGroup
+
+### Describe
