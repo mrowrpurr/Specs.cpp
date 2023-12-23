@@ -24,7 +24,7 @@ Setup { /* Setup Code */ }
 Teardown { /* Teardown Code */ }
 
 Test("Some thing") {
-    assert(69 == 420);
+    assert_that(69 == 420);
     AssertThat(69, Equals(69));
 }
 
