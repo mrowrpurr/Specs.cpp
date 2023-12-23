@@ -3,6 +3,9 @@ var namespace_specs_cpp =
     [ "Colors", "namespace_specs_cpp_1_1_colors.html", "namespace_specs_cpp_1_1_colors" ],
     [ "DSLs", "namespace_specs_cpp_1_1_d_s_ls.html", "namespace_specs_cpp_1_1_d_s_ls" ],
     [ "ExceptionHandlers", "namespace_specs_cpp_1_1_exception_handlers.html", "namespace_specs_cpp_1_1_exception_handlers" ],
+    [ "LibAssert", "namespace_specs_cpp_1_1_lib_assert.html", [
+      [ "ShowStackTrace", "namespace_specs_cpp_1_1_lib_assert.html#aed0e9d37b1c66460b0ad1787c179a2a3", null ]
+    ] ],
     [ "Entrypoint", "class_specs_cpp_1_1_entrypoint.html", "class_specs_cpp_1_1_entrypoint" ],
     [ "GlobalSpecCodeBlocks", "class_specs_cpp_1_1_global_spec_code_blocks.html", "class_specs_cpp_1_1_global_spec_code_blocks" ],
     [ "GlobalSpecEnvironment", "class_specs_cpp_1_1_global_spec_environment.html", "class_specs_cpp_1_1_global_spec_environment" ],

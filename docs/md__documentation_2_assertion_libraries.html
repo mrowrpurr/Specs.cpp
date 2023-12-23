@@ -103,8 +103,11 @@ $(document).ready(function(){initNavTree('md__documentation_2_assertion_librarie
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md25">Assertion Libraries</a><ul><li class="level2"><a href="#autotoc_md26">snowhouse</a></li>
-<li class="level2"><a href="#autotoc_md27">libassert</a></li>
+<ul><li class="level1"><a href="#autotoc_md25">Assertion Libraries</a><ul><li class="level2"><a href="#autotoc_md26">snowhouse</a><ul><li class="level3"><a href="#autotoc_md27">Setup</a></li>
+<li class="level3"><a href="#autotoc_md28">Usage</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md29">libassert</a></li>
 </ul>
 </li>
 </ul>
@@ -128,14 +131,38 @@ Assertion Libraries</h1>
 snowhouse</h2>
 <p><a href="https://github.com/banditcpp/snowhouse">Snowhouse</a> is a lovely C++ assertion library.</p>
 <p>It uses an <code>AssertThat()</code> style syntax, which is very readable.</p>
-<div class="fragment"><div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Snowhouse example&quot;</span>) {</div>
-<div class="line">    AssertThat(69, Equals(69));</div>
+<h3><a class="anchor" id="autotoc_md27"></a>
+Setup</h3>
+<p>To setup the <code>Specs</code> adapter for <code>Snowhouse</code>, include <code>&lt;Specs/Snowhouse/Main.h&gt;</code> in your <code>main.cpp</code></p>
+<div class="fragment"><div class="line"><span class="comment">// Include the primary specs main() entrypoint</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Setup the Snowhouse adapter (only do this once per project)</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Specs/Snowhouse/Main.h&gt;</span></div>
+<div class="ttc" id="a_main_8h_html"><div class="ttname"><a href="_main_8h.html">Main.h</a></div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md28"></a>
+Usage</h3>
+<p>Then, in each spec file, you may include <code>&lt;<a class="el" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</code> as a shorthand for including the <code>snowhouse</code> headers.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Snowhouse example&quot;</span>) {</div>
+<div class="line">    AssertThat(69, Equals(420));</div>
 <div class="line">}</div>
+<div class="ttc" id="a_snowhouse_8h_html"><div class="ttname"><a href="_snowhouse_8h.html">Snowhouse.h</a></div></div>
 <div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
+</div><!-- fragment --><div class="fragment"><div class="line">[FAILED] Snowhouse example</div>
+<div class="line"> </div>
+<div class="line">Expected: equal to 420</div>
+<div class="line">Actual: 69</div>
+<div class="line"> </div>
+<div class="line">[Basic.Test.cpp:10] AssertThat(69, Equals(420));</div>
+<div class="line"> </div>
+<div class="line">1 failed</div>
 </div><!-- fragment --><p>Visit the Snowhouse GitHub page for more examples:</p><ul>
 <li><a href="https://github.com/banditcpp/snowhouse">https://github.com/banditcpp/snowhouse</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 libassert</h2>
 <p><a href="https://github.com/jeremy-rifkin/libassert">libassert</a> ia another great C++ assertion library.</p>
 <p>Marketed as "_The most over-engineered and overpowered C++ assertion library._", it provided a simple <code>assert</code> syntax.</p>

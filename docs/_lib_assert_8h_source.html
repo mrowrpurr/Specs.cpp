@@ -106,13 +106,23 @@ $(document).ready(function(){initNavTree('_lib_assert_8h_source.html',''); initR
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;assert.hpp&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="_lib_assert_8h.html#a2346de725e03672c1ccbebffa53e2dcf">    5</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="_lib_assert_8h.html#a2346de725e03672c1ccbebffa53e2dcf">libassert_specs_handler</a>(</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    libassert::assert_type type, ASSERTION fatal, <span class="keyword">const</span> libassert::assertion_printer&amp; printer</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>) {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    std::string message = printer(libassert::utility::terminal_width(120));</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">throw</span> message.c_str();</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>}</div>
-<div class="ttc" id="a_lib_assert_8h_html_a2346de725e03672c1ccbebffa53e2dcf"><div class="ttname"><a href="_lib_assert_8h.html#a2346de725e03672c1ccbebffa53e2dcf">libassert_specs_handler</a></div><div class="ttdeci">void libassert_specs_handler(libassert::assert_type type, ASSERTION fatal, const libassert::assertion_printer &amp;printer)</div><div class="ttdef"><b>Definition</b> LibAssert.h:5</div></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="namespace_specs_cpp_1_1_lib_assert.html">    5</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_specs_cpp_1_1_lib_assert.html">SpecsCpp::LibAssert</a> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="namespace_specs_cpp_1_1_lib_assert.html#aed0e9d37b1c66460b0ad1787c179a2a3">    6</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="namespace_specs_cpp_1_1_lib_assert.html#aed0e9d37b1c66460b0ad1787c179a2a3">ShowStackTrace</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>}</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="_lib_assert_8h.html#a2346de725e03672c1ccbebffa53e2dcf">    9</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="_lib_assert_8h.html#a2346de725e03672c1ccbebffa53e2dcf">libassert_specs_handler</a>(</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    libassert::assert_type type, ASSERTION fatal, <span class="keyword">const</span> libassert::assertion_printer&amp; printer</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>) {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    std::string message = printer(libassert::utility::terminal_width(120));</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="namespace_specs_cpp_1_1_lib_assert.html#aed0e9d37b1c66460b0ad1787c179a2a3">SpecsCpp::LibAssert::ShowStackTrace</a>) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        std::string::size_type stack_trace_start = message.find(<span class="stringliteral">&quot;\nStack trace:&quot;</span>);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">if</span> (stack_trace_start != std::string::npos) message.erase(stack_trace_start);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">throw</span> message.c_str();</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+<div class="ttc" id="a_lib_assert_8h_html_a2346de725e03672c1ccbebffa53e2dcf"><div class="ttname"><a href="_lib_assert_8h.html#a2346de725e03672c1ccbebffa53e2dcf">libassert_specs_handler</a></div><div class="ttdeci">void libassert_specs_handler(libassert::assert_type type, ASSERTION fatal, const libassert::assertion_printer &amp;printer)</div><div class="ttdef"><b>Definition</b> LibAssert.h:9</div></div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_lib_assert_html"><div class="ttname"><a href="namespace_specs_cpp_1_1_lib_assert.html">SpecsCpp::LibAssert</a></div><div class="ttdef"><b>Definition</b> LibAssert.h:5</div></div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_lib_assert_html_aed0e9d37b1c66460b0ad1787c179a2a3"><div class="ttname"><a href="namespace_specs_cpp_1_1_lib_assert.html#aed0e9d37b1c66460b0ad1787c179a2a3">SpecsCpp::LibAssert::ShowStackTrace</a></div><div class="ttdeci">bool ShowStackTrace</div><div class="ttdef"><b>Definition</b> LibAssert.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.7-->

@@ -15,7 +15,7 @@ var dir_98c42da688e3a0846e84df1df5dcd5d3 =
     [ "GroupTeardownAsync.h", "_group_teardown_async_8h.html", "_group_teardown_async_8h" ],
     [ "It.h", "_top_level_2it_8h.html", "_top_level_2it_8h" ],
     [ "SetTestGroup.h", "_set_test_group_8h.html", "_set_test_group_8h" ],
-    [ "Setup.h", "_top_level_2setup_8h.html", "_top_level_2setup_8h" ],
+    [ "Setup.h", "_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html", "_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h" ],
     [ "SetupAsync.h", "_setup_async_8h.html", "_setup_async_8h" ],
     [ "Spec.h", "_top_level_2spec_8h.html", "_top_level_2spec_8h" ],
     [ "SpecAsync.h", "_spec_async_8h.html", "_spec_async_8h" ],

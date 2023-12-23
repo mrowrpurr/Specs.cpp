@@ -172,7 +172,81 @@ UseTemplate("My Shared Setup And Teardown");
 
 # Tests
 
-## Test Assertions
+Creating tests is easy!
+
+Each test simply needs a description and a body.
+
+```cpp
+Test("Test Something!") {
+    // Test code and assertions go here...
+}
+```
+
+## Writing test assertions
+
+Tests aren't particularly useful without assertions!
+
+`Specs` provides built-in support for catching exceptions thrown during test execution.
+
+```cpp
+Test("Test Something!") {
+    if (1 != 2)
+        throw "Expected 1 to equal 2!";
+}
+```
+
+```
+[FAILED] Test Something!
+
+Expected 1 to equal 2!
+
+1 failed
+```
+
+Any exceptions thrown during test execution will be caught and reported as a failure.
+
+The following exception types have special handling:
+
+- `std::exception` (_and derived types_)
+  - The `what()` message is reported as the failure message
+- C strings (`const char*`)
+  - The string is reported as the failure message
+
+Any other exception types will be reported as a failure with a basic message like `Unknown exception`.
+
+It is recommended to use `Specs` with an assertion library, such as `snowhouse` or `libassert`.
+
+## Snowhouse assertions
+
+> For instructions on installing `snowhouse` with the `Specs` adapter, see [Installing Specs](Installing.md)
+
+When the `Specs` adapter for `snowhouse` is included, you can use `snowhouse` assertions in your tests.
+
+```cpp
+#include <Specs/Snowhouse.h>
+
+Test("Test Something!") {
+    AssertThat(69, Equals(420));
+}
+```
+
+```
+[FAILED] Test Something!
+
+Expected: equal to 420
+Actual: 69
+
+1 failed
+```
+
+Failed `snowhouse` assertions will be reported as failures, including:
+- The snowhouse assertion failure message
+- The file and line number where the assertion failed
+- A preview of the line of code responsible for the assertion
+
+## libassert assertions
+
+> For instructions on installing `libassert` with the `Specs` adapter, see [Installing Specs](Installing.md)
 
 # Asyncronous Tests
 

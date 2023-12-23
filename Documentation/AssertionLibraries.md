@@ -26,10 +26,40 @@ By default, any C++ exception thrown during a test will be caught and reported a
 
 It uses an `AssertThat()` style syntax, which is very readable.
 
+#### Setup
+
+To setup the `Specs` adapter for `Snowhouse`, include `<Specs/Snowhouse/Main.h>` in your `main.cpp`
+
 ```cpp
+// Include the primary specs main() entrypoint
+#include <Specs/Main.h>
+
+// Setup the Snowhouse adapter (only do this once per project)
+#include <Specs/Snowhouse/Main.h>
+```
+
+#### Usage
+
+Then, in each spec file, you may include `<Specs/Snowhouse.h>` as a shorthand for including the `snowhouse` headers.
+
+```cpp
+#include <Specs.h>
+#include <Specs/Snowhouse.h>
+
 Test("Snowhouse example") {
-    AssertThat(69, Equals(69));
+    AssertThat(69, Equals(420));
 }
+```
+
+```
+[FAILED] Snowhouse example
+
+Expected: equal to 420
+Actual: 69
+
+[Basic.Test.cpp:10] AssertThat(69, Equals(420));
+
+1 failed
 ```
 
 Visit the Snowhouse GitHub page for more examples:

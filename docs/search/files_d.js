@@ -2,9 +2,9 @@ var searchData=
 [
   ['save_5fcurrent_5fgroup_5fstack_2eh_0',['SAVE_CURRENT_GROUP_STACK.h',['../_s_a_v_e___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h.html',1,'']]],
   ['settestgroup_2eh_1',['SetTestGroup.h',['../_set_test_group_8h.html',1,'']]],
-  ['setup_2eh_2',['setup.h',['../_functions_2setup_8h.html',1,'']]],
-  ['setup_2eh_3',['SETUP.h',['../_macros_2setup_8h.html',1,'']]],
-  ['setup_2eh_4',['Setup.h',['../_top_level_2setup_8h.html',1,'']]],
+  ['setup_2eh_2',['setup.h',['../_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_functions_2setup_8h.html',1,'']]],
+  ['setup_2eh_3',['SETUP.h',['../_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_macros_2setup_8h.html',1,'']]],
+  ['setup_2eh_4',['Setup.h',['../_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html',1,'(Global Namespace)'],['../_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html',1,'(Global Namespace)']]],
   ['setupasync_2eh_5',['SetupAsync.h',['../_setup_async_8h.html',1,'']]],
   ['sharedlibraries_2emd_6',['SharedLibraries.md',['../_shared_libraries_8md.html',1,'']]],
   ['sharedlibrary_2eh_7',['SharedLibrary.h',['../_shared_library_8h.html',1,'']]],
