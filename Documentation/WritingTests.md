@@ -55,7 +55,7 @@ Create a new file named `MyFirstTests.cpp`.
 Add the following code to `MyFirstTests.cpp`:
 
 ```cpp
-#define spec_name My_First_Tests
+#define SPEC_GROUP My_First_Tests
 
 #include <Specs.h>
 
@@ -70,20 +70,26 @@ Any tests defined in this file will be added to this group.
 
 Every `.cpp` file containing tests must have one of these unique `#define` at the top of the file:
 
-- `#define spec_context UNIQUE_NAME`
-- `#define spec_file UNIQUE_NAME`
-- `#define spec_name UNIQUE_NAME`
-- `#define spec_template UNIQUE_NAME`
+- `#define SPEC_CONTEXT UNIQUE_NAME`
+- `#define SPEC_FILE UNIQUE_NAME`
+- `#define SPEC_GROUP UNIQUE_NAME`
+- `#define SPEC_TEMPLATE UNIQUE_NAME`
 
-### #define spec_context
+> Note: lowercase versions of these `#define` are also supported:
+> - `#define spec_context UNIQUE_NAME`
+> - `#define spec_file UNIQUE_NAME`
+> - `#define spec_group UNIQUE_NAME`
+> - `#define spec_template UNIQUE_NAME`
+
+### #define SPEC_CONTEXT
 
 Using `#define spec_context UNIQUE_NAME` will ensure that the `Test`, `Setup`, `Teardown`, `etc` macros defined in this file do not conflict with macros defined in other files.
 
 That's it, though. The content in your file might be added to a group of tests from _another file_, because `spec_context` does not define a group nor does it clear the currently active group.
 
-**Use of `spec_context` is not recommended.**
+**Use of `SPEC_CONTEXT` is not recommended.**
 
-### #define spec_file
+### #define SPEC_FILE
 
 If you `#define spec_file UNIQUE_NAME`, then the tests in the file are added to a global group.
 
@@ -92,7 +98,7 @@ The tests (_and setup/teardown code_) in this file will be run for all tests.
 This could be useful for defining global setup/teardown code:
 
 ```cpp
-#define spec_file Global_Setup_Teardown
+#define SPEC_FILE Global_Setup_Teardown
 
 #include <Specs.h>
 
@@ -105,16 +111,16 @@ Teardown() {
 }
 ```
 
-### #define spec_name
+### #define SPEC_GROUP
 
-If you `#define spec_name UNIQUE_NAME`, then the tests in the file are added to a group with the description of `UNIQUE_NAME`.
+If you `#define SPEC_GROUP UNIQUE_NAME`, then the tests in the file are added to a group with the description of `UNIQUE_NAME`.
 
 > _Note: underscores in `UNIQUE_NAME` are replaced with spaces in the description._
 
 This is a good way to define a group of tests that are related to each other.
 
 ```cpp
-#define spec_name My_Tests_About_Some_Feature
+#define SPEC_GROUP My_Tests_About_Some_Feature
 
 #include <Specs.h>
 
@@ -124,7 +130,7 @@ This is a good way to define a group of tests that are related to each other.
 And, for example, in another file...
 
 ```cpp
-#define spec_name My_Tests_About_Another_Feature
+#define SPEC_GROUP My_Tests_About_Another_Feature
 
 #include <Specs.h>
 
@@ -162,7 +168,7 @@ Teardown() {
 And then, in another test file...
 
 ```cpp
-#define spec_name My_Tests_About_Some_Feature
+#define SPEC_GROUP My_Tests_About_Some_Feature
 
 #include <Specs.h>
 
@@ -398,14 +404,14 @@ TestAsync("Test Something Async!") {
 
 Grouping your tests is a critical part of writing tests.
 
-It is recommended to use `#define spec_name UNIQUE_NAME` to define a group for each `.cpp` file containing tests.
+It is recommended to use `#define SPEC_GROUP UNIQUE_NAME` to define a group for each `.cpp` file containing tests.
 
 ## Unique test group for each file
 
 `TestsOne.cpp`
 
 ```cpp
-#define spec_name Tests_One
+#define SPEC_GROUP Tests_One
 
 #include <Specs.h>
 
@@ -417,7 +423,7 @@ Test("Test 1") {
 `TestsTwo.cpp`
 
 ```cpp
-#define spec_name Tests_Two
+#define SPEC_GROUP Tests_Two
 
 #include <Specs.h>
 
@@ -435,14 +441,92 @@ This works great, but what if you want to group your tests into sub-groups?
 
 ## Nesting child groups
 
-Once you need to define sub-groups, there are 2 separate syntaxes to choose from:
+Once you need to define sub-groups, there are a few different syntax styles to choose from:
 
 1. `TestGroup` defines a new top-level group (_within the file group defined via spec_name_)
-2. `BeginTestGroup`/`EndTestGroup` define nested groups
+2. `StartTestGroup`/`EndTestGroup` define nested groups
 3. `Describe` defines a nested group and child tests/groups/setups/teardowns are defined using a lambda syntax
 
 ### TestGroup
 
-### BeginTestGroup / EndTestGroup
+```cpp
+#define SPEC_GROUP Tests_One
+
+#include <Specs.h>
+
+TestGroup("Child Group")
+
+// Any Setup/Teardown/Test defined here will be added to the:
+// [Tests One] > [Child Group] group
+
+Setup { /* Setup code goes here... */ }
+Teardown { /* Teardown code goes here... */ }
+Test("Test something") { /* Test code goes here... */ }
+
+TestGroup("Different Group")
+// ^ this OVERRIDES the previous TestGroup() definition
+
+// Any Setup/Teardown/Test defined here will be added to the:
+// [Tests One] > [Different Group] group
+
+Setup { /* Setup code goes here... */ }
+Teardown { /* Teardown code goes here... */ }
+Test("Test something else") { /* Test code goes here... */ }
+```
+
+### StartTestGroup / EndTestGroup
+
+```cpp
+#define SPEC_GROUP Tests_One
+
+#include <Specs.h>
+
+StartTestGroup("Child Group") {
+    // Any Setup/Teardown/Test defined here will be added to the:
+    // [Tests One] > [Child Group] group
+
+    Setup { /* Setup code goes here... */ }
+    Teardown { /* Teardown code goes here... */ }
+    Test("Test something") { /* Test code goes here... */ }
+
+    StartTestGroup("Different Group") {
+        // Any Setup/Teardown/Test defined here will be added to the:
+        // [Tests One] > [Child Group] > [Different Group] group
+
+        Setup { /* Setup code goes here... */ }
+        Teardown { /* Teardown code goes here... */ }
+        Test("Test something else") { /* Test code goes here... */ }
+    }
+    EndTestGroup();
+
+}
+EndTestGroup();
+```
 
 ### Describe
+
+```cpp
+#define SPEC_GROUP Tests_One
+
+#include <Specs.h>
+
+Describe("Child Group") {
+    // Any Setup/Teardown/Test defined here will be added to the:
+    // [Tests One] > [Child Group] group
+
+    setup([](){ /* Setup code goes here... */ });
+    teardown([](){ /* Teardown code goes here... */ });
+    test("Test something", [](){ /* Test code goes here... */ });
+
+    // Inside of a 'Describe' block,
+    // you must use the lambda syntax to define tests/groups/setups/teardowns
+    describe("Different Group", [](){
+        // Any Setup/Teardown/Test defined here will be added to the:
+        // [Tests One] > [Child Group] > [Different Group] group
+
+        setup([](){ /* Setup code goes here... */ });
+        teardown([](){ /* Teardown code goes here... */ });
+        test("Test something else", [](){ /* Test code goes here... */ });
+    });
+}
+```

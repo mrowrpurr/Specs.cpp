@@ -106,9 +106,9 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
 <ul><li class="level1"><a href="#autotoc_md28">Creating a project</a><ul><li class="level2"><a href="#autotoc_md29">Entrypoint</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md30">Creating test files</a><ul><li class="level2"><a href="#autotoc_md31">Test file #define header</a><ul><li class="level3"><a href="#autotoc_md32">#define spec_context</a></li>
-<li class="level3"><a href="#autotoc_md33">#define spec_file</a></li>
-<li class="level3"><a href="#autotoc_md34">#define spec_name</a></li>
+<li class="level1"><a href="#autotoc_md30">Creating test files</a><ul><li class="level2"><a href="#autotoc_md31">Test file #define header</a><ul><li class="level3"><a href="#autotoc_md32">#define SPEC_CONTEXT</a></li>
+<li class="level3"><a href="#autotoc_md33">#define SPEC_FILE</a></li>
+<li class="level3"><a href="#autotoc_md34">#define SPEC_GROUP</a></li>
 <li class="level3"><a href="#autotoc_md35">#define spec_template</a></li>
 </ul>
 </li>
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
 </li>
 <li class="level1"><a href="#autotoc_md43">Test Groups</a><ul><li class="level2"><a href="#autotoc_md44">Unique test group for each file</a></li>
 <li class="level2"><a href="#autotoc_md45">Nesting child groups</a><ul><li class="level3"><a href="#autotoc_md46">TestGroup</a></li>
-<li class="level3"><a href="#autotoc_md47">BeginTestGroup / EndTestGroup</a></li>
+<li class="level3"><a href="#autotoc_md47">StartTestGroup / EndTestGroup</a></li>
 <li class="level3"><a href="#autotoc_md48">Describe</a></li>
 </ul>
 </li>
@@ -177,7 +177,7 @@ Creating test files</h1>
 <p>Now you are ready to define a file with one or more tests.</p>
 <p>Create a new file named <code>MyFirstTests.cpp</code>.</p>
 <p>Add the following code to <code>MyFirstTests.cpp</code>:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_First_Tests</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_First_Tests</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>
@@ -188,22 +188,30 @@ Creating test files</h1>
 Test file #define header</h2>
 <p>Every <code>.cpp</code> file containing tests must have one of these unique <code>#define</code> at the top of the file:</p>
 <ul>
+<li><code>#define SPEC_CONTEXT UNIQUE_NAME</code></li>
+<li><code>#define SPEC_FILE UNIQUE_NAME</code></li>
+<li><code>#define SPEC_GROUP UNIQUE_NAME</code></li>
+<li><code>#define SPEC_TEMPLATE UNIQUE_NAME</code></li>
+</ul>
+<blockquote class="doxtable">
+<p>&zwj;Note: lowercase versions of these <code>#define</code> are also supported:</p><ul>
 <li><code>#define spec_context UNIQUE_NAME</code></li>
 <li><code>#define spec_file UNIQUE_NAME</code></li>
-<li><code>#define spec_name UNIQUE_NAME</code></li>
-<li><code>#define spec_template UNIQUE_NAME</code></li>
+<li><code>#define spec_group UNIQUE_NAME</code></li>
+<li><code>#define spec_template UNIQUE_NAME</code> </li>
 </ul>
+</blockquote>
 <h3><a class="anchor" id="autotoc_md32"></a>
-#define spec_context</h3>
+#define SPEC_CONTEXT</h3>
 <p>Using <code>#define spec_context UNIQUE_NAME</code> will ensure that the <code>Test</code>, <code>Setup</code>, <code>Teardown</code>, <code>etc</code> macros defined in this file do not conflict with macros defined in other files.</p>
 <p>That's it, though. The content in your file might be added to a group of tests from <em>another file</em>, because <code>spec_context</code> does not define a group nor does it clear the currently active group.</p>
-<p><b>Use of <code>spec_context</code> is not recommended.</b></p>
+<p><b>Use of <code>SPEC_CONTEXT</code> is not recommended.</b></p>
 <h3><a class="anchor" id="autotoc_md33"></a>
-#define spec_file</h3>
+#define SPEC_FILE</h3>
 <p>If you <code>#define spec_file UNIQUE_NAME</code>, then the tests in the file are added to a global group.</p>
 <p>The tests (<em>and setup/teardown code</em>) in this file will be run for all tests.</p>
 <p>This could be useful for defining global setup/teardown code:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_file Global_Setup_Teardown</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_FILE Global_Setup_Teardown</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>
@@ -217,19 +225,19 @@ Test file #define header</h2>
 <div class="ttc" id="a_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h_html_a5cba18a3777f6dcb45611cce54d9c765"><div class="ttname"><a href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a></div><div class="ttdeci">#define Setup</div><div class="ttdef"><b>Definition</b> Setup.h:5</div></div>
 <div class="ttc" id="a_top_level_2teardown_8h_html_a681e4480b1c3df2b80d6d24721659b04"><div class="ttname"><a href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a></div><div class="ttdeci">#define Teardown</div><div class="ttdef"><b>Definition</b> Teardown.h:5</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md34"></a>
-#define spec_name</h3>
-<p>If you <code>#define spec_name UNIQUE_NAME</code>, then the tests in the file are added to a group with the description of <code>UNIQUE_NAME</code>.</p>
+#define SPEC_GROUP</h3>
+<p>If you <code>#define SPEC_GROUP UNIQUE_NAME</code>, then the tests in the file are added to a group with the description of <code>UNIQUE_NAME</code>.</p>
 <blockquote class="doxtable">
 <p>&zwj;<em>Note: underscores in <code>UNIQUE_NAME</code> are replaced with spaces in the description.</em> </p>
 </blockquote>
 <p>This is a good way to define a group of tests that are related to each other.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_Tests_About_Some_Feature</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Tests_About_Some_Feature</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Tests go here...</span></div>
 </div><!-- fragment --><p>And, for example, in another file...</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_Tests_About_Another_Feature</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Tests_About_Another_Feature</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>
@@ -258,7 +266,7 @@ Test file #define header</h2>
 <div class="line">    <span class="comment">// Shared teardown code goes here...</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p>And then, in another test file...</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name My_Tests_About_Some_Feature</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Tests_About_Some_Feature</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>
@@ -459,11 +467,11 @@ Asynchronous Setup and Teardown</h2>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md43"></a>
 Test Groups</h1>
 <p>Grouping your tests is a critical part of writing tests.</p>
-<p>It is recommended to use <code>#define spec_name UNIQUE_NAME</code> to define a group for each <code>.cpp</code> file containing tests.</p>
+<p>It is recommended to use <code>#define SPEC_GROUP UNIQUE_NAME</code> to define a group for each <code>.cpp</code> file containing tests.</p>
 <h2><a class="anchor" id="autotoc_md44"></a>
 Unique test group for each file</h2>
 <p><code>TestsOne.cpp</code></p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name Tests_One</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP Tests_One</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>
@@ -471,7 +479,7 @@ Unique test group for each file</h2>
 <div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p><code>TestsTwo.cpp</code></p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_name Tests_Two</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP Tests_Two</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>
@@ -494,11 +502,88 @@ Nesting child groups</h2>
 </ol>
 <h3><a class="anchor" id="autotoc_md46"></a>
 TestGroup</h3>
-<h3><a class="anchor" id="autotoc_md47"></a>
-BeginTestGroup / EndTestGroup</h3>
-<h3><a class="anchor" id="autotoc_md48"></a>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP Tests_One</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_test_group_8h.html#a2f606580183a00e9b8323171a0916afc">TestGroup</a>(<span class="stringliteral">&quot;Child Group&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Any Setup/Teardown/Test defined here will be added to the:</span></div>
+<div class="line"><span class="comment">// [Tests One] &gt; [Child Group] group</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* Setup code goes here... */</span> }</div>
+<div class="line"><a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> { <span class="comment">/* Teardown code goes here... */</span> }</div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test something&quot;</span>) { <span class="comment">/* Test code goes here... */</span> }</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_test_group_8h.html#a2f606580183a00e9b8323171a0916afc">TestGroup</a>(<span class="stringliteral">&quot;Different Group&quot;</span>)</div>
+<div class="line"><span class="comment">// ^ this OVERRIDES the previous TestGroup() definition</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Any Setup/Teardown/Test defined here will be added to the:</span></div>
+<div class="line"><span class="comment">// [Tests One] &gt; [Different Group] group</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* Setup code goes here... */</span> }</div>
+<div class="line"><a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> { <span class="comment">/* Teardown code goes here... */</span> }</div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test something else&quot;</span>) { <span class="comment">/* Test code goes here... */</span> }</div>
+<div class="ttc" id="a_test_group_8h_html_a2f606580183a00e9b8323171a0916afc"><div class="ttname"><a href="_test_group_8h.html#a2f606580183a00e9b8323171a0916afc">TestGroup</a></div><div class="ttdeci">#define TestGroup(description)</div><div class="ttdef"><b>Definition</b> TestGroup.h:5</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md47"></a>
+StartTestGroup / EndTestGroup</h3>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP Tests_One</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_start_test_group_8h.html#a746b468d19fc04a515e3da909abac56b">StartTestGroup</a>(<span class="stringliteral">&quot;Child Group&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Any Setup/Teardown/Test defined here will be added to the:</span></div>
+<div class="line">    <span class="comment">// [Tests One] &gt; [Child Group] group</span></div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* Setup code goes here... */</span> }</div>
+<div class="line">    <a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> { <span class="comment">/* Teardown code goes here... */</span> }</div>
+<div class="line">    <a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test something&quot;</span>) { <span class="comment">/* Test code goes here... */</span> }</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="_start_test_group_8h.html#a746b468d19fc04a515e3da909abac56b">StartTestGroup</a>(<span class="stringliteral">&quot;Different Group&quot;</span>) {</div>
+<div class="line">        <span class="comment">// Any Setup/Teardown/Test defined here will be added to the:</span></div>
+<div class="line">        <span class="comment">// [Tests One] &gt; [Child Group] &gt; [Different Group] group</span></div>
+<div class="line"> </div>
+<div class="line">        <a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* Setup code goes here... */</span> }</div>
+<div class="line">        <a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> { <span class="comment">/* Teardown code goes here... */</span> }</div>
+<div class="line">        <a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test something else&quot;</span>) { <span class="comment">/* Test code goes here... */</span> }</div>
+<div class="line">    }</div>
+<div class="line">    <a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line"><a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
+<div class="ttc" id="a_end_test_group_8h_html_a94427869efc5da0f2e622efa775fa6f5"><div class="ttname"><a href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a></div><div class="ttdeci">#define EndTestGroup()</div><div class="ttdef"><b>Definition</b> EndTestGroup.h:5</div></div>
+<div class="ttc" id="a_start_test_group_8h_html_a746b468d19fc04a515e3da909abac56b"><div class="ttname"><a href="_start_test_group_8h.html#a746b468d19fc04a515e3da909abac56b">StartTestGroup</a></div><div class="ttdeci">#define StartTestGroup(description)</div><div class="ttdef"><b>Definition</b> StartTestGroup.h:5</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md48"></a>
 Describe</h3>
-</div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP Tests_One</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2describe_8h.html#a1e7ceb35b4641f8f90e1123804f60ab6">Describe</a>(<span class="stringliteral">&quot;Child Group&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Any Setup/Teardown/Test defined here will be added to the:</span></div>
+<div class="line">    <span class="comment">// [Tests One] &gt; [Child Group] group</span></div>
+<div class="line"> </div>
+<div class="line">    setup([](){ <span class="comment">/* Setup code goes here... */</span> });</div>
+<div class="line">    teardown([](){ <span class="comment">/* Teardown code goes here... */</span> });</div>
+<div class="line">    <a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a7953bb0f562f8e0aecf8c394fcaa7bdf">test</a>(<span class="stringliteral">&quot;Test something&quot;</span>, [](){ <span class="comment">/* Test code goes here... */</span> });</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Inside of a &#39;Describe&#39; block,</span></div>
+<div class="line">    <span class="comment">// you must use the lambda syntax to define tests/groups/setups/teardowns</span></div>
+<div class="line">    <a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#ab1c45713d4d86b5d6cea5999e035b64b">describe</a>(<span class="stringliteral">&quot;Different Group&quot;</span>, [](){</div>
+<div class="line">        <span class="comment">// Any Setup/Teardown/Test defined here will be added to the:</span></div>
+<div class="line">        <span class="comment">// [Tests One] &gt; [Child Group] &gt; [Different Group] group</span></div>
+<div class="line"> </div>
+<div class="line">        <a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#afc08501c21b8d391a0caf7a7e2222407">setup</a>([](){ <span class="comment">/* Setup code goes here... */</span> });</div>
+<div class="line">        <a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#ad5d1e9ba206d4f0ecc5d8e1dc41b7c55">teardown</a>([](){ <span class="comment">/* Teardown code goes here... */</span> });</div>
+<div class="line">        <a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a7953bb0f562f8e0aecf8c394fcaa7bdf">test</a>(<span class="stringliteral">&quot;Test something else&quot;</span>, [](){ <span class="comment">/* Test code goes here... */</span> });</div>
+<div class="line">    });</div>
+<div class="line">}</div>
+<div class="ttc" id="a_top_level_2describe_8h_html_a1e7ceb35b4641f8f90e1123804f60ab6"><div class="ttname"><a href="_top_level_2describe_8h.html#a1e7ceb35b4641f8f90e1123804f60ab6">Describe</a></div><div class="ttdeci">#define Describe(description)</div><div class="ttdef"><b>Definition</b> Describe.h:5</div></div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_a7953bb0f562f8e0aecf8c394fcaa7bdf"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a7953bb0f562f8e0aecf8c394fcaa7bdf">SpecsCpp::DSLs::Functions::test</a></div><div class="ttdeci">void test(std::string_view description, std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> test.h:12</div></div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_ab1c45713d4d86b5d6cea5999e035b64b"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#ab1c45713d4d86b5d6cea5999e035b64b">SpecsCpp::DSLs::Functions::describe</a></div><div class="ttdeci">void describe(std::string_view description, std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> describe.h:9</div></div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_ad5d1e9ba206d4f0ecc5d8e1dc41b7c55"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#ad5d1e9ba206d4f0ecc5d8e1dc41b7c55">SpecsCpp::DSLs::Functions::teardown</a></div><div class="ttdeci">void teardown(std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> teardown.h:12</div></div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_afc08501c21b8d391a0caf7a7e2222407"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#afc08501c21b8d391a0caf7a7e2222407">SpecsCpp::DSLs::Functions::setup</a></div><div class="ttdeci">void setup(std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> setup.h:12</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.7-->

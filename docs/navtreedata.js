@@ -66,9 +66,9 @@ var NAVTREE =
       ] ],
       [ "Creating test files", "md__documentation_2_writing_tests.html#autotoc_md30", [
         [ "Test file #define header", "md__documentation_2_writing_tests.html#autotoc_md31", [
-          [ "#define spec_context", "md__documentation_2_writing_tests.html#autotoc_md32", null ],
-          [ "#define spec_file", "md__documentation_2_writing_tests.html#autotoc_md33", null ],
-          [ "#define spec_name", "md__documentation_2_writing_tests.html#autotoc_md34", null ],
+          [ "#define SPEC_CONTEXT", "md__documentation_2_writing_tests.html#autotoc_md32", null ],
+          [ "#define SPEC_FILE", "md__documentation_2_writing_tests.html#autotoc_md33", null ],
+          [ "#define SPEC_GROUP", "md__documentation_2_writing_tests.html#autotoc_md34", null ],
           [ "#define spec_template", "md__documentation_2_writing_tests.html#autotoc_md35", null ]
         ] ]
       ] ],
@@ -85,7 +85,7 @@ var NAVTREE =
         [ "Unique test group for each file", "md__documentation_2_writing_tests.html#autotoc_md44", null ],
         [ "Nesting child groups", "md__documentation_2_writing_tests.html#autotoc_md45", [
           [ "TestGroup", "md__documentation_2_writing_tests.html#autotoc_md46", null ],
-          [ "BeginTestGroup / EndTestGroup", "md__documentation_2_writing_tests.html#autotoc_md47", null ],
+          [ "StartTestGroup / EndTestGroup", "md__documentation_2_writing_tests.html#autotoc_md47", null ],
           [ "Describe", "md__documentation_2_writing_tests.html#autotoc_md48", null ]
         ] ]
       ] ]
