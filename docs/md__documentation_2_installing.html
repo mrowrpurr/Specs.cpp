@@ -273,9 +273,10 @@ Verify</h3>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_lib_assert_8h.html">Specs/LibAssert.h</a>&gt;</span> <span class="comment">// Includes libassert support</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example libassert test&quot;</span>) {</div>
-<div class="line">    assert(69 == 420);</div>
+<div class="line">    <a class="code hl_define" href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a>(69 == 420);</div>
 <div class="line">}</div>
 <div class="ttc" id="a_lib_assert_8h_html"><div class="ttname"><a href="_lib_assert_8h.html">LibAssert.h</a></div></div>
+<div class="ttc" id="aassert__that_8h_html_a9aba65c1e5a08d6727d63fa1b4b50adc"><div class="ttname"><a href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a></div><div class="ttdeci">#define assert_that(...)</div><div class="ttdef"><b>Definition</b> assert_that.h:5</div></div>
 </div><!-- fragment --><p>Then run <code>xmake run MyProject.Tests</code> and you should see the following output:</p>
 <div class="fragment"><div class="line">[FAILED] Example libassert test</div>
 <div class="line"> </div>
@@ -289,13 +290,9 @@ Verify</h3>
 <p>This means that <code>Specs</code> will not be able to catch the assertion failure and report it as a test failure.</p>
 <p>To get around this:</p><ul>
 <li>you can use the <code>VERIFY</code> macro instead of <code>assert</code> (<em>which throws exceptions in <code>release</code> mode</em>)</li>
-<li>(<b>recommended</b>) use the <code>assert_that</code> macro provided by <code>Specs</code> (<em>which is an alias for <code>VERIFY</code></em>)</li>
+<li>(<b>recommended</b>) use the <code>assert_that</code> macro provided by <code>Specs</code> (<em>which is an alias for <code>VERIFY</code></em>) ``` </li>
 </ul>
-<div class="fragment"><div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example libassert test&quot;</span>) {</div>
-<div class="line">    <a class="code hl_define" href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a>(69 == 420);</div>
-<div class="line">}</div>
-<div class="ttc" id="aassert__that_8h_html_a9aba65c1e5a08d6727d63fa1b4b50adc"><div class="ttname"><a href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a></div><div class="ttdeci">#define assert_that(...)</div><div class="ttdef"><b>Definition</b> assert_that.h:5</div></div>
-</div><!-- fragment --> </blockquote>
+</blockquote>
 <h1><a class="anchor" id="autotoc_md16"></a>
 vcpkg</h1>
 <blockquote class="doxtable">

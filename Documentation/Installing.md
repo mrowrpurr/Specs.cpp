@@ -181,7 +181,7 @@ If you want to verify that it works, create a `Test.cpp` with the following cont
 #include <Specs/LibAssert.h> // Includes libassert support
 
 Test("Example libassert test") {
-    assert(69 == 420);
+    assert_that(69 == 420);
 }
 ```
 
@@ -205,11 +205,6 @@ Verification failed at Basic.Test.cpp:6: void __cdecl __globalMacroFunctions__fu
 > To get around this:
 > - you can use the `VERIFY` macro instead of `assert` (_which throws exceptions in `release` mode_)
 > - (**recommended**) use the `assert_that` macro provided by `Specs` (_which is an alias for `VERIFY`_)
->
-> ```cpp
-> Test("Example libassert test") {
->     assert_that(69 == 420);
-> }
 > ```
 
 # vcpkg
