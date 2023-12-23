@@ -262,7 +262,6 @@ And if you want to use `snowhouse` assertions:
                 "specs",
                 "specs-snowhouse",
                 "specs-libassert",
-                "mrowr-specs-snowhouse",
                 "mrowr-function-pointer",
                 "mrowr-global-macro-functions",
                 "mrowr-collections",
