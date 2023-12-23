@@ -29,6 +29,8 @@
 #include "DSLs/TopLevel/SpecAsync.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/Specs.h"               // IWYU pragma: keep
 #include "DSLs/TopLevel/SpecsFn.h"             // IWYU pragma: keep
+#include "DSLs/TopLevel/StartTestGroup.h"      // IWYU pragma: keep
+#include "DSLs/TopLevel/StartTestTemplate.h"   // IWYU pragma: keep
 #include "DSLs/TopLevel/Teardown.h"            // IWYU pragma: keep
 #include "DSLs/TopLevel/TeardownAsync.h"       // IWYU pragma: keep
 #include "DSLs/TopLevel/Test.h"                // IWYU pragma: keep
