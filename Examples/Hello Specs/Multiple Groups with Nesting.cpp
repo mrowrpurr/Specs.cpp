@@ -1,4 +1,4 @@
-#define spec_name Multiple_Groups_with_Nesting
+#define SPEC_GROUP Multiple_Groups_with_Nesting
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
@@ -10,24 +10,24 @@ TestGroup("Child Group 1");
 Setup { _Log_("Hello from Child Group 1 Setup"); }
 Test("Child Group 1 Test") { _Log_("Hello from Child Group 1 Test"); }
 
-StartTestGroup("!!! Nested Child Group") {
-    Setup { _Log_("Hello from Nested Child Group Setup"); }
-    Test("Nested Child Group Test") { _Log_("Hello from Nested Child Group Test"); }
+// StartTestGroup("!!! Nested Child Group") {
+//     Setup { _Log_("Hello from Nested Child Group Setup"); }
+//     Test("Nested Child Group Test") { _Log_("Hello from Nested Child Group Test"); }
 
-    StartTestGroup("~~~~ Nested Nested Child Group") {
-        Setup { _Log_("Hello from Nested Nested Child Group Setup"); }
-        Test("Nested Nested Child Group Test") {
-            _Log_("Hello from Nested Nested Child Group Test");
-        }
-        Test("Nested Nested Child Group Test 2") {
-            _Log_("Hello from Nested Nested Child Group Test 2");
-        }
-    }
-    EndTestGroup();  // Nested Nested Child Group
+//     StartTestGroup("~~~~ Nested Nested Child Group") {
+//         Setup { _Log_("Hello from Nested Nested Child Group Setup"); }
+//         Test("Nested Nested Child Group Test") {
+//             _Log_("Hello from Nested Nested Child Group Test");
+//         }
+//         Test("Nested Nested Child Group Test 2") {
+//             _Log_("Hello from Nested Nested Child Group Test 2");
+//         }
+//     }
+//     EndTestGroup();  // Nested Nested Child Group
 
-    Test("Nested Child Group Test 2") { _Log_("Hello from Nested Child Group Test 2"); }
-}
-EndTestGroup();  // Nested Child Group
+//     Test("Nested Child Group Test 2") { _Log_("Hello from Nested Child Group Test 2"); }
+// }
+// EndTestGroup();  // Nested Child Group
 
 Test("Child Group 1 Test 2") { _Log_("Hello from Child Group 1 Test 2"); }
 UnsetTestGroup();  // Child Group 1

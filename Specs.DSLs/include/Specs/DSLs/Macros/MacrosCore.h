@@ -5,6 +5,9 @@
 #if defined(spec_context)
     #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_context
 
+#elif defined(SPEC_CONTEXT)
+    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME SPEC_CONTEXT
+
 #elif defined(spec_file)
     #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_file
 
@@ -15,7 +18,7 @@ _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_MacrosCore_spec
 ){[]() { SpecsCpp::GlobalSpecGroup::instance().reset_group_stack(); }};
 
 #elif defined(SPEC_FILE)
-    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_file
+    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME SPEC_FILE
 
     #include <Specs/GlobalSpecGroup.h>
     #include <global_macro_functions.h>
@@ -36,7 +39,7 @@ _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_MacrosCore_spec
 }};
 
 #elif defined(SPEC_NAME)
-    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_name
+    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME SPEC_NAME
 
     #include <Specs/GlobalSpecGroup.h>
     #include <global_macro_functions.h>
@@ -48,7 +51,7 @@ _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_MacrosCore_SPEC
 }};
 
 #elif defined(spec_group)
-    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_name
+    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_group
 
     #include <Specs/GlobalSpecGroup.h>
     #include <global_macro_functions.h>
@@ -60,7 +63,7 @@ _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_MacrosCore_spec
 }};
 
 #elif defined(SPEC_GROUP)
-    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_name
+    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME SPEC_GROUP
 
     #include <Specs/GlobalSpecGroup.h>
     #include <global_macro_functions.h>
@@ -84,7 +87,7 @@ _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME(_MacrosCore_spec
 }};
 
 #elif defined(SPEC_TEMPLATE)
-    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME spec_template
+    #define _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME SPEC_TEMPLATE
 
     #include <Specs/GlobalSpecGroup.h>
     #include <global_macro_functions.h>
