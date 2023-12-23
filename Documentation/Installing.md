@@ -359,6 +359,14 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 # Add dependency on 'specs'
 find_package(specs CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs)
+
+# Snowhouse:
+find_path(SNOWHOUSE_INCLUDE_DIRS "snowhouse/assert.h")
+target_include_directories(${PROJECT_NAME} PRIVATE ${SNOWHOUSE_INCLUDE_DIRS})
+
+# Specs adapter for Snowhouse:
+find_package(specs_snowhouse CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs_snowhouse)
 ```
 
 #### Verify

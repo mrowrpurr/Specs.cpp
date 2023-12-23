@@ -421,6 +421,14 @@ CMakeLists.txt</h4>
 <div class="line"><span class="comment"># Add dependency on &#39;specs&#39;</span></div>
 <div class="line">find_package(specs CONFIG REQUIRED)</div>
 <div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Snowhouse:</span></div>
+<div class="line">find_path(SNOWHOUSE_INCLUDE_DIRS <span class="stringliteral">&quot;snowhouse/assert.h&quot;</span>)</div>
+<div class="line">target_include_directories(${PROJECT_NAME} PRIVATE ${SNOWHOUSE_INCLUDE_DIRS})</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Specs adapter for Snowhouse:</span></div>
+<div class="line">find_package(specs_snowhouse CONFIG REQUIRED)</div>
+<div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs_snowhouse)</div>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md25"></a>
 Verify</h4>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
