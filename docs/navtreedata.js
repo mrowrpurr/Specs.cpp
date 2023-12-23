@@ -94,13 +94,14 @@ var NAVTREE =
       [ "foo", "md__documentation_2_running_tests.html#autotoc_md50", null ],
       [ "bar", "md__documentation_2_running_tests.html#autotoc_md51", null ]
     ] ],
+    [ "📂 Project Layout", "md__documentation_2_project_layout.html", null ],
     [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
-      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md53", [
-        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md54", [
-          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md55", null ],
-          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md56", null ]
+      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md54", [
+        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md55", [
+          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md56", null ],
+          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md57", null ]
         ] ],
-        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md57", null ]
+        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md58", null ]
       ] ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
@@ -111,6 +112,7 @@ var NAVTREE =
     [ "📖 Syntax Reference", "md__documentation_2_syntax_reference.html", null ],
     [ "🖋️ Customizing Syntax", "md__documentation_2_custom_syntax.html", null ],
     [ "✏️ Available Macros", "md__documentation_2_macros.html", null ],
+    [ "🧐 Examples", "md__documentation_2_examples.html", null ],
     [ "🤝 CONTRIBUTING", "md__documentation_2_c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
     [ "💖 LICENSE (0BSD)", "md__documentation_2_l_i_c_e_n_s_e.html", null ],
     [ "🐙 GitHub Repository", "md__documentation_2_git_hub.html", null ],
@@ -153,9 +155,9 @@ var NAVTREEINDEX =
 "_print_color_8h.html#a710499b33e1c7256c823756a3963ab95a852721aa5fc738dfedff2945d71da439",
 "class_specs_cpp_1_1_global_spec_group.html#ad2130951f474a6fbd9f45c365ef7e2c7",
 "class_specs_cpp_1_1_spec_reporter_collection.html#a0e0627c44fb67e08059d3a2b57ddd6c9",
-"md__documentation_2_variables.html",
-"struct_specs_cpp_1_1_i_spec_data_value.html#a566741a255df1e8bdc802fa1d1530cda",
-"struct_specs_cpp_1_1_i_spec_runner_collection.html#ab4be0106570adf4b6c7e76a6ff6fb679"
+"md__documentation_2_syntax_reference.html",
+"struct_specs_cpp_1_1_i_spec_data_value.html#a419d1ef3662bd778e1e4f5a8a076c1c9",
+"struct_specs_cpp_1_1_i_spec_runner_collection.html#a7a26de64a1982cbf6f95e88eb1c378cb"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

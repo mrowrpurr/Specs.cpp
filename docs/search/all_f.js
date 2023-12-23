@@ -7,6 +7,7 @@ var searchData=
   ['pop_4',['pop',['../class_specs_cpp_1_1_global_spec_group.html#a02b226250515817b7f9405e912d0dfe7',1,'SpecsCpp::GlobalSpecGroup']]],
   ['printcolor_5',['PrintColor',['../namespace_specs_cpp_1_1_colors.html#a04527dfbf1fd6ae9eed4cf6dd57bede6',1,'SpecsCpp::Colors']]],
   ['printcolor_2eh_6',['PrintColor.h',['../_print_color_8h.html',1,'']]],
-  ['purple_7',['Purple',['../namespace_specs_cpp_1_1_colors.html#ae56fb3cabeebcf7aa18597f31ae37676ab9ba865fec061c9706d2fd7ce49c0cc7',1,'SpecsCpp::Colors::Purple'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a6c09f408be24e973fddbb8a4bf66e410ab9ba865fec061c9706d2fd7ce49c0cc7',1,'SpecsCpp::Colors::Unix::Purple'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a0fe80c6766df30126af443011064cae2ab9ba865fec061c9706d2fd7ce49c0cc7',1,'SpecsCpp::Colors::Unix::Purple']]],
-  ['push_8',['push',['../class_specs_cpp_1_1_global_spec_group.html#a0c572d84cfbf4e63eb0c6b61503773d0',1,'SpecsCpp::GlobalSpecGroup']]]
+  ['projectlayout_2emd_7',['ProjectLayout.md',['../_project_layout_8md.html',1,'']]],
+  ['purple_8',['Purple',['../namespace_specs_cpp_1_1_colors.html#ae56fb3cabeebcf7aa18597f31ae37676ab9ba865fec061c9706d2fd7ce49c0cc7',1,'SpecsCpp::Colors::Purple'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a6c09f408be24e973fddbb8a4bf66e410ab9ba865fec061c9706d2fd7ce49c0cc7',1,'SpecsCpp::Colors::Unix::Purple'],['../namespace_specs_cpp_1_1_colors_1_1_unix.html#a0fe80c6766df30126af443011064cae2ab9ba865fec061c9706d2fd7ce49c0cc7',1,'SpecsCpp::Colors::Unix::Purple']]],
+  ['push_9',['push',['../class_specs_cpp_1_1_global_spec_group.html#a0c572d84cfbf4e63eb0c6b61503773d0',1,'SpecsCpp::GlobalSpecGroup']]]
 ];

@@ -914,6 +914,7 @@ INPUT                  =    \
                             Documentation/Installing.md \
                             Documentation/WritingTests.md \
                             Documentation/RunningTests.md \
+                            Documentation/ProjectLayout.md \
                             Documentation/AssertionLibraries.md \
                             Documentation/CLI.md \
                             Documentation/Templates.md \
@@ -923,6 +924,7 @@ INPUT                  =    \
                             Documentation/SyntaxReference.md \
                             Documentation/CustomSyntax.md \
                             Documentation/Macros.md \
+                            Documentation/Examples.md \
                             Documentation/CONTRIBUTING.md \
                             Documentation/LICENSE.md \
                             Documentation/GitHub.md \

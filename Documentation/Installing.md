@@ -12,9 +12,9 @@
 
 `Specs` requires `C++17` or higher.
 
-> **Note:** if you are using `C++17`, you must add `fmt` as a dependency for string formatting.
-> `C++20` is supported with no additional dependencies required.
+Using `C++20` works out-of-the-box without any additional dependencies.
 
+If you are using `C++17`, you must add `fmt` as a dependency for string formatting.
 
 > **Why not C++14?**
 >

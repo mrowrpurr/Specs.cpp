@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Specs: ✔️ Assertion Libraries</title>
+<title>Specs: 📂 Project Layout</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -73,7 +73,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('md__documentation_2_assertion_libraries.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md__documentation_2_project_layout.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -99,80 +99,58 @@ $(document).ready(function(){initNavTree('md__documentation_2_assertion_librarie
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">✔️ Assertion Libraries</div></div>
+  <div class="headertitle"><div class="title">📂 Project Layout</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md54">Assertion Libraries</a><ul><li class="level2"><a href="#autotoc_md55">snowhouse</a><ul><li class="level3"><a href="#autotoc_md56">Setup</a></li>
-<li class="level3"><a href="#autotoc_md57">Usage</a></li>
-</ul>
-</li>
-<li class="level2"><a href="#autotoc_md58">libassert</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md53"></a></p>
-<p>Getting started with <code>Specs</code> is incredibly easy.</p>
-<p>Especially if you manage your C++ dependencies using <code>xmake</code> or <code>vcpkg</code></p>
-<blockquote class="doxtable">
-<p>&zwj;See <a href="md__documentation_2_installing.html">Installing Specs</a> to get started. </p>
-</blockquote>
-<h1><a class="anchor" id="autotoc_md54"></a>
-Assertion Libraries</h1>
-<p>One core difference between <code>Specs</code> and other testing frameworks is that <code>Specs</code> does not provide any assertion functions or macros.</p>
-<p>Instead, <code>Specs</code> is designed to work with any assertion library (<em>or any C++ exception</em>).</p>
-<p>By default, any C++ exception thrown during a test will be caught and reported as a failure.</p>
-<blockquote class="doxtable">
-<p>&zwj;If the exception is a <code>std::exception</code>, the <code>what()</code> will be displayed as a failure message.</p>
-<p>If the exception is a literal C-string, the string will be displayed as a failure message. </p>
-</blockquote>
-<h2><a class="anchor" id="autotoc_md55"></a>
-snowhouse</h2>
-<p><a href="https://github.com/banditcpp/snowhouse">Snowhouse</a> is a lovely C++ assertion library.</p>
-<p>It uses an <code>AssertThat()</code> style syntax, which is very readable.</p>
-<h3><a class="anchor" id="autotoc_md56"></a>
-Setup</h3>
-<p>To setup the <code>Specs</code> adapter for <code>Snowhouse</code>, include <code>&lt;Specs/Snowhouse/Main.h&gt;</code> in your <code>main.cpp</code></p>
-<div class="fragment"><div class="line"><span class="comment">// Include the primary specs main() entrypoint</span></div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md52"></a> This is the recommended project layout for getting started with <code>Specs</code>.</p>
+<div class="fragment"><div class="line">📂 Specs</div>
+<div class="line">  📄 main.cpp</div>
+<div class="line">  📄 SpecHelper.h</div>
+<div class="line">  📄 FeatureOne.Spec.cpp</div>
+<div class="line">  📄 FeatureTwo.Spec.cpp</div>
+</div><!-- fragment --><p><code>main.cpp</code></p>
+<div class="fragment"><div class="line"><span class="comment">// This file has the entrypoint for the Specs test runner</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Setup the Snowhouse adapter (only do this once per project)</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Specs/Snowhouse/Main.h&gt;</span></div>
+<div class="line"><span class="comment">// If you&#39;re using Snowhouse, add the following to configure its Specs adapter:</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Specs/Snowhouse/Setup.h</a>&gt;</span></div>
 <div class="ttc" id="a_main_8h_html"><div class="ttname"><a href="_main_8h.html">Main.h</a></div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md57"></a>
-Usage</h3>
-<p>Then, in each spec file, you may include <code>&lt;<a class="el" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</code> as a shorthand for including the <code>snowhouse</code> headers.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="ttc" id="a_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h_html"><div class="ttname"><a href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Setup.h</a></div></div>
+</div><!-- fragment --><p><code>SpecHelper.cpp</code></p>
+<div class="fragment"><div class="line"><span class="comment">// This file is intended to be a dumping ground for common code across all specs</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// If you&#39;re using assertion library adapters, then include those adapters:</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_lib_assert_8h.html">Specs/LibAssert.h</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Snowhouse example&quot;</span>) {</div>
-<div class="line">    AssertThat(69, Equals(420));</div>
+<div class="line"><span class="comment">// Add whatever other stuff you want to be available to all specs:</span></div>
+<div class="line"><span class="keyword">using namespace </span>std;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> DoSomethingCommon() {</div>
+<div class="line">  <span class="comment">// ...</span></div>
 <div class="line">}</div>
+<div class="ttc" id="a_lib_assert_8h_html"><div class="ttname"><a href="_lib_assert_8h.html">LibAssert.h</a></div></div>
 <div class="ttc" id="a_snowhouse_8h_html"><div class="ttname"><a href="_snowhouse_8h.html">Snowhouse.h</a></div></div>
-<div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
-</div><!-- fragment --><div class="fragment"><div class="line">[FAILED] Snowhouse example</div>
+</div><!-- fragment --><p><code>FeatureOne.Spec.cpp</code></p>
+<div class="fragment"><div class="line"><span class="comment">// Define the name of this spec group</span></div>
+<div class="line"><span class="preprocessor">#define SPEC_GROUP Feature_One</span></div>
 <div class="line"> </div>
-<div class="line">Expected: equal to 420</div>
-<div class="line">Actual: 69</div>
+<div class="line"><span class="comment">// Simply include SpecHelper.h to get all the goodies needed for tests</span></div>
+<div class="line"><span class="preprocessor">#include &quot;SpecHelper.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line">[Basic.Test.cpp:10] AssertThat(69, Equals(420));</div>
+<div class="line"><span class="comment">// Define your test stuff! Setups, Teardowns, and Tests!</span></div>
 <div class="line"> </div>
-<div class="line">1 failed</div>
-</div><!-- fragment --><p>Visit the Snowhouse GitHub page for more examples:</p><ul>
-<li><a href="https://github.com/banditcpp/snowhouse">https://github.com/banditcpp/snowhouse</a></li>
-</ul>
-<h2><a class="anchor" id="autotoc_md58"></a>
-libassert</h2>
-<p><a href="https://github.com/jeremy-rifkin/libassert">libassert</a> ia another great C++ assertion library.</p>
-<p>Marketed as "_The most over-engineered and overpowered C++ assertion library._", it provided a simple <code>assert</code> syntax.</p>
-<div class="fragment"><div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;libassert example&quot;</span>) {</div>
-<div class="line">    assert(69 == 420);</div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* ... */</span> }</div>
+<div class="line"><a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> { <span class="comment">/* ... */</span> }</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test One&quot;</span>) {</div>
+<div class="line">  <span class="comment">// ...</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Visit the libassert GitHub page for more examples:</p><ul>
-<li><a href="https://github.com/jeremy-rifkin/libassert">https://github.com/jeremy-rifkin/libassert</a> </li>
-</ul>
-</div></div><!-- contents -->
+<div class="ttc" id="a_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h_html_a5cba18a3777f6dcb45611cce54d9c765"><div class="ttname"><a href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a></div><div class="ttdeci">#define Setup</div><div class="ttdef"><b>Definition</b> Setup.h:5</div></div>
+<div class="ttc" id="a_top_level_2teardown_8h_html_a681e4480b1c3df2b80d6d24721659b04"><div class="ttname"><a href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a></div><div class="ttdeci">#define Teardown</div><div class="ttdef"><b>Definition</b> Teardown.h:5</div></div>
+<div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.7-->
