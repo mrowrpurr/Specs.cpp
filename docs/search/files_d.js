@@ -28,7 +28,7 @@ var searchData=
   ['specrunnercollection_2eh_25',['SpecRunnerCollection.h',['../_spec_runner_collection_8h.html',1,'']]],
   ['specrunresult_2eh_26',['SpecRunResult.h',['../_spec_run_result_8h.html',1,'']]],
   ['specs_2econsole_2ecpp_27',['Specs.Console.cpp',['../_specs_8_console_8cpp.html',1,'']]],
-  ['specs_2eh_28',['Specs.h',['../_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2_specs_8h.html',1,'(Global Namespace)'],['../_specs_2include_2_specs_8h.html',1,'(Global Namespace)']]],
+  ['specs_2eh_28',['Specs.h',['../_specs_2include_2_specs_8h.html',1,'(Global Namespace)'],['../_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2_specs_8h.html',1,'(Global Namespace)']]],
   ['specserialrunner_2eh_29',['SpecSerialRunner.h',['../_spec_serial_runner_8h.html',1,'']]],
   ['specsetup_2eh_30',['SpecSetup.h',['../_spec_setup_8h.html',1,'']]],
   ['specsfn_2eh_31',['SpecsFn.h',['../_specs_fn_8h.html',1,'']]],
@@ -36,6 +36,8 @@ var searchData=
   ['specteardown_2eh_33',['SpecTeardown.h',['../_spec_teardown_8h.html',1,'']]],
   ['spectest_2eh_34',['SpecTest.h',['../_spec_test_8h.html',1,'']]],
   ['specvariablecollection_2eh_35',['SpecVariableCollection.h',['../_spec_variable_collection_8h.html',1,'']]],
-  ['stdexceptionexceptionhandler_2eh_36',['StdExceptionExceptionHandler.h',['../_std_exception_exception_handler_8h.html',1,'']]],
-  ['syntaxreference_2emd_37',['SyntaxReference.md',['../_syntax_reference_8md.html',1,'']]]
+  ['starttestgroup_2eh_36',['StartTestGroup.h',['../_start_test_group_8h.html',1,'']]],
+  ['starttesttemplate_2eh_37',['StartTestTemplate.h',['../_start_test_template_8h.html',1,'']]],
+  ['stdexceptionexceptionhandler_2eh_38',['StdExceptionExceptionHandler.h',['../_std_exception_exception_handler_8h.html',1,'']]],
+  ['syntaxreference_2emd_39',['SyntaxReference.md',['../_syntax_reference_8md.html',1,'']]]
 ];

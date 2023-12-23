@@ -21,6 +21,8 @@ var dir_98c42da688e3a0846e84df1df5dcd5d3 =
     [ "SpecAsync.h", "_spec_async_8h.html", "_spec_async_8h" ],
     [ "Specs.h", "_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2_specs_8h.html", "_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2_specs_8h" ],
     [ "SpecsFn.h", "_specs_fn_8h.html", "_specs_fn_8h" ],
+    [ "StartTestGroup.h", "_start_test_group_8h.html", "_start_test_group_8h" ],
+    [ "StartTestTemplate.h", "_start_test_template_8h.html", "_start_test_template_8h" ],
     [ "Teardown.h", "_top_level_2teardown_8h.html", "_top_level_2teardown_8h" ],
     [ "TeardownAsync.h", "_teardown_async_8h.html", "_teardown_async_8h" ],
     [ "Test.h", "_top_level_2test_8h.html", "_top_level_2test_8h" ],
