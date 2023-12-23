@@ -34,38 +34,25 @@ TestAsync("Slow thing") {
 }
 ```
 
-# Why?  <!-- omit in toc -->
+# Documentation
 
-1. I enjoy authoring testing frameworks.
-2. I wanted very simple, readable syntax for tests.
-3. I wanted to use existing assertion libraries.
-4. I needed to write async tests.
-5. I needed to be able to load and run tests from shared libraries.
+https://specs.tools
 
-> _I'm proud of the result and I hope you enjoy using it!_
+# LICENSE
 
-# Table of Contents  <!-- omit in toc -->
+Use however, no attribution required.
 
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
-  - [Writing Tests](#writing-tests)
-  - [Running Tests](#running-tests)
+```
+BSD Zero Clause License (SPDX: 0BSD)
 
-# Getting Started
+Permission to use, copy, modify, and/or distribute this software for any purpose
+with or without fee is hereby granted.
 
-This section documents how to quickly get started with `Specs`!
-
-1. Installation
-2. Writing Tests
-3. Running Tests
-
-## Installation
-
-...
-
-## Writing Tests
-
-..
-
-## Running Tests
-
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
+THIS SOFTWARE.
+```
