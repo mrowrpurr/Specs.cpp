@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Macros/UNSET_CURRENT_GROUP.h"
+#include "../Macros/END_CHILD_GROUP.h"
 
-#define EndTestGroup() _SPEC_UNSET_CURRENT_GROUP()
+#define EndTestGroup() _SPEC_END_CHILD_GROUP()

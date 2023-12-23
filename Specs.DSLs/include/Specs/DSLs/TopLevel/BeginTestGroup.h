@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Macros/DECLARE_GROUP.h"
+#include "../Macros/BEGIN_CHILD_GROUP.h"
 
-#define BeginTestGroup(description) _SPEC_DECLARE_GROUP(description)
+#define BeginTestGroup(description) _SPEC_BEGIN_CHILD_GROUP(description)

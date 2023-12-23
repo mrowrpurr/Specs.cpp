@@ -242,6 +242,21 @@ namespace SpecsCpp {
             }
         }
 
+        void declare_group(std::string_view description, bool removeUnderscores = true) {
+            if (auto* group = get()) {
+                std::string descriptionText{description};
+                if (removeUnderscores) {
+                    std::replace(descriptionText.begin(), descriptionText.end(), '_', ' ');
+                    description = descriptionText;
+                }
+                auto  specGroup    = std::make_unique<SpecGroup>(get(), descriptionText);
+                auto* specGroupPtr = specGroup.get();
+                _registeredGroups.push_back(std::move(specGroup));
+                group->add_group(_registeredGroups.back().get());
+                push(specGroupPtr);
+            }
+        }
+
         void use_template(std::string_view templateName) {
             if (auto* group = get()) {
                 auto found = _testTemplateGroups.find(templateName.data());
