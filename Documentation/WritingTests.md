@@ -184,7 +184,26 @@ Test("Test Something!") {
 }
 ```
 
-## Test assertions
+That's it!
+
+# Asyncronous Tests
+
+Creating tests with long-running code is just as easy!
+
+```cpp
+TestAsync("Test Something Async!") {
+    // Test code and assertions go here...
+    
+    // Once your code is done, call `done()` to mark the test as finished.
+    done();
+}
+```
+
+If an asynchroneous test does not call `done()` within a configurable timeout, the test will fail with a timeout error.
+
+> ℹ️ Timeout milliseconds can be configured via the `-t/--timeout` option
+
+# Test assertions
 
 Tests aren't particularly useful without assertions!
 
@@ -281,7 +300,6 @@ Failed `libassert` assertions will be reported as failures, including:
 - The file and line number where the assertion failed
 - A preview of the line of code responsible for the assertion
 
-# Asyncronous Tests
 
 # Setup and Teardown
 

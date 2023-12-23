@@ -72,12 +72,12 @@ var NAVTREE =
           [ "#define spec_template", "md__documentation_2_writing_tests.html#autotoc_md35", null ]
         ] ]
       ] ],
-      [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md36", [
-        [ "Test assertions", "md__documentation_2_writing_tests.html#autotoc_md37", null ],
-        [ "Snowhouse assertions", "md__documentation_2_writing_tests.html#autotoc_md38", null ],
-        [ "libassert assertions", "md__documentation_2_writing_tests.html#autotoc_md39", null ]
+      [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md36", null ],
+      [ "Asyncronous Tests", "md__documentation_2_writing_tests.html#autotoc_md37", null ],
+      [ "Test assertions", "md__documentation_2_writing_tests.html#autotoc_md38", [
+        [ "Snowhouse assertions", "md__documentation_2_writing_tests.html#autotoc_md39", null ],
+        [ "libassert assertions", "md__documentation_2_writing_tests.html#autotoc_md40", null ]
       ] ],
-      [ "Asyncronous Tests", "md__documentation_2_writing_tests.html#autotoc_md40", null ],
       [ "Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md41", [
         [ "Asyncronous Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md42", null ]
       ] ],
