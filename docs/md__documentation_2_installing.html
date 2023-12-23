@@ -429,9 +429,10 @@ CMakeLists.txt</h4>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md25"></a>
 Verify</h4>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span>      <span class="comment">// Provides the main() function for running Specs tests</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>           <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span> <span class="comment">// Provides Snowhouse support</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span>            <span class="comment">// Provides the main() function for running Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Specs/Snowhouse/Setup.h</a>&gt;</span> <span class="comment">// Configures Specs snowhouse support</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>                 <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span>       <span class="comment">// Shorthand for including snowhouse headers/namespace</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example Snowhouse test&quot;</span>) {</div>
 <div class="line">    AssertThat(69, Equals(420));</div>
@@ -442,6 +443,8 @@ Verify</h4>
 <div class="line"> </div>
 <div class="line">Expected: equal to 420</div>
 <div class="line">Actual: 69</div>
+<div class="line"> </div>
+<div class="line">[Test.cpp:7] AssertThat(69, Equals(420));</div>
 <div class="line"> </div>
 <div class="line">1 failed</div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>

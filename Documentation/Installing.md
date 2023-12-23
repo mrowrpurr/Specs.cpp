@@ -372,10 +372,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs)
 If you want to verify that it works, create a `Test.cpp` with the following contents:
 
 ```cpp
-#include <Specs/Main.h>      // Provides the main() function for running Specs tests
-#include <Specs.h>           // Provides the primary DSL functions/macros for writing Specs tests
-#include <Specs/Snowhouse.h> // Provides Snowhouse support
-
+#include <Specs/Main.h>            // Provides the main() function for running Specs tests
+#include <Specs/Snowhouse/Setup.h> // Configures Specs snowhouse support
+#include <Specs.h>                 // Provides the primary DSL functions/macros for writing Specs tests
+#include <Specs/Snowhouse.h>       // Shorthand for including snowhouse headers/namespace
+ 
 Test("Example Snowhouse test") {
     AssertThat(69, Equals(420));
 }
@@ -390,6 +391,8 @@ You should see the following output:
 
 Expected: equal to 420
 Actual: 69
+
+[Test.cpp:7] AssertThat(69, Equals(420));
 
 1 failed
 ```

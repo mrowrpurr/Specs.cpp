@@ -303,6 +303,95 @@ Failed `libassert` assertions will be reported as failures, including:
 
 # Setup and Teardown
 
+Every test group supports the following:
+
+- `Setup`: Runs before each test in the group
+- `Teardown`: Runs after each test in the group
+- `OneTimeSetup`: Runs once before the first test in the group
+- `OneTimeTeardown`: Runs once after the last test in the group
+
+Test groups can define as many of each of these as desired.
+
+If you nest test groups, this is the order of operations:
+
+- The `OneTimeSetup` of the outermost group is run
+- The `OneTimeSetup` of each nested group is run
+- The `Setup` of the outermost group is run
+- The `Setup` of each nested group is run
+- The `Test` of each nested group is run
+- The `Teardown` of each nested group is run
+- The `Teardown` of the outermost group is run
+- The `OneTimeTeardown` of each nested group is run
+
+If any `Setup` fails:
+
+- the rest of the `Setup` in that group are skipped
+- the `Test` in that group is skipped
+- the `Teardown` are still all executed
+- if this `Setup` is in a nested group, the `Teardown` of the outermost group are still executed
+
+```cpp
+#include <Specs.h>
+
+OneTimeSetup { /* This runs once before the first test in this group */ }
+
+OneTimeTeardown { /* This runs once after the last test in this group */ }
+OneTimeTeardown { /* More stuff to teardown after the group has run */ }
+
+Setup { /* This runs before each test in this group */ }
+Setup { /* This ALSO runs before each test in this group */ }
+Setup { /* You can have as many of these as you like */ }
+
+TearDown { /* This runs after each test in this group */ }
+Teardown { /* You can have as many of these as you like too */ }
+
+Test("Test Something!") {
+    // Test code and assertions go here...
+}
+```
+
 ## Asyncronous Setup and Teardown
+
+All of the setup and teardown macros support asyncronous code:
+
+- `SetupAsync`
+- `TeardownAsync`
+- `OneTimeSetupAsync`
+- `OneTimeTeardownAsync`
+
+These work identically to `TestAsync`, which must call `done()` to mark the setup/teardown as finished.
+
+```cpp
+#include <Specs.h>
+
+OneTimeSetupAsync {
+    // Async setup code goes here...
+    done();
+}
+
+OneTimeTeardownAsync {
+    // Async teardown code goes here...
+    done();
+}
+
+SetupAsync {
+    // Async setup code goes here...
+    done();
+}
+
+TeardownAsync {
+    // Async teardown code goes here...
+    done();
+}
+
+Test("Test Something!") {
+    // Test code and assertions go here...
+}
+
+TestAsync("Test Something Async!") {
+    // Test code and assertions go here...
+    done();
+}
+```
 
 # Test Groups

@@ -364,9 +364,92 @@ libassert assertions</h2>
 </ul>
 <h1><a class="anchor" id="autotoc_md41"></a>
 Setup and Teardown</h1>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<p>Every test group supports the following:</p>
+<ul>
+<li><code>Setup</code>: Runs before each test in the group</li>
+<li><code>Teardown</code>: Runs after each test in the group</li>
+<li><code>OneTimeSetup</code>: Runs once before the first test in the group</li>
+<li><code>OneTimeTeardown</code>: Runs once after the last test in the group</li>
+</ul>
+<p>Test groups can define as many of each of these as desired.</p>
+<p>If you nest test groups, this is the order of operations:</p>
+<ul>
+<li>The <code>OneTimeSetup</code> of the outermost group is run</li>
+<li>The <code>OneTimeSetup</code> of each nested group is run</li>
+<li>The <code>Setup</code> of the outermost group is run</li>
+<li>The <code>Setup</code> of each nested group is run</li>
+<li>The <code>Test</code> of each nested group is run</li>
+<li>The <code>Teardown</code> of each nested group is run</li>
+<li>The <code>Teardown</code> of the outermost group is run</li>
+<li>The <code>OneTimeTeardown</code> of each nested group is run</li>
+</ul>
+<p>If any <code>Setup</code> fails:</p>
+<ul>
+<li>the rest of the <code>Setup</code> in that group are skipped</li>
+<li>the <code>Test</code> in that group is skipped</li>
+<li>the <code>Teardown</code> are still all executed</li>
+<li>if this <code>Setup</code> is in a nested group, the <code>Teardown</code> of the outermost group are still executed</li>
+</ul>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line">OneTimeSetup { <span class="comment">/* This runs once before the first test in this group */</span> }</div>
+<div class="line"> </div>
+<div class="line">OneTimeTeardown { <span class="comment">/* This runs once after the last test in this group */</span> }</div>
+<div class="line">OneTimeTeardown { <span class="comment">/* More stuff to teardown after the group has run */</span> }</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* This runs before each test in this group */</span> }</div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* This ALSO runs before each test in this group */</span> }</div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* You can have as many of these as you like */</span> }</div>
+<div class="line"> </div>
+<div class="line">TearDown { <span class="comment">/* This runs after each test in this group */</span> }</div>
+<div class="line"><a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> { <span class="comment">/* You can have as many of these as you like too */</span> }</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test Something!&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md42"></a>
 Asyncronous Setup and Teardown</h2>
-<h1><a class="anchor" id="autotoc_md43"></a>
+<p>All of the setup and teardown macros support asyncronous code:</p>
+<ul>
+<li><code>SetupAsync</code></li>
+<li><code>TeardownAsync</code></li>
+<li><code>OneTimeSetupAsync</code></li>
+<li><code>OneTimeTeardownAsync</code></li>
+</ul>
+<p>These work identically to <code>TestAsync</code>, which must call <code>done()</code> to mark the setup/teardown as finished.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line">OneTimeSetupAsync {</div>
+<div class="line">    <span class="comment">// Async setup code goes here...</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">OneTimeTeardownAsync {</div>
+<div class="line">    <span class="comment">// Async teardown code goes here...</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_setup_async_8h.html#a72b3ca81f0df62c54c095dd8fe4cf0f5">SetupAsync</a> {</div>
+<div class="line">    <span class="comment">// Async setup code goes here...</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_teardown_async_8h.html#a5843afae630c9773fbd3c715255d8dcf">TeardownAsync</a> {</div>
+<div class="line">    <span class="comment">// Async teardown code goes here...</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test Something!&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_test_async_8h.html#a55cf16f340096b7ce195f305e8297853">TestAsync</a>(<span class="stringliteral">&quot;Test Something Async!&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="ttc" id="a_setup_async_8h_html_a72b3ca81f0df62c54c095dd8fe4cf0f5"><div class="ttname"><a href="_setup_async_8h.html#a72b3ca81f0df62c54c095dd8fe4cf0f5">SetupAsync</a></div><div class="ttdeci">#define SetupAsync</div><div class="ttdef"><b>Definition</b> SetupAsync.h:5</div></div>
+<div class="ttc" id="a_teardown_async_8h_html_a5843afae630c9773fbd3c715255d8dcf"><div class="ttname"><a href="_teardown_async_8h.html#a5843afae630c9773fbd3c715255d8dcf">TeardownAsync</a></div><div class="ttdeci">#define TeardownAsync</div><div class="ttdef"><b>Definition</b> TeardownAsync.h:5</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md43"></a>
 Test Groups</h1>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
