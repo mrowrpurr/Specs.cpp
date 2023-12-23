@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
 <li class="level1"><a href="#autotoc_md30">Creating test files</a><ul><li class="level2"><a href="#autotoc_md31">Test file #define header</a><ul><li class="level3"><a href="#autotoc_md32">#define SPEC_CONTEXT</a></li>
 <li class="level3"><a href="#autotoc_md33">#define SPEC_FILE</a></li>
 <li class="level3"><a href="#autotoc_md34">#define SPEC_GROUP</a></li>
-<li class="level3"><a href="#autotoc_md35">#define spec_template</a></li>
+<li class="level3"><a href="#autotoc_md35">#define SPEC_TEMPLATE</a></li>
 </ul>
 </li>
 </ul>
@@ -243,18 +243,18 @@ Test file #define header</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Tests go here...</span></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md35"></a>
-#define spec_template</h3>
+#define SPEC_TEMPLATE</h3>
 <p><code>Specs</code> supports defining templates.</p>
 <blockquote class="doxtable">
 <p>&zwj;To learn more about templates, see <a class="el" href="md__documentation_2_templates.html">Shared Code Templates</a> </p>
 </blockquote>
 <p>Templates are a way of defining <code>Setup</code> and <code>Teardown</code> and <code>Test</code> code that can be shared and reused by multiple test groups.</p>
-<p>If you <code>#define spec_template UNIQUE_NAME</code>, then the tests in the file are added to a template with the description of <code>UNIQUE_NAME</code>.</p>
+<p>If you <code>#define SPEC_TEMPLATE UNIQUE_NAME</code>, then the tests in the file are added to a template with the description of <code>UNIQUE_NAME</code>.</p>
 <blockquote class="doxtable">
 <p>&zwj;<em>Note: underscores in <code>UNIQUE_NAME</code> are replaced with spaces in the description.</em> </p>
 </blockquote>
 <p>This is a good way to define a template that can be used by multiple test groups.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define spec_template My_Shared_Setup_And_Teardown</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_TEMPLATE My_Shared_Setup_And_Teardown</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
 <div class="line"> </div>

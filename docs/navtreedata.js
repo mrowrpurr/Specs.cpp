@@ -69,7 +69,7 @@ var NAVTREE =
           [ "#define SPEC_CONTEXT", "md__documentation_2_writing_tests.html#autotoc_md32", null ],
           [ "#define SPEC_FILE", "md__documentation_2_writing_tests.html#autotoc_md33", null ],
           [ "#define SPEC_GROUP", "md__documentation_2_writing_tests.html#autotoc_md34", null ],
-          [ "#define spec_template", "md__documentation_2_writing_tests.html#autotoc_md35", null ]
+          [ "#define SPEC_TEMPLATE", "md__documentation_2_writing_tests.html#autotoc_md35", null ]
         ] ]
       ] ],
       [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md36", null ],

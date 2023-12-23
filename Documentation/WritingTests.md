@@ -137,7 +137,7 @@ And, for example, in another file...
 // Tests go here...
 ```
 
-### #define spec_template
+### #define SPEC_TEMPLATE
 
 `Specs` supports defining templates.
 
@@ -145,14 +145,14 @@ And, for example, in another file...
 
 Templates are a way of defining `Setup` and `Teardown` and `Test` code that can be shared and reused by multiple test groups.
 
-If you `#define spec_template UNIQUE_NAME`, then the tests in the file are added to a template with the description of `UNIQUE_NAME`.
+If you `#define SPEC_TEMPLATE UNIQUE_NAME`, then the tests in the file are added to a template with the description of `UNIQUE_NAME`.
 
 > _Note: underscores in `UNIQUE_NAME` are replaced with spaces in the description._
 
 This is a good way to define a template that can be used by multiple test groups.
 
 ```cpp
-#define spec_template My_Shared_Setup_And_Teardown
+#define SPEC_TEMPLATE My_Shared_Setup_And_Teardown
 
 #include <Specs.h>
 
