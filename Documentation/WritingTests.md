@@ -186,7 +186,7 @@ Test("Test Something!") {
 
 That's it!
 
-# Asynchronous Tests
+# Async Tests
 
 Creating tests with long-running code is just as easy!
 
@@ -199,7 +199,7 @@ TestAsync("Test Something Async!") {
 }
 ```
 
-If an asynchroneous test does not call `done()` within a configurable timeout, the test will fail with a timeout error.
+If an async test does not call `done()` within a configurable timeout, the test will fail with a timeout error.
 
 > ℹ️ Timeout milliseconds can be configured via the `-t/--timeout` option
 

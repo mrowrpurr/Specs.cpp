@@ -73,7 +73,7 @@ var NAVTREE =
         ] ]
       ] ],
       [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md36", null ],
-      [ "Asynchronous Tests", "md__documentation_2_writing_tests.html#autotoc_md37", null ],
+      [ "Async Tests", "md__documentation_2_writing_tests.html#autotoc_md37", null ],
       [ "Test assertions", "md__documentation_2_writing_tests.html#autotoc_md38", [
         [ "Snowhouse assertions", "md__documentation_2_writing_tests.html#autotoc_md39", null ],
         [ "libassert assertions", "md__documentation_2_writing_tests.html#autotoc_md40", null ]

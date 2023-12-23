@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
 </ul>
 </li>
 <li class="level1"><a href="#autotoc_md36">Tests</a></li>
-<li class="level1"><a href="#autotoc_md37">Asynchronous Tests</a></li>
+<li class="level1"><a href="#autotoc_md37">Async Tests</a></li>
 <li class="level1"><a href="#autotoc_md38">Test assertions</a><ul><li class="level2"><a href="#autotoc_md39">Snowhouse assertions</a></li>
 <li class="level2"><a href="#autotoc_md40">libassert assertions</a></li>
 </ul>
@@ -277,7 +277,7 @@ Tests</h1>
 <div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
 </div><!-- fragment --><p>That's it!</p>
 <h1><a class="anchor" id="autotoc_md37"></a>
-Asynchronous Tests</h1>
+Async Tests</h1>
 <p>Creating tests with long-running code is just as easy!</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="_test_async_8h.html#a55cf16f340096b7ce195f305e8297853">TestAsync</a>(<span class="stringliteral">&quot;Test Something Async!&quot;</span>) {</div>
 <div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
@@ -286,7 +286,7 @@ Asynchronous Tests</h1>
 <div class="line">    done();</div>
 <div class="line">}</div>
 <div class="ttc" id="a_test_async_8h_html_a55cf16f340096b7ce195f305e8297853"><div class="ttname"><a href="_test_async_8h.html#a55cf16f340096b7ce195f305e8297853">TestAsync</a></div><div class="ttdeci">#define TestAsync(description)</div><div class="ttdef"><b>Definition</b> TestAsync.h:5</div></div>
-</div><!-- fragment --><p>If an asynchroneous test does not call <code>done()</code> within a configurable timeout, the test will fail with a timeout error.</p>
+</div><!-- fragment --><p>If an async test does not call <code>done()</code> within a configurable timeout, the test will fail with a timeout error.</p>
 <blockquote class="doxtable">
 <p>&zwj;ℹ️ Timeout milliseconds can be configured via the <code>-t/--timeout</code> option </p>
 </blockquote>
