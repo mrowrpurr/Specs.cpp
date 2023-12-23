@@ -12,7 +12,7 @@
 Specs is a C++ test framework with simple syntax which supports async tests.
 
 ```cpp
-#define spec_name My_Tests
+#define SPEC_GROUP My_Tests
 
 #include <Specs.h>
 
@@ -20,7 +20,7 @@ Setup { /* Setup Code */ }
 Teardown { /* Teardown Code */ }
 
 Test("Some thing") {
-    assert(69 == 420);
+    assert_that(69 == 420);
     AssertThat(69, Equals(69));
 }
 
