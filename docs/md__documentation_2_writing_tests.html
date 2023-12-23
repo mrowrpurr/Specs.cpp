@@ -246,7 +246,8 @@ Test file #define header</h2>
 #define SPEC_TEMPLATE</h3>
 <p><code>Specs</code> supports defining templates.</p>
 <blockquote class="doxtable">
-<p>&zwj;To learn more about templates, see <a class="el" href="md__documentation_2_templates.html">Shared Code Templates</a> </p>
+<p>&zwj;To learn more about templates, see <a class="el" href="md__documentation_2_templates.html">Shared Code Templates</a></p>
+<p><b>Note:</b> there are a variety of other ways to define templates, this this is the <code>#define</code> method. </p>
 </blockquote>
 <p>Templates are a way of defining <code>Setup</code> and <code>Teardown</code> and <code>Test</code> code that can be shared and reused by multiple test groups.</p>
 <p>If you <code>#define SPEC_TEMPLATE UNIQUE_NAME</code>, then the tests in the file are added to a template with the description of <code>UNIQUE_NAME</code>.</p>
@@ -275,7 +276,13 @@ Test file #define header</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Tests go here...</span></div>
 <div class="ttc" id="a_use_template_8h_html_a32cd46f9c57ff2913ecdbbc5c4d0d05b"><div class="ttname"><a href="_use_template_8h.html#a32cd46f9c57ff2913ecdbbc5c4d0d05b">UseTemplate</a></div><div class="ttdeci">#define UseTemplate(templateName)</div><div class="ttdef"><b>Definition</b> UseTemplate.h:5</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md36"></a>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;⚠️ <b>WARNING:</b> If you define a template like this in a <code>.cpp</code> file, you <b>must</b> include it in your build project <b>before</b> your tests.</p>
+<p>For example, with <code>xmake</code> <code>add_files</code> or <code>CMake</code> in your <code>add_executable</code>, be sure to include the template file <b>before</b> the test files.</p>
+<p>Otherwise, the templates will not exist at the time <code><a class="el" href="_use_template_8h.html#a32cd46f9c57ff2913ecdbbc5c4d0d05b">UseTemplate()</a></code> is used.</p>
+<p>To see other ways of defining templates (e.g. in <code>.h</code> header files), see <a class="el" href="md__documentation_2_templates.html">Shared Code Templates</a> </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md36"></a>
 Tests</h1>
 <p>Creating tests is easy!</p>
 <p>Each test simply needs a description and a body.</p>

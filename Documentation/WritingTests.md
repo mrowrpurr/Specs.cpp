@@ -142,6 +142,8 @@ And, for example, in another file...
 `Specs` supports defining templates.
 
 > To learn more about templates, see [Shared Code Templates](Templates.md)
+>
+> **Note:** there are a variety of other ways to define templates, this this is the `#define` method.
 
 Templates are a way of defining `Setup` and `Teardown` and `Test` code that can be shared and reused by multiple test groups.
 
@@ -177,6 +179,14 @@ UseTemplate("My Shared Setup And Teardown");
 
 // Tests go here...
 ```
+
+> ⚠️ **WARNING:** If you define a template like this in a `.cpp` file, you **must** include it in your build project **before** your tests.
+>
+> For example, with `xmake` `add_files` or `CMake` in your `add_executable`, be sure to include the template file **before** the test files.
+>
+> Otherwise, the templates will not exist at the time `UseTemplate()` is used.
+>
+> To see other ways of defining templates (e.g. in `.h` header files), see [Shared Code Templates](Templates.md)
 
 # Tests
 
