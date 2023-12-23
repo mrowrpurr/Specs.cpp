@@ -12,10 +12,10 @@
 #include <Specs/SpecEnvironment.h>
 #include <Specs/SpecReporterCollection.h>
 #include <Specs/SpecSerialRunner.h>
-#include <_Log_.h>
 
 #include <cxxopts.hpp>
 #include <filesystem>
+#include <iostream>
 
 namespace SpecsCpp {
 
@@ -63,7 +63,7 @@ namespace SpecsCpp {
 
             auto result = options.parse(argc, argv);
             if (result.count("help")) {
-                _Log_(options.help());
+                std::cout << options.help() << std::endl;
                 return 0;
             }
 
@@ -107,8 +107,8 @@ namespace SpecsCpp {
                 ));
 
             if (result.unmatched().size() > 0) {
-                _Log_("Unrecognized options:");
-                for (auto& option : result.unmatched()) _Log_(option);
+                std::cout << "Unrecognized options:" << std::endl;
+                for (auto& option : result.unmatched()) std::cout << "  " << option << std::endl;
                 return 1;
             }
 
@@ -124,13 +124,15 @@ namespace SpecsCpp {
             if (result.count("dll")) {
                 for (auto& dll : result["dll"].as<std::vector<std::string>>()) {
                     if (!std::filesystem::exists(dll)) {
-                        _Log_("Specs.cpp: Error: Spec dll/so file not found: " + dll);
+                        std::cout << "Specs.cpp: Error: Spec dll/so file not found: " << dll
+                                  << std::endl;
                         return 1;
                     }
                     if (auto* dllRootSpecGroup = _LibraryLoader.load(dll)) {
                         _specs.root_group()->merge(dllRootSpecGroup);
                     } else {
-                        _Log_("Specs.cpp: Error: Failed to load group from dll/so file: " + dll);
+                        std::cout << "Specs.cpp: Error: Failed to load group from dll/so file: "
+                                  << dll << std::endl;
                         return 1;
                     }
                 }
@@ -140,8 +142,8 @@ namespace SpecsCpp {
             _runner.run(_specs.root_group(), &_reporters, &_runnerOptions, &_onSuiteComplete);
 
             if (_totalTests == 0) {
-                _Log_("No tests found.\n");
-                _Log_(options.help());
+                std::cout << "No tests found." << std::endl;
+                std::cout << options.help() << std::endl;
                 return 1;
             }
 
