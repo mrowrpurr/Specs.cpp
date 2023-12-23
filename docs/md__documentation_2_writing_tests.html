@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
 </li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md36">Tests</a><ul><li class="level2"><a href="#autotoc_md37">Writing test assertions</a></li>
+<li class="level1"><a href="#autotoc_md36">Tests</a><ul><li class="level2"><a href="#autotoc_md37">Test assertions</a></li>
 <li class="level2"><a href="#autotoc_md38">Snowhouse assertions</a></li>
 <li class="level2"><a href="#autotoc_md39">libassert assertions</a></li>
 </ul>
@@ -161,6 +161,9 @@ Entrypoint</h2>
 </div><!-- fragment --><p>This will define the entrypoint function used by the <code>Specs</code> test loader, e.g. when loading one or more shared libraries of tests from a <code>Specs.exe</code> test runner.</p>
 <blockquote class="doxtable">
 <p>&zwj;To learn more about grouping specs into shared libraries, see <a class="el" href="md__documentation_2_shared_libraries.html">Shared Libraries</a> </p>
+</blockquote>
+<blockquote class="doxtable">
+<p>&zwj;💡 <b>Tip:</b> If you are using <code>snowhouse</code>, you should <code>#include &lt;<a class="el" href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Specs/Snowhouse/Setup.h</a>&gt;</code> in your main binary or shared library <code>.cpp</code> file. </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md30"></a>
 Creating test files</h1>
@@ -266,7 +269,7 @@ Tests</h1>
 <div class="line">}</div>
 <div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md37"></a>
-Writing test assertions</h2>
+Test assertions</h2>
 <p>Tests aren't particularly useful without assertions!</p>
 <p><code>Specs</code> provides built-in support for catching exceptions thrown during test execution.</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test Something!&quot;</span>) {</div>
@@ -295,10 +298,12 @@ Writing test assertions</h2>
 <h2><a class="anchor" id="autotoc_md38"></a>
 Snowhouse assertions</h2>
 <blockquote class="doxtable">
-<p>&zwj;For instructions on installing <code>snowhouse</code> with the <code>Specs</code> adapter, see <a class="el" href="md__documentation_2_installing.html">Installing Specs</a> </p>
+<p>&zwj;For instructions on installing <code>snowhouse</code> with the <code>Specs</code> adapter, see <a class="el" href="md__documentation_2_installing.html">Installing Specs</a></p>
+<p><b>Reminder:</b> your <code>main.cpp</code> needs to include <code>&lt;<a class="el" href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Specs/Snowhouse/Setup.h</a>&gt;</code> to enable the <code>snowhouse</code> adapter. </p>
 </blockquote>
 <p>When the <code>Specs</code> adapter for <code>snowhouse</code> is included, you can use <code>snowhouse</code> assertions in your tests.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test Something!&quot;</span>) {</div>
 <div class="line">    AssertThat(69, Equals(420));</div>
@@ -309,6 +314,8 @@ Snowhouse assertions</h2>
 <div class="line">Expected: equal to 420</div>
 <div class="line">Actual: 69</div>
 <div class="line"> </div>
+<div class="line">[Test.cpp:5] AssertThat(69, Equals(420));</div>
+<div class="line"> </div>
 <div class="line">1 failed</div>
 </div><!-- fragment --><p>Failed <code>snowhouse</code> assertions will be reported as failures, including:</p><ul>
 <li>The snowhouse assertion failure message</li>
@@ -318,8 +325,28 @@ Snowhouse assertions</h2>
 <h2><a class="anchor" id="autotoc_md39"></a>
 libassert assertions</h2>
 <blockquote class="doxtable">
-<p>&zwj;For instructions on installing <code>libassert</code> with the <code>Specs</code> adapter, see <a class="el" href="md__documentation_2_installing.html">Installing Specs</a> </p>
+<p>&zwj;For instructions on installing <code>libassert</code> with the <code>Specs</code> adapter, see <a class="el" href="md__documentation_2_installing.html">Installing Specs</a></p>
+<p><b>Reminder:</b> the <code>assert()</code> macro does not work in <code>release</code> mode. Recommended: use <code>assert_that</code> instead. </p>
 </blockquote>
+<p>When the <code>Specs</code> adapter for <code>libassert</code> is included, you can use <code>libassert</code> assertions in your tests.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_lib_assert_8h.html">Specs/LibAssert.h</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test Something!&quot;</span>) {</div>
+<div class="line">    <a class="code hl_define" href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a>(69 == 420);</div>
+<div class="line">}</div>
+<div class="ttc" id="a_lib_assert_8h_html"><div class="ttname"><a href="_lib_assert_8h.html">LibAssert.h</a></div></div>
+<div class="ttc" id="aassert__that_8h_html_a9aba65c1e5a08d6727d63fa1b4b50adc"><div class="ttname"><a href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a></div><div class="ttdeci">#define assert_that(...)</div><div class="ttdef"><b>Definition</b> assert_that.h:5</div></div>
+</div><!-- fragment --><div class="fragment"><div class="line">[FAILED] Test Something!</div>
+<div class="line"> </div>
+<div class="line">Verification failed at FooTest.cpp:5: void __cdecl __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec *):</div>
+<div class="line">    VERIFY(69 == 420);</div>
+<div class="line"> </div>
+<div class="line">1 failed</div>
+</div><!-- fragment --><p>Failed <code>libassert</code> assertions will be reported as failures, including:</p><ul>
+<li>The file and line number where the assertion failed</li>
+<li>A preview of the line of code responsible for the assertion</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md40"></a>
 Asyncronous Tests</h1>
 <h1><a class="anchor" id="autotoc_md41"></a>

@@ -44,6 +44,8 @@ This will define the entrypoint function used by the `Specs` test loader, e.g. w
 
 > To learn more about grouping specs into shared libraries, see [Shared Libraries](SharedLibraries.md)
 
+> 💡 **Tip:** If you are using `snowhouse`, you should `#include <Specs/Snowhouse/Setup.h>` in your main binary or shared library `.cpp` file.
+
 # Creating test files
 
 Now you are ready to define a file with one or more tests.
@@ -182,7 +184,7 @@ Test("Test Something!") {
 }
 ```
 
-## Writing test assertions
+## Test assertions
 
 Tests aren't particularly useful without assertions!
 
@@ -219,10 +221,13 @@ It is recommended to use `Specs` with an assertion library, such as `snowhouse` 
 ## Snowhouse assertions
 
 > For instructions on installing `snowhouse` with the `Specs` adapter, see [Installing Specs](Installing.md)
+>
+> **Reminder:** your `main.cpp` needs to include `<Specs/Snowhouse/Setup.h>` to enable the `snowhouse` adapter.
 
 When the `Specs` adapter for `snowhouse` is included, you can use `snowhouse` assertions in your tests.
 
 ```cpp
+#include <Specs.h>
 #include <Specs/Snowhouse.h>
 
 Test("Test Something!") {
@@ -236,6 +241,8 @@ Test("Test Something!") {
 Expected: equal to 420
 Actual: 69
 
+[Test.cpp:5] AssertThat(69, Equals(420));
+
 1 failed
 ```
 
@@ -247,6 +254,32 @@ Failed `snowhouse` assertions will be reported as failures, including:
 ## libassert assertions
 
 > For instructions on installing `libassert` with the `Specs` adapter, see [Installing Specs](Installing.md)
+>
+> **Reminder:** the `assert()` macro does not work in `release` mode. Recommended: use `assert_that` instead.
+
+When the `Specs` adapter for `libassert` is included, you can use `libassert` assertions in your tests.
+
+```cpp
+#include <Specs.h>
+#include <Specs/LibAssert.h>
+
+Test("Test Something!") {
+    assert_that(69 == 420);
+}
+```
+
+```
+[FAILED] Test Something!
+
+Verification failed at FooTest.cpp:5: void __cdecl __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec *):
+    VERIFY(69 == 420);
+
+1 failed
+```
+
+Failed `libassert` assertions will be reported as failures, including:
+- The file and line number where the assertion failed
+- A preview of the line of code responsible for the assertion
 
 # Asyncronous Tests
 
