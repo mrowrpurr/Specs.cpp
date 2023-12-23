@@ -8,7 +8,7 @@ This will include the following basic test structure:
 
 1. `#define` test header
 2. `Test` definitions
-3. `TestAsync` to define asyncronous tests
+3. `TestAsync` to define Asynchronous tests
 4. `Setup` and `Teardown` (_also `SetupAsync` and `TeardownAsync`_)
 5. `TestGroup` for grouping tests
 

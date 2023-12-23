@@ -186,7 +186,7 @@ Test("Test Something!") {
 
 That's it!
 
-# Asyncronous Tests
+# Asynchronous Tests
 
 Creating tests with long-running code is just as easy!
 
@@ -350,9 +350,9 @@ Test("Test Something!") {
 }
 ```
 
-## Asyncronous Setup and Teardown
+## Asynchronous Setup and Teardown
 
-All of the setup and teardown macros support asyncronous code:
+All of the setup and teardown macros support Asynchronous code:
 
 - `SetupAsync`
 - `TeardownAsync`

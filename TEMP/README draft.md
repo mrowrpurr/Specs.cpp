@@ -5,7 +5,7 @@
 > **Beautiful C++ Test Framework**
 >
 > - _Syntax is simple and configurable_
-> - _Supports asyncronous tests_
+> - _Supports Asynchronous tests_
 > - _Supports runnings tests from shared libraries_
 > - _Supports any C++ assertion library_ (e.g. `snowhouse` or `libassert`)
 
@@ -649,10 +649,10 @@ Describe("Some tests") {
   setup([](auto done) { /* Setup Code... */ done(); });
   teardown([](auto done) { /* Teardown Code... */ done(); });
 
-  // Not asyncronous
+  // Not Asynchronous
   test("Something", []() { /* Test Code... */ });
 
-  // Asyncronous
+  // Asynchronous
   test("Something", [](auto done) { /* Test Code... */ done(); });
 
   // You can use `auto` or `SpecDone` for the done callback
@@ -871,7 +871,7 @@ These are added to the global test group (_or the test group defined by `TestGro
 
 ### `TestAsync("...") { ...; done() }`
 
-Global top-level macro for defining asyncronous tests.
+Global top-level macro for defining Asynchronous tests.
 
 These are added to the global test group (_or the test group defined by `TestGroup`, if used_).
 
@@ -998,7 +998,7 @@ Function for defining tests inside a `Describe`/`describe` code block.
 
 > Aliases: `spec()` and `it()`
 
-Function for defining asyncronous inside a `Describe`/`describe` code block.
+Function for defining Asynchronous inside a `Describe`/`describe` code block.
 
 If you don't want to use `auto`, the full signature of the lambda is:
 
@@ -1013,7 +1013,7 @@ Function for defining setup code blocks inside a `Describe`/`describe` code bloc
 
 ### `setup([](auto done) { ...; done(); });`
 
-Function for defining asyncronous setup code blocks inside a `Describe`/`describe` code block.
+Function for defining Asynchronous setup code blocks inside a `Describe`/`describe` code block.
 
 ### `teardown([]() { ... });`
 
@@ -1021,7 +1021,7 @@ Function for defining teardown code blocks inside a `Describe`/`describe` code b
 
 ### `teardown([](auto done) { ...; done(); });`
 
-Function for defining asyncronous teardown code blocks inside a `Describe`/`describe` code block.
+Function for defining Asynchronous teardown code blocks inside a `Describe`/`describe` code block.
 
 ### `describe("...", []() { ... });`
 
