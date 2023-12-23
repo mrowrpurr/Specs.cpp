@@ -1,4 +1,4 @@
-#define spec_name HelloSpecs
+#define SPEC_GROUP Hello_Specs
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
