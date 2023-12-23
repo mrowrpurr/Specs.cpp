@@ -912,9 +912,9 @@ INPUT                  =    \
                             Documentation/README.md \
                             Documentation/QuickStart.md \
                             Documentation/Installing.md \
-                            Documentation/AssertionLibraries.md \
                             Documentation/WritingTests.md \
                             Documentation/RunningTests.md \
+                            Documentation/AssertionLibraries.md \
                             Documentation/CLI.md \
                             Documentation/Templates.md \
                             Documentation/Variables.md \

@@ -103,41 +103,41 @@ $(document).ready(function(){initNavTree('md__documentation_2_installing.html','
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md5">C++17</a></li>
-<li class="level1"><a href="#autotoc_md6">xmake</a><ul><li class="level2"><a href="#autotoc_md7">Verify</a></li>
-<li class="level2"><a href="#autotoc_md8">Assertion Library Support</a></li>
-<li class="level2"><a href="#autotoc_md9">Snowhouse</a><ul><li class="level3"><a href="#autotoc_md10">Verify</a></li>
+<ul><li class="level1"><a href="#autotoc_md8">C++17</a></li>
+<li class="level1"><a href="#autotoc_md9">xmake</a><ul><li class="level2"><a href="#autotoc_md10">Verify</a></li>
+<li class="level2"><a href="#autotoc_md11">Assertion Library Support</a></li>
+<li class="level2"><a href="#autotoc_md12">Snowhouse</a><ul><li class="level3"><a href="#autotoc_md13">Verify</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md11">libassert</a><ul><li class="level3"><a href="#autotoc_md12">Verify</a></li>
+<li class="level2"><a href="#autotoc_md14">libassert</a><ul><li class="level3"><a href="#autotoc_md15">Verify</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md13">vcpkg</a><ul><ul><li class="level3"><a href="#autotoc_md14">vcpkg.json</a></li>
+<li class="level1"><a href="#autotoc_md16">vcpkg</a><ul><ul><li class="level3"><a href="#autotoc_md17">vcpkg.json</a></li>
 </ul>
-<li class="level2"><a href="#autotoc_md15">vcpkg-configuration.json</a></li>
-<li class="level2"><a href="#autotoc_md16">CMakeLists.txt</a></li>
-<li class="level2"><a href="#autotoc_md17">Verify</a></li>
-<li class="level2"><a href="#autotoc_md18">Assertion Library Support</a><ul><li class="level3"><a href="#autotoc_md19">Snowhouse</a><ul><li class="level4"><a href="#autotoc_md20">vcpkg.json</a></li>
-<li class="level4"><a href="#autotoc_md21">CMakeLists.txt</a></li>
-<li class="level4"><a href="#autotoc_md22">Verify</a></li>
+<li class="level2"><a href="#autotoc_md18">vcpkg-configuration.json</a></li>
+<li class="level2"><a href="#autotoc_md19">CMakeLists.txt</a></li>
+<li class="level2"><a href="#autotoc_md20">Verify</a></li>
+<li class="level2"><a href="#autotoc_md21">Assertion Library Support</a><ul><li class="level3"><a href="#autotoc_md22">Snowhouse</a><ul><li class="level4"><a href="#autotoc_md23">vcpkg.json</a></li>
+<li class="level4"><a href="#autotoc_md24">CMakeLists.txt</a></li>
+<li class="level4"><a href="#autotoc_md25">Verify</a></li>
 </ul>
 </li>
-<li class="level3"><a href="#autotoc_md23">LibAssert</a></li>
+<li class="level3"><a href="#autotoc_md26">libassert</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md4"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md7"></a></p>
 <p><code>Specs</code> is very easy to install if you're using <code>xmake</code> or <code>vcpkg</code>.</p>
 <blockquote class="doxtable">
 <p>&zwj;<code>Specs</code> has quite a few library dependencies which are available as <code>xmake</code> and <code>vcpkg</code> packages.</p>
 <p>Due to the dependencies, I do <b>not</b> recommend installing <code>Specs</code> manually. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 C++17</h1>
 <p><code>Specs</code> requires <code>C++17</code> or higher.</p>
 <blockquote class="doxtable">
@@ -147,7 +147,7 @@ C++17</h1>
 <p>&zwj;<b>Why not C++14?</b></p>
 <p><code>Specs</code> uses <code>string_view</code> and <code>structured bindings</code> which are C++17 features. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 xmake</h1>
 <p>The following is an <code>xmake.lua</code> example which sets up a <code>Specs</code> test suite:</p>
 <div class="fragment"><div class="line">-- <span class="comment"># C++17 is required (but requires adding the &#39;fmt&#39; library if used)</span></div>
@@ -167,7 +167,7 @@ xmake</h1>
 <div class="line">    add_files(<span class="stringliteral">&quot;*.cpp&quot;</span>)</div>
 <div class="line">    add_packages(<span class="stringliteral">&quot;specs&quot;</span>)</div>
 </div><!-- fragment --><p><em>That's it!</em></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Verify</h2>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
@@ -185,11 +185,11 @@ Verify</h2>
 <div class="line">Kaboom, this failed!</div>
 <div class="line"> </div>
 <div class="line">1 failed</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
 Assertion Library Support</h2>
 <p>By default, <code>Specs</code> will catch any <code>std::exception</code> (<em>or literal string</em>) thrown and display it as a test failure message.</p>
 <p>If you want to integrate with an assertion library, we provide integrations for the <code>snowhouse</code> and <code>libassert</code> assertion libraries.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Snowhouse</h2>
 <p>If you want to install the the <code>Snowhouse</code> assertion library with <code>Specs</code> support:</p>
 <div class="fragment"><div class="line">add_repositories(<span class="stringliteral">&quot;MrowrLib https://github.com/MrowrLib/Packages.git&quot;</span>)</div>
@@ -210,17 +210,19 @@ Snowhouse</h2>
 <div class="line"> </div>
 <div class="line">    -- <span class="comment"># Add the snowhouse and specs_snowhouse packages to your target</span></div>
 <div class="line">    add_packages(<span class="stringliteral">&quot;vcpkg::snowhouse&quot;</span>, <span class="stringliteral">&quot;specs_snowhouse&quot;</span>)</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md13"></a>
 Verify</h3>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span>      <span class="comment">// Provides the main() function for running Specs tests</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>           <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span> <span class="comment">// Provides Snowhouse support</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span>            <span class="comment">// Provides the main() function for running Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Specs/Snowhouse/Setup.h</a>&gt;</span> <span class="comment">// Configures Specs snowhouse support</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>                 <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</span>       <span class="comment">// Shorthand for including snowhouse headers/namespace</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example Snowhouse test&quot;</span>) {</div>
 <div class="line">    AssertThat(69, Equals(420));</div>
 <div class="line">}</div>
 <div class="ttc" id="a_snowhouse_8h_html"><div class="ttname"><a href="_snowhouse_8h.html">Snowhouse.h</a></div></div>
+<div class="ttc" id="a_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h_html"><div class="ttname"><a href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Setup.h</a></div></div>
 </div><!-- fragment --><p>Then build and run your test target.</p>
 <p>You should see the following output:</p>
 <div class="fragment"><div class="line">[FAILED] Example Snowhouse test</div>
@@ -228,8 +230,10 @@ Verify</h3>
 <div class="line">Expected: equal to 420</div>
 <div class="line">Actual: 69</div>
 <div class="line"> </div>
+<div class="line">[Test.cpp:7] AssertThat(69, Equals(420));</div>
+<div class="line"> </div>
 <div class="line">1 failed</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 libassert</h2>
 <p>If you want to install the the <code>libassert</code> assertion library with <code>Specs</code> support:</p>
 <div class="fragment"><div class="line">add_repositories(<span class="stringliteral">&quot;MrowrLib https://github.com/MrowrLib/Packages.git&quot;</span>)</div>
@@ -262,65 +266,38 @@ libassert</h2>
 <div class="line">    -- <span class="comment"># Add the libassert and specs_libassert packages to your target</span></div>
 <div class="line">    add_packages(<span class="stringliteral">&quot;libassert_latest&quot;</span>, <span class="stringliteral">&quot;specs_libassert&quot;</span>)</div>
 </div><!-- fragment --> </blockquote>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 Verify</h3>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span>      <span class="comment">// Provides the main() function for running Specs tests</span></div>
 <div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span>           <span class="comment">// Provides the primary DSL functions/macros for writing Specs tests</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_lib_assert_8h.html">Specs/LibAssert.h</a>&gt;</span> <span class="comment">// Provides libassert support</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_lib_assert_8h.html">Specs/LibAssert.h</a>&gt;</span> <span class="comment">// Includes libassert support</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example libassert test&quot;</span>) {</div>
 <div class="line">    assert(69 == 420);</div>
 <div class="line">}</div>
 <div class="ttc" id="a_lib_assert_8h_html"><div class="ttname"><a href="_lib_assert_8h.html">LibAssert.h</a></div></div>
 </div><!-- fragment --><p>Then run <code>xmake run MyProject.Tests</code> and you should see the following output:</p>
-<blockquote class="doxtable">
-<p>&zwj;<b>Note:</b> failed <code>libassert</code> assertions show a huge, colorful stack trace </p>
-</blockquote>
 <div class="fragment"><div class="line">[FAILED] Example libassert test</div>
 <div class="line"> </div>
-<div class="line">Assertion failed at LibAssert.Test.cpp:6: void __cdecl __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec *):</div>
-<div class="line">    assert(69 == 420);</div>
-<div class="line"> </div>
-<div class="line">Stack trace:</div>
-<div class="line">#  1 LibAssert.Test.cpp             6 __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec*)</div>
-<div class="line">#  2 StaticFunctionPointer.h       33 FunctionPointers::StaticFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeImpl&lt;0&gt;(std::integer_sequence&lt;unsigned __int64, 0&gt;, FunctionPointers::IFunctionPoi</div>
-<div class="line">                                      nterValue**)</div>
-<div class="line">#  3 StaticFunctionPointer.h       45 FunctionPointers::StaticFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
-<div class="line">#  4 FunctionPointer.h             44 FunctionPointers::FunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
-<div class="line">#  5 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invoke(SpecsCpp::ISpec*)</div>
-<div class="line">#  6 SpecCodeBlock.h             97</div>
-<div class="line">#  7 type_traits                 1762</div>
-<div class="line">#  8 functional                  839</div>
-<div class="line">#  9 functional                   883 std::_Func_class&lt;void, SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *&gt;::operator()(SpecsCpp::ISpecCompone</div>
-<div class="line">                                      nt*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt;*)</div>
-<div class="line"># 10 FunctionalFunctionPointer.h   34 FunctionPointers::FunctionalFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;</div>
-<div class="line">                                      ::invokeImpl&lt;0, 1, 2&gt;(std::integer_sequence&lt;unsigned __int64, 0, 1, 2&gt;, FunctionPointers::IFunctionPointerValue**)</div>
-<div class="line"># 11 FunctionalFunctionPointer.h   46 FunctionPointers::FunctionalFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;</div>
-<div class="line">                                      ::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
-<div class="line"># 12 FunctionPointer.h             44 FunctionPointers::FunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;::invokeWi</div>
-<div class="line">                                      thArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
-<div class="line"># 13 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt; *)&gt;::invoke(</div>
-<div class="line">                                      SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer&lt;void __cdecl(void)&gt;*)</div>
-<div class="line"># 14 SpecCodeBlock.h              215 SpecsCpp::SpecCodeBlock::run(SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecRunResult *)&gt;*)</div>
-<div class="line"># 15 SpecSerialRunner.h           253 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::foreach_spec_in_group(SpecsCpp::ISpec*)</div>
-<div class="line"># 16 MemberFunctionPointer.h       28 FunctionPointers::MemberFunctionPointer&lt;SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance, void, SpecsCpp::ISpec *&gt;::invokeImpl&lt;0&gt;(std::integer_sequence&lt;unsigned _</div>
-<div class="line">                                      _int64, 0&gt;, FunctionPointers::IFunctionPointerValue**)</div>
-<div class="line"># 17 MemberFunctionPointer.h       43 FunctionPointers::MemberFunctionPointer&lt;SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance, void, SpecsCpp::ISpec *&gt;::invokeWithArgsArray(FunctionPointers::IFunctio</div>
-<div class="line">                                      nPointerValue**)</div>
-<div class="line"># 18 FunctionPointer.h             44 FunctionPointers::FunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)</div>
-<div class="line"># 19 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;::invoke(SpecsCpp::ISpec*)</div>
-<div class="line"># 20 SpecGroup.h                   63 SpecsCpp::SpecGroup::foreach_spec(FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpec *)&gt;*)</div>
-<div class="line"># 21 SpecSerialRunner.h           328 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::run_group(SpecsCpp::ISpecGroup*)</div>
-<div class="line"># 22 SpecSerialRunner.h           349 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::run(SpecsCpp::ISpecGroup*, FunctionPointers::IFunctionPointer&lt;void __cdecl(SpecsCpp::ISpecSuiteRunResult *)&gt;*)  </div>
-<div class="line"># 23 SpecSerialRunner.h           365 SpecsCpp::SpecSerialRunner::run(SpecsCpp::ISpecGroup*, SpecsCpp::ISpecReporterCollection*, SpecsCpp::ISpecDataValueCollection*, FunctionPointers::IFunctionPointer</div>
-<div class="line">                                      &lt;void __cdecl(SpecsCpp::ISpecSuiteRunResult *)&gt;*)</div>
-<div class="line"># 24 Entrypoint.h                 140 SpecsCpp::Entrypoint::main(int, char**)</div>
-<div class="line"># 25 Main.h                         5 main(int, char**)</div>
-<div class="line"> </div>
+<div class="line">Verification failed at Basic.Test.cpp:6: void __cdecl __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec *):</div>
+<div class="line">    VERIFY(69 == 420);</div>
 <div class="line"> </div>
 <div class="line">1 failed</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;<b>Release Mode</b></p>
+<p>Note: <code>libassert</code>'s <code>assert</code> macro does NOT throw exceptions in <code>release</code> mode.</p>
+<p>This means that <code>Specs</code> will not be able to catch the assertion failure and report it as a test failure.</p>
+<p>To get around this:</p><ul>
+<li>you can use the <code>VERIFY</code> macro instead of <code>assert</code> (<em>which throws exceptions in <code>release</code> mode</em>)</li>
+<li>(<b>recommended</b>) use the <code>assert_that</code> macro provided by <code>Specs</code> (<em>which is an alias for <code>VERIFY</code></em>)</li>
+</ul>
+<div class="fragment"><div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Example libassert test&quot;</span>) {</div>
+<div class="line">    <a class="code hl_define" href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a>(69 == 420);</div>
+<div class="line">}</div>
+<div class="ttc" id="aassert__that_8h_html_a9aba65c1e5a08d6727d63fa1b4b50adc"><div class="ttname"><a href="assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc">assert_that</a></div><div class="ttdeci">#define assert_that(...)</div><div class="ttdef"><b>Definition</b> assert_that.h:5</div></div>
+</div><!-- fragment --> </blockquote>
+<h1><a class="anchor" id="autotoc_md16"></a>
 vcpkg</h1>
 <blockquote class="doxtable">
 <p>&zwj;In this example, we use a <code>vcpkg.json</code> file to manage our <code>vcpkg</code> dependencies.</p>
@@ -332,7 +309,7 @@ vcpkg</h1>
 <li>Add the <a href="https://github.com/MrowrLib/Packages.git"><code>MrowrLib/Packages</code></a> registry to your <code>vcpkg-configuration.json</code></li>
 <li>Link <code>specs::specs</code> in your test target in your <code>CMakelists.txt</code></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 vcpkg.json</h3>
 <p>Add <code>specs</code> as a dependency in your <code>vcpkg.json</code>:</p>
 <div class="fragment"><div class="line">{</div>
@@ -340,7 +317,7 @@ vcpkg.json</h3>
 <div class="line">        <span class="stringliteral">&quot;specs&quot;</span></div>
 <div class="line">    ]</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 vcpkg-configuration.json</h2>
 <p>Add the <a href="https://github.com/MrowrLib/Packages.git"><code>MrowrLib/Packages</code></a> registry to your <code>vcpkg-configuration.json</code>, including a full list of all <code>Specs</code> dependencies from the registry:</p>
 <div class="fragment"><div class="line">{</div>
@@ -353,7 +330,7 @@ vcpkg-configuration.json</h2>
 <div class="line">        {</div>
 <div class="line">            <span class="stringliteral">&quot;kind&quot;</span>: <span class="stringliteral">&quot;git&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;repository&quot;</span>: <span class="stringliteral">&quot;https://github.com/MrowrLib/Packages.git&quot;</span>,</div>
-<div class="line">            <span class="stringliteral">&quot;baseline&quot;</span>: <span class="stringliteral">&quot;6e06c035b7c6edb3f882ce678d8a1bdcdf4386fa&quot;</span>,</div>
+<div class="line">            <span class="stringliteral">&quot;baseline&quot;</span>: <span class="stringliteral">&quot;375fca93942459497acbfc049da297bc149db50d&quot;</span>,</div>
 <div class="line">            <span class="stringliteral">&quot;packages&quot;</span>: [</div>
 <div class="line">                <span class="stringliteral">&quot;specs&quot;</span>,</div>
 <div class="line">                <span class="stringliteral">&quot;specs-snowhouse&quot;</span>,</div>
@@ -375,7 +352,7 @@ vcpkg-configuration.json</h2>
 <li>the <a href="https://github.com/MrowrLib/Packages/commits/main/"><code>MrowrLib/Packages</code></a> registry: this should be the latest commit SHA of <a href="https://github.com/MrowrLib/Packages/commits/main/"><code>MrowrLib/Packages</code></a> </li>
 </ul>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 CMakeLists.txt</h2>
 <div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.21)</div>
 <div class="line"> </div>
@@ -394,7 +371,7 @@ CMakeLists.txt</h2>
 <div class="line"><span class="comment"># Add dependency on &#39;specs&#39;</span></div>
 <div class="line">find_package(specs CONFIG REQUIRED)</div>
 <div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md20"></a>
 Verify</h2>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
@@ -409,18 +386,18 @@ Verify</h2>
 <div class="line">Kaboom, this failed!</div>
 <div class="line"> </div>
 <div class="line">1 failed</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
 Assertion Library Support</h2>
 <p>By default, <code>Specs</code> will catch any <code>std::exception</code> (<em>or literal string</em>) thrown and display it as a test failure message.</p>
 <p>If you want to integrate with an assertion library, we provide integrations for the <code>snowhouse</code> and <code>libassert</code> assertion libraries.</p>
-<h3><a class="anchor" id="autotoc_md19"></a>
+<h3><a class="anchor" id="autotoc_md22"></a>
 Snowhouse</h3>
 <p>If you want to install the the <code>Snowhouse</code> assertion library with <code>Specs</code> support:</p>
 <ul>
 <li>Add <code>specs-snowhouse</code> to your <code>vcpkg.json</code></li>
 <li>Link <code>specs::specs_snowhouse</code> in your test target in your <code>CMakelists.txt</code></li>
 </ul>
-<h4><a class="anchor" id="autotoc_md20"></a>
+<h4><a class="anchor" id="autotoc_md23"></a>
 vcpkg.json</h4>
 <p>Here we add <code>snowhouse</code> from the official <code>vcpkg</code> registry, and <code>specs-snowhouse</code> from the <code>MrowrLib/Packages</code> registry:</p>
 <div class="fragment"><div class="line">{</div>
@@ -430,7 +407,7 @@ vcpkg.json</h4>
 <div class="line">        <span class="stringliteral">&quot;specs-snowhouse&quot;</span></div>
 <div class="line">    ]</div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md21"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md24"></a>
 CMakeLists.txt</h4>
 <div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.21)</div>
 <div class="line"> </div>
@@ -449,7 +426,7 @@ CMakeLists.txt</h4>
 <div class="line"><span class="comment"># Add dependency on &#39;specs&#39;</span></div>
 <div class="line">find_package(specs CONFIG REQUIRED)</div>
 <div class="line">target_link_libraries(${PROJECT_NAME} PRIVATE specs::specs)</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md22"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md25"></a>
 Verify</h4>
 <p>If you want to verify that it works, create a <code>Test.cpp</code> with the following contents:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_main_8h.html">Specs/Main.h</a>&gt;</span>      <span class="comment">// Provides the main() function for running Specs tests</span></div>
@@ -467,13 +444,16 @@ Verify</h4>
 <div class="line">Actual: 69</div>
 <div class="line"> </div>
 <div class="line">1 failed</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md23"></a>
-LibAssert</h3>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
+libassert</h3>
 <p>At the time of writing, I can't get the <code>vcpkg</code> version of <code>libassert</code> to build.</p>
 <p>I couldn't get the instructions on the <code>libassert</code> GitHub page to work either.</p>
 <p>For that reason, for now... you're on your own.</p>
 <p>Here is the <code>libassert</code> README: <a href="https://github.com/jeremy-rifkin/libassert">https://github.com/jeremy-rifkin/libassert</a></p>
-<p>Here is a recent bug report for the <code>vcpkg</code>: <a href="https://github.com/jeremy-rifkin/libassert/issues/75">https://github.com/jeremy-rifkin/libassert/issues/75</a> </p>
+<p>Here is a recent bug report for the <code>vcpkg</code>: <a href="https://github.com/jeremy-rifkin/libassert/issues/75">https://github.com/jeremy-rifkin/libassert/issues/75</a></p>
+<blockquote class="doxtable">
+<p>&zwj;<em>Don't worry, I really like the elegance of <code>libassert</code> and I hope to get this working!</em> </p>
+</blockquote>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

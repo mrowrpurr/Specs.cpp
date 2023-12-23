@@ -27,69 +27,74 @@ var NAVTREE =
   [ "Specs", "index.html", [
     [ "What?", "index.html#autotoc_md1", null ],
     [ "Why?", "index.html#autotoc_md2", null ],
-    [ "✨ Quick Start", "md__documentation_2_quick_start.html", null ],
-    [ "⬇️ Installing Specs", "md__documentation_2_installing.html", [
-      [ "C++17", "md__documentation_2_installing.html#autotoc_md5", null ],
-      [ "xmake", "md__documentation_2_installing.html#autotoc_md6", [
-        [ "Verify", "md__documentation_2_installing.html#autotoc_md7", null ],
-        [ "Assertion Library Support", "md__documentation_2_installing.html#autotoc_md8", null ],
-        [ "Snowhouse", "md__documentation_2_installing.html#autotoc_md9", [
-          [ "Verify", "md__documentation_2_installing.html#autotoc_md10", null ]
-        ] ],
-        [ "libassert", "md__documentation_2_installing.html#autotoc_md11", [
-          [ "Verify", "md__documentation_2_installing.html#autotoc_md12", null ]
-        ] ]
-      ] ],
-      [ "vcpkg", "md__documentation_2_installing.html#autotoc_md13", [
-        [ "vcpkg-configuration.json", "md__documentation_2_installing.html#autotoc_md15", null ],
-        [ "CMakeLists.txt", "md__documentation_2_installing.html#autotoc_md16", null ],
-        [ "Verify", "md__documentation_2_installing.html#autotoc_md17", null ],
-        [ "Assertion Library Support", "md__documentation_2_installing.html#autotoc_md18", [
-          [ "vcpkg.json", "md__documentation_2_installing.html#autotoc_md14", null ],
-          [ "Snowhouse", "md__documentation_2_installing.html#autotoc_md19", [
-            [ "vcpkg.json", "md__documentation_2_installing.html#autotoc_md20", null ],
-            [ "CMakeLists.txt", "md__documentation_2_installing.html#autotoc_md21", null ],
-            [ "Verify", "md__documentation_2_installing.html#autotoc_md22", null ]
-          ] ],
-          [ "LibAssert", "md__documentation_2_installing.html#autotoc_md23", null ]
-        ] ]
+    [ "✨ Quick Start", "md__documentation_2_quick_start.html", [
+      [ "Project Templates", "md__documentation_2_quick_start.html#autotoc_md4", [
+        [ "xmake template", "md__documentation_2_quick_start.html#autotoc_md5", null ],
+        [ "CMake/vcpkg template", "md__documentation_2_quick_start.html#autotoc_md6", null ]
       ] ]
     ] ],
-    [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
-      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md25", [
-        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md26", [
-          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md27", null ],
-          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md28", null ]
+    [ "⬇️ Installing Specs", "md__documentation_2_installing.html", [
+      [ "C++17", "md__documentation_2_installing.html#autotoc_md8", null ],
+      [ "xmake", "md__documentation_2_installing.html#autotoc_md9", [
+        [ "Verify", "md__documentation_2_installing.html#autotoc_md10", null ],
+        [ "Assertion Library Support", "md__documentation_2_installing.html#autotoc_md11", null ],
+        [ "Snowhouse", "md__documentation_2_installing.html#autotoc_md12", [
+          [ "Verify", "md__documentation_2_installing.html#autotoc_md13", null ]
         ] ],
-        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md29", null ]
+        [ "libassert", "md__documentation_2_installing.html#autotoc_md14", [
+          [ "Verify", "md__documentation_2_installing.html#autotoc_md15", null ]
+        ] ]
+      ] ],
+      [ "vcpkg", "md__documentation_2_installing.html#autotoc_md16", [
+        [ "vcpkg-configuration.json", "md__documentation_2_installing.html#autotoc_md18", null ],
+        [ "CMakeLists.txt", "md__documentation_2_installing.html#autotoc_md19", null ],
+        [ "Verify", "md__documentation_2_installing.html#autotoc_md20", null ],
+        [ "Assertion Library Support", "md__documentation_2_installing.html#autotoc_md21", [
+          [ "vcpkg.json", "md__documentation_2_installing.html#autotoc_md17", null ],
+          [ "Snowhouse", "md__documentation_2_installing.html#autotoc_md22", [
+            [ "vcpkg.json", "md__documentation_2_installing.html#autotoc_md23", null ],
+            [ "CMakeLists.txt", "md__documentation_2_installing.html#autotoc_md24", null ],
+            [ "Verify", "md__documentation_2_installing.html#autotoc_md25", null ]
+          ] ],
+          [ "libassert", "md__documentation_2_installing.html#autotoc_md26", null ]
+        ] ]
       ] ]
     ] ],
     [ "🎓 Writing Tests", "md__documentation_2_writing_tests.html", [
-      [ "Creating a project", "md__documentation_2_writing_tests.html#autotoc_md31", [
-        [ "Entrypoint", "md__documentation_2_writing_tests.html#autotoc_md32", null ]
+      [ "Creating a project", "md__documentation_2_writing_tests.html#autotoc_md28", [
+        [ "Entrypoint", "md__documentation_2_writing_tests.html#autotoc_md29", null ]
       ] ],
-      [ "Creating test files", "md__documentation_2_writing_tests.html#autotoc_md33", [
-        [ "Test file #define header", "md__documentation_2_writing_tests.html#autotoc_md34", [
-          [ "#define spec_context", "md__documentation_2_writing_tests.html#autotoc_md35", null ],
-          [ "#define spec_file", "md__documentation_2_writing_tests.html#autotoc_md36", null ],
-          [ "#define spec_name", "md__documentation_2_writing_tests.html#autotoc_md37", null ],
-          [ "#define spec_template", "md__documentation_2_writing_tests.html#autotoc_md38", null ]
+      [ "Creating test files", "md__documentation_2_writing_tests.html#autotoc_md30", [
+        [ "Test file #define header", "md__documentation_2_writing_tests.html#autotoc_md31", [
+          [ "#define spec_context", "md__documentation_2_writing_tests.html#autotoc_md32", null ],
+          [ "#define spec_file", "md__documentation_2_writing_tests.html#autotoc_md33", null ],
+          [ "#define spec_name", "md__documentation_2_writing_tests.html#autotoc_md34", null ],
+          [ "#define spec_template", "md__documentation_2_writing_tests.html#autotoc_md35", null ]
         ] ]
       ] ],
-      [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md39", [
-        [ "Writing test assertions", "md__documentation_2_writing_tests.html#autotoc_md40", null ],
-        [ "Snowhouse assertions", "md__documentation_2_writing_tests.html#autotoc_md41", null ],
-        [ "libassert assertions", "md__documentation_2_writing_tests.html#autotoc_md42", null ]
+      [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md36", [
+        [ "Writing test assertions", "md__documentation_2_writing_tests.html#autotoc_md37", null ],
+        [ "Snowhouse assertions", "md__documentation_2_writing_tests.html#autotoc_md38", null ],
+        [ "libassert assertions", "md__documentation_2_writing_tests.html#autotoc_md39", null ]
       ] ],
-      [ "Asyncronous Tests", "md__documentation_2_writing_tests.html#autotoc_md43", null ],
-      [ "Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md44", [
-        [ "Asyncronous Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md45", null ]
+      [ "Asyncronous Tests", "md__documentation_2_writing_tests.html#autotoc_md40", null ],
+      [ "Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md41", [
+        [ "Asyncronous Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md42", null ]
       ] ],
-      [ "Test Groups", "md__documentation_2_writing_tests.html#autotoc_md46", null ]
+      [ "Test Groups", "md__documentation_2_writing_tests.html#autotoc_md43", null ]
     ] ],
     [ "🏃‍♀️ Running Tests", "md__documentation_2_running_tests.html", [
-      [ "foo", "md__documentation_2_running_tests.html#autotoc_md48", null ],
-      [ "bar", "md__documentation_2_running_tests.html#autotoc_md49", null ]
+      [ "foo", "md__documentation_2_running_tests.html#autotoc_md45", null ],
+      [ "bar", "md__documentation_2_running_tests.html#autotoc_md46", null ]
+    ] ],
+    [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
+      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md48", [
+        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md49", [
+          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md50", null ],
+          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md51", null ]
+        ] ],
+        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md52", null ]
+      ] ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
     [ "📋 Shared Code Templates", "md__documentation_2_templates.html", null ],
@@ -138,12 +143,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_p_i_8h.html",
-"_print_color_8h.html#ae56fb3cabeebcf7aa18597f31ae37676a4d7ff7393a484a7b9ed2e381f5cdeaf7",
-"class_specs_cpp_1_1_library_loader.html#a11379f5235bd44f756811d7ac72eeb07",
-"class_specs_cpp_1_1_spec_reporter_collection.html#af1f088d06ffb515a9e850d59d58ffd8a",
-"md__documentation_2_writing_tests.html#autotoc_md46",
-"struct_specs_cpp_1_1_i_spec_data_value.html#a8c249d935c74ccbdc430c3a938591022",
-"struct_specs_cpp_1_1_i_spec_teardown.html"
+"_print_color_8h.html#ae56fb3cabeebcf7aa18597f31ae37676a023c239d2f2538f140a20e72c7b73f20",
+"class_specs_cpp_1_1_global_spec_group.html#af89cbbd93b40b31923d67b2ce345198e",
+"class_specs_cpp_1_1_spec_reporter_collection.html#a69c5c05bf1b2be7baa67c00e5ea2660e",
+"md__documentation_2_writing_tests.html#autotoc_md34",
+"struct_specs_cpp_1_1_i_spec_data_value.html#a7b9df25e7639db0a317916c752323733",
+"struct_specs_cpp_1_1_i_spec_suite_run_result.html#a3fd62197344ab639d37a0cd236b0c2d1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

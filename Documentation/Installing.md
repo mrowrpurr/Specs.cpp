@@ -106,9 +106,10 @@ target("MyProject.Tests")
 If you want to verify that it works, create a `Test.cpp` with the following contents:
 
 ```cpp
-#include <Specs/Main.h>      // Provides the main() function for running Specs tests
-#include <Specs.h>           // Provides the primary DSL functions/macros for writing Specs tests
-#include <Specs/Snowhouse.h> // Provides Snowhouse support
+#include <Specs/Main.h>            // Provides the main() function for running Specs tests
+#include <Specs/Snowhouse/Setup.h> // Configures Specs snowhouse support
+#include <Specs.h>                 // Provides the primary DSL functions/macros for writing Specs tests
+#include <Specs/Snowhouse.h>       // Shorthand for including snowhouse headers/namespace
 
 Test("Example Snowhouse test") {
     AssertThat(69, Equals(420));
@@ -124,6 +125,8 @@ You should see the following output:
 
 Expected: equal to 420
 Actual: 69
+
+[Test.cpp:7] AssertThat(69, Equals(420));
 
 1 failed
 ```
@@ -175,7 +178,7 @@ If you want to verify that it works, create a `Test.cpp` with the following cont
 ```cpp
 #include <Specs/Main.h>      // Provides the main() function for running Specs tests
 #include <Specs.h>           // Provides the primary DSL functions/macros for writing Specs tests
-#include <Specs/LibAssert.h> // Provides libassert support
+#include <Specs/LibAssert.h> // Includes libassert support
 
 Test("Example libassert test") {
     assert(69 == 420);
@@ -184,53 +187,30 @@ Test("Example libassert test") {
 
 Then run `xmake run MyProject.Tests` and you should see the following output:
 
-> **Note:** failed `libassert` assertions show a huge, colorful stack trace 
-
 ```
 [FAILED] Example libassert test
 
-Assertion failed at LibAssert.Test.cpp:6: void __cdecl __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec *):
-    assert(69 == 420);
-
-Stack trace:
-#  1 LibAssert.Test.cpp             6 __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec*)
-#  2 StaticFunctionPointer.h       33 FunctionPointers::StaticFunctionPointer<void __cdecl(SpecsCpp::ISpec *)>::invokeImpl<0>(std::integer_sequence<unsigned __int64, 0>, FunctionPointers::IFunctionPoi
-                                      nterValue**)
-#  3 StaticFunctionPointer.h       45 FunctionPointers::StaticFunctionPointer<void __cdecl(SpecsCpp::ISpec *)>::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)
-#  4 FunctionPointer.h             44 FunctionPointers::FunctionPointer<void __cdecl(SpecsCpp::ISpec *)>::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)
-#  5 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer<void __cdecl(SpecsCpp::ISpec *)>::invoke(SpecsCpp::ISpec*)
-#  6 SpecCodeBlock.h             97
-#  7 type_traits                 1762
-#  8 functional                  839
-#  9 functional                   883 std::_Func_class<void, SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer<void __cdecl(void)> *>::operator()(SpecsCpp::ISpecCompone
-                                      nt*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer<void __cdecl(void)>*)
-# 10 FunctionalFunctionPointer.h   34 FunctionPointers::FunctionalFunctionPointer<void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer<void __cdecl(void)> *)>
-                                      ::invokeImpl<0, 1, 2>(std::integer_sequence<unsigned __int64, 0, 1, 2>, FunctionPointers::IFunctionPointerValue**)
-# 11 FunctionalFunctionPointer.h   46 FunctionPointers::FunctionalFunctionPointer<void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer<void __cdecl(void)> *)>
-                                      ::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)
-# 12 FunctionPointer.h             44 FunctionPointers::FunctionPointer<void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer<void __cdecl(void)> *)>::invokeWi
-                                      thArgsArray(FunctionPointers::IFunctionPointerValue**)
-# 13 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer<void __cdecl(SpecsCpp::ISpecComponent *, SpecsCpp::ISpec *, FunctionPointers::IFunctionPointer<void __cdecl(void)> *)>::invoke(
-                                      SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer<void __cdecl(void)>*)
-# 14 SpecCodeBlock.h              215 SpecsCpp::SpecCodeBlock::run(SpecsCpp::ISpecComponent*, SpecsCpp::ISpec*, FunctionPointers::IFunctionPointer<void __cdecl(SpecsCpp::ISpecRunResult *)>*)
-# 15 SpecSerialRunner.h           253 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::foreach_spec_in_group(SpecsCpp::ISpec*)
-# 16 MemberFunctionPointer.h       28 FunctionPointers::MemberFunctionPointer<SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance, void, SpecsCpp::ISpec *>::invokeImpl<0>(std::integer_sequence<unsigned _
-                                      _int64, 0>, FunctionPointers::IFunctionPointerValue**)
-# 17 MemberFunctionPointer.h       43 FunctionPointers::MemberFunctionPointer<SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance, void, SpecsCpp::ISpec *>::invokeWithArgsArray(FunctionPointers::IFunctio
-                                      nPointerValue**)
-# 18 FunctionPointer.h             44 FunctionPointers::FunctionPointer<void __cdecl(SpecsCpp::ISpec *)>::invokeWithArgsArray(FunctionPointers::IFunctionPointerValue**)
-# 19 IFunctionPointer.h            25 FunctionPointers::IFunctionPointer<void __cdecl(SpecsCpp::ISpec *)>::invoke(SpecsCpp::ISpec*)
-# 20 SpecGroup.h                   63 SpecsCpp::SpecGroup::foreach_spec(FunctionPointers::IFunctionPointer<void __cdecl(SpecsCpp::ISpec *)>*)
-# 21 SpecSerialRunner.h           328 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::run_group(SpecsCpp::ISpecGroup*)
-# 22 SpecSerialRunner.h           349 SpecsCpp::SpecSerialRunner::SpecSuiteRunInstance::run(SpecsCpp::ISpecGroup*, FunctionPointers::IFunctionPointer<void __cdecl(SpecsCpp::ISpecSuiteRunResult *)>*)  
-# 23 SpecSerialRunner.h           365 SpecsCpp::SpecSerialRunner::run(SpecsCpp::ISpecGroup*, SpecsCpp::ISpecReporterCollection*, SpecsCpp::ISpecDataValueCollection*, FunctionPointers::IFunctionPointer
-                                      <void __cdecl(SpecsCpp::ISpecSuiteRunResult *)>*)
-# 24 Entrypoint.h                 140 SpecsCpp::Entrypoint::main(int, char**)
-# 25 Main.h                         5 main(int, char**)
-
+Verification failed at Basic.Test.cpp:6: void __cdecl __globalMacroFunctions__function___SPEC_TEST__DefaultCompilationUnit_0(SpecsCpp::ISpec *):
+    VERIFY(69 == 420);
 
 1 failed
 ```
+
+> **Release Mode**
+>
+> Note: `libassert`'s `assert` macro does NOT throw exceptions in `release` mode.
+> 
+> This means that `Specs` will not be able to catch the assertion failure and report it as a test failure.
+>
+> To get around this:
+> - you can use the `VERIFY` macro instead of `assert` (_which throws exceptions in `release` mode_)
+> - (**recommended**) use the `assert_that` macro provided by `Specs` (_which is an alias for `VERIFY`_)
+>
+> ```cpp
+> Test("Example libassert test") {
+>     assert_that(69 == 420);
+> }
+> ```
 
 # vcpkg
 
@@ -271,7 +251,7 @@ Add the [`MrowrLib/Packages`](https://github.com/MrowrLib/Packages.git) registry
         {
             "kind": "git",
             "repository": "https://github.com/MrowrLib/Packages.git",
-            "baseline": "6e06c035b7c6edb3f882ce678d8a1bdcdf4386fa",
+            "baseline": "375fca93942459497acbfc049da297bc149db50d",
             "packages": [
                 "specs",
                 "specs-snowhouse",
@@ -414,7 +394,7 @@ Actual: 69
 1 failed
 ```
 
-### LibAssert
+### libassert
 
 At the time of writing, I can't get the `vcpkg` version of `libassert` to build.
 
@@ -425,3 +405,5 @@ For that reason, for now... you're on your own.
 Here is the `libassert` README: https://github.com/jeremy-rifkin/libassert
 
 Here is a recent bug report for the `vcpkg`: https://github.com/jeremy-rifkin/libassert/issues/75
+
+> _Don't worry, I really like the elegance of `libassert` and I hope to get this working!_

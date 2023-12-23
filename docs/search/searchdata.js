@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "fils",
   7: "bcfrs",
   8: "bcdfgilnprstuwy",
-  9: "_bcdegistu",
+  9: "_abcdegistu",
   10: "s▶✏✔✨⬇🎓🏃🐙💖💥💲💾📋📖🖋🤝"
 };
 

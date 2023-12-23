@@ -8,10 +8,12 @@ var searchData=
   ['add_5fspec_5',['add_spec',['../struct_specs_cpp_1_1_i_spec_group.html#ac58d2f34ad17cb96184136183799ba29',1,'SpecsCpp::ISpecGroup::add_spec()'],['../class_specs_cpp_1_1_spec_group.html#a550bde8b1afdf1cd4a3796396e75c90f',1,'SpecsCpp::SpecGroup::add_spec()']]],
   ['add_5fteardown_6',['add_teardown',['../struct_specs_cpp_1_1_i_spec_group.html#a416d5788ef715c2e8a619f9a242092f8',1,'SpecsCpp::ISpecGroup::add_teardown()'],['../class_specs_cpp_1_1_spec_group.html#a0c46290da7b6afca0939617d8468ef65',1,'SpecsCpp::SpecGroup::add_teardown()']]],
   ['api_2eh_7',['API.h',['../_a_p_i_8h.html',1,'']]],
-  ['assertionlibraries_2emd_8',['AssertionLibraries.md',['../_assertion_libraries_8md.html',1,'']]],
-  ['async_5fone_5ftime_5fsetup_2eh_9',['ASYNC_ONE_TIME_SETUP.h',['../_a_s_y_n_c___o_n_e___t_i_m_e___s_e_t_u_p_8h.html',1,'']]],
-  ['async_5fone_5ftime_5fteardown_2eh_10',['ASYNC_ONE_TIME_TEARDOWN.h',['../_a_s_y_n_c___o_n_e___t_i_m_e___t_e_a_r_d_o_w_n_8h.html',1,'']]],
-  ['async_5fsetup_2eh_11',['ASYNC_SETUP.h',['../_a_s_y_n_c___s_e_t_u_p_8h.html',1,'']]],
-  ['async_5fteardown_2eh_12',['ASYNC_TEARDOWN.h',['../_a_s_y_n_c___t_e_a_r_d_o_w_n_8h.html',1,'']]],
-  ['async_5ftest_2eh_13',['ASYNC_TEST.h',['../_a_s_y_n_c___t_e_s_t_8h.html',1,'']]]
+  ['assert_5fthat_8',['assert_that',['../assert__that_8h.html#a9aba65c1e5a08d6727d63fa1b4b50adc',1,'assert_that.h']]],
+  ['assert_5fthat_2eh_9',['assert_that.h',['../assert__that_8h.html',1,'']]],
+  ['assertionlibraries_2emd_10',['AssertionLibraries.md',['../_assertion_libraries_8md.html',1,'']]],
+  ['async_5fone_5ftime_5fsetup_2eh_11',['ASYNC_ONE_TIME_SETUP.h',['../_a_s_y_n_c___o_n_e___t_i_m_e___s_e_t_u_p_8h.html',1,'']]],
+  ['async_5fone_5ftime_5fteardown_2eh_12',['ASYNC_ONE_TIME_TEARDOWN.h',['../_a_s_y_n_c___o_n_e___t_i_m_e___t_e_a_r_d_o_w_n_8h.html',1,'']]],
+  ['async_5fsetup_2eh_13',['ASYNC_SETUP.h',['../_a_s_y_n_c___s_e_t_u_p_8h.html',1,'']]],
+  ['async_5fteardown_2eh_14',['ASYNC_TEARDOWN.h',['../_a_s_y_n_c___t_e_a_r_d_o_w_n_8h.html',1,'']]],
+  ['async_5ftest_2eh_15',['ASYNC_TEST.h',['../_a_s_y_n_c___t_e_s_t_8h.html',1,'']]]
 ];
