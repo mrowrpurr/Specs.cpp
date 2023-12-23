@@ -16,7 +16,7 @@
 C++ test framework with simple syntax which supports async tests.
 
 ```cpp
-#define spec_name My_Tests
+#define SPEC_GROUP My_Tests
 
 #include <Specs.h>
 
