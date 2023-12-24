@@ -30,13 +30,14 @@ var searchData=
   ['_5fspec_5frestore_5fgroup_5fstack_27',['_SPEC_RESTORE_GROUP_STACK',['../_r_e_s_t_o_r_e___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h.html#ab51449229f68bcceff4b340a5eef5108',1,'RESTORE_CURRENT_GROUP_STACK.h']]],
   ['_5fspec_5fsave_5fgroup_5fstack_28',['_SPEC_SAVE_GROUP_STACK',['../_s_a_v_e___c_u_r_r_e_n_t___g_r_o_u_p___s_t_a_c_k_8h.html#a364df84c4f2d722f3233d00b85638cdc',1,'SAVE_CURRENT_GROUP_STACK.h']]],
   ['_5fspec_5fsetup_29',['_SPEC_SETUP',['../_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_macros_2setup_8h.html#afd79e5b99f95325256d0d1395132a1b0',1,'SETUP.h']]],
-  ['_5fspec_5ftag_30',['_SPEC_TAG',['../_macros_2_t_a_g_8h.html#a1753e55bf20ed05430bea9536214e6ed',1,'TAG.h']]],
-  ['_5fspec_5ftags_31',['_SPEC_TAGS',['../_macros_2_t_a_g_s_8h.html#ad37d05aaecf63b0ff7d9f84979618c00',1,'TAGS.h']]],
-  ['_5fspec_5fteardown_32',['_SPEC_TEARDOWN',['../_macros_2teardown_8h.html#a22d3413a738a0aae91d32c393e664c8f',1,'TEARDOWN.h']]],
-  ['_5fspec_5ftemplate_33',['_SPEC_TEMPLATE',['../_t_e_m_p_l_a_t_e_8h.html#a2a0bb0a59fb78e2cabcc6dbf53c7910b',1,'TEMPLATE.h']]],
-  ['_5fspec_5ftest_34',['_SPEC_TEST',['../_macros_2test_8h.html#af9b9b760b002151b3d7a6a5167e0ecde',1,'TEST.h']]],
-  ['_5fspec_5ftest_5fbody_35',['_SPEC_TEST_BODY',['../_macros_2test_8h.html#ae3ed5369f141d326619594e4b05fe544',1,'TEST.h']]],
-  ['_5fspec_5funset_5fcurrent_5fgroup_36',['_SPEC_UNSET_CURRENT_GROUP',['../_u_n_s_e_t___c_u_r_r_e_n_t___g_r_o_u_p_8h.html#a7cdb3170903941103445f0b3e0e1a333',1,'UNSET_CURRENT_GROUP.h']]],
-  ['_5fspec_5fuse_5ftemplate_37',['_SPEC_USE_TEMPLATE',['../_macros_2use__template_8h.html#a283dc94d8ce98dd25623c83a28e83c75',1,'USE_TEMPLATE.h']]],
-  ['_5fspec_5fuse_5ftemplates_38',['_SPEC_USE_TEMPLATES',['../_u_s_e___t_e_m_p_l_a_t_e_s_8h.html#a4748153ed3e23a78e191678b1d63d447',1,'USE_TEMPLATES.h']]]
+  ['_5fspec_5fskip_5fall_30',['_SPEC_SKIP_ALL',['../_s_k_i_p___a_l_l_8h.html#a13048a1032831cdae8994a37777f7129',1,'SKIP_ALL.h']]],
+  ['_5fspec_5ftag_31',['_SPEC_TAG',['../_macros_2_t_a_g_8h.html#a1753e55bf20ed05430bea9536214e6ed',1,'TAG.h']]],
+  ['_5fspec_5ftags_32',['_SPEC_TAGS',['../_macros_2_t_a_g_s_8h.html#ad37d05aaecf63b0ff7d9f84979618c00',1,'TAGS.h']]],
+  ['_5fspec_5fteardown_33',['_SPEC_TEARDOWN',['../_macros_2teardown_8h.html#a22d3413a738a0aae91d32c393e664c8f',1,'TEARDOWN.h']]],
+  ['_5fspec_5ftemplate_34',['_SPEC_TEMPLATE',['../_t_e_m_p_l_a_t_e_8h.html#a2a0bb0a59fb78e2cabcc6dbf53c7910b',1,'TEMPLATE.h']]],
+  ['_5fspec_5ftest_35',['_SPEC_TEST',['../_macros_2test_8h.html#af9b9b760b002151b3d7a6a5167e0ecde',1,'TEST.h']]],
+  ['_5fspec_5ftest_5fbody_36',['_SPEC_TEST_BODY',['../_macros_2test_8h.html#ae3ed5369f141d326619594e4b05fe544',1,'TEST.h']]],
+  ['_5fspec_5funset_5fcurrent_5fgroup_37',['_SPEC_UNSET_CURRENT_GROUP',['../_u_n_s_e_t___c_u_r_r_e_n_t___g_r_o_u_p_8h.html#a7cdb3170903941103445f0b3e0e1a333',1,'UNSET_CURRENT_GROUP.h']]],
+  ['_5fspec_5fuse_5ftemplate_38',['_SPEC_USE_TEMPLATE',['../_macros_2use__template_8h.html#a283dc94d8ce98dd25623c83a28e83c75',1,'USE_TEMPLATE.h']]],
+  ['_5fspec_5fuse_5ftemplates_39',['_SPEC_USE_TEMPLATES',['../_u_s_e___t_e_m_p_l_a_t_e_s_8h.html#a4748153ed3e23a78e191678b1d63d447',1,'USE_TEMPLATES.h']]]
 ];

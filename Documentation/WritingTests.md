@@ -541,6 +541,11 @@ TestGroup("Different Group")
 Setup { /* Setup code goes here... */ }
 Teardown { /* Teardown code goes here... */ }
 Test("Test something else") { /* Test code goes here... */ }
+
+// TestGroup() supports Skip()
+Skip();
+TestGroup("Skipped Group")
+// Any Setup/Teardown/Test defined here will be added to the:
 ```
 
 ### StartTestGroup / EndTestGroup
@@ -581,6 +586,13 @@ StartTestGroup("Child Group") {
     }
     EndTestGroup();
 
+}
+EndTestGroup();
+
+// StartTestGroup() supports Skip()
+Skip();
+StartTestGroup("Skipped Group") {
+    // Any Setup/Teardown/Test defined here will be added to the:
 }
 EndTestGroup();
 ```
@@ -624,6 +636,12 @@ Describe("Child Group") {
         teardown([](){ /* Teardown code goes here... */ });
         test("Test something else", [](){ /* Test code goes here... */ });
     });
+}
+
+// Describe() supports Skip()
+Skip();
+Describe("Skipped Group") {
+    // Any Setup/Teardown/Test defined here will be added to the:
 }
 ```
 
