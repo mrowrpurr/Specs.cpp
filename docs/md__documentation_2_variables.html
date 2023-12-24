@@ -102,7 +102,35 @@ $(document).ready(function(){initNavTree('md__documentation_2_variables.html',''
   <div class="headertitle"><div class="title">💲 Test Variables</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md82"></a> </p><div class="fragment"><div class="line">...</div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md82"></a> Sometimes you may find yourself needing to share data between your <code>Setup</code>, <code>Teardown</code>, and <code>Test</code> code.</p>
+<p><code>Specs</code> provides a way to define, update, and access variables which are stored on the currently running <code>Test</code>.</p>
+<blockquote class="doxtable">
+<p>&zwj;<b>Important:</b> any variables still remaining in the test variable collection after the final <code>Teardown</code> will be <code>delete</code>'d. </p>
+</blockquote>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Tests</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> {</div>
+<div class="line">    <span class="comment">// Add any simple types</span></div>
+<div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;number&quot;</span>, 42);</div>
+<div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;bool value&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Or pointers to complex types</span></div>
+<div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;dog&quot;</span>, <span class="keyword">new</span> Dog());</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Use var_text() for strings</span></div>
+<div class="line">    current_test-&gt;var_text(<span class="stringliteral">&quot;text&quot;</span>, <span class="stringliteral">&quot;Hello World!&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;My Test&quot;</span>) {</div>
+<div class="line">    <span class="keyword">auto</span> number = current_test-&gt;var&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;number&quot;</span>);</div>
+<div class="line">    <span class="keyword">auto</span> <span class="keywordtype">boolean</span> = current_test-&gt;var&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;bool value&quot;</span>);</div>
+<div class="line">    <span class="keyword">auto</span>* pointer = current_test-&gt;var&lt;Dog*&gt;(<span class="stringliteral">&quot;dog&quot;</span>);</div>
+<div class="line">    <span class="keyword">auto</span> text = current_test-&gt;var_text(<span class="stringliteral">&quot;text&quot;</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="a_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h_html_a5cba18a3777f6dcb45611cce54d9c765"><div class="ttname"><a href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a></div><div class="ttdeci">#define Setup</div><div class="ttdef"><b>Definition</b> Setup.h:5</div></div>
+<div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

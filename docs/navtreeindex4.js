@@ -1,5 +1,9 @@
 var NAVTREEINDEX4 =
 {
+"functions.html":[27,3,0,0],
+"functions.html":[27,3,0],
+"functions_b.html":[27,3,0,1],
+"functions_c.html":[27,3,0,2],
 "functions_d.html":[27,3,0,3],
 "functions_e.html":[27,3,0,4],
 "functions_f.html":[27,3,0,5],
@@ -245,9 +249,5 @@ var NAVTREEINDEX4 =
 "namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a55f20a93ae815dbdbbf39f887b4c5c6f":[26,0,2,1,0,3],
 "namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a66c33b5c5da6114d371f618808e0680e":[26,0,2,1,0,10],
 "namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a7953bb0f562f8e0aecf8c394fcaa7bdf":[26,0,2,1,0,11],
-"namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a84e714ad83370fc683faedefb5089b86":[26,0,2,1,0,13],
-"namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a92fb6f4f4ce4c70d6d6462d2b71c3805":[26,0,2,1,0,2],
-"namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a95bd20562fcb37a9b38ef082d3db09e0":[26,0,2,1,0,7],
-"namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a9645363ca0782f6dd0aad42565844381":[26,0,2,1,0,12],
-"namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#ab1c45713d4d86b5d6cea5999e035b64b":[26,0,2,1,0,0]
+"namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a84e714ad83370fc683faedefb5089b86":[26,0,2,1,0,13]
 };
