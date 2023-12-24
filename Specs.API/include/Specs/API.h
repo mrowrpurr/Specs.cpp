@@ -88,6 +88,20 @@ namespace SpecsCpp {
         }
 
         virtual void foreach(ForEachSpecDataFn*) const = 0;
+        virtual void merge(ISpecDataValueCollection*)  = 0;
+        virtual void clear()                           = 0;
+    };
+
+    struct ISpecTagCollection {
+        using ForEachTagFn = IFunctionPointer<void(const char*)>;
+
+        virtual ~ISpecTagCollection() = default;
+
+        virtual void add(const char*)             = 0;
+        virtual bool has(const char*) const       = 0;
+        virtual void foreach(ForEachTagFn*) const = 0;
+        virtual void merge(ISpecTagCollection*)   = 0;
+        virtual void clear()                      = 0;
     };
 
     enum class SpecComponentType {
@@ -114,6 +128,7 @@ namespace SpecsCpp {
         virtual ~ISpecComponent()                                        = default;
         virtual ISpecGroup*               group() const                  = 0;
         virtual ISpecDataValueCollection* data() const                   = 0;
+        virtual ISpecTagCollection*       tags() const                   = 0;
         virtual SpecComponentType         type() const                   = 0;
         virtual bool                      skip() const                   = 0;
         virtual void                      mark_skipped(bool skip = true) = 0;

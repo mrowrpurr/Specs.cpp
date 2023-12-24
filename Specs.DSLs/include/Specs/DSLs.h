@@ -31,6 +31,8 @@
 #include "DSLs/TopLevel/SpecsFn.h"             // IWYU pragma: keep
 #include "DSLs/TopLevel/StartTestGroup.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/StartTestTemplate.h"   // IWYU pragma: keep
+#include "DSLs/TopLevel/Tag.h"                 // IWYU pragma: keep
+#include "DSLs/TopLevel/Tags.h"                // IWYU pragma: keep
 #include "DSLs/TopLevel/Teardown.h"            // IWYU pragma: keep
 #include "DSLs/TopLevel/TeardownAsync.h"       // IWYU pragma: keep
 #include "DSLs/TopLevel/Test.h"                // IWYU pragma: keep
@@ -42,6 +44,7 @@
 #include "DSLs/TopLevel/UnsetTestGroup.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplate.h"         // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplates.h"        // IWYU pragma: keep
+
 
 using SpecDone = SpecsCpp::SpecDone;
 

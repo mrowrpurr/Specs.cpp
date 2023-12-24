@@ -3,8 +3,10 @@
 #include <Specs/API.h>
 #include <Specs/SpecCodeBlock.h>
 #include <Specs/SpecComponent.h>
+#include <Specs/SpecDataValueCollection.h>
 #include <Specs/SpecGroup.h>
 #include <Specs/SpecSetup.h>
+#include <Specs/SpecTagCollection.h>
 #include <Specs/SpecTeardown.h>
 #include <Specs/SpecTest.h>
 #include <_Log_.h>
@@ -35,6 +37,16 @@ namespace SpecsCpp {
         std::vector<std::unique_ptr<SpecTeardown>> _registeredOneTimeteardowns;
 
         collections_map<std::string, std::unique_ptr<SpecGroup>> _testTemplateGroups;
+
+        SpecDataValueCollection _metaDataForNextComponent;
+        SpecTagCollection       _tagsForNextComponent;
+
+        void component_defined(ISpecComponent* component) {
+            component->data()->merge(&_metaDataForNextComponent);
+            component->tags()->merge(&_tagsForNextComponent);
+            _metaDataForNextComponent.clear();
+            _tagsForNextComponent.clear();
+        }
 
     public:
         GlobalSpecGroup() {
@@ -90,6 +102,7 @@ namespace SpecsCpp {
         ) {
             auto  templateGroup    = std::make_unique<SpecGroup>(nullptr, templateName);
             auto* templateGroupPtr = templateGroup.get();
+            component_defined(templateGroupPtr);
 
             auto* currentGroup = get();
             set(templateGroupPtr);
@@ -111,6 +124,8 @@ namespace SpecsCpp {
                 }
                 auto  specGroup    = std::make_unique<SpecGroup>(get(), descriptionText);
                 auto* specGroupPtr = specGroup.get();
+                component_defined(specGroupPtr);
+
                 _registeredGroups.push_back(std::move(specGroup));
                 group->add_group(_registeredGroups.back().get());
 
@@ -127,6 +142,8 @@ namespace SpecsCpp {
             if (auto* group = get()) {
                 auto  spec = std::make_unique<SpecTest>(get(), description, std::move(codeBlock));
                 auto* specPtr = spec.get();
+                component_defined(specPtr);
+
                 _registeredSpecs.push_back(std::move(spec));
                 group->add_spec(specPtr);
             } else {
@@ -138,6 +155,8 @@ namespace SpecsCpp {
             if (auto* group = get()) {
                 auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
                 auto* setupPtr = setup.get();
+                component_defined(setupPtr);
+
                 _registeredsetups.push_back(std::move(setup));
                 group->add_setup(setupPtr);
             }
@@ -147,6 +166,8 @@ namespace SpecsCpp {
             if (auto* group = get()) {
                 auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
                 auto* teardownPtr = teardown.get();
+                component_defined(teardownPtr);
+
                 _registeredteardowns.push_back(std::move(teardown));
                 group->add_teardown(teardownPtr);
             }
@@ -156,6 +177,8 @@ namespace SpecsCpp {
             if (auto* group = get()) {
                 auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
                 auto* setupPtr = setup.get();
+                component_defined(setupPtr);
+
                 _registeredOneTimesetups.push_back(std::move(setup));
                 group->add_one_time_setup(setupPtr);
             }
@@ -165,6 +188,8 @@ namespace SpecsCpp {
             if (auto* group = get()) {
                 auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
                 auto* teardownPtr = teardown.get();
+                component_defined(teardownPtr);
+
                 _registeredOneTimeteardowns.push_back(std::move(teardown));
                 group->add_one_time_teardown(teardownPtr);
             }
@@ -185,8 +210,10 @@ namespace SpecsCpp {
             clear_top_level_group();
 
             if (auto* group = get()) {
-                auto  specGroup       = std::make_unique<SpecGroup>(get(), description);
-                auto* specGroupPtr    = specGroup.get();
+                auto  specGroup    = std::make_unique<SpecGroup>(get(), description);
+                auto* specGroupPtr = specGroup.get();
+                component_defined(specGroupPtr);
+
                 _currentTopLevelGroup = specGroupPtr;
                 _registeredGroups.push_back(std::move(specGroup));
                 group->add_group(specGroupPtr);
@@ -217,7 +244,9 @@ namespace SpecsCpp {
                 }
                 auto  specGroup    = std::make_unique<SpecGroup>(get(), descriptionText);
                 auto* specGroupPtr = specGroup.get();
-                _currentFileGroup  = specGroupPtr;
+                component_defined(specGroupPtr);
+
+                _currentFileGroup = specGroupPtr;
                 _registeredGroups.push_back(std::move(specGroup));
                 group->add_group(specGroupPtr);
                 push(specGroupPtr);
@@ -241,9 +270,11 @@ namespace SpecsCpp {
                 if (foundExisting != _testTemplateGroups.end()) {
                     clear_group_stack();  // The top-level things should NOT be registered anywhere
                 } else {
-                    auto  specGroup       = std::make_unique<SpecGroup>(get(), descriptionText);
-                    auto* specGroupPtr    = specGroup.get();
-                    _currentTopLevelGroup = specGroupPtr;
+                    auto  specGroup    = std::make_unique<SpecGroup>(get(), descriptionText);
+                    auto* specGroupPtr = specGroup.get();
+                    component_defined(specGroupPtr);
+
+                    _currentTopLevelGroup                = specGroupPtr;
                     _testTemplateGroups[descriptionText] = std::move(specGroup);
                     push(specGroupPtr);
                 }
@@ -259,6 +290,8 @@ namespace SpecsCpp {
                 }
                 auto  specGroup    = std::make_unique<SpecGroup>(get(), descriptionText);
                 auto* specGroupPtr = specGroup.get();
+                component_defined(specGroupPtr);
+
                 _registeredGroups.push_back(std::move(specGroup));
                 group->add_group(_registeredGroups.back().get());
                 push(specGroupPtr);
@@ -283,6 +316,16 @@ namespace SpecsCpp {
                 for (auto& templateName : templateNames) use_template(templateName);
         }
 
-        // TODO: functions needed for Tag(x) and Data(x, y) and MetaData({}, {})
+        void add_meta_data_for_next_component(ISpecDataValue* value) {
+            _metaDataForNextComponent.add(value);
+        }
+
+        void add_tag_for_next_component(std::string_view value) {
+            _tagsForNextComponent.add(value.data());
+        }
+
+        void add_tags_for_next_component(std::vector<std::string_view> values) {
+            for (auto& value : values) add_tag_for_next_component(value.data());
+        }
     };
 }

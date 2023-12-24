@@ -13,10 +13,7 @@
             _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)                                                                  \
         );                                                                                                                                             \
     }};                                                                                                                                                \
-    inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(                                                             \
-        [[maybe_unused]] SpecsCpp::ISpecGroup * current_group,                                                                                         \
-        [[maybe_unused]] SpecsCpp::ISpecComponent * current_setup,                                                                                     \
-        [[maybe_unused]] SpecsCpp::ISpec * current_spec                                                                                                \
-    )
+    inline void                                                                                                                                        \
+    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)([[maybe_unused]] SpecsCpp::ISpecGroup * current_group, [[maybe_unused]] SpecsCpp::ISpecComponent * current_setup, [[maybe_unused]] SpecsCpp::ISpec*)
 
 #define _SPEC_ONE_TIME_SETUP() __SPEC_ONE_TIME_SETUP_BODY(_SPEC_ONE_TIME_SETUP_, __COUNTER__)

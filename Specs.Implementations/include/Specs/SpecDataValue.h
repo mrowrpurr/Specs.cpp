@@ -142,5 +142,25 @@ namespace SpecsCpp {
         static ISpecDataValue* create_pointer(const char* key, IVoidPointer* value) {
             return new SpecDataValue(key, SpecDataValueType::Pointer, value);
         }
+
+        static ISpecDataValue* create(const char* key, bool value) {
+            return create_bool(key, value);
+        }
+        static ISpecDataValue* create(const char* key, int value) { return create_int(key, value); }
+        static ISpecDataValue* create(const char* key, unsigned int value) {
+            return create_unsigned_int(key, value);
+        }
+        static ISpecDataValue* create(const char* key, double value) {
+            return create_float(key, value);
+        }
+        static ISpecDataValue* create(const char* key, const char* value) {
+            return create_string(key, value);
+        }
+        static ISpecDataValue* create(const char* key, void* value) {
+            return create_pointer(key, value);
+        }
+        static ISpecDataValue* create(const char* key, IVoidPointer* value) {
+            return create_pointer(key, value);
+        }
     };
 }

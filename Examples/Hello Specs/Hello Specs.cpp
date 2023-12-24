@@ -7,13 +7,25 @@ TestAsync("Async Test") {
     done();
 }
 
+// Tag("tag1");
 Teardown { _Log_("Hello from Teardown"); }
 
-GroupSetup { _Log_("Hello from GroupSetup"); }
+// MetaData("key", "value");
+GroupSetup {
+    // current_spec
+    _Log_("Hello from GroupSetup");
+}
 
+// MetaDatas({"key1", "value1"}, {"key2", "value2"});
 GroupTeardown { _Log_("Hello from GroupTeardown"); }
 
-Test("Test One") { _Log_("Hello from Test One"); }
+Tag("tag1");
+Tags("tag2", "tag3");
+Test("Test One") {
+    _Log_("Hello from Test One");
+    auto foreach = unique_function_pointer([](const char* tag) { _Log_("Tag: {}", tag); });
+    current_spec->tags()->foreach(foreach.get());
+}
 
 Test("Test Two") { _Log_("Hello from Test Two"); }
 
