@@ -462,6 +462,7 @@ Once you need to define sub-groups, there are a few different syntax styles to c
 > **Recommended usage**
 >
 > - Use `TestGroup` when you do not need nested groups  
+>   (_i.e. you only need one level of groups_)
 
 - `TestGroup("Group Name")` defines a new top-level group
   - If `#define SPEC_GROUP` is used, this group is a child of the group defined by `SPEC_GROUP`
@@ -499,7 +500,8 @@ Test("Test something else") { /* Test code goes here... */ }
 
 > **Recommended usage**
 >
-> - Use `StartTestGroup`/`EndTestGroup` when you need nested groups
+> - Use `StartTestGroup`/`EndTestGroup` when you need nested groups  
+>   (_i.e. you need more than one level of groups_)
 > - You could also use this instead of `TestGroup` if you prefer the nested `{ ... }` syntax
 
 - `StartTestGroup("Group Name")` defines a new nested group
