@@ -109,10 +109,10 @@ $(document).ready(function(){initNavTree('namespace_specs_cpp_1_1_d_s_ls_1_1_glo
 Functions</h2></td></tr>
 <tr class="memitem:a0d626534b1cea2007851cf6f53b1797d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a0d626534b1cea2007851cf6f53b1797d">define_template_fn</a> (std::string_view templateName, FunctionPointer&lt; void()&gt; body)</td></tr>
 <tr class="separator:a0d626534b1cea2007851cf6f53b1797d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d81d98162ff5e45e7bb3c5c6ee52034"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a9d81d98162ff5e45e7bb3c5c6ee52034">define_group_fn</a> (std::string_view description, FunctionPointer&lt; void()&gt; body)</td></tr>
-<tr class="separator:a9d81d98162ff5e45e7bb3c5c6ee52034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67fbdd1b47737b586e686129ab53e705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a67fbdd1b47737b586e686129ab53e705">define_group_fn</a> (std::string_view description, FunctionPointer&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *)&gt; body)</td></tr>
-<tr class="separator:a67fbdd1b47737b586e686129ab53e705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d95d61a4bde146e59ad5d364fde34a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a36d95d61a4bde146e59ad5d364fde34a">define_group_fn</a> (std::string_view description, FunctionPointer&lt; void()&gt; body, bool removeUnderscores=false)</td></tr>
+<tr class="separator:a36d95d61a4bde146e59ad5d364fde34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df841f0c56bb9bc1df25ab787db5ee3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a1df841f0c56bb9bc1df25ab787db5ee3">define_group_fn</a> (std::string_view description, FunctionPointer&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *)&gt; body, bool removeUnderscores=false)</td></tr>
+<tr class="separator:a1df841f0c56bb9bc1df25ab787db5ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a441c5c9639c56cec260a3c89ffd2732f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a441c5c9639c56cec260a3c89ffd2732f">define_test_fn</a> (std::string_view description, FunctionPointer&lt; void()&gt; body)</td></tr>
 <tr class="separator:a441c5c9639c56cec260a3c89ffd2732f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752cf78b8bed09f01a402e9866bd4bcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a752cf78b8bed09f01a402e9866bd4bcd">define_test_fn</a> (std::string_view description, FunctionPointer&lt; void(<a class="el" href="class_specs_cpp_1_1_spec_done.html">SpecDone</a>)&gt; body)</td></tr>
@@ -175,8 +175,8 @@ Functions</h2></td></tr>
 <tr class="separator:a59405f943e6c0c9db08175a2eec86a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9d81d98162ff5e45e7bb3c5c6ee52034" name="a9d81d98162ff5e45e7bb3c5c6ee52034"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d81d98162ff5e45e7bb3c5c6ee52034">&#9670;&#160;</a></span>define_group_fn() <span class="overload">[1/2]</span></h2>
+<a id="a36d95d61a4bde146e59ad5d364fde34a" name="a36d95d61a4bde146e59ad5d364fde34a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36d95d61a4bde146e59ad5d364fde34a">&#9670;&#160;</a></span>define_group_fn() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,7 +194,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">FunctionPointer&lt; void()&gt;&#160;</td>
-          <td class="paramname"><em>body</em>&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>removeUnderscores</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -211,8 +217,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a67fbdd1b47737b586e686129ab53e705" name="a67fbdd1b47737b586e686129ab53e705"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67fbdd1b47737b586e686129ab53e705">&#9670;&#160;</a></span>define_group_fn() <span class="overload">[2/2]</span></h2>
+<a id="a1df841f0c56bb9bc1df25ab787db5ee3" name="a1df841f0c56bb9bc1df25ab787db5ee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df841f0c56bb9bc1df25ab787db5ee3">&#9670;&#160;</a></span>define_group_fn() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,7 +236,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">FunctionPointer&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *)&gt;&#160;</td>
-          <td class="paramname"><em>body</em>&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>removeUnderscores</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

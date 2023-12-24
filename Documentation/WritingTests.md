@@ -459,26 +459,37 @@ Once you need to define sub-groups, there are a few different syntax styles to c
 
 ### TestGroup
 
+> **Recommended usage**
+>
+> - Use `TestGroup` when you do not need nested groups  
+
+- `TestGroup("Group Name")` defines a new top-level group
+  - If `#define SPEC_GROUP` is used, this group is a child of the group defined by `SPEC_GROUP`
+    - To avoid the creation of the `SPEC_GROUP`, use `#define SPEC_FILE` instead of `#define SPEC_GROUP`
+- Every `TestGroup` is a peer of every other `TestGroup` defined in the file
+  - `TestGroup` cannot be nested
+  - For nesting groups, use `StartTestGroup`/`EndTestGroup` or `Describe`
+- `TestGroup("Group Name")` can be used multiple times to define multiple top-level groups
+
 ```cpp
 #define SPEC_GROUP Tests_One
 
 #include <Specs.h>
 
-TestGroup("Child Group")
+// Anything up here will be part of the "Tests One" group
+Setup { /* Setup code that runs for every test in this file... */ }
 
+TestGroup("Child Group")
 // Any Setup/Teardown/Test defined here will be added to the:
 // [Tests One] > [Child Group] group
-
 Setup { /* Setup code goes here... */ }
 Teardown { /* Teardown code goes here... */ }
 Test("Test something") { /* Test code goes here... */ }
 
 TestGroup("Different Group")
 // ^ this OVERRIDES the previous TestGroup() definition
-
 // Any Setup/Teardown/Test defined here will be added to the:
 // [Tests One] > [Different Group] group
-
 Setup { /* Setup code goes here... */ }
 Teardown { /* Teardown code goes here... */ }
 Test("Test something else") { /* Test code goes here... */ }
@@ -486,15 +497,28 @@ Test("Test something else") { /* Test code goes here... */ }
 
 ### StartTestGroup / EndTestGroup
 
+> **Recommended usage**
+>
+> - Use `StartTestGroup`/`EndTestGroup` when you need nested groups
+> - You could also use this instead of `TestGroup` if you prefer the nested `{ ... }` syntax
+
+- `StartTestGroup("Group Name")` defines a new nested group
+  - If `#define SPEC_GROUP` is used, this group is a child of the group defined by `SPEC_GROUP`
+    - To avoid the creation of the `SPEC_GROUP`, use `#define SPEC_FILE` instead of `#define SPEC_GROUP`
+- `EndTestGroup()` ends the current nested group
+  - Do not forget to call `EndTestGroup()`!
+
 ```cpp
 #define SPEC_GROUP Tests_One
 
 #include <Specs.h>
 
+// Anything up here will be part of the "Tests One" group
+Setup { /* Setup code that runs for every test in this file... */ }
+
 StartTestGroup("Child Group") {
     // Any Setup/Teardown/Test defined here will be added to the:
     // [Tests One] > [Child Group] group
-
     Setup { /* Setup code goes here... */ }
     Teardown { /* Teardown code goes here... */ }
     Test("Test something") { /* Test code goes here... */ }
@@ -502,7 +526,6 @@ StartTestGroup("Child Group") {
     StartTestGroup("Different Group") {
         // Any Setup/Teardown/Test defined here will be added to the:
         // [Tests One] > [Child Group] > [Different Group] group
-
         Setup { /* Setup code goes here... */ }
         Teardown { /* Teardown code goes here... */ }
         Test("Test something else") { /* Test code goes here... */ }
@@ -515,14 +538,28 @@ EndTestGroup();
 
 ### Describe
 
+> **Recommended usage**
+>
+> - Use `Describe` when you need nested groups and prefer to use the lambda syntax
+
+- `Describe("Group Name")` defines a new nested group
+  - If `#define SPEC_GROUP` is used, this group is a child of the group defined by `SPEC_GROUP`
+    - To avoid the creation of the `SPEC_GROUP`, use `#define SPEC_FILE` instead of `#define SPEC_GROUP`
+- Only lambda variants of `test`/`setup`/`teardown` can be used inside of a `Describe` block
+
 ```cpp
 #define SPEC_GROUP Tests_One
 
 #include <Specs.h>
 
+// Anything up here will be part of the "Tests One" group
+Setup { /* Setup code that runs for every test in this file... */ }
+
 Describe("Child Group") {
     // Any Setup/Teardown/Test defined here will be added to the:
     // [Tests One] > [Child Group] group
+
+    /* ONLY LAMBDA FUNCTIONS CAN BE USED INSIDE OF A DESCRIBE BLOCK! */
 
     setup([](){ /* Setup code goes here... */ });
     teardown([](){ /* Teardown code goes here... */ });
@@ -537,6 +574,70 @@ Describe("Child Group") {
         setup([](){ /* Setup code goes here... */ });
         teardown([](){ /* Teardown code goes here... */ });
         test("Test something else", [](){ /* Test code goes here... */ });
+    });
+}
+```
+
+#### Lambda syntax
+
+The lambda syntax is used to define tests/groups/setups/teardowns inside of a `Describe` block.
+
+```cpp
+Describe("Something Cool") {
+    setup([](){ /* Setup code goes here... */ });
+    teardown([](){ /* Teardown code goes here... */ });
+    test("Test something", [](){ /* Test code goes here... */ });
+
+    describe("Some Nested Feature Group", [](){
+        setup([](){ /* Setup code goes here... */ });
+        teardown([](){ /* Teardown code goes here... */ });
+        test("Test something else", [](){ /* Test code goes here... */ });
+    });
+}
+```
+
+##### Async lambda syntax
+
+To create an async test/setup/teardown, your lambda should accept a `done` parameter.
+
+```cpp
+Describe("Something Cool") {
+    setup([](auto done){
+        /* Setup code goes here... */
+        done();
+    });
+    
+    teardown([](auto done){
+        /* Teardown code goes here... */
+        done();
+    });
+
+    test("Test something", [](auto done){
+        /* Test code goes here... */
+        done();
+    });
+}
+```
+
+You can use `auto done` or you can use `SpecDone done` \*
+
+> _Some IDEs do not support intellisense of `auto` lambda parameters, so use `SpecDone` if desired._
+
+```cpp
+Describe("Something Cool") {
+    setup([](SpecDone done){
+        /* Setup code goes here... */
+        done();
+    });
+    
+    teardown([](SpecDone done){
+        /* Teardown code goes here... */
+        done();
+    });
+
+    test("Test something", [](SpecDone done){
+        /* Test code goes here... */
+        done();
     });
 }
 ```

@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../Macros/GROUP.h"
+#include "../Macros/GROUP_REMOVE_UNDERSCORES.h"
 
-#define DescribeFn(symbol) __SPEC_GROUP_BODY(symbol, #symbol, __COUNTER__)
+#define DescribeFn(symbol) __SPEC_GROUP_REMOVE_UNDERSCORES_BODY(symbol, #symbol, __COUNTER__)

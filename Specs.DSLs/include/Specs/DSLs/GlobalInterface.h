@@ -14,17 +14,20 @@ namespace SpecsCpp::DSLs::GlobalInterface {
 
     /* Group */
 
-    inline void define_group_fn(std::string_view description, FunctionPointer<void()> body) {
+    inline void define_group_fn(
+        std::string_view description, FunctionPointer<void()> body, bool removeUnderscores = false
+    ) {
         GlobalSpecGroup::instance().define_group(
-            description, std::make_unique<SpecCodeBlock>(std::move(body))
+            description, std::make_unique<SpecCodeBlock>(std::move(body)), removeUnderscores
         );
     }
 
     inline void define_group_fn(
-        std::string_view description, FunctionPointer<void(ISpecGroup*)> body
+        std::string_view description, FunctionPointer<void(ISpecGroup*)> body,
+        bool removeUnderscores = false
     ) {
         GlobalSpecGroup::instance().define_group(
-            description, std::make_unique<SpecCodeBlock>(std::move(body))
+            description, std::make_unique<SpecCodeBlock>(std::move(body)), removeUnderscores
         );
     }
 

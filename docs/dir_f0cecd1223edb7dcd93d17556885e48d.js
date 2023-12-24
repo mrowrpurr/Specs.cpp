@@ -11,6 +11,7 @@ var dir_f0cecd1223edb7dcd93d17556885e48d =
     [ "DECLARE_TEMPLATE.h", "_d_e_c_l_a_r_e___t_e_m_p_l_a_t_e_8h.html", "_d_e_c_l_a_r_e___t_e_m_p_l_a_t_e_8h" ],
     [ "END_CHILD_GROUP.h", "_e_n_d___c_h_i_l_d___g_r_o_u_p_8h.html", "_e_n_d___c_h_i_l_d___g_r_o_u_p_8h" ],
     [ "GROUP.h", "_g_r_o_u_p_8h.html", "_g_r_o_u_p_8h" ],
+    [ "GROUP_REMOVE_UNDERSCORES.h", "_g_r_o_u_p___r_e_m_o_v_e___u_n_d_e_r_s_c_o_r_e_s_8h.html", "_g_r_o_u_p___r_e_m_o_v_e___u_n_d_e_r_s_c_o_r_e_s_8h" ],
     [ "MacrosCore.h", "_macros_core_8h.html", null ],
     [ "ONE_TIME_SETUP.h", "_o_n_e___t_i_m_e___s_e_t_u_p_8h.html", "_o_n_e___t_i_m_e___s_e_t_u_p_8h" ],
     [ "ONE_TIME_TEARDOWN.h", "_o_n_e___t_i_m_e___t_e_a_r_d_o_w_n_8h.html", "_o_n_e___t_i_m_e___t_e_a_r_d_o_w_n_8h" ],

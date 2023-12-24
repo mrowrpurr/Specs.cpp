@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['get_0',['get',['../class_specs_cpp_1_1_spec_variable_collection.html#aeb446e8fc34105751b7afde461dd42d4',1,'SpecsCpp::SpecVariableCollection::get()'],['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5',1,'SpecsCpp::ISpecDataValueCollection::get()'],['../struct_specs_cpp_1_1_i_spec_variable_collection.html#a23630f7b7dd5ed462158479e770289b1',1,'SpecsCpp::ISpecVariableCollection::get()'],['../struct_specs_cpp_1_1_i_spec_reporter_collection.html#a2a8bd2f2abe8f2b4ee71b3007c40d0da',1,'SpecsCpp::ISpecReporterCollection::get()'],['../struct_specs_cpp_1_1_i_spec_runner_collection.html#ab4be0106570adf4b6c7e76a6ff6fb679',1,'SpecsCpp::ISpecRunnerCollection::get()'],['../class_specs_cpp_1_1_global_spec_environment.html#ab74d7f28345fa74fdbd66e399aebc26d',1,'SpecsCpp::GlobalSpecEnvironment::get()'],['../class_specs_cpp_1_1_global_spec_group.html#ad2130951f474a6fbd9f45c365ef7e2c7',1,'SpecsCpp::GlobalSpecGroup::get()'],['../class_specs_cpp_1_1_spec_data_value_collection.html#a1180fa5f264044f4dc49ddda9d6fa2a7',1,'SpecsCpp::SpecDataValueCollection::get()'],['../class_specs_cpp_1_1_spec_reporter_collection.html#a1bc4c71a1220af51a8163aea0f2e3f27',1,'SpecsCpp::SpecReporterCollection::get()'],['../class_specs_cpp_1_1_spec_runner_collection.html#a5a76ca919feb4bada0685eba1939ac0b',1,'SpecsCpp::SpecRunnerCollection::get()']]],
+  ['get_0',['get',['../struct_specs_cpp_1_1_i_spec_runner_collection.html#ab4be0106570adf4b6c7e76a6ff6fb679',1,'SpecsCpp::ISpecRunnerCollection::get()'],['../class_specs_cpp_1_1_spec_runner_collection.html#a5a76ca919feb4bada0685eba1939ac0b',1,'SpecsCpp::SpecRunnerCollection::get()'],['../class_specs_cpp_1_1_spec_reporter_collection.html#a1bc4c71a1220af51a8163aea0f2e3f27',1,'SpecsCpp::SpecReporterCollection::get()'],['../class_specs_cpp_1_1_spec_variable_collection.html#aeb446e8fc34105751b7afde461dd42d4',1,'SpecsCpp::SpecVariableCollection::get()'],['../class_specs_cpp_1_1_spec_data_value_collection.html#a1180fa5f264044f4dc49ddda9d6fa2a7',1,'SpecsCpp::SpecDataValueCollection::get()'],['../class_specs_cpp_1_1_global_spec_group.html#ad2130951f474a6fbd9f45c365ef7e2c7',1,'SpecsCpp::GlobalSpecGroup::get()'],['../class_specs_cpp_1_1_global_spec_environment.html#ab74d7f28345fa74fdbd66e399aebc26d',1,'SpecsCpp::GlobalSpecEnvironment::get()'],['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5',1,'SpecsCpp::ISpecDataValueCollection::get()'],['../struct_specs_cpp_1_1_i_spec_variable_collection.html#a23630f7b7dd5ed462158479e770289b1',1,'SpecsCpp::ISpecVariableCollection::get()'],['../struct_specs_cpp_1_1_i_spec_reporter_collection.html#a2a8bd2f2abe8f2b4ee71b3007c40d0da',1,'SpecsCpp::ISpecReporterCollection::get()']]],
   ['get_5fbool_1',['get_bool',['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#a7dc1e0479f49652fa789dd6f38c8fa44',1,'SpecsCpp::ISpecDataValueCollection']]],
   ['get_5ffloat_2',['get_float',['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#a42e78acb4d28c3f8c4bf47acf3612588',1,'SpecsCpp::ISpecDataValueCollection']]],
   ['get_5fint_3',['get_int',['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#ab432f2e58df5ecf95e7798b4b90c6c7e',1,'SpecsCpp::ISpecDataValueCollection']]],
   ['get_5fpointer_4',['get_pointer',['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#a0a17cc6866cd1774ee805a1044bb9380',1,'SpecsCpp::ISpecDataValueCollection']]],
   ['get_5fstring_5',['get_string',['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad65f1ad7cf8dc9213df75431b6b7ed0f',1,'SpecsCpp::ISpecDataValueCollection']]],
-  ['get_5ftimeout_5fms_6',['get_timeout_ms',['../class_specs_cpp_1_1_spec_code_block.html#acc0d5d824969f1c2d429cfbad6ffc27e',1,'SpecsCpp::SpecCodeBlock::get_timeout_ms()'],['../struct_specs_cpp_1_1_i_spec_code_block.html#a1a8452ec97489d3b646ffd34a1a66735',1,'SpecsCpp::ISpecCodeBlock::get_timeout_ms()']]],
+  ['get_5ftimeout_5fms_6',['get_timeout_ms',['../struct_specs_cpp_1_1_i_spec_code_block.html#a1a8452ec97489d3b646ffd34a1a66735',1,'SpecsCpp::ISpecCodeBlock::get_timeout_ms()'],['../class_specs_cpp_1_1_spec_code_block.html#acc0d5d824969f1c2d429cfbad6ffc27e',1,'SpecsCpp::SpecCodeBlock::get_timeout_ms()']]],
   ['get_5funsigned_5fint_7',['get_unsigned_int',['../struct_specs_cpp_1_1_i_spec_data_value_collection.html#a635bf112b45432a329f8abf70653e54c',1,'SpecsCpp::ISpecDataValueCollection']]],
   ['github_2emd_8',['GitHub.md',['../_git_hub_8md.html',1,'']]],
   ['global_5fspec_5fenvironment_9',['global_spec_environment',['../namespace_specs_cpp.html#a1e3a5f692033d77121a39df0eefdcc5f',1,'SpecsCpp']]],
@@ -23,12 +23,13 @@ var searchData=
   ['group_2eh_20',['GROUP.h',['../_g_r_o_u_p_8h.html',1,'']]],
   ['group_5fdescription_5ffilter_5foption_5fkey_21',['GROUP_DESCRIPTION_FILTER_OPTION_KEY',['../struct_specs_cpp_1_1_i_spec_runner.html#a96e110454957f085779dd9ef294b70f1',1,'SpecsCpp::ISpecRunner']]],
   ['group_5fdescription_5fregex_5ffilter_5foption_5fkey_22',['GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY',['../struct_specs_cpp_1_1_i_spec_runner.html#a87a8ce79ed726fa3fff6e98f7bf7df40',1,'SpecsCpp::ISpecRunner']]],
-  ['groupsetup_23',['GroupSetup',['../_group_setup_8h.html#a3f4b0a963f7923252c6b3a62fe3ba94a',1,'GroupSetup.h']]],
-  ['groupsetup_2eh_24',['GroupSetup.h',['../_group_setup_8h.html',1,'']]],
-  ['groupsetupasync_25',['GroupSetupAsync',['../_group_setup_async_8h.html#a36bbc55a44f9fe5dac756063d1915816',1,'GroupSetupAsync.h']]],
-  ['groupsetupasync_2eh_26',['GroupSetupAsync.h',['../_group_setup_async_8h.html',1,'']]],
-  ['groupteardown_27',['GroupTeardown',['../_group_teardown_8h.html#a3feb8ce6a713b760e5a7e41a124cce56',1,'GroupTeardown.h']]],
-  ['groupteardown_2eh_28',['GroupTeardown.h',['../_group_teardown_8h.html',1,'']]],
-  ['groupteardownasync_29',['GroupTeardownAsync',['../_group_teardown_async_8h.html#a30056105d0ef96f87e4b49ebefe631f0',1,'GroupTeardownAsync.h']]],
-  ['groupteardownasync_2eh_30',['GroupTeardownAsync.h',['../_group_teardown_async_8h.html',1,'']]]
+  ['group_5fremove_5funderscores_2eh_23',['GROUP_REMOVE_UNDERSCORES.h',['../_g_r_o_u_p___r_e_m_o_v_e___u_n_d_e_r_s_c_o_r_e_s_8h.html',1,'']]],
+  ['groupsetup_24',['GroupSetup',['../_group_setup_8h.html#a3f4b0a963f7923252c6b3a62fe3ba94a',1,'GroupSetup.h']]],
+  ['groupsetup_2eh_25',['GroupSetup.h',['../_group_setup_8h.html',1,'']]],
+  ['groupsetupasync_26',['GroupSetupAsync',['../_group_setup_async_8h.html#a36bbc55a44f9fe5dac756063d1915816',1,'GroupSetupAsync.h']]],
+  ['groupsetupasync_2eh_27',['GroupSetupAsync.h',['../_group_setup_async_8h.html',1,'']]],
+  ['groupteardown_28',['GroupTeardown',['../_group_teardown_8h.html#a3feb8ce6a713b760e5a7e41a124cce56',1,'GroupTeardown.h']]],
+  ['groupteardown_2eh_29',['GroupTeardown.h',['../_group_teardown_8h.html',1,'']]],
+  ['groupteardownasync_30',['GroupTeardownAsync',['../_group_teardown_async_8h.html#a30056105d0ef96f87e4b49ebefe631f0',1,'GroupTeardownAsync.h']]],
+  ['groupteardownasync_2eh_31',['GroupTeardownAsync.h',['../_group_teardown_async_8h.html',1,'']]]
 ];

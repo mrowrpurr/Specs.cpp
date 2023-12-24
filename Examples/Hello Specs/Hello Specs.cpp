@@ -29,3 +29,7 @@ Describe("Describe 1") {
         _Log_("Hi from test, the current group is: {}", current_group->description());
     });
 }
+
+DescribeFn(This_is_my_describe) {
+    test("some test", []() { _Log_("Hi from test!"); });
+}

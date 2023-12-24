@@ -99,9 +99,17 @@ namespace SpecsCpp {
             _testTemplateGroups[templateName.data()] = std::move(templateGroup);
         }
 
-        void define_group(std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_group(
+            std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock,
+            bool removeUnderscores = false
+        ) {
             if (auto* group = get()) {
-                auto  specGroup    = std::make_unique<SpecGroup>(get(), description);
+                std::string descriptionText{description};
+                if (removeUnderscores) {
+                    std::replace(descriptionText.begin(), descriptionText.end(), '_', ' ');
+                    description = descriptionText;
+                }
+                auto  specGroup    = std::make_unique<SpecGroup>(get(), descriptionText);
                 auto* specGroupPtr = specGroup.get();
                 _registeredGroups.push_back(std::move(specGroup));
                 group->add_group(_registeredGroups.back().get());

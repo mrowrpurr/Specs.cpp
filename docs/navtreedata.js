@@ -86,22 +86,24 @@ var NAVTREE =
         [ "Nesting child groups", "md__documentation_2_writing_tests.html#autotoc_md45", [
           [ "TestGroup", "md__documentation_2_writing_tests.html#autotoc_md46", null ],
           [ "StartTestGroup / EndTestGroup", "md__documentation_2_writing_tests.html#autotoc_md47", null ],
-          [ "Describe", "md__documentation_2_writing_tests.html#autotoc_md48", null ]
+          [ "Describe", "md__documentation_2_writing_tests.html#autotoc_md48", [
+            [ "Lambda syntax", "md__documentation_2_writing_tests.html#autotoc_md49", null ]
+          ] ]
         ] ]
       ] ]
     ] ],
     [ "🏃‍♀️ Running Tests", "md__documentation_2_running_tests.html", [
-      [ "foo", "md__documentation_2_running_tests.html#autotoc_md50", null ],
-      [ "bar", "md__documentation_2_running_tests.html#autotoc_md51", null ]
+      [ "foo", "md__documentation_2_running_tests.html#autotoc_md52", null ],
+      [ "bar", "md__documentation_2_running_tests.html#autotoc_md53", null ]
     ] ],
     [ "📂 Project Layout", "md__documentation_2_project_layout.html", null ],
     [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
-      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md54", [
-        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md55", [
-          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md56", null ],
-          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md57", null ]
+      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md56", [
+        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md57", [
+          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md58", null ],
+          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md59", null ]
         ] ],
-        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md58", null ]
+        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md60", null ]
       ] ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
@@ -152,12 +154,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_p_i_8h.html",
-"_print_color_8h.html#a710499b33e1c7256c823756a3963ab95a852721aa5fc738dfedff2945d71da439",
-"class_specs_cpp_1_1_global_spec_group.html#ac792518391600e1e53ee6cb1e49f9c0f",
-"class_specs_cpp_1_1_spec_reporter_collection.html#a01e5f6973d9fe59f033e80c2b89b1bba",
-"md__documentation_2_quick_start.html#autotoc_md5",
-"struct_specs_cpp_1_1_i_spec_data_value.html",
-"struct_specs_cpp_1_1_i_spec_runner_collection.html"
+"_print_color_8h.html#a710499b33e1c7256c823756a3963ab95a114c3050111d8b8ddd830b99ccebd246",
+"class_specs_cpp_1_1_global_spec_group.html#ac2308716a2ed79c63148e79caf649895",
+"class_specs_cpp_1_1_spec_has_code_block.html#a9ccf45eff7b476515cb23e0ea6dc147e",
+"md__documentation_2_macros.html",
+"struct_specs_cpp_1_1_i_spec_component.html#a6abe9fe58c72a16cb225881675587274",
+"struct_specs_cpp_1_1_i_spec_runner.html#aab6743e28517450b637148ced13fc47c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
