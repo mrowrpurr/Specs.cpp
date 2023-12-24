@@ -28,6 +28,7 @@ namespace SpecsCpp {
 
             int _timeoutMs = 0;
 
+            bool                                           _currentlySkippingTests  = false;
             int                                            _setupGroupsRun          = 0;
             std::unique_ptr<std::promise<ISpecRunResult*>> _currentRunResultPromise = nullptr;
             ISpec*                                         _currentSpec             = nullptr;
@@ -81,7 +82,6 @@ namespace SpecsCpp {
                 if (strlen(group->description()) == 0) return true;
 
                 if (group->skip()) return false;
-                if (group->data()->has("skip")) return false;
                 if (description_matches(group->full_description(), filter_text())) return true;
                 if (description_matches(group->description(), group_filter_text())) return true;
                 if (regex_description_matches(group->full_description(), regex_filter_text()))
@@ -96,7 +96,6 @@ namespace SpecsCpp {
 
             inline bool should_run_spec(ISpec* spec) {
                 if (spec->skip()) return false;
-                if (spec->data()->has("skip")) return false;
                 if (description_matches(spec->full_description(), filter_text())) return true;
                 if (description_matches(spec->description(), spec_filter_text())) return true;
                 if (regex_description_matches(spec->full_description(), regex_filter_text()))
@@ -184,7 +183,7 @@ namespace SpecsCpp {
             };
 
             void foreach_spec_in_group(ISpec* spec) {
-                if (list_only() || !should_run_spec(spec)) {
+                if (_currentlySkippingTests || list_only() || !should_run_spec(spec)) {
                     auto result = SpecRunResult::not_run(spec, spec);
                     _reporters->report_spec_result(result.get());
                     _resultTotalCounts.increment_not_run();
@@ -296,16 +295,29 @@ namespace SpecsCpp {
                 _currentSpecFailureMessage.clear();
                 _currentResult = nullptr;
 
+                if (_currentlySkippingTests) {
+                    group->foreach_spec(&_forEachSpecInGroupFn);
+                    group->foreach_group(&_forEachGroupInGroupFn);
+                    return;
+                }
+
+                bool shouldRun          = should_run_group(group);
+                _currentlySkippingTests = !shouldRun;
+
                 // Run the group's one time setups
-                group->foreach_one_time_setup(&_forEachSetupInGroupFn);
+                if (!_currentlySkippingTests)
+                    group->foreach_one_time_setup(&_forEachSetupInGroupFn);
 
                 group->foreach_spec(&_forEachSpecInGroupFn);
                 group->foreach_group(&_forEachGroupInGroupFn);
 
                 // Run the group's one time teardowns
-                group->foreach_one_time_teardown(&_forEachTeardownInGroupFn);
+                if (!_currentlySkippingTests)
+                    group->foreach_one_time_teardown(&_forEachTeardownInGroupFn);
 
                 group->variables()->clear();
+
+                _currentlySkippingTests = false;
             }
 
             FunctionPointer<void(ISpecGroup*)> _forEachGroupInGroupFn{
@@ -313,25 +325,30 @@ namespace SpecsCpp {
             };
 
             void run_group(ISpecGroup* group) {
-                if (should_run_group(group)) {
-                    // TODO group these into an inline function:
-                    _currentSpec       = nullptr;
-                    _currentSpecFailed = false;
-                    _currentSpecFailureMessage.clear();
-                    _currentResult = nullptr;
+                bool shouldRun          = should_run_group(group);
+                _currentlySkippingTests = !shouldRun;
 
-                    // Run the group's one time setups
+                // TODO group these into an inline function:
+                _currentSpec       = nullptr;
+                _currentSpecFailed = false;
+                _currentSpecFailureMessage.clear();
+                _currentResult = nullptr;
+
+                // Run the group's one time setups
+                if (!_currentlySkippingTests)
                     group->foreach_one_time_setup(&_forEachSetupInGroupFn);
 
-                    // Run the specs
-                    group->foreach_spec(&_forEachSpecInGroupFn);
+                // Run the specs
+                group->foreach_spec(&_forEachSpecInGroupFn);
 
-                    // Run any child groups
-                    group->foreach_group(&_forEachGroupInGroupFn);
+                // Run any child groups
+                group->foreach_group(&_forEachGroupInGroupFn);
 
-                    // Run the group's one time teardowns
+                // Run the group's one time teardowns
+                if (!_currentlySkippingTests)
                     group->foreach_one_time_teardown(&_forEachTeardownInGroupFn);
-                }
+
+                _currentlySkippingTests = false;
             }
 
         public:
@@ -358,7 +375,6 @@ namespace SpecsCpp {
         ) override {
             if (options && options->has(DEFAULT_TIMEOUT_MS_OPTION_KEY)) {
                 int timeoutMs = options->get(DEFAULT_TIMEOUT_MS_OPTION_KEY)->int_value();
-                _Log_("Configured timeout milliseconds: {}", timeoutMs);
                 SpecSuiteRunInstance(reporters, options, timeoutMs).run(group, callback);
             } else {
                 SpecSuiteRunInstance(reporters, options).run(group, callback);

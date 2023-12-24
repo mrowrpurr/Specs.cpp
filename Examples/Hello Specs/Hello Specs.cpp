@@ -1,6 +1,9 @@
-#define SPEC_GROUP Hello_Specs
+#define SPEC_FILE Hello_Specs
 
 #include "SpecHelper.h"  // IWYU pragma: keep
+
+Skip();
+TestGroup("Hello Specs");
 
 TestAsync("Async Test") {
     _Log_("Hello from Async Test");
@@ -39,8 +42,10 @@ Test("Test Two") { _Log_("Hello from Test Two"); }
 
 Test("Test Three") { _Log_("Hello from Test Three"); }
 
+Skip();
 TestGroup("Group 2");
 
+// Skip();
 Test("Test Four") { _Log_("Hello from Test Four"); }
 
 Describe("Describe 1") {

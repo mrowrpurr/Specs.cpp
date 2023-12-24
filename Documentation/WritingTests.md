@@ -202,6 +202,17 @@ Test("Test Something!") {
 
 That's it!
 
+## Skipping Tests
+
+If you would like to skip a test, e.g. temporarily, you can mark it with `Skip()`.
+
+```cpp
+Skip();
+Test("Test Something!") {
+    // Test code and assertions go here...
+}
+```
+
 # Async Tests
 
 Creating tests with long-running code is just as easy!

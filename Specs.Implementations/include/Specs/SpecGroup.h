@@ -88,9 +88,7 @@ namespace SpecsCpp {
             _oneTimeTeardowns.push_back(teardown);
         }
 
-        const char* full_description() const override {
-            return _fullDescription.empty() ? nullptr : _fullDescription.c_str();
-        }
+        const char* full_description() const override { return _fullDescription.c_str(); }
 
         void merge(ISpecGroup* other) override {
             other->foreach_group(&_merge_child_groups_fn);

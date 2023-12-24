@@ -45,9 +45,6 @@ namespace SpecsCpp {
         SpecTagCollection       _tagsForNextComponent;
 
         void component_defined(ISpecComponent* component) {
-            component->data()->merge(&_metaDataForNextComponent);
-            component->tags()->merge(&_tagsForNextComponent);
-
             // Built-in support for "skip"
             if (_metaDataForNextComponent.has(META_DATA_KEY_SKIP)) {
                 auto skip = _metaDataForNextComponent.get(META_DATA_KEY_SKIP)->bool_value();
@@ -63,6 +60,8 @@ namespace SpecsCpp {
                 }
             }
 
+            component->data()->merge(&_metaDataForNextComponent);
+            component->tags()->merge(&_tagsForNextComponent);
             _metaDataForNextComponent.clear();
             _tagsForNextComponent.clear();
         }
