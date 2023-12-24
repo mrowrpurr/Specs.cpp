@@ -135,6 +135,11 @@ namespace SpecsCpp {
         virtual IVoidPointer* get(const char* name) const                                    = 0;
         virtual void          foreach_variable(ForEachVariableFn*) const                     = 0;
         virtual void          clear()                                                        = 0;
+
+        void foreach_variable(std::function<void(IVoidPointer*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_variable(callback.get());
+        }
     };
 
     struct ISpecComponent {
@@ -300,6 +305,31 @@ namespace SpecsCpp {
         virtual void foreach_one_time_setup(ForEachSetupFn*) const       = 0;
         virtual void foreach_one_time_teardown(ForEachTeardownFn*) const = 0;
         virtual void merge(ISpecGroup*)                                  = 0;
+
+        void foreach_group(std::function<void(ISpecGroup*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_group(callback.get());
+        }
+        void foreach_spec(std::function<void(ISpec*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_spec(callback.get());
+        }
+        void foreach_setup(std::function<void(ISpecSetup*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_setup(callback.get());
+        }
+        void foreach_teardown(std::function<void(ISpecTeardown*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_teardown(callback.get());
+        }
+        void foreach_one_time_setup(std::function<void(ISpecSetup*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_one_time_setup(callback.get());
+        }
+        void foreach_one_time_teardown(std::function<void(ISpecTeardown*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_one_time_teardown(callback.get());
+        }
     };
 
     struct ISpec : virtual public ISpecComponent,
@@ -339,6 +369,11 @@ namespace SpecsCpp {
         virtual ~ILocalSpecExceptionHandlerCollection()                          = default;
         virtual void register_exception_handler(ILocalSpecExceptionHandler*)     = 0;
         virtual void foreach_exception_handler(ForEachExceptionHandlerFn*) const = 0;
+
+        void foreach_exception_handler(std::function<void(ILocalSpecExceptionHandler*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_exception_handler(callback.get());
+        }
     };
 
     struct ISpecSuiteRunResult {
@@ -369,6 +404,11 @@ namespace SpecsCpp {
         virtual bool           has(const char* name) const                = 0;
         virtual ISpecReporter* get(const char* name) const                = 0;
         virtual void           foreach_reporter(ForEachReporterFn*) const = 0;
+
+        void foreach_reporter(std::function<void(ISpecReporter*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_reporter(callback.get());
+        }
 
         virtual void report_start()                            = 0;
         virtual void report_spec_begin(ISpec*)                 = 0;
@@ -406,6 +446,11 @@ namespace SpecsCpp {
         virtual bool         has(const char* name) const            = 0;
         virtual ISpecRunner* get(const char* name) const            = 0;
         virtual void         foreach_runner(ForEachRunnerFn*) const = 0;
+
+        void foreach_runner(std::function<void(ISpecRunner*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_runner(callback.get());
+        }
     };
 
     struct ISpecEnvironment {
