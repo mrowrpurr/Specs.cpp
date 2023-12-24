@@ -60,7 +60,7 @@ var NAVTREE =
         ] ]
       ] ]
     ] ],
-    [ "🎓 Writing Tests", "md__documentation_2_writing_tests.html", [
+    [ "✏️ Writing Tests", "md__documentation_2_writing_tests.html", [
       [ "Creating a project", "md__documentation_2_writing_tests.html#autotoc_md28", [
         [ "Entrypoint", "md__documentation_2_writing_tests.html#autotoc_md29", null ]
       ] ],
@@ -75,49 +75,61 @@ var NAVTREE =
       [ "Tests", "md__documentation_2_writing_tests.html#autotoc_md36", [
         [ "Skipping Tests", "md__documentation_2_writing_tests.html#autotoc_md37", null ]
       ] ],
-      [ "Async Tests", "md__documentation_2_writing_tests.html#autotoc_md38", null ],
-      [ "Test assertions", "md__documentation_2_writing_tests.html#autotoc_md39", [
-        [ "Snowhouse assertions", "md__documentation_2_writing_tests.html#autotoc_md40", null ],
-        [ "libassert assertions", "md__documentation_2_writing_tests.html#autotoc_md41", null ]
+      [ "Async Tests", "md__documentation_2_writing_tests.html#autotoc_md38", [
+        [ "Async timeout", "md__documentation_2_writing_tests.html#autotoc_md39", null ]
       ] ],
-      [ "Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md42", [
-        [ "Asynchronous Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md43", null ]
+      [ "Test assertions", "md__documentation_2_writing_tests.html#autotoc_md40", [
+        [ "Snowhouse assertions", "md__documentation_2_writing_tests.html#autotoc_md41", null ],
+        [ "libassert assertions", "md__documentation_2_writing_tests.html#autotoc_md42", null ]
       ] ],
-      [ "Test Groups", "md__documentation_2_writing_tests.html#autotoc_md44", [
-        [ "Unique test group for each file", "md__documentation_2_writing_tests.html#autotoc_md45", null ],
-        [ "Nesting child groups", "md__documentation_2_writing_tests.html#autotoc_md46", [
-          [ "TestGroup", "md__documentation_2_writing_tests.html#autotoc_md47", null ],
-          [ "StartTestGroup / EndTestGroup", "md__documentation_2_writing_tests.html#autotoc_md48", null ],
-          [ "Describe", "md__documentation_2_writing_tests.html#autotoc_md49", [
-            [ "Lambda syntax", "md__documentation_2_writing_tests.html#autotoc_md50", null ]
+      [ "Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md43", [
+        [ "Asynchronous Setup and Teardown", "md__documentation_2_writing_tests.html#autotoc_md44", null ]
+      ] ],
+      [ "Test Groups", "md__documentation_2_writing_tests.html#autotoc_md45", [
+        [ "Unique test group for each file", "md__documentation_2_writing_tests.html#autotoc_md46", null ],
+        [ "Nesting child groups", "md__documentation_2_writing_tests.html#autotoc_md47", [
+          [ "TestGroup", "md__documentation_2_writing_tests.html#autotoc_md48", null ],
+          [ "StartTestGroup / EndTestGroup", "md__documentation_2_writing_tests.html#autotoc_md49", null ],
+          [ "Describe", "md__documentation_2_writing_tests.html#autotoc_md50", [
+            [ "Lambda syntax", "md__documentation_2_writing_tests.html#autotoc_md51", null ]
           ] ]
         ] ]
       ] ]
     ] ],
     [ "🏃‍♀️ Running Tests", "md__documentation_2_running_tests.html", [
-      [ "foo", "md__documentation_2_running_tests.html#autotoc_md53", null ],
-      [ "bar", "md__documentation_2_running_tests.html#autotoc_md54", null ]
-    ] ],
-    [ "📂 Project Layout", "md__documentation_2_project_layout.html", null ],
-    [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
-      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md57", [
-        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md58", [
-          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md59", null ],
-          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md60", null ]
-        ] ],
-        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md61", null ]
-      ] ]
+      [ "Specs executable project", "md__documentation_2_running_tests.html#autotoc_md54", [
+        [ "<Specs/Main.h>", "md__documentation_2_running_tests.html#autotoc_md55", null ]
+      ] ],
+      [ "Run executable project", "md__documentation_2_running_tests.html#autotoc_md56", [
+        [ "Running tests", "md__documentation_2_running_tests.html#autotoc_md57", null ],
+        [ "Help documentation", "md__documentation_2_running_tests.html#autotoc_md58", null ]
+      ] ],
+      [ "Command-Line Options", "md__documentation_2_running_tests.html#autotoc_md59", null ],
+      [ "Test runners", "md__documentation_2_running_tests.html#autotoc_md60", null ],
+      [ "Test reporters", "md__documentation_2_running_tests.html#autotoc_md61", null ]
     ] ],
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
+    [ "📂 Project Layout", "md__documentation_2_project_layout.html", null ],
+    [ "✔️ Assertion Libraries", "md__documentation_2_assertion_libraries.html", [
+      [ "Assertion Libraries", "md__documentation_2_assertion_libraries.html#autotoc_md65", [
+        [ "snowhouse", "md__documentation_2_assertion_libraries.html#autotoc_md66", [
+          [ "Setup", "md__documentation_2_assertion_libraries.html#autotoc_md67", null ],
+          [ "Usage", "md__documentation_2_assertion_libraries.html#autotoc_md68", null ]
+        ] ],
+        [ "libassert", "md__documentation_2_assertion_libraries.html#autotoc_md69", null ]
+      ] ]
+    ] ],
     [ "📋 Shared Code Templates", "md__documentation_2_templates.html", null ],
     [ "💲 Test Variables", "md__documentation_2_variables.html", null ],
     [ "🎟️ Test Tags", "md__documentation_2_tags.html", null ],
     [ "🛢️ Test Data", "md__documentation_2_data.html", null ],
     [ "💥 Exception Handling", "md__documentation_2_exceptions.html", null ],
+    [ "🏎️ Test Runners", "md__documentation_2_runners.html", null ],
+    [ "🗣️ Test Reporters", "md__documentation_2_reporters.html", null ],
     [ "💾 Shared Libraries", "md__documentation_2_shared_libraries.html", null ],
     [ "📖 Syntax Reference", "md__documentation_2_syntax_reference.html", null ],
     [ "🖋️ Customizing Syntax", "md__documentation_2_custom_syntax.html", null ],
-    [ "✏️ Available Macros", "md__documentation_2_macros.html", null ],
+    [ "🪄 Available Macros", "md__documentation_2_macros.html", null ],
     [ "🧐 Examples", "md__documentation_2_examples.html", null ],
     [ "🤝 CONTRIBUTING", "md__documentation_2_c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
     [ "💖 LICENSE (0BSD)", "md__documentation_2_l_i_c_e_n_s_e.html", null ],
@@ -162,8 +174,8 @@ var NAVTREEINDEX =
 "class_specs_cpp_1_1_global_spec_group.html",
 "class_specs_cpp_1_1_spec_done.html",
 "functions_func_c.html",
-"namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a752cf78b8bed09f01a402e9866bd4bcd",
-"struct_specs_cpp_1_1_i_spec_has_code_block.html#ac25968412d9de15336db5323c0e616e1"
+"namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#a370721052fdbde941df5daa8e6eb5c58",
+"struct_specs_cpp_1_1_i_spec_group.html#ac3c88771cbfaeed06fc2daa94b5ed46d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

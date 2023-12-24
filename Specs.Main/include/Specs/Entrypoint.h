@@ -152,9 +152,9 @@ namespace SpecsCpp {
             _runner.run(_specs.root_group(), &_reporters, &_runnerOptions, &_onSuiteComplete);
 
             if (_totalTests == 0) {
-                std::cout << "No tests found." << std::endl;
+                std::cout << "No tests found.\n" << std::endl;
                 std::cout << options.help() << std::endl;
-                return 1;
+                return 0;
             }
 
             return _returnCode;

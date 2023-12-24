@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🎓_20writing_20tests_0',['🎓 Writing Tests',['../md__documentation_2_writing_tests.html',1,'']]]
+  ['🎟️_20test_20tags_0',['🎟️ Test Tags',['../md__documentation_2_tags.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['✏️_20available_20macros_0',['✏️ Available Macros',['../md__documentation_2_macros.html',1,'']]]
+  ['✏️_20writing_20tests_0',['✏️ Writing Tests',['../md__documentation_2_writing_tests.html',1,'']]]
 ];

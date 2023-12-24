@@ -1,4 +1,4 @@
-# 🎓 Writing Tests
+# ✏️ Writing Tests
 
 [TOC]
 
@@ -228,7 +228,7 @@ TestAsync("Test Something Async!") {
 
 If an async test does not call `done()` within a configurable timeout, the test will fail with a timeout error.
 
-> ℹ️ Default timeout milliseconds can be configured via the `-t/--timeout` option
+## Async timeout
 
 You can override the default timeout milliseconds using `SetTimeout`.
 
@@ -241,6 +241,8 @@ TestAsync("Test Something Async!") {
     done();
 }
 ```
+
+> ℹ️ Default timeout milliseconds can be configured via the `-t/--timeout` option
 
 # Test assertions
 
