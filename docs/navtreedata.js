@@ -109,6 +109,8 @@ var NAVTREE =
     [ "▶️ Command-Line Interface", "md__documentation_2_c_l_i.html", null ],
     [ "📋 Shared Code Templates", "md__documentation_2_templates.html", null ],
     [ "💲 Test Variables", "md__documentation_2_variables.html", null ],
+    [ "🎟️ Test Tags", "md__documentation_2_tags.html", null ],
+    [ "🛢️ Test Data", "md__documentation_2_data.html", null ],
     [ "💥 Exception Handling", "md__documentation_2_exceptions.html", null ],
     [ "💾 Shared Libraries", "md__documentation_2_shared_libraries.html", null ],
     [ "📖 Syntax Reference", "md__documentation_2_syntax_reference.html", null ],
@@ -154,12 +156,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_p_i_8h.html",
-"_print_color_8h.html#a710499b33e1c7256c823756a3963ab95a114c3050111d8b8ddd830b99ccebd246",
-"class_specs_cpp_1_1_global_spec_group.html#ac2308716a2ed79c63148e79caf649895",
-"class_specs_cpp_1_1_spec_has_code_block.html#a9ccf45eff7b476515cb23e0ea6dc147e",
-"md__documentation_2_macros.html",
-"struct_specs_cpp_1_1_i_spec_component.html#a6abe9fe58c72a16cb225881675587274",
-"struct_specs_cpp_1_1_i_spec_runner.html#aab6743e28517450b637148ced13fc47c"
+"_print_color_8h.html#a6c09f408be24e973fddbb8a4bf66e410a9594eec95be70e7b1710f730fdda33d9",
+"class_specs_cpp_1_1_global_spec_group.html#a0d5da07c4124e60982533daad444f69b",
+"class_specs_cpp_1_1_spec_environment.html#a10cedfc0c8c605e693778c63f9da3938",
+"functions_func_m.html",
+"namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html#adf72bf36262e185ca194d52b78a28c69",
+"struct_specs_cpp_1_1_i_spec_has_variables.html#a584341faa0e168b8ec503f70821349d9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

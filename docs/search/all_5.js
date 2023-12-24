@@ -9,5 +9,6 @@ var searchData=
   ['entrypoint_2eh_6',['Entrypoint.h',['../_specs_8_d_l_l_2include_2_specs_2_d_l_l_2_entrypoint_8h.html',1,'(Global Namespace)'],['../_specs_8_main_2include_2_specs_2_entrypoint_8h.html',1,'(Global Namespace)']]],
   ['examples_2emd_7',['Examples.md',['../_examples_8md.html',1,'']]],
   ['exceptions_2emd_8',['Exceptions.md',['../_exceptions_8md.html',1,'']]],
-  ['exists_9',['exists',['../struct_specs_cpp_1_1_i_spec_variable_collection.html#a90e876b42dd598cfbcfec4ea9e78425d',1,'SpecsCpp::ISpecVariableCollection::exists()'],['../class_specs_cpp_1_1_spec_variable_collection.html#a21d6c8529a2c87ce9ef35912f36181ae',1,'SpecsCpp::SpecVariableCollection::exists()']]]
+  ['exclude_5ftags_5foption_5fkey_9',['EXCLUDE_TAGS_OPTION_KEY',['../struct_specs_cpp_1_1_i_spec_runner.html#ab4ca7ae584ccc5d8b3bebe619afee315',1,'SpecsCpp::ISpecRunner']]],
+  ['exists_10',['exists',['../struct_specs_cpp_1_1_i_spec_variable_collection.html#a90e876b42dd598cfbcfec4ea9e78425d',1,'SpecsCpp::ISpecVariableCollection::exists()'],['../class_specs_cpp_1_1_spec_variable_collection.html#a21d6c8529a2c87ce9ef35912f36181ae',1,'SpecsCpp::SpecVariableCollection::exists()']]]
 ];

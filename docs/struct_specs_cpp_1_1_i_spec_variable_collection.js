@@ -5,6 +5,7 @@ var struct_specs_cpp_1_1_i_spec_variable_collection =
     [ "clear", "struct_specs_cpp_1_1_i_spec_variable_collection.html#a9aae00c2460d0c8a62b7c88fb0ffef16", null ],
     [ "exists", "struct_specs_cpp_1_1_i_spec_variable_collection.html#a90e876b42dd598cfbcfec4ea9e78425d", null ],
     [ "foreach_variable", "struct_specs_cpp_1_1_i_spec_variable_collection.html#a2a3c411f9e5492c357ee40efec1e3488", null ],
+    [ "foreach_variable", "struct_specs_cpp_1_1_i_spec_variable_collection.html#a0d3533fdaefc0b0d3f91c51657881f56", null ],
     [ "get", "struct_specs_cpp_1_1_i_spec_variable_collection.html#a23630f7b7dd5ed462158479e770289b1", null ],
     [ "is_destructable", "struct_specs_cpp_1_1_i_spec_variable_collection.html#a7f0d7486e026352fbbf1e275f5782e3d", null ],
     [ "set", "struct_specs_cpp_1_1_i_spec_variable_collection.html#a1d7c8b8f7203a06a6e555c729afb2ee1", null ],

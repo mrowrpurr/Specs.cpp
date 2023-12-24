@@ -17,6 +17,7 @@ var dir_870284eeb8008b237c042cc982967e3a =
     [ "SpecRunResult.h", "_spec_run_result_8h.html", "_spec_run_result_8h" ],
     [ "SpecSetup.h", "_spec_setup_8h.html", "_spec_setup_8h" ],
     [ "SpecSuiteRunResult.h", "_spec_suite_run_result_8h.html", "_spec_suite_run_result_8h" ],
+    [ "SpecTagCollection.h", "_spec_tag_collection_8h.html", "_spec_tag_collection_8h" ],
     [ "SpecTeardown.h", "_spec_teardown_8h.html", "_spec_teardown_8h" ],
     [ "SpecTest.h", "_spec_test_8h.html", "_spec_test_8h" ],
     [ "SpecVariableCollection.h", "_spec_variable_collection_8h.html", "_spec_variable_collection_8h" ]

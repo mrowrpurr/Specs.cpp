@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📖_20syntax_20reference_0',['📖 Syntax Reference',['../md__documentation_2_syntax_reference.html',1,'']]]
+  ['📋_20shared_20code_20templates_0',['📋 Shared Code Templates',['../md__documentation_2_templates.html',1,'']]]
 ];

@@ -305,9 +305,18 @@ Async Tests</h1>
 <div class="ttc" id="a_test_async_8h_html_a55cf16f340096b7ce195f305e8297853"><div class="ttname"><a href="_test_async_8h.html#a55cf16f340096b7ce195f305e8297853">TestAsync</a></div><div class="ttdeci">#define TestAsync(description)</div><div class="ttdef"><b>Definition</b> TestAsync.h:5</div></div>
 </div><!-- fragment --><p>If an async test does not call <code>done()</code> within a configurable timeout, the test will fail with a timeout error.</p>
 <blockquote class="doxtable">
-<p>&zwj;ℹ️ Timeout milliseconds can be configured via the <code>-t/--timeout</code> option </p>
+<p>&zwj;ℹ️ Default timeout milliseconds can be configured via the <code>-t/--timeout</code> option </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md38"></a>
+<p>You can override the default timeout milliseconds using <code>SetTimeout</code>.</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="_set_timeout_8h.html#a7dbb7bab833359e6e772aeaacf712dc3">SetTimeout</a>(5000)</div>
+<div class="line"><a class="code hl_define" href="_test_async_8h.html#a55cf16f340096b7ce195f305e8297853">TestAsync</a>(&quot;<a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a> Something Async!&quot;) {</div>
+<div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// Once your code is done, call `done()` to mark the test as finished.</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="ttc" id="a_set_timeout_8h_html_a7dbb7bab833359e6e772aeaacf712dc3"><div class="ttname"><a href="_set_timeout_8h.html#a7dbb7bab833359e6e772aeaacf712dc3">SetTimeout</a></div><div class="ttdeci">#define SetTimeout(valueMs)</div><div class="ttdef"><b>Definition</b> SetTimeout.h:5</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md38"></a>
 Test assertions</h1>
 <p>Tests aren't particularly useful without assertions!</p>
 <p><code>Specs</code> provides built-in support for catching exceptions thrown during test execution.</p>
@@ -473,7 +482,27 @@ Asynchronous Setup and Teardown</h2>
 <div class="line">}</div>
 <div class="ttc" id="a_setup_async_8h_html_a72b3ca81f0df62c54c095dd8fe4cf0f5"><div class="ttname"><a href="_setup_async_8h.html#a72b3ca81f0df62c54c095dd8fe4cf0f5">SetupAsync</a></div><div class="ttdeci">#define SetupAsync</div><div class="ttdef"><b>Definition</b> SetupAsync.h:5</div></div>
 <div class="ttc" id="a_teardown_async_8h_html_a5843afae630c9773fbd3c715255d8dcf"><div class="ttname"><a href="_teardown_async_8h.html#a5843afae630c9773fbd3c715255d8dcf">TeardownAsync</a></div><div class="ttdeci">#define TeardownAsync</div><div class="ttdef"><b>Definition</b> TeardownAsync.h:5</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md43"></a>
+</div><!-- fragment --><p>Just like <code>TestAsync</code>, if an async setup/teardown does not call <code>done()</code> within a configurable timeout, the test will fail with a timeout error.</p>
+<p>Just like <code>TestAsync</code>, you can override the default timeout milliseconds using <code>SetTimeout</code>.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_set_timeout_8h.html#a7dbb7bab833359e6e772aeaacf712dc3">SetTimeout</a>(30000)</div>
+<div class="line">OneTimeSetupAsync {</div>
+<div class="line">    <span class="comment">// Async setup code goes here...</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_set_timeout_8h.html#a7dbb7bab833359e6e772aeaacf712dc3">SetTimeout</a>(100)</div>
+<div class="line">OneTimeTeardownAsync {</div>
+<div class="line">    <span class="comment">// Async teardown code goes here...</span></div>
+<div class="line">    done();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ... SetTimeout() works for all async setup/teardown macros ...</span></div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;ℹ️ Default timeout milliseconds can be configured via the <code>-t/--timeout</code> option </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md43"></a>
 Test Groups</h1>
 <p>Grouping your tests is a critical part of writing tests.</p>
 <p>It is recommended to use <code>#define SPEC_GROUP UNIQUE_NAME</code> to define a group for each <code>.cpp</code> file containing tests.</p>

@@ -2,6 +2,9 @@ var class_specs_cpp_1_1_global_spec_group =
 [
     [ "GlobalSpecGroup", "class_specs_cpp_1_1_global_spec_group.html#ac2308716a2ed79c63148e79caf649895", null ],
     [ "GlobalSpecGroup", "class_specs_cpp_1_1_global_spec_group.html#ac792518391600e1e53ee6cb1e49f9c0f", null ],
+    [ "add_meta_data_for_next_component", "class_specs_cpp_1_1_global_spec_group.html#aa428d84f1e823e9ca956a66e5d03963c", null ],
+    [ "add_tag_for_next_component", "class_specs_cpp_1_1_global_spec_group.html#a0bd4be1b6bb2726be6e2952a2f238d0c", null ],
+    [ "add_tags_for_next_component", "class_specs_cpp_1_1_global_spec_group.html#add77cfe65db1ba6f2debccc6a7a18333", null ],
     [ "clear_file_group", "class_specs_cpp_1_1_global_spec_group.html#a321ff290fbf4a4e629b27a23c9415693", null ],
     [ "clear_group_stack", "class_specs_cpp_1_1_global_spec_group.html#a32b24a309be88c5f4217af1cd9ae354f", null ],
     [ "clear_top_level_group", "class_specs_cpp_1_1_global_spec_group.html#a0fc4496366c1c4c0dd4628737bcc1d78", null ],

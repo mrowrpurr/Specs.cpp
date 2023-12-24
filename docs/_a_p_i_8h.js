@@ -2,6 +2,7 @@ var _a_p_i_8h =
 [
     [ "SpecsCpp::ISpecDataValue", "struct_specs_cpp_1_1_i_spec_data_value.html", "struct_specs_cpp_1_1_i_spec_data_value" ],
     [ "SpecsCpp::ISpecDataValueCollection", "struct_specs_cpp_1_1_i_spec_data_value_collection.html", "struct_specs_cpp_1_1_i_spec_data_value_collection" ],
+    [ "SpecsCpp::ISpecTagCollection", "struct_specs_cpp_1_1_i_spec_tag_collection.html", "struct_specs_cpp_1_1_i_spec_tag_collection" ],
     [ "SpecsCpp::ISpecVariableCollection", "struct_specs_cpp_1_1_i_spec_variable_collection.html", "struct_specs_cpp_1_1_i_spec_variable_collection" ],
     [ "SpecsCpp::ISpecComponent", "struct_specs_cpp_1_1_i_spec_component.html", "struct_specs_cpp_1_1_i_spec_component" ],
     [ "SpecsCpp::ISpecRunResult", "struct_specs_cpp_1_1_i_spec_run_result.html", "struct_specs_cpp_1_1_i_spec_run_result" ],

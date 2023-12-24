@@ -180,6 +180,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a67d882b78cdf663562209255b7ff3388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33f439b44009b05dbd5202069fb6489a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a33f439b44009b05dbd5202069fb6489a">is_pointer</a> () const override</td></tr>
 <tr class="separator:a33f439b44009b05dbd5202069fb6489a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc7382e84e4b0c16b6fb4cb6ca637ecd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#abc7382e84e4b0c16b6fb4cb6ca637ecd">to_string</a> () override</td></tr>
+<tr class="separator:abc7382e84e4b0c16b6fb4cb6ca637ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_struct_specs_cpp_1_1_i_spec_data_value')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">SpecsCpp::ISpecDataValue</a></td></tr>
 <tr class="memitem:a696ff969e6b2b689f7b01750f00c19f6 inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a696ff969e6b2b689f7b01750f00c19f6">~ISpecDataValue</a> ()=default</td></tr>
 <tr class="separator:a696ff969e6b2b689f7b01750f00c19f6 inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +217,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aad3ae76363a52e15c929d131e381f836 inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566741a255df1e8bdc802fa1d1530cda inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a566741a255df1e8bdc802fa1d1530cda">pointer_value</a> (IVoidPointer *)=0</td></tr>
 <tr class="separator:a566741a255df1e8bdc802fa1d1530cda inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a357213497d656f0e8cc893a7d4d0081e inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a357213497d656f0e8cc893a7d4d0081e">to_string</a> ()=0</td></tr>
+<tr class="separator:a357213497d656f0e8cc893a7d4d0081e inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac90bfcea486485d69f3f5d24b043206f inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#ac90bfcea486485d69f3f5d24b043206f">is_bool</a> () const =0</td></tr>
 <tr class="separator:ac90bfcea486485d69f3f5d24b043206f inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a419d1ef3662bd778e1e4f5a8a076c1c9 inherit pub_methods_struct_specs_cpp_1_1_i_spec_data_value"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a419d1ef3662bd778e1e4f5a8a076c1c9">is_int</a> () const =0</td></tr>
@@ -244,6 +248,20 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:afe3f7f4139745940a0c99ab17cf14438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2893b87e880f8c7b462c755c48b60b3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#ae2893b87e880f8c7b462c755c48b60b3">create_pointer</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, IVoidPointer *value)</td></tr>
 <tr class="separator:ae2893b87e880f8c7b462c755c48b60b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dd7a1cf35890eaa3e5f0b755067a03d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a3dd7a1cf35890eaa3e5f0b755067a03d">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, bool value)</td></tr>
+<tr class="separator:a3dd7a1cf35890eaa3e5f0b755067a03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b2e204b3ca0e0cdf145d5e7ec2356c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#ab8b2e204b3ca0e0cdf145d5e7ec2356c">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, int value)</td></tr>
+<tr class="separator:ab8b2e204b3ca0e0cdf145d5e7ec2356c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58d9b5754dcce63db66121ad38607551"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a58d9b5754dcce63db66121ad38607551">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, unsigned int value)</td></tr>
+<tr class="separator:a58d9b5754dcce63db66121ad38607551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17fb0f6d83cbbcca77119c79dea3289c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a17fb0f6d83cbbcca77119c79dea3289c">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, double value)</td></tr>
+<tr class="separator:a17fb0f6d83cbbcca77119c79dea3289c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28b8e127a2d937582aae7bd942556895"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a28b8e127a2d937582aae7bd942556895">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, const char *value)</td></tr>
+<tr class="separator:a28b8e127a2d937582aae7bd942556895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e385cdbae662d469881e66fb05f722"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a06e385cdbae662d469881e66fb05f722">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, void *value)</td></tr>
+<tr class="separator:a06e385cdbae662d469881e66fb05f722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad121319924d830b95fa26ad19007d13d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#ad121319924d830b95fa26ad19007d13d">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, IVoidPointer *value)</td></tr>
+<tr class="separator:ad121319924d830b95fa26ad19007d13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a72f44565df00046f081d97c36a96e9aa" name="a72f44565df00046f081d97c36a96e9aa"></a>
@@ -618,6 +636,258 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a84f57ed2794a27eec23adc8d98769f9a">SpecsCpp::ISpecDataValue</a>.</p>
+
+</div>
+</div>
+<a id="a3dd7a1cf35890eaa3e5f0b755067a03d" name="a3dd7a1cf35890eaa3e5f0b755067a03d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dd7a1cf35890eaa3e5f0b755067a03d">&#9670;&#160;</a></span>create() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> * SpecsCpp::SpecDataValue::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28b8e127a2d937582aae7bd942556895" name="a28b8e127a2d937582aae7bd942556895"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28b8e127a2d937582aae7bd942556895">&#9670;&#160;</a></span>create() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> * SpecsCpp::SpecDataValue::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17fb0f6d83cbbcca77119c79dea3289c" name="a17fb0f6d83cbbcca77119c79dea3289c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17fb0f6d83cbbcca77119c79dea3289c">&#9670;&#160;</a></span>create() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> * SpecsCpp::SpecDataValue::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8b2e204b3ca0e0cdf145d5e7ec2356c" name="ab8b2e204b3ca0e0cdf145d5e7ec2356c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8b2e204b3ca0e0cdf145d5e7ec2356c">&#9670;&#160;</a></span>create() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> * SpecsCpp::SpecDataValue::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad121319924d830b95fa26ad19007d13d" name="ad121319924d830b95fa26ad19007d13d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad121319924d830b95fa26ad19007d13d">&#9670;&#160;</a></span>create() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> * SpecsCpp::SpecDataValue::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IVoidPointer *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a58d9b5754dcce63db66121ad38607551" name="a58d9b5754dcce63db66121ad38607551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58d9b5754dcce63db66121ad38607551">&#9670;&#160;</a></span>create() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> * SpecsCpp::SpecDataValue::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06e385cdbae662d469881e66fb05f722" name="a06e385cdbae662d469881e66fb05f722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06e385cdbae662d469881e66fb05f722">&#9670;&#160;</a></span>create() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> * SpecsCpp::SpecDataValue::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1335,6 +1605,33 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a7e010d29469a806f883f658db6ebbc19">SpecsCpp::ISpecDataValue</a>.</p>
+
+</div>
+</div>
+<a id="abc7382e84e4b0c16b6fb4cb6ca637ecd" name="abc7382e84e4b0c16b6fb4cb6ca637ecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc7382e84e4b0c16b6fb4cb6ca637ecd">&#9670;&#160;</a></span>to_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * SpecsCpp::SpecDataValue::to_string </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a357213497d656f0e8cc893a7d4d0081e">SpecsCpp::ISpecDataValue</a>.</p>
 
 </div>
 </div>

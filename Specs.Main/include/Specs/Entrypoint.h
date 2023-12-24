@@ -17,6 +17,14 @@
 #include <filesystem>
 #include <iostream>
 
+// TODO: add a standard options object to API.h to be explicit about all of the BUILT-IN OPTIONS
+// which will let us more easily pass things like a LIST of tags to include or exclude ETC
+//
+// And the options like --name should ALSO support a LIST (for OR matching in that case)
+//
+// We can ALSO provide a way to specify a custom options object to the runner, which will let
+// folks pass data along using our Data collection object (but it only supports simple values)
+
 namespace SpecsCpp {
 
     class Entrypoint {
@@ -58,6 +66,8 @@ namespace SpecsCpp {
                 ("group-pattern", "Regex pattern filter of group to run", cxxopts::value<std::string>())
                 ("l,list", "List all tests and groups", cxxopts::value<bool>()->default_value("false"))
                 ("dll,so", "Load tests from shared library (--dll,--so)", cxxopts::value<std::vector<std::string>>())
+                ("i,tag", "(TODO) Tag name of test to include", cxxopts::value<std::vector<std::string>>())
+                ("e,exclude-tag", "(TODO) Tag name of test to exclude", cxxopts::value<std::vector<std::string>>())
                 ("t,timeout", "Timeout in milliseconds for each test", cxxopts::value<int>())
                 ("h,help", "Print usage");
 

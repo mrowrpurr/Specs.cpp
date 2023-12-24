@@ -147,6 +147,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0a17cc6866cd1774ee805a1044bb9380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e5a30e0380a1fb690a9f750e00d7ab9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a6e5a30e0380a1fb690a9f750e00d7ab9">foreach</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a2eb95fb9327d5e904d2297b544072c5c">ForEachSpecDataFn</a> *) const =0</td></tr>
 <tr class="separator:a6e5a30e0380a1fb690a9f750e00d7ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b204e2af0cdd5183e525332438c551"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a98b204e2af0cdd5183e525332438c551">merge</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html">ISpecDataValueCollection</a> *)=0</td></tr>
+<tr class="separator:a98b204e2af0cdd5183e525332438c551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adadd4dd1150937179a8f7e67aab64dc0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#adadd4dd1150937179a8f7e67aab64dc0">clear</a> ()=0</td></tr>
+<tr class="separator:adadd4dd1150937179a8f7e67aab64dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac25579d609b7cde0ade6dd7547f54ef2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ac25579d609b7cde0ade6dd7547f54ef2">foreach</a> (std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *)&gt; fn) const</td></tr>
+<tr class="separator:ac25579d609b7cde0ade6dd7547f54ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a2eb95fb9327d5e904d2297b544072c5c" name="a2eb95fb9327d5e904d2297b544072c5c"></a>
@@ -218,8 +224,35 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="adadd4dd1150937179a8f7e67aab64dc0" name="adadd4dd1150937179a8f7e67aab64dc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adadd4dd1150937179a8f7e67aab64dc0">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecDataValueCollection::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#aedb2fe86f34960d42a44266e2ca239b6">SpecsCpp::SpecDataValueCollection</a>.</p>
+
+</div>
+</div>
 <a id="a6e5a30e0380a1fb690a9f750e00d7ab9" name="a6e5a30e0380a1fb690a9f750e00d7ab9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e5a30e0380a1fb690a9f750e00d7ab9">&#9670;&#160;</a></span>foreach()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e5a30e0380a1fb690a9f750e00d7ab9">&#9670;&#160;</a></span>foreach() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -243,6 +276,32 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#aded23f48081764bcf5c9135229ea7141">SpecsCpp::SpecDataValueCollection</a>.</p>
+
+</div>
+</div>
+<a id="ac25579d609b7cde0ade6dd7547f54ef2" name="ac25579d609b7cde0ade6dd7547f54ef2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac25579d609b7cde0ade6dd7547f54ef2">&#9670;&#160;</a></span>foreach() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpecsCpp::ISpecDataValueCollection::foreach </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *)&gt;&#160;</td>
+          <td class="paramname"><em>fn</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -455,6 +514,34 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#a20bbe462359c0e88c9685864ff4071a5">SpecsCpp::SpecDataValueCollection</a>.</p>
+
+</div>
+</div>
+<a id="a98b204e2af0cdd5183e525332438c551" name="a98b204e2af0cdd5183e525332438c551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98b204e2af0cdd5183e525332438c551">&#9670;&#160;</a></span>merge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecDataValueCollection::merge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html">ISpecDataValueCollection</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#a3e40132b3c7a56db8e7d7a64337b2adb">SpecsCpp::SpecDataValueCollection</a>.</p>
 
 </div>
 </div>

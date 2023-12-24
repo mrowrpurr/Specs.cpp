@@ -919,6 +919,8 @@ INPUT                  =    \
                             Documentation/CLI.md \
                             Documentation/Templates.md \
                             Documentation/Variables.md \
+                            Documentation/Tags.md \
+                            Documentation/Data.md \
                             Documentation/Exceptions.md \
                             Documentation/SharedLibraries.md \
                             Documentation/SyntaxReference.md \

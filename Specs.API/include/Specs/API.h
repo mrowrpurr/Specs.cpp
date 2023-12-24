@@ -429,8 +429,10 @@ namespace SpecsCpp {
         static auto constexpr SPEC_DESCRIPTION_FILTER_OPTION_KEY        = "spec";
         static auto constexpr GROUP_DESCRIPTION_FILTER_OPTION_KEY       = "group";
         static auto constexpr DESCRIPTION_REGEX_FILTER_OPTION_KEY       = "pattern";
-        static auto constexpr SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY  = "spec_patterm";
+        static auto constexpr SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY  = "spec_pattern";
         static auto constexpr GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY = "group_pattern";
+        static auto constexpr INCLUDE_TAGS_OPTION_KEY                   = "include_tags";
+        static auto constexpr EXCLUDE_TAGS_OPTION_KEY                   = "exclude_tags";
 
         virtual ~ISpecRunner() = default;
         virtual void

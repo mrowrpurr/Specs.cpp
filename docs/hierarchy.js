@@ -87,6 +87,9 @@ var hierarchy =
     [ "SpecsCpp::ISpecSuiteRunResult", "struct_specs_cpp_1_1_i_spec_suite_run_result.html", [
       [ "SpecsCpp::SpecSuiteRunResult", "class_specs_cpp_1_1_spec_suite_run_result.html", null ]
     ] ],
+    [ "SpecsCpp::ISpecTagCollection", "struct_specs_cpp_1_1_i_spec_tag_collection.html", [
+      [ "SpecsCpp::SpecTagCollection", "class_specs_cpp_1_1_spec_tag_collection.html", null ]
+    ] ],
     [ "SpecsCpp::ISpecVariableCollection", "struct_specs_cpp_1_1_i_spec_variable_collection.html", [
       [ "SpecsCpp::SpecVariableCollection", "class_specs_cpp_1_1_spec_variable_collection.html", null ]
     ] ],

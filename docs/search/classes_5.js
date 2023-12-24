@@ -18,8 +18,9 @@ var searchData=
   ['specserialrunner_15',['SpecSerialRunner',['../class_specs_cpp_1_1_spec_serial_runner.html',1,'SpecsCpp']]],
   ['specsetup_16',['SpecSetup',['../class_specs_cpp_1_1_spec_setup.html',1,'SpecsCpp']]],
   ['specsuiterunresult_17',['SpecSuiteRunResult',['../class_specs_cpp_1_1_spec_suite_run_result.html',1,'SpecsCpp']]],
-  ['specteardown_18',['SpecTeardown',['../class_specs_cpp_1_1_spec_teardown.html',1,'SpecsCpp']]],
-  ['spectest_19',['SpecTest',['../class_specs_cpp_1_1_spec_test.html',1,'SpecsCpp']]],
-  ['specvariablecollection_20',['SpecVariableCollection',['../class_specs_cpp_1_1_spec_variable_collection.html',1,'SpecsCpp']]],
-  ['stdexceptionexceptionhandler_21',['StdExceptionExceptionHandler',['../class_specs_cpp_1_1_exception_handlers_1_1_std_exception_exception_handler.html',1,'SpecsCpp::ExceptionHandlers']]]
+  ['spectagcollection_18',['SpecTagCollection',['../class_specs_cpp_1_1_spec_tag_collection.html',1,'SpecsCpp']]],
+  ['specteardown_19',['SpecTeardown',['../class_specs_cpp_1_1_spec_teardown.html',1,'SpecsCpp']]],
+  ['spectest_20',['SpecTest',['../class_specs_cpp_1_1_spec_test.html',1,'SpecsCpp']]],
+  ['specvariablecollection_21',['SpecVariableCollection',['../class_specs_cpp_1_1_spec_variable_collection.html',1,'SpecsCpp']]],
+  ['stdexceptionexceptionhandler_22',['StdExceptionExceptionHandler',['../class_specs_cpp_1_1_exception_handlers_1_1_std_exception_exception_handler.html',1,'SpecsCpp::ExceptionHandlers']]]
 ];

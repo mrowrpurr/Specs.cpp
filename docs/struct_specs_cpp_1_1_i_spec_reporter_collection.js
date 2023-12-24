@@ -4,6 +4,7 @@ var struct_specs_cpp_1_1_i_spec_reporter_collection =
     [ "~ISpecReporterCollection", "struct_specs_cpp_1_1_i_spec_reporter_collection.html#aef7417f1aab73086c43923cc58d4c7ba", null ],
     [ "add", "struct_specs_cpp_1_1_i_spec_reporter_collection.html#a8532dbc5c443b077c313dfcfff876d2d", null ],
     [ "foreach_reporter", "struct_specs_cpp_1_1_i_spec_reporter_collection.html#a4e78e66e0161c6583bd8f7aacbbfbf51", null ],
+    [ "foreach_reporter", "struct_specs_cpp_1_1_i_spec_reporter_collection.html#af140281b6f11a17efa8e6feb97dd0b06", null ],
     [ "get", "struct_specs_cpp_1_1_i_spec_reporter_collection.html#a2a8bd2f2abe8f2b4ee71b3007c40d0da", null ],
     [ "has", "struct_specs_cpp_1_1_i_spec_reporter_collection.html#af6127587e59b9b1896e350b6aac2a29d", null ],
     [ "report_setup", "struct_specs_cpp_1_1_i_spec_reporter_collection.html#a3edd3c8c413bedd42e033c60d48d6b27", null ],

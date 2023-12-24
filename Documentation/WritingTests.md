@@ -217,7 +217,19 @@ TestAsync("Test Something Async!") {
 
 If an async test does not call `done()` within a configurable timeout, the test will fail with a timeout error.
 
-> ℹ️ Timeout milliseconds can be configured via the `-t/--timeout` option
+> ℹ️ Default timeout milliseconds can be configured via the `-t/--timeout` option
+
+You can override the default timeout milliseconds using `SetTimeout`.
+
+```cpp
+SetTimeout(5000)
+TestAsync("Test Something Async!") {
+    // Test code and assertions go here...
+    
+    // Once your code is done, call `done()` to mark the test as finished.
+    done();
+}
+```
 
 # Test assertions
 
@@ -409,6 +421,30 @@ TestAsync("Test Something Async!") {
     done();
 }
 ```
+
+Just like `TestAsync`, if an async setup/teardown does not call `done()` within a configurable timeout, the test will fail with a timeout error.
+
+Just like `TestAsync`, you can override the default timeout milliseconds using `SetTimeout`.
+
+```cpp
+#include <Specs.h>
+
+SetTimeout(30000)
+OneTimeSetupAsync {
+    // Async setup code goes here...
+    done();
+}
+
+SetTimeout(100)
+OneTimeTeardownAsync {
+    // Async teardown code goes here...
+    done();
+}
+
+// ... SetTimeout() works for all async setup/teardown macros ...
+```
+
+> ℹ️ Default timeout milliseconds can be configured via the `-t/--timeout` option
 
 # Test Groups
 

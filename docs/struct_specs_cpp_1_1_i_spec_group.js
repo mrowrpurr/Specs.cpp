@@ -12,10 +12,16 @@ var struct_specs_cpp_1_1_i_spec_group =
     [ "add_spec", "struct_specs_cpp_1_1_i_spec_group.html#ac58d2f34ad17cb96184136183799ba29", null ],
     [ "add_teardown", "struct_specs_cpp_1_1_i_spec_group.html#a416d5788ef715c2e8a619f9a242092f8", null ],
     [ "foreach_group", "struct_specs_cpp_1_1_i_spec_group.html#a558d26404125077394f5a55007aa17d3", null ],
+    [ "foreach_group", "struct_specs_cpp_1_1_i_spec_group.html#abf6c6ad0da846c432736775d69369133", null ],
     [ "foreach_one_time_setup", "struct_specs_cpp_1_1_i_spec_group.html#a95c373c94229562e4460b5029995bc23", null ],
+    [ "foreach_one_time_setup", "struct_specs_cpp_1_1_i_spec_group.html#a9a017f089de220aa0f14e28f12b1ed67", null ],
     [ "foreach_one_time_teardown", "struct_specs_cpp_1_1_i_spec_group.html#a3ca61dcbc0d6effb8eb80fcdefafb9d5", null ],
+    [ "foreach_one_time_teardown", "struct_specs_cpp_1_1_i_spec_group.html#ac3c88771cbfaeed06fc2daa94b5ed46d", null ],
     [ "foreach_setup", "struct_specs_cpp_1_1_i_spec_group.html#ab97b10defadb05520053e570bed83065", null ],
+    [ "foreach_setup", "struct_specs_cpp_1_1_i_spec_group.html#a8bc463d26278c86d5204813f02ea1906", null ],
     [ "foreach_spec", "struct_specs_cpp_1_1_i_spec_group.html#a96a2d77adcc98be8ba0e5cb3acd2d53b", null ],
+    [ "foreach_spec", "struct_specs_cpp_1_1_i_spec_group.html#a61ac4974c3d22c7ce84cd097624240ca", null ],
     [ "foreach_teardown", "struct_specs_cpp_1_1_i_spec_group.html#aa03629a9619c35af29b3a4cd28dd0387", null ],
+    [ "foreach_teardown", "struct_specs_cpp_1_1_i_spec_group.html#af60e29aec412c2b22c8d998a87a17367", null ],
     [ "merge", "struct_specs_cpp_1_1_i_spec_group.html#a621c3cf3d442aed3eb48d850f15d20e2", null ]
 ];

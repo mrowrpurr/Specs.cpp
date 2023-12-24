@@ -19,9 +19,11 @@ var searchData=
   ['_7eispecrunresult_16',['~ISpecRunResult',['../struct_specs_cpp_1_1_i_spec_run_result.html#aff5f1c7d636eb12361f7fb0a2db2fa26',1,'SpecsCpp::ISpecRunResult']]],
   ['_7eispecsetup_17',['~ISpecSetup',['../struct_specs_cpp_1_1_i_spec_setup.html#a115ea06022c9b4df1cb94cf1f273a9f3',1,'SpecsCpp::ISpecSetup']]],
   ['_7eispecsuiterunresult_18',['~ISpecSuiteRunResult',['../struct_specs_cpp_1_1_i_spec_suite_run_result.html#a3fd62197344ab639d37a0cd236b0c2d1',1,'SpecsCpp::ISpecSuiteRunResult']]],
-  ['_7eispecteardown_19',['~ISpecTeardown',['../struct_specs_cpp_1_1_i_spec_teardown.html#a5ad0abc566aff3136bb20860157e3a18',1,'SpecsCpp::ISpecTeardown']]],
-  ['_7eispecvariablecollection_20',['~ISpecVariableCollection',['../struct_specs_cpp_1_1_i_spec_variable_collection.html#a54d9dd283a704098303a4fc5af523e25',1,'SpecsCpp::ISpecVariableCollection']]],
-  ['_7elibraryloader_21',['~LibraryLoader',['../class_specs_cpp_1_1_library_loader.html#aadf50eef53dcebc987fe59cf4f0210b0',1,'SpecsCpp::LibraryLoader']]],
-  ['_7especdatavalue_22',['~SpecDataValue',['../class_specs_cpp_1_1_spec_data_value.html#afa0110e3cf09067ed41eef236dc0b93a',1,'SpecsCpp::SpecDataValue']]],
-  ['_7especvariablecollection_23',['~SpecVariableCollection',['../class_specs_cpp_1_1_spec_variable_collection.html#a36361dec553f176f5f74bf0fc28af8bc',1,'SpecsCpp::SpecVariableCollection']]]
+  ['_7eispectagcollection_19',['~ISpecTagCollection',['../struct_specs_cpp_1_1_i_spec_tag_collection.html#aec89701683832cb0be315c3a4fea303d',1,'SpecsCpp::ISpecTagCollection']]],
+  ['_7eispecteardown_20',['~ISpecTeardown',['../struct_specs_cpp_1_1_i_spec_teardown.html#a5ad0abc566aff3136bb20860157e3a18',1,'SpecsCpp::ISpecTeardown']]],
+  ['_7eispecvariablecollection_21',['~ISpecVariableCollection',['../struct_specs_cpp_1_1_i_spec_variable_collection.html#a54d9dd283a704098303a4fc5af523e25',1,'SpecsCpp::ISpecVariableCollection']]],
+  ['_7elibraryloader_22',['~LibraryLoader',['../class_specs_cpp_1_1_library_loader.html#aadf50eef53dcebc987fe59cf4f0210b0',1,'SpecsCpp::LibraryLoader']]],
+  ['_7especdatavalue_23',['~SpecDataValue',['../class_specs_cpp_1_1_spec_data_value.html#afa0110e3cf09067ed41eef236dc0b93a',1,'SpecsCpp::SpecDataValue']]],
+  ['_7especdatavaluecollection_24',['~SpecDataValueCollection',['../class_specs_cpp_1_1_spec_data_value_collection.html#a6b0ebbb68a21f6464bbab1c75836f799',1,'SpecsCpp::SpecDataValueCollection']]],
+  ['_7especvariablecollection_25',['~SpecVariableCollection',['../class_specs_cpp_1_1_spec_variable_collection.html#a36361dec553f176f5f74bf0fc28af8bc',1,'SpecsCpp::SpecVariableCollection']]]
 ];

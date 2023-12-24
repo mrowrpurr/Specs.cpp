@@ -20,6 +20,7 @@ var searchData=
   ['ispecrunresult_17',['ISpecRunResult',['../struct_specs_cpp_1_1_i_spec_run_result.html',1,'SpecsCpp']]],
   ['ispecsetup_18',['ISpecSetup',['../struct_specs_cpp_1_1_i_spec_setup.html',1,'SpecsCpp']]],
   ['ispecsuiterunresult_19',['ISpecSuiteRunResult',['../struct_specs_cpp_1_1_i_spec_suite_run_result.html',1,'SpecsCpp']]],
-  ['ispecteardown_20',['ISpecTeardown',['../struct_specs_cpp_1_1_i_spec_teardown.html',1,'SpecsCpp']]],
-  ['ispecvariablecollection_21',['ISpecVariableCollection',['../struct_specs_cpp_1_1_i_spec_variable_collection.html',1,'SpecsCpp']]]
+  ['ispectagcollection_20',['ISpecTagCollection',['../struct_specs_cpp_1_1_i_spec_tag_collection.html',1,'SpecsCpp']]],
+  ['ispecteardown_21',['ISpecTeardown',['../struct_specs_cpp_1_1_i_spec_teardown.html',1,'SpecsCpp']]],
+  ['ispecvariablecollection_22',['ISpecVariableCollection',['../struct_specs_cpp_1_1_i_spec_variable_collection.html',1,'SpecsCpp']]]
 ];
