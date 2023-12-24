@@ -156,9 +156,13 @@ namespace SpecsCpp {
             }
         }
 
-        void define_spec(std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_spec(
+            std::string_view description, std::unique_ptr<SpecCodeBlock> codeBlock,
+            bool skip = false
+        ) {
             if (auto* group = get()) {
-                auto  spec = std::make_unique<SpecTest>(get(), description, std::move(codeBlock));
+                auto spec = std::make_unique<SpecTest>(get(), description, std::move(codeBlock));
+                if (skip) spec->mark_skipped(true);
                 auto* specPtr = spec.get();
                 component_defined(specPtr);
 
@@ -169,9 +173,10 @@ namespace SpecsCpp {
             }
         }
 
-        void define_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_setup(std::unique_ptr<SpecCodeBlock> codeBlock, bool skip = false) {
             if (auto* group = get()) {
-                auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
+                auto setup = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
+                if (skip) setup->mark_skipped(true);
                 auto* setupPtr = setup.get();
                 component_defined(setupPtr);
 
@@ -180,9 +185,10 @@ namespace SpecsCpp {
             }
         }
 
-        void define_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_teardown(std::unique_ptr<SpecCodeBlock> codeBlock, bool skip = false) {
             if (auto* group = get()) {
-                auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
+                auto teardown = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
+                if (skip) teardown->mark_skipped(true);
                 auto* teardownPtr = teardown.get();
                 component_defined(teardownPtr);
 
@@ -191,9 +197,10 @@ namespace SpecsCpp {
             }
         }
 
-        void define_one_time_setup(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_one_time_setup(std::unique_ptr<SpecCodeBlock> codeBlock, bool skip = false) {
             if (auto* group = get()) {
-                auto  setup    = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
+                auto setup = std::make_unique<SpecSetup>(get(), std::move(codeBlock));
+                if (skip) setup->mark_skipped(true);
                 auto* setupPtr = setup.get();
                 component_defined(setupPtr);
 
@@ -202,9 +209,10 @@ namespace SpecsCpp {
             }
         }
 
-        void define_one_time_teardown(std::unique_ptr<SpecCodeBlock> codeBlock) {
+        void define_one_time_teardown(std::unique_ptr<SpecCodeBlock> codeBlock, bool skip = false) {
             if (auto* group = get()) {
-                auto  teardown    = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
+                auto teardown = std::make_unique<SpecTeardown>(get(), std::move(codeBlock));
+                if (skip) teardown->mark_skipped(true);
                 auto* teardownPtr = teardown.get();
                 component_defined(teardownPtr);
 

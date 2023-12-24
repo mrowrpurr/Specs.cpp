@@ -49,7 +49,8 @@ namespace SpecsCpp {
             : SpecComponent(SpecComponentType::Group, parent),
               SpecDocumented(description),
               _variables(std::make_unique<SpecVariableCollection>(parent)) {
-            if (parent == nullptr || !parent->full_description()) _fullDescription = description;
+            if (parent == nullptr || strlen(parent->full_description()) == 0)
+                _fullDescription = description;
             else
                 _fullDescription =
                     string_format("{} > {}", parent->full_description(), description);

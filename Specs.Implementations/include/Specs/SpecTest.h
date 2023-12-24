@@ -31,15 +31,14 @@ namespace SpecsCpp {
             : SpecComponent(SpecComponentType::Spec, parent),
               SpecDocumented(description),
               SpecHasCodeBlock(std::move(codeBlock)) {
-            if (parent == nullptr || !parent->full_description()) _fullDescription = description;
+            if (parent == nullptr || strlen(parent->full_description()) == 0)
+                _fullDescription = description;
             else
                 _fullDescription =
                     string_format("{} > {}", parent->full_description(), description);
         }
 
-        const char* full_description() const override {
-            return _fullDescription.empty() ? nullptr : _fullDescription.c_str();
-        }
+        const char* full_description() const override { return _fullDescription.c_str(); }
 
         ISpecVariableCollection* variables() const override { return _variables.get(); }
     };

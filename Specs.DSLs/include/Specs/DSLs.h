@@ -4,7 +4,9 @@
 
 #include "DSLs/Functions/describe.h"           // IWYU pragma: keep
 #include "DSLs/Functions/it.h"                 // IWYU pragma: keep
+#include "DSLs/Functions/set_timeout.h"        // IWYU pragma: keep
 #include "DSLs/Functions/setup.h"              // IWYU pragma: keep
+#include "DSLs/Functions/skip.h"               // IWYU pragma: keep
 #include "DSLs/Functions/spec.h"               // IWYU pragma: keep
 #include "DSLs/Functions/teardown.h"           // IWYU pragma: keep
 #include "DSLs/Functions/test.h"               // IWYU pragma: keep
@@ -28,6 +30,7 @@
 #include "DSLs/TopLevel/Setup.h"               // IWYU pragma: keep
 #include "DSLs/TopLevel/SetupAsync.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/Skip.h"                // IWYU pragma: keep
+#include "DSLs/TopLevel/SkipAll.h"             // IWYU pragma: keep
 #include "DSLs/TopLevel/Spec.h"                // IWYU pragma: keep
 #include "DSLs/TopLevel/SpecAsync.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/Specs.h"               // IWYU pragma: keep
