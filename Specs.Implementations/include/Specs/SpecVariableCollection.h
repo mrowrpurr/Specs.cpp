@@ -42,17 +42,24 @@ namespace SpecsCpp {
             for (const auto& [name, variable] : _variables) fn->invoke(variable);
         }
 
-        void clear() override {
-            for (const auto& [name, variable] : _variables) delete variable;
-            _variables.clear();
-        }
+        void clear() override { _variables.clear(); }
 
         void unset(const char* name) override {
+            auto found = _variables.find(name);
+            if (found != _variables.end()) _variables.erase(found);
+        }
+
+        void delete_var(const char* name) override {
             auto found = _variables.find(name);
             if (found != _variables.end()) {
                 delete found->second;
                 _variables.erase(found);
             }
+        }
+
+        void delete_all() override {
+            for (const auto& [name, variable] : _variables) delete variable;
+            _variables.clear();
         }
     };
 }

@@ -239,7 +239,7 @@ namespace SpecsCpp {
                         group->foreach_teardown(&_forEachTeardownInGroupFn);
                     }
 
-                    spec->variables()->clear();
+                    spec->variables()->delete_all();
                     return;
                 }
 
@@ -260,7 +260,7 @@ namespace SpecsCpp {
                         auto specFinalResult = SpecRunResult::failed(spec, spec);
                         _reporters->report_spec_result(specFinalResult.get());
                         _resultTotalCounts.increment_failed();
-                        spec->variables()->clear();
+                        spec->variables()->delete_all();
                         return;
                     }
                 }
@@ -281,7 +281,7 @@ namespace SpecsCpp {
                     auto specFinalResult = SpecRunResult::passed(spec, spec);
                     _reporters->report_spec_result(specFinalResult.get());
                 }
-                spec->variables()->clear();
+                spec->variables()->delete_all();
             }
 
             FunctionPointer<void(ISpec*)> _forEachSpecInGroupFn{
@@ -315,7 +315,7 @@ namespace SpecsCpp {
                 if (!_currentlySkippingTests)
                     group->foreach_one_time_teardown(&_forEachTeardownInGroupFn);
 
-                group->variables()->clear();
+                group->variables()->delete_all();
 
                 _currentlySkippingTests = false;
             }

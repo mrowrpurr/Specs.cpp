@@ -2,15 +2,17 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
-UseTemplate("SpecHelper Template");
+class Dog {
+public:
+    Dog() { _Log_("Dog is being created"); }
+    ~Dog() { _Log_("Dog is being destroyed"); }
+};
+
+Setup { current_test->var("dog", new Dog()); }
 
 Test("Foo") {
     //
     _Log_("This test is {} in group {}", current_test->description(), current_group->description());
-}
-
-Setup {
-    //
 }
 
 Describe("Describe 1") {

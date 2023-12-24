@@ -135,6 +135,8 @@ namespace SpecsCpp {
         virtual IVoidPointer* get(const char* name) const                                    = 0;
         virtual void          foreach_variable(ForEachVariableFn*) const                     = 0;
         virtual void          clear()                                                        = 0;
+        virtual void          delete_var(const char* name)                                   = 0;
+        virtual void          delete_all()                                                   = 0;
 
         void foreach_variable(std::function<void(IVoidPointer*)> fn) const {
             auto callback = unique_function_pointer(fn);
