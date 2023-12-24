@@ -166,20 +166,20 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">inline</span> void                                                                                   \</div>
-<div class="line">        _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(<a class="code hl_namespace" href="namespace_specs_cpp.html">SpecsCpp</a>::      \</div>
-<div class="line">                                                                                      ISpec*);    \</div>
-<div class="line">    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[]( \</div>
-<div class="line">                                                                                              ) { \</div>
-<div class="line">        SpecsCpp::DSLs::GlobalInterface::define_test_fn(                                          \</div>
-<div class="line">            specDescription,                                                                      \</div>
-<div class="line">            _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)             \</div>
-<div class="line">        );                                                                                        \</div>
-<div class="line">    }};                                                                                           \</div>
-<div class="line">    <span class="keyword">inline</span> <span class="keywordtype">void</span> _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(        \</div>
-<div class="line">        [[maybe_unused]] <a class="code hl_struct" href="struct_specs_cpp_1_1_i_spec.html">SpecsCpp::ISpec</a> * current_spec                                           \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">inline</span> void                                                                                                             \</div>
+<div class="line">        _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(<a class="code hl_struct" href="struct_specs_cpp_1_1_i_spec_group.html">SpecsCpp::ISpecGroup</a>*, <a class="code hl_struct" href="struct_specs_cpp_1_1_i_spec.html">SpecsCpp::ISpec</a>*); \</div>
+<div class="line">    _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_RUNNER_VARIABLE_NAME_FROM_COUNT(symbol, count){[](                           \</div>
+<div class="line">                                                                                              ) {                           \</div>
+<div class="line">        SpecsCpp::DSLs::GlobalInterface::define_test_fn(                                                                    \</div>
+<div class="line">            specDescription,                                                                                                \</div>
+<div class="line">            _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)                                       \</div>
+<div class="line">        );                                                                                                                  \</div>
+<div class="line">    }};                                                                                                                     \</div>
+<div class="line">    <span class="keyword">inline</span> <span class="keywordtype">void</span> _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(                                  \</div>
+<div class="line">        [[maybe_unused]] <a class="code hl_struct" href="struct_specs_cpp_1_1_i_spec_group.html">SpecsCpp::ISpecGroup</a> * current_group,                                                              \</div>
+<div class="line">        [[maybe_unused]] <a class="code hl_struct" href="struct_specs_cpp_1_1_i_spec.html">SpecsCpp::ISpec</a> * current_test                                                                     \</div>
 <div class="line">    )</div>
-<div class="ttc" id="anamespace_specs_cpp_html"><div class="ttname"><a href="namespace_specs_cpp.html">SpecsCpp</a></div><div class="ttdef"><b>Definition</b> API.h:12</div></div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_group_html"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_group.html">SpecsCpp::ISpecGroup</a></div><div class="ttdef"><b>Definition</b> API.h:288</div></div>
 <div class="ttc" id="astruct_specs_cpp_1_1_i_spec_html"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec.html">SpecsCpp::ISpec</a></div><div class="ttdef"><b>Definition</b> API.h:338</div></div>
 </div><!-- fragment -->
 </div>

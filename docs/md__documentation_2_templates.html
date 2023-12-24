@@ -102,8 +102,158 @@ $(document).ready(function(){initNavTree('md__documentation_2_templates.html',''
   <div class="headertitle"><div class="title">📋 Shared Code Templates</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md70"></a></p>
-</div></div><!-- contents -->
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md74">What is a template?</a></li>
+<li class="level1"><a href="#autotoc_md75">Defining Templates</a><ul><li class="level2"><a href="#autotoc_md76">#define SPEC_TEMPLATE Template_Name</a></li>
+<li class="level2"><a href="#autotoc_md77">TestTemplate() / EndTestTemplate()</a></li>
+<li class="level2"><a href="#autotoc_md78">StartTestTemplate() / EndTestTemplate()</a></li>
+<li class="level2"><a href="#autotoc_md79">Load your templates before your tests!</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md80">Using Templates</a><ul><li class="level2"><a href="#autotoc_md81">Lambda syntax</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md73"></a></p>
+<p>Sometimes you may find yourself writing the same code in your <code>Setup</code> and/or <code>Teardown</code> for many test groups.</p>
+<p>In these scenarios, it may be useful to create a shared code template.</p>
+<h1><a class="anchor" id="autotoc_md74"></a>
+What is a template?</h1>
+<p>A template is a sharable group of:</p>
+<ul>
+<li><code>Setup</code> code</li>
+<li><code>Teardown</code> code</li>
+<li><code>OneTimeSetup</code> code</li>
+<li><code>OneTimeTeardown</code> code</li>
+<li><code>Test</code> code</li>
+<li>and even nested group code<ul>
+<li>(<em>e.g. defined using <code>TestGroup</code>, <code>StartTestGroup</code>, or <code>Describe</code></em>)</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md75"></a>
+Defining Templates</h1>
+<p>There are a few available syntax options for defining templates:</p>
+<ul>
+<li><code>#define SPEC_TEMPLATE Template_Name</code></li>
+<li><code>TestTemplate("Template Name")</code>/<code><a class="el" href="_end_test_template_8h.html#af0eba6bd2aac1b6409f9727741211b76">EndTestTemplate()</a></code></li>
+<li><code>StartTestTemplate("Template Name")</code>/<code><a class="el" href="_end_test_template_8h.html#af0eba6bd2aac1b6409f9727741211b76">EndTestTemplate()</a></code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md76"></a>
+#define SPEC_TEMPLATE Template_Name</h2>
+<p>This is a great option for defining a templates in their own isolated files (<em>and it's my personal favorite!</em>).</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_TEMPLATE My_Template_Name</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Important: the name of the template will be &quot;My Template Name&quot; (with spaces)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Anything here will be a part of the template!</span></div>
+<div class="line"><span class="comment">// </span></div>
+<div class="line"><span class="comment">// Setup, Teardown, Test, Groups, etc.</span></div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;Note: when using <code>#define SPEC_TEMPLATE</code>, the name of the spec template <b>has underscores removed</b>. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md77"></a>
+TestTemplate() / EndTestTemplate()</h2>
+<p><code>TestTemplate</code> allows you to define a template anywhere in your code.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_FILE My_Spec_File</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ... (normal spec code can go here) ...</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_test_template_8h.html#a0ea156f5c9271c9bf5e877b718f50fd2">TestTemplate</a>(<span class="stringliteral">&quot;My Template Name&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Anything here will be a part of the template!</span></div>
+<div class="line"><span class="comment">// </span></div>
+<div class="line"><span class="comment">// Setup, Teardown, Test, Groups, etc.</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_end_test_template_8h.html#af0eba6bd2aac1b6409f9727741211b76">EndTestTemplate</a>();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ... (normal spec code can go here) ...</span></div>
+<div class="ttc" id="a_end_test_template_8h_html_af0eba6bd2aac1b6409f9727741211b76"><div class="ttname"><a href="_end_test_template_8h.html#af0eba6bd2aac1b6409f9727741211b76">EndTestTemplate</a></div><div class="ttdeci">#define EndTestTemplate()</div><div class="ttdef"><b>Definition</b> EndTestTemplate.h:5</div></div>
+<div class="ttc" id="a_test_template_8h_html_a0ea156f5c9271c9bf5e877b718f50fd2"><div class="ttname"><a href="_test_template_8h.html#a0ea156f5c9271c9bf5e877b718f50fd2">TestTemplate</a></div><div class="ttdeci">#define TestTemplate(testTemplateSymbol)</div><div class="ttdef"><b>Definition</b> TestTemplate.h:5</div></div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;Don't forget to call <code><a class="el" href="_end_test_template_8h.html#af0eba6bd2aac1b6409f9727741211b76">EndTestTemplate()</a></code>! </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md78"></a>
+StartTestTemplate() / EndTestTemplate()</h2>
+<p><code>StartTestTemplate</code> allows you to define a template anywhere in your code.</p>
+<p>The difference is that it supports a nested <code>{ ... }</code> syntax.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_FILE My_Spec_File</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ... (normal spec code can go here) ...</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_start_test_template_8h.html#a3c3f86234c29997cfa4a196a70a25f3d">StartTestTemplate</a>(<span class="stringliteral">&quot;My Template Name&quot;</span>) {</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Anything here will be a part of the template!</span></div>
+<div class="line">    <span class="comment">// </span></div>
+<div class="line">    <span class="comment">// Setup, Teardown, Test, Groups, etc.</span></div>
+<div class="line"> </div>
+<div class="line">} <a class="code hl_define" href="_end_test_template_8h.html#af0eba6bd2aac1b6409f9727741211b76">EndTestTemplate</a>();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ... (normal spec code can go here) ...</span></div>
+<div class="ttc" id="a_start_test_template_8h_html_a3c3f86234c29997cfa4a196a70a25f3d"><div class="ttname"><a href="_start_test_template_8h.html#a3c3f86234c29997cfa4a196a70a25f3d">StartTestTemplate</a></div><div class="ttdeci">#define StartTestTemplate(templateName)</div><div class="ttdef"><b>Definition</b> StartTestTemplate.h:6</div></div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;Don't forget to call <code><a class="el" href="_end_test_template_8h.html#af0eba6bd2aac1b6409f9727741211b76">EndTestTemplate()</a></code>! </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md79"></a>
+Load your templates before your tests!</h2>
+<p>If you define your templates in <code>.cpp</code> files, you'll need to make sure they are loaded before your tests.</p>
+<p>Otherwise, your tests won't be able to find them!</p>
+<p>In your <code>xmake.lua</code> or <code>CMakeLists.txt</code> file, make sure your template files are loaded before your test files.</p>
+<p>For example, you might want to separate your templates into a <code>Templates</code> directory.</p>
+<blockquote class="doxtable">
+<p>&zwj;Note: you can safely define your templates in <code>.h</code> files as well. They will only be defined once. </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md80"></a>
+Using Templates</h1>
+<p>This is the easiest part of all!</p>
+<p>Simply use the <code>UseTemplate("Template Name")</code> function to use a template.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Spec_Group</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Feel free to include you template files at the top level here:</span></div>
+<div class="line"><a class="code hl_define" href="_use_template_8h.html#a32cd46f9c57ff2913ecdbbc5c4d0d05b">UseTemplate</a>(<span class="stringliteral">&quot;My Template Name&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_start_test_group_8h.html#a746b468d19fc04a515e3da909abac56b">StartTestGroup</a>(<span class="stringliteral">&quot;Some group of tests&quot;</span>) {</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Or include your template within a nested group:</span></div>
+<div class="line">  <a class="code hl_define" href="_use_template_8h.html#a32cd46f9c57ff2913ecdbbc5c4d0d05b">UseTemplate</a>(<span class="stringliteral">&quot;My Template Name&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">} <a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
+<div class="ttc" id="a_end_test_group_8h_html_a94427869efc5da0f2e622efa775fa6f5"><div class="ttname"><a href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a></div><div class="ttdeci">#define EndTestGroup()</div><div class="ttdef"><b>Definition</b> EndTestGroup.h:5</div></div>
+<div class="ttc" id="a_start_test_group_8h_html_a746b468d19fc04a515e3da909abac56b"><div class="ttname"><a href="_start_test_group_8h.html#a746b468d19fc04a515e3da909abac56b">StartTestGroup</a></div><div class="ttdeci">#define StartTestGroup(description)</div><div class="ttdef"><b>Definition</b> StartTestGroup.h:5</div></div>
+<div class="ttc" id="a_use_template_8h_html_a32cd46f9c57ff2913ecdbbc5c4d0d05b"><div class="ttname"><a href="_use_template_8h.html#a32cd46f9c57ff2913ecdbbc5c4d0d05b">UseTemplate</a></div><div class="ttdeci">#define UseTemplate(templateName)</div><div class="ttdef"><b>Definition</b> UseTemplate.h:5</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md81"></a>
+Lambda syntax</h2>
+<p>If you are using lambda syntax inside of a <code>Describe</code> block, use the <code>use_template("Template Name")</code> function instead.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Spec_Group</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2describe_8h.html#a1e7ceb35b4641f8f90e1123804f60ab6">Describe</a>(<span class="stringliteral">&quot;Some group of tests&quot;</span>) {</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Include your template within a nested group:</span></div>
+<div class="line">  use_template(<span class="stringliteral">&quot;My Template Name&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  describe(<span class="stringliteral">&quot;A nested group&quot;</span>, []() {</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Or include your template within a nested child groups:</span></div>
+<div class="line">    use_template(<span class="stringliteral">&quot;My Template Name&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  });</div>
+<div class="line"> </div>
+<div class="line">} <a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
+<div class="ttc" id="a_top_level_2describe_8h_html_a1e7ceb35b4641f8f90e1123804f60ab6"><div class="ttname"><a href="_top_level_2describe_8h.html#a1e7ceb35b4641f8f90e1123804f60ab6">Describe</a></div><div class="ttdeci">#define Describe(description)</div><div class="ttdef"><b>Definition</b> Describe.h:5</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.7-->

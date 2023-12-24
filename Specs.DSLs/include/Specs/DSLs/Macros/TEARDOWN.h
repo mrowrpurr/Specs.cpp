@@ -16,7 +16,7 @@
     inline void _GLOBAL_MACRO_FUNCTIONS_NEW_NAMED_FUNCTION_NAME_FROM_COUNT(symbol, count)(                                                             \
         [[maybe_unused]] SpecsCpp::ISpecGroup * current_group,                                                                                         \
         [[maybe_unused]] SpecsCpp::ISpecComponent * current_teardown,                                                                                  \
-        [[maybe_unused]] SpecsCpp::ISpec * current_spec                                                                                                \
+        [[maybe_unused]] SpecsCpp::ISpec * current_test                                                                                                \
     )
 
 #define _SPEC_TEARDOWN() __SPEC_TEARDOWN_BODY(_SPEC_TEARDOWN_, __COUNTER__)

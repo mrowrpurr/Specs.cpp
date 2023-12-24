@@ -103,22 +103,22 @@ $(document).ready(function(){initNavTree('md__documentation_2_assertion_librarie
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md65">Assertion Libraries</a><ul><li class="level2"><a href="#autotoc_md66">snowhouse</a><ul><li class="level3"><a href="#autotoc_md67">Setup</a></li>
-<li class="level3"><a href="#autotoc_md68">Usage</a></li>
+<ul><li class="level1"><a href="#autotoc_md68">Assertion Libraries</a><ul><li class="level2"><a href="#autotoc_md69">snowhouse</a><ul><li class="level3"><a href="#autotoc_md70">Setup</a></li>
+<li class="level3"><a href="#autotoc_md71">Usage</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md69">libassert</a></li>
+<li class="level2"><a href="#autotoc_md72">libassert</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md64"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md67"></a></p>
 <p>Getting started with <code>Specs</code> is incredibly easy.</p>
 <p>Especially if you manage your C++ dependencies using <code>xmake</code> or <code>vcpkg</code></p>
 <blockquote class="doxtable">
 <p>&zwj;See <a href="md__documentation_2_installing.html">Installing Specs</a> to get started. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md65"></a>
+<h1><a class="anchor" id="autotoc_md68"></a>
 Assertion Libraries</h1>
 <p>One core difference between <code>Specs</code> and other testing frameworks is that <code>Specs</code> does not provide any assertion functions or macros.</p>
 <p>Instead, <code>Specs</code> is designed to work with any assertion library (<em>or any C++ exception</em>).</p>
@@ -127,11 +127,11 @@ Assertion Libraries</h1>
 <p>&zwj;If the exception is a <code>std::exception</code>, the <code>what()</code> will be displayed as a failure message.</p>
 <p>If the exception is a literal C-string, the string will be displayed as a failure message. </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md66"></a>
+<h2><a class="anchor" id="autotoc_md69"></a>
 snowhouse</h2>
 <p><a href="https://github.com/banditcpp/snowhouse">Snowhouse</a> is a lovely C++ assertion library.</p>
 <p>It uses an <code>AssertThat()</code> style syntax, which is very readable.</p>
-<h3><a class="anchor" id="autotoc_md67"></a>
+<h3><a class="anchor" id="autotoc_md70"></a>
 Setup</h3>
 <p>To setup the <code>Specs</code> adapter for <code>Snowhouse</code>, include <code>&lt;Specs/Snowhouse/Main.h&gt;</code> in your <code>main.cpp</code></p>
 <div class="fragment"><div class="line"><span class="comment">// Include the primary specs main() entrypoint</span></div>
@@ -140,7 +140,7 @@ Setup</h3>
 <div class="line"><span class="comment">// Setup the Snowhouse adapter (only do this once per project)</span></div>
 <div class="line"><span class="preprocessor">#include &lt;Specs/Snowhouse/Main.h&gt;</span></div>
 <div class="ttc" id="a_main_8h_html"><div class="ttname"><a href="_main_8h.html">Main.h</a></div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md68"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md71"></a>
 Usage</h3>
 <p>Then, in each spec file, you may include <code>&lt;<a class="el" href="_snowhouse_8h.html">Specs/Snowhouse.h</a>&gt;</code> as a shorthand for including the <code>snowhouse</code> headers.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
@@ -162,7 +162,7 @@ Usage</h3>
 </div><!-- fragment --><p>Visit the Snowhouse GitHub page for more examples:</p><ul>
 <li><a href="https://github.com/banditcpp/snowhouse">https://github.com/banditcpp/snowhouse</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md69"></a>
+<h2><a class="anchor" id="autotoc_md72"></a>
 libassert</h2>
 <p><a href="https://github.com/jeremy-rifkin/libassert">libassert</a> ia another great C++ assertion library.</p>
 <p>Marketed as "_The most over-engineered and overpowered C++ assertion library._", it provided a simple <code>assert</code> syntax.</p>

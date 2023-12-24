@@ -115,26 +115,30 @@ $(document).ready(function(){initNavTree('md__documentation_2_writing_tests.html
 </ul>
 </li>
 <li class="level1"><a href="#autotoc_md36">Tests</a><ul><li class="level2"><a href="#autotoc_md37">Skipping Tests</a></li>
+<li class="level2"><a href="#autotoc_md38">Accessing Test Information</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md38">Async Tests</a><ul><li class="level2"><a href="#autotoc_md39">Async timeout</a></li>
+<li class="level1"><a href="#autotoc_md39">Async Tests</a><ul><li class="level2"><a href="#autotoc_md40">Async timeout</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md40">Test assertions</a><ul><li class="level2"><a href="#autotoc_md41">Snowhouse assertions</a></li>
-<li class="level2"><a href="#autotoc_md42">libassert assertions</a></li>
+<li class="level1"><a href="#autotoc_md41">Test assertions</a><ul><li class="level2"><a href="#autotoc_md42">Snowhouse assertions</a></li>
+<li class="level2"><a href="#autotoc_md43">libassert assertions</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md43">Setup and Teardown</a><ul><li class="level2"><a href="#autotoc_md44">Asynchronous Setup and Teardown</a></li>
+<li class="level1"><a href="#autotoc_md44">Setup and Teardown</a><ul><li class="level2"><a href="#autotoc_md45">Asynchronous Setup and Teardown</a></li>
+<li class="level2"><a href="#autotoc_md46">Accessing Setup/Teardown Information</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md45">Test Groups</a><ul><li class="level2"><a href="#autotoc_md46">Unique test group for each file</a></li>
-<li class="level2"><a href="#autotoc_md47">Nesting child groups</a><ul><li class="level3"><a href="#autotoc_md48">TestGroup</a></li>
-<li class="level3"><a href="#autotoc_md49">StartTestGroup / EndTestGroup</a></li>
-<li class="level3"><a href="#autotoc_md50">Describe</a><ul><li class="level4"><a href="#autotoc_md51">Lambda syntax</a></li>
+<li class="level1"><a href="#autotoc_md47">Test Groups</a><ul><li class="level2"><a href="#autotoc_md48">Unique test group for each file</a></li>
 </ul>
 </li>
+<li class="level1"><a href="#autotoc_md49">Nesting child groups</a><ul><ul><li class="level3"><a href="#autotoc_md50">TestGroup</a></li>
+<li class="level3"><a href="#autotoc_md51">StartTestGroup / EndTestGroup</a></li>
+<li class="level3"><a href="#autotoc_md52">Describe</a><ul><li class="level4"><a href="#autotoc_md53">Lambda syntax</a></li>
 </ul>
 </li>
+<li class="level3"><a href="#autotoc_md55">Accessing Group Information</a></li>
+</ul>
 </ul>
 </li>
 </ul>
@@ -305,7 +309,11 @@ Skipping Tests</h2>
 <div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
 <div class="line">}</div>
 <div class="ttc" id="a_top_level_2skip_8h_html_a3122df7e507cbbe3d95c9e97777f8362"><div class="ttname"><a href="_top_level_2skip_8h.html#a3122df7e507cbbe3d95c9e97777f8362">Skip</a></div><div class="ttdeci">#define Skip()</div><div class="ttdef"><b>Definition</b> Skip.h:5</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md38"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md38"></a>
+Accessing Test Information</h2>
+<p>If you need to access information about the current test, you can use the <code>current_test</code> variable.</p>
+<p>For more information, see 🔍 <a class="el" href="md__documentation_2_test_info.html">Test Info</a>.</p>
+<h1><a class="anchor" id="autotoc_md39"></a>
 Async Tests</h1>
 <p>Creating tests with long-running code is just as easy!</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="_test_async_8h.html#a55cf16f340096b7ce195f305e8297853">TestAsync</a>(<span class="stringliteral">&quot;Test Something Async!&quot;</span>) {</div>
@@ -316,7 +324,7 @@ Async Tests</h1>
 <div class="line">}</div>
 <div class="ttc" id="a_test_async_8h_html_a55cf16f340096b7ce195f305e8297853"><div class="ttname"><a href="_test_async_8h.html#a55cf16f340096b7ce195f305e8297853">TestAsync</a></div><div class="ttdeci">#define TestAsync(description)</div><div class="ttdef"><b>Definition</b> TestAsync.h:5</div></div>
 </div><!-- fragment --><p>If an async test does not call <code>done()</code> within a configurable timeout, the test will fail with a timeout error.</p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 Async timeout</h2>
 <p>You can override the default timeout milliseconds using <code>SetTimeout</code>.</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="_set_timeout_8h.html#a7dbb7bab833359e6e772aeaacf712dc3">SetTimeout</a>(5000)</div>
@@ -330,7 +338,7 @@ Async timeout</h2>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;ℹ️ Default timeout milliseconds can be configured via the <code>-t/--timeout</code> option </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md40"></a>
+<h1><a class="anchor" id="autotoc_md41"></a>
 Test assertions</h1>
 <p>Tests aren't particularly useful without assertions!</p>
 <p><code>Specs</code> provides built-in support for catching exceptions thrown during test execution.</p>
@@ -357,7 +365,7 @@ Test assertions</h1>
 </ul>
 <p>Any other exception types will be reported as a failure with a basic message like <code>Unknown exception</code>.</p>
 <p>It is recommended to use <code>Specs</code> with an assertion library, such as <code>snowhouse</code> or <code>libassert</code>.</p>
-<h2><a class="anchor" id="autotoc_md41"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 Snowhouse assertions</h2>
 <blockquote class="doxtable">
 <p>&zwj;For instructions on installing <code>snowhouse</code> with the <code>Specs</code> adapter, see <a class="el" href="md__documentation_2_installing.html">Installing Specs</a></p>
@@ -384,7 +392,7 @@ Snowhouse assertions</h2>
 <li>The file and line number where the assertion failed</li>
 <li>A preview of the line of code responsible for the assertion</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 libassert assertions</h2>
 <blockquote class="doxtable">
 <p>&zwj;For instructions on installing <code>libassert</code> with the <code>Specs</code> adapter, see <a class="el" href="md__documentation_2_installing.html">Installing Specs</a></p>
@@ -409,7 +417,7 @@ libassert assertions</h2>
 <li>The file and line number where the assertion failed</li>
 <li>A preview of the line of code responsible for the assertion</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md43"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 Setup and Teardown</h1>
 <p>Every test group supports the following:</p>
 <ul>
@@ -454,7 +462,7 @@ Setup and Teardown</h1>
 <div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test Something!&quot;</span>) {</div>
 <div class="line">    <span class="comment">// Test code and assertions go here...</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md44"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md45"></a>
 Asynchronous Setup and Teardown</h2>
 <p>All of the setup and teardown macros support Asynchronous code:</p>
 <ul>
@@ -516,11 +524,26 @@ Asynchronous Setup and Teardown</h2>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;ℹ️ Default timeout milliseconds can be configured via the <code>-t/--timeout</code> option </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md45"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
+Accessing Setup/Teardown Information</h2>
+<p>If you need to access information about the current setup, you can use the following variables:</p>
+<ul>
+<li><code>current_setup</code></li>
+<li><code>current_group</code></li>
+<li><code>current_test</code></li>
+</ul>
+<p>If you need to access information about the current teardown, you can use the following variables:</p>
+<ul>
+<li><code>current_teardown</code></li>
+<li><code>current_group</code></li>
+<li><code>current_test</code></li>
+</ul>
+<p>For more information, see 🔍 <a class="el" href="md__documentation_2_test_info.html">Test Info</a>.</p>
+<h1><a class="anchor" id="autotoc_md47"></a>
 Test Groups</h1>
 <p>Grouping your tests is a critical part of writing tests.</p>
 <p>It is recommended to use <code>#define SPEC_GROUP UNIQUE_NAME</code> to define a group for each <code>.cpp</code> file containing tests.</p>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 Unique test group for each file</h2>
 <p><code>TestsOne.cpp</code></p>
 <div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP Tests_One</span></div>
@@ -544,15 +567,15 @@ Unique test group for each file</h2>
 <li><code>Tests_Two</code> is a defined as a group containing one test named <code>Test 2</code></li>
 </ul>
 <p>This works great, but what if you want to group your tests into sub-groups?</p>
-<h2><a class="anchor" id="autotoc_md47"></a>
-Nesting child groups</h2>
+<h1><a class="anchor" id="autotoc_md49"></a>
+Nesting child groups</h1>
 <p>Once you need to define sub-groups, there are a few different syntax styles to choose from:</p>
 <ol type="1">
 <li><code>TestGroup</code> defines a new top-level group (<em>within the file group defined via spec_name</em>)</li>
 <li><code>StartTestGroup</code>/<code>EndTestGroup</code> define nested groups</li>
 <li><code>Describe</code> defines a nested group and child tests/groups/setups/teardowns are defined using a lambda syntax</li>
 </ol>
-<h3><a class="anchor" id="autotoc_md48"></a>
+<h3><a class="anchor" id="autotoc_md50"></a>
 TestGroup</h3>
 <blockquote class="doxtable">
 <p>&zwj;<b>Recommended usage</b></p>
@@ -603,7 +626,7 @@ TestGroup</h3>
 <div class="line"><a class="code hl_define" href="_test_group_8h.html#a2f606580183a00e9b8323171a0916afc">TestGroup</a>(<span class="stringliteral">&quot;Skipped Group&quot;</span>)</div>
 <div class="line"><span class="comment">// Any Setup/Teardown/Test defined here will be added to the:</span></div>
 <div class="ttc" id="a_test_group_8h_html_a2f606580183a00e9b8323171a0916afc"><div class="ttname"><a href="_test_group_8h.html#a2f606580183a00e9b8323171a0916afc">TestGroup</a></div><div class="ttdeci">#define TestGroup(description)</div><div class="ttdef"><b>Definition</b> TestGroup.h:5</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md49"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md51"></a>
 StartTestGroup / EndTestGroup</h3>
 <blockquote class="doxtable">
 <p>&zwj;<b>Recommended usage</b></p>
@@ -646,11 +669,9 @@ StartTestGroup / EndTestGroup</h3>
 <div class="line">        <a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> { <span class="comment">/* Setup code goes here... */</span> }</div>
 <div class="line">        <a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> { <span class="comment">/* Teardown code goes here... */</span> }</div>
 <div class="line">        <a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;Test something else&quot;</span>) { <span class="comment">/* Test code goes here... */</span> }</div>
-<div class="line">    }</div>
-<div class="line">    <a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
+<div class="line">    } <a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
 <div class="line"> </div>
-<div class="line">}</div>
-<div class="line"><a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
+<div class="line">} <a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// StartTestGroup() supports Skip()</span></div>
 <div class="line"><a class="code hl_define" href="_top_level_2skip_8h.html#a3122df7e507cbbe3d95c9e97777f8362">Skip</a>();</div>
@@ -660,7 +681,7 @@ StartTestGroup / EndTestGroup</h3>
 <div class="line"><a class="code hl_define" href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a>();</div>
 <div class="ttc" id="a_end_test_group_8h_html_a94427869efc5da0f2e622efa775fa6f5"><div class="ttname"><a href="_end_test_group_8h.html#a94427869efc5da0f2e622efa775fa6f5">EndTestGroup</a></div><div class="ttdeci">#define EndTestGroup()</div><div class="ttdef"><b>Definition</b> EndTestGroup.h:5</div></div>
 <div class="ttc" id="a_start_test_group_8h_html_a746b468d19fc04a515e3da909abac56b"><div class="ttname"><a href="_start_test_group_8h.html#a746b468d19fc04a515e3da909abac56b">StartTestGroup</a></div><div class="ttdeci">#define StartTestGroup(description)</div><div class="ttdef"><b>Definition</b> StartTestGroup.h:5</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md50"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md52"></a>
 Describe</h3>
 <blockquote class="doxtable">
 <p>&zwj;<b>Recommended usage</b></p>
@@ -717,7 +738,7 @@ Describe</h3>
 <div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_ab1c45713d4d86b5d6cea5999e035b64b"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#ab1c45713d4d86b5d6cea5999e035b64b">SpecsCpp::DSLs::Functions::describe</a></div><div class="ttdeci">void describe(std::string_view description, std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> describe.h:9</div></div>
 <div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_ad5d1e9ba206d4f0ecc5d8e1dc41b7c55"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#ad5d1e9ba206d4f0ecc5d8e1dc41b7c55">SpecsCpp::DSLs::Functions::teardown</a></div><div class="ttdeci">void teardown(std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> teardown.h:12</div></div>
 <div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_afc08501c21b8d391a0caf7a7e2222407"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#afc08501c21b8d391a0caf7a7e2222407">SpecsCpp::DSLs::Functions::setup</a></div><div class="ttdeci">void setup(std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> setup.h:12</div></div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md51"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md53"></a>
 Lambda syntax</h4>
 <p>The lambda syntax is used to define tests/groups/setups/teardowns inside of a <code>Describe</code> block.</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="_top_level_2describe_8h.html#a1e7ceb35b4641f8f90e1123804f60ab6">Describe</a>(<span class="stringliteral">&quot;Something Cool&quot;</span>) {</div>
@@ -731,7 +752,7 @@ Lambda syntax</h4>
 <div class="line">        <a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a7953bb0f562f8e0aecf8c394fcaa7bdf">test</a>(<span class="stringliteral">&quot;Test something else&quot;</span>, [](){ <span class="comment">/* Test code goes here... */</span> });</div>
 <div class="line">    });</div>
 <div class="line">}</div>
-</div><!-- fragment --><p><a class="anchor" id="autotoc_md52"></a> </p><h5>Async lambda syntax</h5>
+</div><!-- fragment --><p><a class="anchor" id="autotoc_md54"></a> </p><h5>Async lambda syntax</h5>
 <p>To create an async test/setup/teardown, your lambda should accept a <code>done</code> parameter.</p>
 <div class="fragment"><div class="line"><a class="code hl_define" href="_top_level_2describe_8h.html#a1e7ceb35b4641f8f90e1123804f60ab6">Describe</a>(<span class="stringliteral">&quot;Something Cool&quot;</span>) {</div>
 <div class="line">    setup([](<span class="keyword">auto</span> done){</div>
@@ -770,7 +791,14 @@ Lambda syntax</h4>
 <div class="line">    });</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_specs_cpp_1_1_spec_done_html"><div class="ttname"><a href="class_specs_cpp_1_1_spec_done.html">SpecsCpp::SpecDone</a></div><div class="ttdef"><b>Definition</b> SpecDone.h:7</div></div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md55"></a>
+Accessing Group Information</h3>
+<p>If you need to access information about the current group, you can use the following variable:</p>
+<ul>
+<li><code>current_group</code></li>
+</ul>
+<p>For more information, see 🔍 <a class="el" href="md__documentation_2_test_info.html">Test Info</a>. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.7-->

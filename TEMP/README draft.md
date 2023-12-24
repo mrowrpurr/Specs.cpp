@@ -736,11 +736,11 @@ Describe("Some Tests") {
 
 ## Spec Info and Variables
 
-The currently running test is available via the `current_spec` variable.
+The currently running test is available via the `current_test` variable.
 
 ```cpp
 Test("Some Test") {
-  std::cout << "Current test description: " << current_spec->description() << std::endl;
+  std::cout << "Current test description: " << current_test->description() << std::endl;
 }
 ```
 
@@ -748,20 +748,20 @@ This is available in `Setup` and `Teardown` blocks as well.
 
 ### Spec Variables
 
-If you want to store some data for the duration of a test, you can use the `current_spec.var()` functions.
+If you want to store some data for the duration of a test, you can use the `current_test.var()` functions.
 
 #### Set variable value
 
 ```cpp
 Setup {
   // Simple types
-  current_spec->var("The answer", 42);
+  current_test->var("The answer", 42);
 
   // Complex type pointers
-  current_spec->var("Some object", new SomeObject());
+  current_test->var("Some object", new SomeObject());
 
   // Helper specifically for strings
-  current_spec->var_text("Some string", "Hello, World!");
+  current_test->var_text("Some string", "Hello, World!");
 }
 ```
 
@@ -770,13 +770,13 @@ Setup {
 ```cpp
 Test("Some Test") {
   // Simple types
-  int theAnswer = current_spec->var<int>("The answer");
+  int theAnswer = current_test->var<int>("The answer");
 
   // Complex type pointers
-  SomeObject* someObject = current_spec->var<SomeObject*>("Some object");
+  SomeObject* someObject = current_test->var<SomeObject*>("Some object");
 
   // Helper specifically for strings
-  const char* someString = current_spec->var_text("Some string");
+  const char* someString = current_test->var_text("Some string");
 }
 ```
 

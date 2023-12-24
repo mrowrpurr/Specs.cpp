@@ -213,6 +213,12 @@ Test("Test Something!") {
 }
 ```
 
+## Accessing Test Information
+
+If you need to access information about the current test, you can use the `current_test` variable.
+
+For more information, see 🔍 [Test Info](TestInfo.md).
+
 # Async Tests
 
 Creating tests with long-running code is just as easy!
@@ -459,6 +465,22 @@ OneTimeTeardownAsync {
 
 > ℹ️ Default timeout milliseconds can be configured via the `-t/--timeout` option
 
+## Accessing Setup/Teardown Information
+
+If you need to access information about the current setup, you can use the following variables:
+
+- `current_setup`
+- `current_group`
+- `current_test`
+
+If you need to access information about the current teardown, you can use the following variables:
+
+- `current_teardown`
+- `current_group`
+- `current_test`
+
+For more information, see 🔍 [Test Info](TestInfo.md).
+
 # Test Groups
 
 Grouping your tests is a critical part of writing tests.
@@ -498,7 +520,7 @@ In the above code:
 
 This works great, but what if you want to group your tests into sub-groups?
 
-## Nesting child groups
+# Nesting child groups
 
 Once you need to define sub-groups, there are a few different syntax styles to choose from:
 
@@ -585,11 +607,9 @@ StartTestGroup("Child Group") {
         Setup { /* Setup code goes here... */ }
         Teardown { /* Teardown code goes here... */ }
         Test("Test something else") { /* Test code goes here... */ }
-    }
-    EndTestGroup();
+    } EndTestGroup();
 
-}
-EndTestGroup();
+} EndTestGroup();
 
 // StartTestGroup() supports Skip()
 Skip();
@@ -710,3 +730,11 @@ Describe("Something Cool") {
     });
 }
 ```
+
+### Accessing Group Information
+
+If you need to access information about the current group, you can use the following variable:
+
+- `current_group`
+
+For more information, see 🔍 [Test Info](TestInfo.md).

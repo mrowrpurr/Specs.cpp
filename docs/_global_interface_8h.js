@@ -31,6 +31,8 @@ var _global_interface_8h =
     [ "define_test_fn", "_global_interface_8h.html#a518f2e496b9ba2ea301af6523aec7dbe", null ],
     [ "define_test_fn", "_global_interface_8h.html#af79e282cc64cd0620a63c9fa6dc364a4", null ],
     [ "define_test_fn", "_global_interface_8h.html#aa5fca1767c5dcaeab4eb3049df9e592e", null ],
+    [ "define_test_fn", "_global_interface_8h.html#a9e2d7eb53a16faebe098ff6141ada187", null ],
+    [ "define_test_fn", "_global_interface_8h.html#a61a6617bce07336cdd6b5c454a9bd622", null ],
     [ "define_test_fn", "_global_interface_8h.html#a4706f4f666b57b1f2be6676a2b706981", null ],
     [ "define_test_fn", "_global_interface_8h.html#a752cf78b8bed09f01a402e9866bd4bcd", null ]
 ];

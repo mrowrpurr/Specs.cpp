@@ -103,19 +103,19 @@ $(document).ready(function(){initNavTree('md__documentation_2_running_tests.html
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md54">Specs executable project</a><ul><li class="level2"><a href="#autotoc_md55">&lt;Specs/Main.h&gt;</a></li>
+<ul><li class="level1"><a href="#autotoc_md57">Specs executable project</a><ul><li class="level2"><a href="#autotoc_md58">&lt;Specs/Main.h&gt;</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md56">Run executable project</a><ul><li class="level2"><a href="#autotoc_md57">Running tests</a></li>
-<li class="level2"><a href="#autotoc_md58">Help documentation</a></li>
+<li class="level1"><a href="#autotoc_md59">Run executable project</a><ul><li class="level2"><a href="#autotoc_md60">Running tests</a></li>
+<li class="level2"><a href="#autotoc_md61">Help documentation</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md59">Command-Line Options</a></li>
-<li class="level1"><a href="#autotoc_md60">Test runners</a></li>
-<li class="level1"><a href="#autotoc_md61">Test reporters</a></li>
+<li class="level1"><a href="#autotoc_md62">Command-Line Options</a></li>
+<li class="level1"><a href="#autotoc_md63">Test runners</a></li>
+<li class="level1"><a href="#autotoc_md64">Test reporters</a></li>
 </ul>
 </div>
-<div class="textblock"><p><a class="anchor" id="autotoc_md53"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md56"></a></p>
 <p>It's time to run your tests!</p>
 <blockquote class="doxtable">
 <p>&zwj;<em>This assumes that you have completed the steps outlines in:</em></p><ul>
@@ -124,10 +124,10 @@ $(document).ready(function(){initNavTree('md__documentation_2_running_tests.html
 </ul>
 <p>You might also be interested in using the recommended 📂 <a class="el" href="md__documentation_2_project_layout.html">Project Layout</a>. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md54"></a>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Specs executable project</h1>
 <p>You should already have a binary/executable target in your <code>xmake</code> or <code>CMake</code>/<code>vcpkg</code> project.</p>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 &lt;Specs/Main.h&gt;</h2>
 <p>You should already have a <code>.cpp</code> file in your project which includes the <code>&lt;<a class="el" href="_main_8h.html">Specs/Main.h</a>&gt;</code> header file.</p>
 <blockquote class="doxtable">
@@ -141,10 +141,10 @@ Specs executable project</h1>
 </ul>
 <p>And if you're using <code>snowhouse</code>, the <code>&lt;<a class="el" href="_specs_8_snowhouse_2include_2_specs_2_snowhouse_2setup_8h.html">Specs/Snowhouse/Setup.h</a>&gt;</code> should also only be included ONCE in your project. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md56"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Run executable project</h1>
 <p>Simpy run your project's executable target!</p>
-<h2><a class="anchor" id="autotoc_md57"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Running tests</h2>
 <p>By default, the executable will run any tests defined in your executable's project.</p>
 <p>If there are none, it will print <code>No tests found.</code> and print the command line options.</p>
@@ -156,7 +156,7 @@ Running tests</h2>
 <li><code>0</code> response code will be returned if all tests pass OR if no tests were found </li>
 </ul>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md58"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 Help documentation</h2>
 <p>To view a list of the currently supported command-line arguments, run your executable with the <code>/-h--help</code> option.</p>
 <p>The following is an example of the help documentation:</p>
@@ -177,14 +177,14 @@ Help documentation</h2>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<b>Note:</b> the above might not be up-to-date. Run your executable with the <code>/-h--help</code> option to see the latest help documentation. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md62"></a>
 Command-Line Options</h1>
 <p>To learn more about using command-line options, see ▶️ <a class="el" href="md__documentation_2_c_l_i.html">Command-Line Interface</a>.</p>
-<h1><a class="anchor" id="autotoc_md60"></a>
+<h1><a class="anchor" id="autotoc_md63"></a>
 Test runners</h1>
 <p>By default, <code>Specs</code> uses a test runner which runs all tests in the order that they were defined.</p>
 <p>To learn more about the available test runners (<em>or how to make your own</em>), see 🏎️ Test Runners.</p>
-<h1><a class="anchor" id="autotoc_md61"></a>
+<h1><a class="anchor" id="autotoc_md64"></a>
 Test reporters</h1>
 <p>By default, <code>Specs</code> uses a test reporter which prints test results to the console.</p>
 <p>To learn more about the available test reporters (<em>or how to make your own</em>), see 📰 Test Reporters. </p>

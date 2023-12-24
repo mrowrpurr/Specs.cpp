@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['💲_20test_20variables_0',['💲 Test Variables',['../md__documentation_2_variables.html',1,'']]]
+  ['💥_20exception_20handling_0',['💥 Exception Handling',['../md__documentation_2_exceptions.html',1,'']]]
 ];

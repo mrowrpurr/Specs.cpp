@@ -6,10 +6,10 @@
 
 BeginTestTemplate("SpecHelper Template");
 
-Setup {
-    _Log_("Hi from SpecHelper setup " _GLOBAL_MACRO_FUNCTIONS_STRINGIZE(
-        _GLOBAL_MACRO_FUNCTIONS_COMPILATION_UNIT_NAME
-    ));
+Setup { _Log_("Setup inside of {}", current_setup->group()->full_description()); }
+
+StartTestGroup("Template Group") {
+    Test("Template Test") { _Log_("Hi from Template Test"); }
 }
 
 EndTestTemplate();

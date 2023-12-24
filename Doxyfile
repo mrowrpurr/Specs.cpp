@@ -921,6 +921,7 @@ INPUT                  =    \
                             Documentation/Variables.md \
                             Documentation/Tags.md \
                             Documentation/Data.md \
+                            Documentation/TestInfo.md \
                             Documentation/Exceptions.md \
                             Documentation/Runners.md \
                             Documentation/Reporters.md \
@@ -928,6 +929,7 @@ INPUT                  =    \
                             Documentation/SyntaxReference.md \
                             Documentation/CustomSyntax.md \
                             Documentation/Macros.md \
+                            Documentation/DataModel.md \
                             Documentation/Examples.md \
                             Documentation/CONTRIBUTING.md \
                             Documentation/LICENSE.md \

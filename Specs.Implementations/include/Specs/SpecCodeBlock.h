@@ -144,6 +144,16 @@ namespace SpecsCpp {
                   )
               ) {}
 
+        SpecCodeBlock(FunctionPointer<void(ISpecGroup*, ISpec*)> body)
+            : _managedBody(
+                  std::make_unique<
+                      FunctionPointer<void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
+                      [body](
+                          ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone
+                      ) { body.invoke(self->group(), spec); }
+                  )
+              ) {}
+
         SpecCodeBlock(FunctionPointer<void(ISpecGroup*, ISpecComponent*, ISpec*)> body)
             : _managedBody(
                   std::make_unique<
@@ -153,6 +163,18 @@ namespace SpecsCpp {
                       ) { body.invoke(self->group(), self, spec); }
                   )
               ) {}
+
+        SpecCodeBlock(FunctionPointer<void(ISpecGroup*, ISpec*, SpecDone)> body)
+            : _managedBody(
+                  std::make_unique<
+                      FunctionPointer<void(ISpecComponent*, ISpec*, SpecCodeBlockAsyncDoneFn*)>>(
+                      [body](
+                          ISpecComponent* self, ISpec* spec, SpecCodeBlockAsyncDoneFn* asyncDone
+                      ) { body.invoke(self->group(), spec, SpecDone{asyncDone}); }
+                  )
+              ) {
+            mark_async();
+        }
 
         SpecCodeBlock(FunctionPointer<void(ISpecComponent*, ISpec*, SpecDone)> body)
             : _managedBody(

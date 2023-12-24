@@ -75,6 +75,22 @@ namespace SpecsCpp::DSLs::GlobalInterface {
         );
     }
 
+    inline void define_test_fn(
+        std::string_view description, FunctionPointer<void(ISpecGroup*, ISpec*)> body
+    ) {
+        GlobalSpecGroup::instance().define_spec(
+            description, std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
+    inline void define_test_fn(
+        std::string_view description, FunctionPointer<void(ISpecGroup*, ISpec*, SpecDone)> body
+    ) {
+        GlobalSpecGroup::instance().define_spec(
+            description, std::make_unique<SpecCodeBlock>(std::move(body))
+        );
+    }
+
     /* Setup */
 
     inline void define_setup_fn(FunctionPointer<void()> body) {

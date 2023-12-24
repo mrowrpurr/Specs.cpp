@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🛢️_20test_20data_0',['🛢️ Test Data',['../md__documentation_2_data.html',1,'']]]
+  ['🖋️_20customizing_20syntax_0',['🖋️ Customizing Syntax',['../md__documentation_2_custom_syntax.html',1,'']]]
 ];
