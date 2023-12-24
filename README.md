@@ -25,7 +25,7 @@ Teardown { /* Teardown Code */ }
 
 Test("Some thing") {
     assert_that(69 == 420);
-    AssertThat(69, Equals(69));
+    AssertThat(69, Equals(420));
 }
 
 TestAsync("Slow thing") {
