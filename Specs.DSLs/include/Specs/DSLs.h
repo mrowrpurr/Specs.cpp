@@ -22,9 +22,12 @@
 #include "DSLs/TopLevel/GroupTeardown.h"       // IWYU pragma: keep
 #include "DSLs/TopLevel/GroupTeardownAsync.h"  // IWYU pragma: keep
 #include "DSLs/TopLevel/It.h"                  // IWYU pragma: keep
+#include "DSLs/TopLevel/MetaData.h"            // IWYU pragma: keep
 #include "DSLs/TopLevel/SetTestGroup.h"        // IWYU pragma: keep
+#include "DSLs/TopLevel/SetTimeout.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/Setup.h"               // IWYU pragma: keep
 #include "DSLs/TopLevel/SetupAsync.h"          // IWYU pragma: keep
+#include "DSLs/TopLevel/Skip.h"                // IWYU pragma: keep
 #include "DSLs/TopLevel/Spec.h"                // IWYU pragma: keep
 #include "DSLs/TopLevel/SpecAsync.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/Specs.h"               // IWYU pragma: keep
@@ -44,7 +47,6 @@
 #include "DSLs/TopLevel/UnsetTestGroup.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplate.h"         // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplates.h"        // IWYU pragma: keep
-
 
 using SpecDone = SpecsCpp::SpecDone;
 

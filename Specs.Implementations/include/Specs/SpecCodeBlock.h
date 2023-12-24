@@ -16,7 +16,7 @@ namespace SpecsCpp {
     class SpecCodeBlock : public ISpecCodeBlock {
         ISpecComponent* _component  = nullptr;
         bool            _async      = false;
-        std::uint32_t   _timeout_ms = 0;  // TODO currently not used (-t/--timeout used instead)
+        std::uint32_t   _timeout_ms = 0;
 
         SpecCodeBlockBodyFn* _unmanagedBody = nullptr;
 

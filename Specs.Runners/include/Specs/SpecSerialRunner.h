@@ -133,13 +133,13 @@ namespace SpecsCpp {
                 _currentRunResultPromise = std::make_unique<std::promise<ISpecRunResult*>>();
 
                 auto* codeBlock = setup->code_block();
-                codeBlock->set_timeout_ms(_timeoutMs);
+                if (codeBlock->get_timeout_ms() == 0) codeBlock->set_timeout_ms(_timeoutMs);
 
                 codeBlock->run(setup, _currentSpec, &_codeBlockCallbackFn);
 
                 auto future = _currentRunResultPromise->get_future();
-                if (_timeoutMs > 0) {
-                    if (future.wait_for(std::chrono::milliseconds(_timeoutMs)) ==
+                if (codeBlock->get_timeout_ms() > 0) {
+                    if (future.wait_for(std::chrono::milliseconds(codeBlock->get_timeout_ms())) ==
                         std::future_status::timeout) {
                         auto result = SpecRunResult::timeout(setup, _currentSpec);
                         _reporters->report_setup(result.get());
@@ -160,13 +160,13 @@ namespace SpecsCpp {
                 _currentRunResultPromise = std::make_unique<std::promise<ISpecRunResult*>>();
 
                 auto* codeBlock = teardown->code_block();
-                codeBlock->set_timeout_ms(_timeoutMs);
+                if (codeBlock->get_timeout_ms() == 0) codeBlock->set_timeout_ms(_timeoutMs);
 
                 codeBlock->run(teardown, _currentSpec, &_codeBlockCallbackFn);
 
                 auto future = _currentRunResultPromise->get_future();
-                if (_timeoutMs > 0) {
-                    if (future.wait_for(std::chrono::milliseconds(_timeoutMs)) ==
+                if (codeBlock->get_timeout_ms() > 0) {
+                    if (future.wait_for(std::chrono::milliseconds(codeBlock->get_timeout_ms())) ==
                         std::future_status::timeout) {
                         auto result = SpecRunResult::timeout(teardown, _currentSpec);
                         _reporters->report_teardown(result.get());
@@ -184,11 +184,10 @@ namespace SpecsCpp {
             };
 
             void foreach_spec_in_group(ISpec* spec) {
-                if (!should_run_spec(spec)) return;
-
-                if (list_only()) {
+                if (list_only() || !should_run_spec(spec)) {
                     auto result = SpecRunResult::not_run(spec, spec);
                     _reporters->report_spec_result(result.get());
+                    _resultTotalCounts.increment_not_run();
                     return;
                 }
 
@@ -248,14 +247,14 @@ namespace SpecsCpp {
                 _currentRunResultPromise = std::make_unique<std::promise<ISpecRunResult*>>();
 
                 auto* codeBlock = spec->code_block();
-                codeBlock->set_timeout_ms(_timeoutMs);
+                if (codeBlock->get_timeout_ms() == 0) codeBlock->set_timeout_ms(_timeoutMs);
 
                 codeBlock->run(spec, spec, &_codeBlockCallbackFn);
 
                 auto future = _currentRunResultPromise->get_future();
 
-                if (_timeoutMs > 0) {
-                    if (future.wait_for(std::chrono::milliseconds(_timeoutMs)) ==
+                if (codeBlock->get_timeout_ms() > 0) {
+                    if (future.wait_for(std::chrono::milliseconds(codeBlock->get_timeout_ms())) ==
                         std::future_status::timeout) {
                         auto result = SpecRunResult::timeout(spec, spec);
                         _reporters->report_spec(result.get());

@@ -7,6 +7,7 @@
 namespace SpecsCpp {
 
     class SpecDataValue : public ISpecDataValue {
+        std::string       _asString = "";
         std::string       _key;
         SpecDataValueType _type;
         IVoidPointer*     _value          = nullptr;
@@ -120,6 +121,30 @@ namespace SpecsCpp {
         bool is_float() const override { return _type == SpecDataValueType::Float; }
         bool is_string() const override { return _type == SpecDataValueType::String; }
         bool is_pointer() const override { return _type == SpecDataValueType::Pointer; }
+
+        const char* to_string() override {
+            switch (_type) {
+                case SpecDataValueType::Boolean:
+                    _asString = bool_value() ? "true" : "false";
+                    break;
+                case SpecDataValueType::Integer:
+                    _asString = std::to_string(int_value());
+                    break;
+                case SpecDataValueType::UnsignedInteger:
+                    _asString = std::to_string(unsigned_int_value());
+                    break;
+                case SpecDataValueType::Float:
+                    _asString = std::to_string(float_value());
+                    break;
+                case SpecDataValueType::String:
+                    _asString = string_value();
+                    break;
+                case SpecDataValueType::Pointer:
+                    _asString = "(pointer)";
+                    break;
+            }
+            return _asString.c_str();
+        }
 
         static ISpecDataValue* create_bool(const char* key, bool value) {
             return new SpecDataValue(key, SpecDataValueType::Boolean, value);

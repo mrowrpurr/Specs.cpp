@@ -45,6 +45,8 @@ namespace SpecsCpp {
         virtual void         pointer_value(void*)             = 0;
         virtual void         pointer_value(IVoidPointer*)     = 0;
 
+        virtual const char* to_string() = 0;
+
         virtual bool is_bool() const         = 0;
         virtual bool is_int() const          = 0;
         virtual bool is_unsigned_int() const = 0;

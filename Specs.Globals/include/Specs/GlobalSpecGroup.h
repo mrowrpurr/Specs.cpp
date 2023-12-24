@@ -20,6 +20,9 @@
 namespace SpecsCpp {
 
     class GlobalSpecGroup {
+        static constexpr auto META_DATA_KEY_TIMEOUT = "timeout";
+        static constexpr auto META_DATA_KEY_SKIP    = "skip";
+
         std::vector<ISpecGroup*> _currentGroupStack;
         std::vector<ISpecGroup*> _savedGroupStack;
 
@@ -44,6 +47,22 @@ namespace SpecsCpp {
         void component_defined(ISpecComponent* component) {
             component->data()->merge(&_metaDataForNextComponent);
             component->tags()->merge(&_tagsForNextComponent);
+
+            // Built-in support for "skip"
+            if (_metaDataForNextComponent.has(META_DATA_KEY_SKIP)) {
+                auto skip = _metaDataForNextComponent.get(META_DATA_KEY_SKIP)->bool_value();
+                component->mark_skipped(skip);
+            }
+
+            // Built-in support for "timeout"
+            if (_metaDataForNextComponent.has(META_DATA_KEY_TIMEOUT)) {
+                if (auto* hasCodeBlock = dynamic_cast<ISpecHasCodeBlock*>(component)) {
+                    auto timeout =
+                        _metaDataForNextComponent.get(META_DATA_KEY_TIMEOUT)->int_value();
+                    hasCodeBlock->code_block()->set_timeout_ms(timeout);
+                }
+            }
+
             _metaDataForNextComponent.clear();
             _tagsForNextComponent.clear();
         }
