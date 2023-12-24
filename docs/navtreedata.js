@@ -127,7 +127,26 @@ var NAVTREE =
         [ "Lambda syntax", "md__documentation_2_templates.html#autotoc_md81", null ]
       ] ]
     ] ],
-    [ "💲 Test Variables", "md__documentation_2_variables.html", null ],
+    [ "💲 Test Variables", "md__documentation_2_variables.html", [
+      [ "Using Variables", "md__documentation_2_variables.html#autotoc_md83", [
+        [ "Setting Variables", "md__documentation_2_variables.html#autotoc_md84", [
+          [ "Simple Values", "md__documentation_2_variables.html#autotoc_md85", null ],
+          [ "Text", "md__documentation_2_variables.html#autotoc_md86", null ],
+          [ "Complex Types", "md__documentation_2_variables.html#autotoc_md87", null ]
+        ] ],
+        [ "Getting Variables", "md__documentation_2_variables.html#autotoc_md88", [
+          [ "Text", "md__documentation_2_variables.html#autotoc_md89", null ]
+        ] ],
+        [ "Unsetting Values", "md__documentation_2_variables.html#autotoc_md90", null ],
+        [ "Variable Lifetime", "md__documentation_2_variables.html#autotoc_md91", [
+          [ "Variable lifetime helpers", "md__documentation_2_variables.html#autotoc_md92", [
+            [ "managed_var", "md__documentation_2_variables.html#autotoc_md93", null ],
+            [ "unmanaged_var", "md__documentation_2_variables.html#autotoc_md94", null ]
+          ] ],
+          [ "Editing the lifetime of a variable", "md__documentation_2_variables.html#autotoc_md95", null ]
+        ] ]
+      ] ]
+    ] ],
     [ "🎟️ Test Tags", "md__documentation_2_tags.html", null ],
     [ "🛢️ Test Data", "md__documentation_2_data.html", null ],
     [ "🔍 Test Info", "md__documentation_2_test_info.html", null ],
@@ -182,9 +201,9 @@ var NAVTREEINDEX =
 "_print_color_8h.html#a6c09f408be24e973fddbb8a4bf66e410a25a81701fbfa4a1efdf660a950c1d006",
 "class_specs_cpp_1_1_global_spec_environment.html#ab74d7f28345fa74fdbd66e399aebc26d",
 "class_specs_cpp_1_1_spec_documented.html",
-"functions.html",
-"namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a92fb6f4f4ce4c70d6d6462d2b71c3805",
-"struct_specs_cpp_1_1_i_spec_group.html#a8bc463d26278c86d5204813f02ea1906"
+"functions_b.html",
+"namespace_specs_cpp_1_1_colors_1_1_unix.html#a710499b33e1c7256c823756a3963ab95acf4c2a4bf7c328c4e51f902350475343",
+"struct_specs_cpp_1_1_i_spec_group.html#a3f7a7a483e3d51924cd29db33a663c19"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

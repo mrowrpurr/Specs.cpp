@@ -102,10 +102,34 @@ $(document).ready(function(){initNavTree('md__documentation_2_variables.html',''
   <div class="headertitle"><div class="title">💲 Test Variables</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md82"></a> Sometimes you may find yourself needing to share data between your <code>Setup</code>, <code>Teardown</code>, and <code>Test</code> code.</p>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md83">Using Variables</a><ul><li class="level2"><a href="#autotoc_md84">Setting Variables</a><ul><li class="level3"><a href="#autotoc_md85">Simple Values</a></li>
+<li class="level3"><a href="#autotoc_md86">Text</a></li>
+<li class="level3"><a href="#autotoc_md87">Complex Types</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md88">Getting Variables</a><ul><li class="level3"><a href="#autotoc_md89">Text</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md90">Unsetting Values</a></li>
+<li class="level2"><a href="#autotoc_md91">Variable Lifetime</a><ul><li class="level3"><a href="#autotoc_md92">Variable lifetime helpers</a><ul><li class="level4"><a href="#autotoc_md93">managed_var</a></li>
+<li class="level4"><a href="#autotoc_md94">unmanaged_var</a></li>
+</ul>
+</li>
+<li class="level3"><a href="#autotoc_md95">Editing the lifetime of a variable</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md82"></a></p>
+<h1><a class="anchor" id="autotoc_md83"></a>
+Using Variables</h1>
+<p>Sometimes you may find yourself needing to share data between your <code>Setup</code>, <code>Teardown</code>, and <code>Test</code> code.</p>
 <p><code>Specs</code> provides a way to define, update, and access variables which are stored on the currently running <code>Test</code>.</p>
 <blockquote class="doxtable">
-<p>&zwj;<b>Important:</b> any variables still remaining in the test variable collection after the final <code>Teardown</code> will be <code>delete</code>'d. </p>
+<p>&zwj;<b>Important:</b> any variables still remaining in the test variable collection after the final <code>Teardown</code> for that test will be <code>delete</code>'d. </p>
 </blockquote>
 <div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Tests</span></div>
 <div class="line"> </div>
@@ -114,24 +138,119 @@ $(document).ready(function(){initNavTree('md__documentation_2_variables.html',''
 <div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> {</div>
 <div class="line">    <span class="comment">// Add any simple types</span></div>
 <div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;number&quot;</span>, 42);</div>
-<div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;bool value&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;value&quot;</span>, <span class="keyword">true</span>);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Or pointers to complex types</span></div>
 <div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;dog&quot;</span>, <span class="keyword">new</span> Dog());</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Use var_text() for strings</span></div>
+<div class="line">    <span class="comment">// Use var_text() for text (const char*)</span></div>
 <div class="line">    current_test-&gt;var_text(<span class="stringliteral">&quot;text&quot;</span>, <span class="stringliteral">&quot;Hello World!&quot;</span>);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_define" href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a>(<span class="stringliteral">&quot;My Test&quot;</span>) {</div>
+<div class="line">    <span class="comment">// Access variables in tests via current_test-&gt;var&lt;T&gt;()</span></div>
 <div class="line">    <span class="keyword">auto</span> number = current_test-&gt;var&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;number&quot;</span>);</div>
-<div class="line">    <span class="keyword">auto</span> <span class="keywordtype">boolean</span> = current_test-&gt;var&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;bool value&quot;</span>);</div>
-<div class="line">    <span class="keyword">auto</span>* pointer = current_test-&gt;var&lt;Dog*&gt;(<span class="stringliteral">&quot;dog&quot;</span>);</div>
-<div class="line">    <span class="keyword">auto</span> text = current_test-&gt;var_text(<span class="stringliteral">&quot;text&quot;</span>);</div>
+<div class="line">    <span class="keyword">auto</span> value  = current_test-&gt;var&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line">    <span class="keyword">auto</span>* dog   = current_test-&gt;var&lt;Dog*&gt;(<span class="stringliteral">&quot;dog&quot;</span>);</div>
+<div class="line">    <span class="keyword">auto</span> text   = current_test-&gt;var_text(<span class="stringliteral">&quot;text&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a> {</div>
+<div class="line">    <span class="comment">// Variables can also be accessed in teardowns</span></div>
+<div class="line">    <span class="comment">// via current_test-&gt;var&lt;T&gt;()</span></div>
 <div class="line">}</div>
 <div class="ttc" id="a_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h_html_a5cba18a3777f6dcb45611cce54d9c765"><div class="ttname"><a href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a></div><div class="ttdeci">#define Setup</div><div class="ttdef"><b>Definition</b> Setup.h:5</div></div>
+<div class="ttc" id="a_top_level_2teardown_8h_html_a681e4480b1c3df2b80d6d24721659b04"><div class="ttname"><a href="_top_level_2teardown_8h.html#a681e4480b1c3df2b80d6d24721659b04">Teardown</a></div><div class="ttdeci">#define Teardown</div><div class="ttdef"><b>Definition</b> Teardown.h:5</div></div>
 <div class="ttc" id="a_top_level_2test_8h_html_aa73c0e1a19248bc75f44b13b45e890ee"><div class="ttname"><a href="_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee">Test</a></div><div class="ttdeci">#define Test(description)</div><div class="ttdef"><b>Definition</b> Test.h:5</div></div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md84"></a>
+Setting Variables</h2>
+<p>Use <code>current_test-&gt;var()</code> to set variables on the currently running <code>Test</code>:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SPEC_GROUP My_Tests</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;Specs.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="_specs_8_d_s_ls_2include_2_specs_2_d_s_ls_2_top_level_2setup_8h.html#a5cba18a3777f6dcb45611cce54d9c765">Setup</a> {</div>
+<div class="line">    current_test-&gt;var(<span class="stringliteral">&quot;NAME&quot;</span>, value);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md85"></a>
+Simple Values</h3>
+<p>For simple values (<code>int</code>, <code>bool</code>, <code>float</code>, etc.) you can use <code>current_test-&gt;var(&lt;variable name&gt;, value)</code>:</p>
+<div class="fragment"><div class="line">current_test-&gt;var(<span class="stringliteral">&quot;number&quot;</span>, 42);</div>
+<div class="line">current_test-&gt;var(<span class="stringliteral">&quot;value&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line">current_test-&gt;var(<span class="stringliteral">&quot;pi&quot;</span>, 3.14159f);</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md86"></a>
+Text</h3>
+<p>For text (<code>const char*</code>), use <code>current_test-&gt;var_text(&lt;variable name&gt;, "text")</code>:</p>
+<div class="fragment"><div class="line">curent_test-&gt;var_text(<span class="stringliteral">&quot;text&quot;</span>, <span class="stringliteral">&quot;Hello World!&quot;</span>);</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;The <code>var_text</code> function manages memory for copying and storing <code>const char*</code> values. </p>
+</blockquote>
+<h3><a class="anchor" id="autotoc_md87"></a>
+Complex Types</h3>
+<p>For complex types, you should use <code>current_test-&gt;var(&lt;variable name&gt;, *pointer)</code> with a pointer to the instance:</p>
+<div class="fragment"><div class="line">current_test-&gt;var(<span class="stringliteral">&quot;dog&quot;</span>, <span class="keyword">new</span> Dog());</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// Somewhere in your code...</span></div>
+<div class="line">Dog* dog = <span class="keyword">new</span> Dog();</div>
+<div class="line"> </div>
+<div class="line">current_test-&gt;var(<span class="stringliteral">&quot;dog&quot;</span>, dog);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md88"></a>
+Getting Variables</h2>
+<p>When accessing variables, you must specify the type of the variable you are trying to access:</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> number = current_test-&gt;var&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;number&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span> value  = current_test-&gt;var&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span> pi    = current_test-&gt;var&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;pi&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span>* dog   = current_test-&gt;var&lt;Dog*&gt;(<span class="stringliteral">&quot;dog&quot;</span>);</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md89"></a>
+Text</h3>
+<p>To access text (<code>const char*</code>), use <code>current_test-&gt;var_text(&lt;variable name&gt;)</code>:</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span>* text = current_test-&gt;var_text(<span class="stringliteral">&quot;text&quot;</span>);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md90"></a>
+Unsetting Values</h2>
+<p>If you want to remove a variable from the variable collection, you can use <code>current_test-&gt;unset(&lt;variable name&gt;)</code>:</p>
+<div class="fragment"><div class="line">current_test-&gt;unset(<span class="stringliteral">&quot;number&quot;</span>);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md91"></a>
+Variable Lifetime</h2>
+<p>By default, every variable set on a <code>Test</code> will be <code>delete</code>'d after the final <code>Teardown</code> for that is run.</p>
+<p>You can override this behavior by passing a value for the <code>bool destructable</code> parameter of <code>var()</code>:</p>
+<div class="fragment"><div class="line"><span class="comment">// Somewhere in your code...</span></div>
+<div class="line">Dog* dog = <span class="keyword">new</span> Dog();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// When we set this variable to the pointer of a Dog,</span></div>
+<div class="line"><span class="comment">// we do NOT want the Dog to be deleted by the tests!</span></div>
+<div class="line">current_test-&gt;var(<span class="stringliteral">&quot;dog&quot;</span>, dog, <span class="keyword">false</span>);</div>
+</div><!-- fragment --><p>The above example will not <code>delete</code> the <code>Dog</code> instance when the test is finished.</p>
+<h3><a class="anchor" id="autotoc_md92"></a>
+Variable lifetime helpers</h3>
+<p>If you want to more explicit than passing <code>false</code>, the following helpers exist:</p><ul>
+<li><code>current_test-&gt;managed_var(&lt;variable name&gt;, value)</code></li>
+<li><code>current_test-&gt;unmanaged_var(&lt;variable name&gt;, value)</code></li>
+</ul>
+<h4><a class="anchor" id="autotoc_md93"></a>
+managed_var</h4>
+<p>The <code>managed_var</code> function is equivalent to the default behavior of <code>var()</code>.</p>
+<p>When using <code>managed_var</code>, the value will be automatically deleted after the final <code>Teardown</code> for the test is run.</p>
+<h4><a class="anchor" id="autotoc_md94"></a>
+unmanaged_var</h4>
+<p>When using <code>unmanaged_var</code>, the value will <b>not</b> be deleted after the final <code>Teardown</code> for the test is run.</p>
+<div class="fragment"><div class="line"><span class="comment">// Somewhere in your code...</span></div>
+<div class="line">Dog* dog = <span class="keyword">new</span> Dog();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// When we set this variable to the pointer of a Dog,</span></div>
+<div class="line"><span class="comment">// we do NOT want the Dog to be deleted by the tests!</span></div>
+<div class="line">current_test-&gt;unmanaged_var(<span class="stringliteral">&quot;dog&quot;</span>, dog);</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md95"></a>
+Editing the lifetime of a variable</h3>
+<p>You can change the "destructable" property of a variable by using <code>current_test-&gt;set_destructable(&lt;variable name&gt;, &lt;bool&gt;)</code>:</p>
+<div class="fragment"><div class="line">current_test-&gt;var(<span class="stringliteral">&quot;dog&quot;</span>, <span class="keyword">new</span> Dog());</div>
+<div class="line">current_test-&gt;set_destructable(<span class="stringliteral">&quot;dog&quot;</span>, <span class="keyword">false</span>);</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;If you ever need to check the "destructable" property of a variable, you can use <code>current_test-&gt;is_destructable(&lt;variable name&gt;)</code>. </p>
+</blockquote>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.7-->

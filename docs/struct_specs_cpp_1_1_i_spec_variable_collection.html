@@ -133,6 +133,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1ab4387a96e645e236f02ee1e4ebe3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f0d7486e026352fbbf1e275f5782e3d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a7f0d7486e026352fbbf1e275f5782e3d">is_destructable</a> (const char *name) const =0</td></tr>
 <tr class="separator:a7f0d7486e026352fbbf1e275f5782e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a0b06f6470a3f91ec9614e965ea044"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a39a0b06f6470a3f91ec9614e965ea044">set_destructable</a> (const char *name, bool destructable=true)=0</td></tr>
+<tr class="separator:a39a0b06f6470a3f91ec9614e965ea044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90e876b42dd598cfbcfec4ea9e78425d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a90e876b42dd598cfbcfec4ea9e78425d">exists</a> (const char *name) const =0</td></tr>
 <tr class="separator:a90e876b42dd598cfbcfec4ea9e78425d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23630f7b7dd5ed462158479e770289b1"><td class="memItemLeft" align="right" valign="top">virtual IVoidPointer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a23630f7b7dd5ed462158479e770289b1">get</a> (const char *name) const =0</td></tr>
@@ -141,10 +143,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2a3c411f9e5492c357ee40efec1e3488"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aae00c2460d0c8a62b7c88fb0ffef16"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a9aae00c2460d0c8a62b7c88fb0ffef16">clear</a> ()=0</td></tr>
 <tr class="separator:a9aae00c2460d0c8a62b7c88fb0ffef16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd74246ea862e5c5ab5f07cb8d6f5c73"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#abd74246ea862e5c5ab5f07cb8d6f5c73">delete_var</a> (const char *name)=0</td></tr>
-<tr class="separator:abd74246ea862e5c5ab5f07cb8d6f5c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdda15a7252faadbb142958693afa630"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#abdda15a7252faadbb142958693afa630">delete_all</a> ()=0</td></tr>
-<tr class="separator:abdda15a7252faadbb142958693afa630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d3533fdaefc0b0d3f91c51657881f56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a0d3533fdaefc0b0d3f91c51657881f56">foreach_variable</a> (std::function&lt; void(IVoidPointer *)&gt; fn) const</td></tr>
 <tr class="separator:a0d3533fdaefc0b0d3f91c51657881f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -214,61 +212,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_variable_collection.html#aa8872d5b38edaf580779fd4e842ae5ad">SpecsCpp::SpecVariableCollection</a>.</p>
-
-</div>
-</div>
-<a id="abdda15a7252faadbb142958693afa630" name="abdda15a7252faadbb142958693afa630"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdda15a7252faadbb142958693afa630">&#9670;&#160;</a></span>delete_all()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void SpecsCpp::ISpecVariableCollection::delete_all </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_variable_collection.html#abe99b67833d4b1b1c77152e756297ac2">SpecsCpp::SpecVariableCollection</a>.</p>
-
-</div>
-</div>
-<a id="abd74246ea862e5c5ab5f07cb8d6f5c73" name="abd74246ea862e5c5ab5f07cb8d6f5c73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd74246ea862e5c5ab5f07cb8d6f5c73">&#9670;&#160;</a></span>delete_var()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void SpecsCpp::ISpecVariableCollection::delete_var </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_variable_collection.html#aacef9bc18cd71ad2805956f7f06f5565">SpecsCpp::SpecVariableCollection</a>.</p>
 
 </div>
 </div>
@@ -451,6 +394,44 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_variable_collection.html#aaf9d450f33a2f65d6591936cf95b3084">SpecsCpp::SpecVariableCollection</a>.</p>
+
+</div>
+</div>
+<a id="a39a0b06f6470a3f91ec9614e965ea044" name="a39a0b06f6470a3f91ec9614e965ea044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39a0b06f6470a3f91ec9614e965ea044">&#9670;&#160;</a></span>set_destructable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecVariableCollection::set_destructable </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>destructable</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_variable_collection.html#aa8f0f01290b024d7ff5fcbce98ccd1b9">SpecsCpp::SpecVariableCollection</a>.</p>
 
 </div>
 </div>

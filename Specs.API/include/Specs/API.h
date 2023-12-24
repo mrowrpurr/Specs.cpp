@@ -131,12 +131,11 @@ namespace SpecsCpp {
         virtual void          set(const char* name, IVoidPointer*, bool destructable = true) = 0;
         virtual void          unset(const char* name)                                        = 0;
         virtual bool          is_destructable(const char* name) const                        = 0;
+        virtual void          set_destructable(const char* name, bool destructable = true)   = 0;
         virtual bool          exists(const char* name) const                                 = 0;
         virtual IVoidPointer* get(const char* name) const                                    = 0;
         virtual void          foreach_variable(ForEachVariableFn*) const                     = 0;
         virtual void          clear()                                                        = 0;
-        virtual void          delete_var(const char* name)                                   = 0;
-        virtual void          delete_all()                                                   = 0;
 
         void foreach_variable(std::function<void(IVoidPointer*)> fn) const {
             auto callback = unique_function_pointer(fn);
@@ -245,6 +244,28 @@ namespace SpecsCpp {
         template <typename T>
         void var(const char* name, T&& value, bool destructable = true) {
             variables()->set(name, new VoidPointer<T>(new T(std::forward<T>(value))), destructable);
+        }
+
+        template <typename T>
+        T* managed_var(const char* name, T* value) {
+            variables()->set(name, new VoidPointer<T>(value), true);
+            return value;
+        }
+
+        template <typename T>
+        void managed_var(const char* name, T&& value) {
+            variables()->set(name, new VoidPointer<T>(new T(std::forward<T>(value))), true);
+        }
+
+        template <typename T>
+        T* unmanaged_var(const char* name, T* value) {
+            variables()->set(name, new VoidPointer<T>(value), false);
+            return value;
+        }
+
+        template <typename T>
+        void unmanaged_var(const char* name, T&& value) {
+            variables()->set(name, new VoidPointer<T>(new T(std::forward<T>(value))), false);
         }
 
         const char* var_text(const char* name) {

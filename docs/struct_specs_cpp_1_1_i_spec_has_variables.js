@@ -2,6 +2,10 @@ var struct_specs_cpp_1_1_i_spec_has_variables =
 [
     [ "~ISpecHasVariables", "struct_specs_cpp_1_1_i_spec_has_variables.html#a561eff7783bcab64edb52d3ce3897c52", null ],
     [ "has_var", "struct_specs_cpp_1_1_i_spec_has_variables.html#acf9a47ef84ce2e67df7eae045ce35ffb", null ],
+    [ "managed_var", "struct_specs_cpp_1_1_i_spec_has_variables.html#afb32694e02007040b4ffb86146cd336b", null ],
+    [ "managed_var", "struct_specs_cpp_1_1_i_spec_has_variables.html#a19f750d9e525d4c4f674634fecb3b91a", null ],
+    [ "unmanaged_var", "struct_specs_cpp_1_1_i_spec_has_variables.html#af8d764801ecf391d9510e925dfb19bbb", null ],
+    [ "unmanaged_var", "struct_specs_cpp_1_1_i_spec_has_variables.html#a3f1478ab52e087472f58d62dd13375c1", null ],
     [ "var", "struct_specs_cpp_1_1_i_spec_has_variables.html#a86d303eeaa8a0072066c9eaa75745913", null ],
     [ "var", "struct_specs_cpp_1_1_i_spec_has_variables.html#a584341faa0e168b8ec503f70821349d9", null ],
     [ "var", "struct_specs_cpp_1_1_i_spec_has_variables.html#a584341faa0e168b8ec503f70821349d9", null ],

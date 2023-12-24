@@ -2,46 +2,26 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
+// TODO double check that .var("test", "foo") doesn't "just work"
+
 class Dog {
+    std::string _name;
+
 public:
-    Dog() { _Log_("Dog is being created"); }
+    Dog(std::string_view name) : _name(name) { _Log_("Dog is being created"); }
     ~Dog() { _Log_("Dog is being destroyed"); }
+    std::string name() const { return _name; }
 };
 
-Setup { current_test->var("dog", new Dog()); }
+Setup {
+    current_test->var("num", 69);
+    current_test->var("dog", new Dog("Rover"));
+    current_test->var_text("text", "Hello World");
+}
 
 Test("Foo") {
     //
-    _Log_("This test is {} in group {}", current_test->description(), current_group->description());
+    _Log_("NUM: {}", current_test->var<int>("num"));
+    _Log_("TEXT: {}", current_test->var_text("text"));
+    _Log_("DOG: {}", current_test->var<Dog*>("dog")->name());
 }
-
-Describe("Describe 1") {
-    test("test 1", []() { _Log_("test 1"); });
-
-    skip();
-    test("test 2", []() { _Log_("test 2"); });
-}
-
-StartTestGroup("Child Group") {
-    // Any Setup/Teardown/Test defined here will be added to the:
-    // [Tests One] > [Child Group] group
-    Setup { /* Setup code goes here... */
-    }
-    Teardown { /* Teardown code goes here... */
-    }
-    Test("Test something") { /* Test code goes here... */
-    }
-
-    StartTestGroup("Different Group") {
-        // Any Setup/Teardown/Test defined here will be added to the:
-        // [Tests One] > [Child Group] > [Different Group] group
-        Setup { /* Setup code goes here... */
-        }
-        Teardown { /* Teardown code goes here... */
-        }
-        Test("Test something else") { /* Test code goes here... */
-        }
-    }
-    EndTestGroup();
-}
-EndTestGroup();
