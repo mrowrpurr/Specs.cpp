@@ -6,6 +6,7 @@
 
 #include <cstdint>
 #include <exception>
+#include <functional>
 #include <type_traits>
 
 namespace SpecsCpp {
@@ -92,6 +93,11 @@ namespace SpecsCpp {
         virtual void foreach(ForEachSpecDataFn*) const = 0;
         virtual void merge(ISpecDataValueCollection*)  = 0;
         virtual void clear()                           = 0;
+
+        void foreach(std::function<void(ISpecDataValue*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach(callback.get());
+        }
     };
 
     struct ISpecTagCollection {
@@ -104,6 +110,11 @@ namespace SpecsCpp {
         virtual void foreach(ForEachTagFn*) const = 0;
         virtual void merge(ISpecTagCollection*)   = 0;
         virtual void clear()                      = 0;
+
+        void foreach(std::function<void(const char*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach(callback.get());
+        }
     };
 
     enum class SpecComponentType {
