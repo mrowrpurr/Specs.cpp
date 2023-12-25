@@ -3,6 +3,7 @@ _Almost_ ready for release 🎉
 
 ## TODO
 
+- [ ] Rename `GlobalSpecGroup` (_it's more than groups now_) and make it (and `GlobalInterface`) nice for external consumption from DSL-makers
 - [ ] Parameterized tests
 - [ ] Parallel test runner
 - [ ] If possible, add support/adapter for `BOOST_TEST`
