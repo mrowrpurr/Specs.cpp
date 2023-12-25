@@ -5,6 +5,9 @@ _Almost_ ready for release 🎉
 
 - [ ] Parameterized tests
 - [ ] Parallel test runner
+- [ ] If possible, add support/adapter for `BOOST_TEST`
+- [ ] If possible, add support/adapter for GoogleTest's `EXPECT_THAT` and/or `ASSERT_THAT`
+- [ ] If possible, add support/adapter for Catch2 assertions
 - [ ] CLI options to include/exclude by:
   - [ ] tag (text or regex)
   - [ ] test name (text or regex)
