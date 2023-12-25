@@ -1,3 +1,20 @@
+_Almost_ ready for release 🎉
+
+
+## TODO
+
+- [ ] Parameterized tests
+- [ ] Parallel test runner
+- [ ] CLI options to include/exclude by:
+  - [ ] tag (text or regex)
+  - [ ] test name (text or regex)
+  - [ ] group name (text or regex)
+  - [ ] full test name with groups (text or regex)
+  - [ ] file name (text or regex) **if possible**
+- [ ] Finish docs :)
+
+---
+
 <img src="Resources/Images/Logo_400.png" align="right">
 
 # Specs <!-- omit in toc -->
