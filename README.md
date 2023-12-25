@@ -12,6 +12,10 @@ _Almost_ ready for release 🎉
   - [ ] full test name with groups (text or regex)
   - [ ] file name (text or regex) **if possible**
 - [ ] CLI option to glob for `.dll/.so/.dylib` files
+- [ ] **Maybe** provide a `Given`, `When`, `Then` syntax
+- [ ] Bundle up the syntax options into simpler `#include`'s
+  - [ ] A bit simpler to BYO syntax selection
+  - [ ] Provide RSpec-ish `BeforeEach`/`It`
 - [ ] Finish docs :)
 
 ---
