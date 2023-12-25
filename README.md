@@ -12,6 +12,8 @@ _Almost_ ready for release 🎉
   - [ ] full test name with groups (text or regex)
   - [ ] file name (text or regex) **if possible**
 - [ ] CLI option to glob for `.dll/.so/.dylib` files
+- [ ] Provide example of programmatically providing those ^ filters, but from a custom entry point
+  - _e.g. How I will likely want to do for my Skyrim test runner_
 - [ ] **Maybe** provide a `Given`, `When`, `Then` syntax
 - [ ] Bundle up the syntax options into simpler `#include`'s
   - [ ] A bit simpler to BYO syntax selection
