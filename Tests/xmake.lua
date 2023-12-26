@@ -1,4 +1,5 @@
 target("Tests")
     set_kind("binary")
-    -- add_files("*/*.cpp")
+    add_files("*.cpp", "**/*.cpp")
     add_includedirs(".")
+    add_deps("Specs", "Specs.Snowhouse")
