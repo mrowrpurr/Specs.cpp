@@ -204,11 +204,10 @@ That's it!
 
 ## Skipping Tests
 
-If you would like to skip a test, e.g. temporarily, you can mark it with `Skip()`.
+If you would like to skip a test, e.g. temporarily, you can mark it with `Skip`.
 
 ```cpp
-Skip();
-Test("Test Something!") {
+Skip Test("Test Something!") {
     // Test code and assertions go here...
 }
 ```
@@ -567,8 +566,7 @@ Teardown { /* Teardown code goes here... */ }
 Test("Test something else") { /* Test code goes here... */ }
 
 // TestGroup() supports Skip()
-Skip();
-TestGroup("Skipped Group")
+Skip TestGroup("Skipped Group")
 // Any Setup/Teardown/Test defined here will be added to the:
 ```
 
@@ -612,8 +610,7 @@ StartTestGroup("Child Group") {
 } EndTestGroup();
 
 // StartTestGroup() supports Skip()
-Skip();
-StartTestGroup("Skipped Group") {
+Skip StartTestGroup("Skipped Group") {
     // Any Setup/Teardown/Test defined here will be added to the:
 }
 EndTestGroup();
@@ -661,8 +658,7 @@ Describe("Child Group") {
 }
 
 // Describe() supports Skip()
-Skip();
-Describe("Skipped Group") {
+Skip Describe("Skipped Group") {
     // Any Setup/Teardown/Test defined here will be added to the:
 }
 ```

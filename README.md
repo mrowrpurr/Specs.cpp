@@ -5,6 +5,7 @@ _Almost_ ready for release 🎉
 
 - [ ] Write Specs for Specs 👓
 - [ ] Rename `GlobalSpecGroup` (_it's more than groups now_) and make it (and `GlobalInterface`) nice for external consumption from DSL-makers
+  - [ ] Extract the concept of data for 'next' component or spec into a structure
 - [ ] Parameterized tests
 - [ ] Parallel test runner
 - [ ] If possible, add support/adapter for `BOOST_TEST`
