@@ -56,6 +56,8 @@ namespace SpecsCpp {
                     string_format("{} > {}", parent->full_description(), description);
         }
 
+        SpecGroup(std::string_view description) : SpecGroup(nullptr, description) {}
+
         void foreach_group(ForEachGroupFn* callback) const override {
             for (auto* group : _childGroups) callback->invoke(group);
         }

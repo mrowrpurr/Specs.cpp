@@ -4,12 +4,12 @@
 #include <Specs/SpecRunResult.h>
 #include <Specs/SpecSuiteRunResult.h>
 #include <_Log_.h>
-#include <collections.h>
 
 #include <future>
 #include <memory>
 #include <regex>
 #include <string>
+#include <vector>
 
 namespace SpecsCpp {
 
@@ -26,7 +26,8 @@ namespace SpecsCpp {
             ISpecReporterCollection* _reporters;
             ISpecRunOptions*         _options = nullptr;
 
-            int _timeoutMs = 0;
+            int _timeoutMs = 3000;
+            // int _timeoutMs = 0;
 
             bool                                           _currentlySkippingTests  = false;
             int                                            _setupGroupsRun          = 0;
@@ -329,8 +330,12 @@ namespace SpecsCpp {
             }
 
         public:
-            SpecSuiteRunInstance(ISpecReporterCollection* reporters, ISpecRunOptions* options)
+            SpecSuiteRunInstance(
+                ISpecReporterCollection* reporters = nullptr, ISpecRunOptions* options = nullptr
+            )
                 : _reporters(reporters), _options(options) {}
+
+            ISpecReporterCollection* reporters() const { return _reporters; }
 
             void run(ISpecGroup* group, ISpecSuiteRunResultCallbackFn* callback) {
                 // TODO : put all of the specs into a Queue and we can call report_suite_begin()

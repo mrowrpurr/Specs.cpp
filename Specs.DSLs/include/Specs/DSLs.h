@@ -10,6 +10,11 @@
 #include "DSLs/Functions/spec.h"               // IWYU pragma: keep
 #include "DSLs/Functions/teardown.h"           // IWYU pragma: keep
 #include "DSLs/Functions/test.h"               // IWYU pragma: keep
+#include "DSLs/TopLevel/AsyncGroupSetup.h"     // IWYU pragma: keep
+#include "DSLs/TopLevel/AsyncGroupTeardown.h"  // IWYU pragma: keep
+#include "DSLs/TopLevel/AsyncSetup.h"          // IWYU pragma: keep
+#include "DSLs/TopLevel/AsyncTeardown.h"       // IWYU pragma: keep
+#include "DSLs/TopLevel/AsyncTest.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/BeginTestGroup.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/BeginTestTemplate.h"   // IWYU pragma: keep
 #include "DSLs/TopLevel/ChildTestGroup.h"      // IWYU pragma: keep
@@ -51,7 +56,6 @@
 #include "DSLs/TopLevel/UnsetTestGroup.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplate.h"         // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplates.h"        // IWYU pragma: keep
-
 
 using SpecDone = SpecsCpp::SpecDone;
 
