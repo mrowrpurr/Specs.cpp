@@ -34,24 +34,28 @@ namespace SpecsCpp {
             for (const auto& [name, reporter] : _reporters) reporter->report_start();
         }
 
-        void report_spec_begin(ISpec* spec) override {
-            for (const auto& [name, reporter] : _reporters) reporter->report_spec_begin(spec);
+        void report_test_begin(ISpec* spec) override {
+            _Log_("Doing report_test_begin... there are {} reporters", _reporters.size());
+            for (const auto& [name, reporter] : _reporters) {
+                _Log_("Calling report_test_begin on reporter '{}'", name);
+                reporter->report_test_begin(spec);
+            }
         }
 
         void report_setup(ISpecRunResult* result) override {
             for (const auto& [name, reporter] : _reporters) reporter->report_setup(result);
         }
 
-        void report_spec(ISpecRunResult* result) override {
-            for (const auto& [name, reporter] : _reporters) reporter->report_spec(result);
+        void report_test(ISpecRunResult* result) override {
+            for (const auto& [name, reporter] : _reporters) reporter->report_test(result);
         }
 
         void report_teardown(ISpecRunResult* result) override {
             for (const auto& [name, reporter] : _reporters) reporter->report_teardown(result);
         }
 
-        void report_spec_result(ISpecRunResult* result) override {
-            for (const auto& [name, reporter] : _reporters) reporter->report_spec_result(result);
+        void report_test_result(ISpecRunResult* result) override {
+            for (const auto& [name, reporter] : _reporters) reporter->report_test_result(result);
         }
 
         void report_suite_result(ISpecSuiteRunResult* result) override {

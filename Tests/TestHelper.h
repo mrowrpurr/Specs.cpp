@@ -6,5 +6,8 @@
 #include <Specs/SpecSerialRunner.h>
 #include <Specs/TestHelpers/MockTestReporter.h>
 
+#include <fakeit/standalone/fakeit.hpp>
+
 using namespace SpecsCpp;
 using namespace SpecsCpp::TestHelpers;
+using namespace fakeit;

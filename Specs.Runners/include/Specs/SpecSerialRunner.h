@@ -163,16 +163,19 @@ namespace SpecsCpp {
             void foreach_spec_in_group(ISpec* spec) {
                 if (_currentlySkippingTests || list_only() || !should_run_spec(spec)) {
                     auto result = SpecRunResult::not_run(spec, spec);
-                    _reporters->report_spec_result(result.get());
+                    _reporters->report_test_result(result.get());
                     _resultTotalCounts.increment_not_run();
                     return;
                 }
+
+                _Log_("HERE!");
 
                 _currentSpec       = spec;
                 _currentSpecFailed = false;
                 _currentResult     = nullptr;
 
-                _reporters->report_spec_begin(_currentSpec);
+                _Log_("Reporting that test is beginning?");
+                _reporters->report_test_begin(_currentSpec);
 
                 std::vector<ISpecGroup*> groupStack;
                 auto*                    currentGroup = spec->group();
@@ -190,15 +193,15 @@ namespace SpecsCpp {
 
                 if (_currentSpecFailed) {
                     auto specCodeResult = SpecRunResult::not_run(spec, spec);
-                    _reporters->report_spec(specCodeResult.get());
+                    _reporters->report_test(specCodeResult.get());
 
                     if (_currentResult && _currentResult->status() == RunResultStatus::Timeout) {
                         auto specFinalResult = SpecRunResult::timeout(spec, spec);
-                        _reporters->report_spec_result(specFinalResult.get());
+                        _reporters->report_test_result(specFinalResult.get());
                     } else {
                         auto specFinalResult =
                             SpecRunResult::failed(spec, spec, _currentSpecFailureMessage);
-                        _reporters->report_spec_result(specFinalResult.get());
+                        _reporters->report_test_result(specFinalResult.get());
                     }
 
                     _resultTotalCounts.increment_failed();
@@ -234,16 +237,16 @@ namespace SpecsCpp {
                     if (future.wait_for(std::chrono::milliseconds(codeBlock->get_timeout_ms())) ==
                         std::future_status::timeout) {
                         auto result = SpecRunResult::timeout(spec, spec);
-                        _reporters->report_spec(result.get());
+                        _reporters->report_test(result.get());
                         auto specFinalResult = SpecRunResult::failed(spec, spec);
-                        _reporters->report_spec_result(specFinalResult.get());
+                        _reporters->report_test_result(specFinalResult.get());
                         _resultTotalCounts.increment_failed();
                         spec->variables()->clear();
                         return;
                     }
                 }
 
-                if (auto* result = future.get()) _reporters->report_spec(result);
+                if (auto* result = future.get()) _reporters->report_test(result);
                 else _Log_("Spec callback future.get() returned nullptr");
 
                 // Run teardown blocks, starting with current and walking up to root parent
@@ -253,11 +256,11 @@ namespace SpecsCpp {
                     _resultTotalCounts.increment_failed();
                     auto specFinalResult =
                         SpecRunResult::failed(spec, spec, _currentSpecFailureMessage);
-                    _reporters->report_spec_result(specFinalResult.get());
+                    _reporters->report_test_result(specFinalResult.get());
                 } else {
                     _resultTotalCounts.increment_passed();
                     auto specFinalResult = SpecRunResult::passed(spec, spec);
-                    _reporters->report_spec_result(specFinalResult.get());
+                    _reporters->report_test_result(specFinalResult.get());
                 }
                 spec->variables()->clear();
             }
@@ -333,13 +336,19 @@ namespace SpecsCpp {
             SpecSuiteRunInstance(
                 ISpecReporterCollection* reporters = nullptr, ISpecRunOptions* options = nullptr
             )
-                : _reporters(reporters), _options(options) {}
+                : _reporters(reporters), _options(options) {
+                _Log_("Init SpecSuiteRunInstance with reporters");
+                _reporters->foreach([&](ISpecReporter* reporter) {
+                    _Log_("THIS IS A REPORTER in a foreach");
+                });
+            }
 
             ISpecReporterCollection* reporters() const { return _reporters; }
 
             void run(ISpecGroup* group, ISpecSuiteRunResultCallbackFn* callback) {
                 // TODO : put all of the specs into a Queue and we can call report_suite_begin()
                 // with count
+                _reporters->report_start();
                 if (_options) _timeoutMs = _options->default_timeout_ms();
                 run_group(group);
                 _reporters->report_suite_result(&_resultTotalCounts);

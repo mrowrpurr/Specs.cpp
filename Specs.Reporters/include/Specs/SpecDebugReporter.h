@@ -13,15 +13,15 @@ namespace SpecsCpp {
 
         void report_suite_begin(unsigned int specCount) override {}
 
-        void report_spec_begin(ISpec* spec) override {}
+        void report_test_begin(ISpec* spec) override {}
 
         void report_setup(ISpecRunResult* result) override {}
 
-        void report_spec(ISpecRunResult* result) override {}
+        void report_test(ISpecRunResult* result) override {}
 
         void report_teardown(ISpecRunResult* result) override {}
 
-        void report_spec_result(ISpecRunResult* result) override {
+        void report_test_result(ISpecRunResult* result) override {
             switch (result->status()) {
                 case SpecsCpp::RunResultStatus::Passed:
                     Colors::PrintColor(

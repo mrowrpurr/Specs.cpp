@@ -15,14 +15,20 @@ AsyncTest("Run one failing test") {
     auto reporters = SpecReporterCollection();
     reporters.add("mock", &reporter);
 
-    auto callback = unique_function_pointer([&done](ISpecSuiteRunResult* result) {
+    auto callback = unique_function_pointer([&](ISpecSuiteRunResult* result) {
         //
+        // AssertThat(result->failed(), Equals(1));
         _Log_("CALLBACK called!");
+
+        auto testResult = reporter.test_result("My Group > My Test");
+        // AssertThat(testResult->message(), Equals("KABOOM???"));
+
         done();
     });
 
     auto runner = SpecSerialRunner();
     runner.run(&group, &reporters, nullptr, callback.get());
+    _Log_("AFTER RUN");
 }
 
 // void run(

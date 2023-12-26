@@ -160,6 +160,7 @@ namespace SpecsCpp {
         Timeout,
     };
 
+    // TODO: change the spec() proprety to test() instead please :)
     struct ISpecRunResult {
         virtual ~ISpecRunResult()                 = default;
         virtual ISpecComponent* component() const = 0;
@@ -411,11 +412,11 @@ namespace SpecsCpp {
         virtual ~ISpecReporter()                                = default;
         virtual void report_start()                             = 0;
         virtual void report_suite_begin(unsigned int specCount) = 0;
-        virtual void report_spec_begin(ISpec*)                  = 0;
+        virtual void report_test_begin(ISpec*)                  = 0;
         virtual void report_setup(ISpecRunResult*)              = 0;
-        virtual void report_spec(ISpecRunResult*)               = 0;
+        virtual void report_test(ISpecRunResult*)               = 0;
         virtual void report_teardown(ISpecRunResult*)           = 0;
-        virtual void report_spec_result(ISpecRunResult*)        = 0;
+        virtual void report_test_result(ISpecRunResult*)        = 0;
         virtual void report_suite_result(ISpecSuiteRunResult*)  = 0;
     };
 
@@ -434,11 +435,11 @@ namespace SpecsCpp {
         }
 
         virtual void report_start()                            = 0;
-        virtual void report_spec_begin(ISpec*)                 = 0;
+        virtual void report_test_begin(ISpec*)                 = 0;
         virtual void report_setup(ISpecRunResult*)             = 0;
-        virtual void report_spec(ISpecRunResult*)              = 0;
+        virtual void report_test(ISpecRunResult*)              = 0;
         virtual void report_teardown(ISpecRunResult*)          = 0;
-        virtual void report_spec_result(ISpecRunResult*)       = 0;
+        virtual void report_test_result(ISpecRunResult*)       = 0;
         virtual void report_suite_result(ISpecSuiteRunResult*) = 0;
     };
 
