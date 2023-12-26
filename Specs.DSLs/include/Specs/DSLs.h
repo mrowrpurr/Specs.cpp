@@ -26,7 +26,7 @@
 #include "DSLs/TopLevel/It.h"                  // IWYU pragma: keep
 #include "DSLs/TopLevel/MetaData.h"            // IWYU pragma: keep
 #include "DSLs/TopLevel/SetTestGroup.h"        // IWYU pragma: keep
-#include "DSLs/TopLevel/SetTimeout.h"          // IWYU pragma: keep
+#include "DSLs/TopLevel/SetTimeoutMs.h"        // IWYU pragma: keep
 #include "DSLs/TopLevel/Setup.h"               // IWYU pragma: keep
 #include "DSLs/TopLevel/SetupAsync.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/Skip.h"                // IWYU pragma: keep

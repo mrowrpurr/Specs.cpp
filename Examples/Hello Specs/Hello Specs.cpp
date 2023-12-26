@@ -2,10 +2,13 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
+Skip Setup { _Log_("Setup"); }
+
 Test("Foo") {
     //
 }
 
-Skip Test("Bar") {
+SetTimeoutMs(1000);
+Test("Bar") {
     //
 }

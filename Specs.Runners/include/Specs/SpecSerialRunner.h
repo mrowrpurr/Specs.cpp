@@ -98,7 +98,7 @@ namespace SpecsCpp {
             };
 
             void foreach_setup_in_group(ISpecSetup* setup) {
-                if (_currentSpecFailed) {
+                if (_currentSpecFailed || setup->skip()) {
                     auto result = SpecRunResult::not_run(setup, _currentSpec);
                     _reporters->report_setup(result.get());
                     return;
@@ -131,6 +131,8 @@ namespace SpecsCpp {
             };
 
             void foreach_teardown_in_group(ISpecTeardown* teardown) {
+                if (teardown->skip()) return;
+
                 _currentRunResultPromise = std::make_unique<std::promise<ISpecRunResult*>>();
 
                 auto* codeBlock = teardown->code_block();
