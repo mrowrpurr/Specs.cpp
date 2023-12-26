@@ -11,7 +11,7 @@ FixNamespaceComments: false
 DerivePointerAlignment: false
 AlignConsecutiveDeclarations: true
 AlignConsecutiveAssignments: true
-AlignArrayOfStructures: Left
+AlignArrayOfStructures: None
 PointerAlignment: Left
 ReferenceAlignment: Left
 AlignAfterOpenBracket: BlockIndent
