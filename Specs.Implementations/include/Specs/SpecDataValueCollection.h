@@ -29,10 +29,12 @@ namespace SpecsCpp {
             auto found = _values.find(key);
             return found != _values.end();
         }
-        void foreach(ForEachSpecDataFn* fn) const override {
+        void foreach_value(ForEachSpecDataFn* fn) const override {
             for (auto& [key, value] : _values) fn->invoke(value);
         }
-        void merge(ISpecDataValueCollection* other) override { other->foreach(&_merge_foreach); }
+        void merge(ISpecDataValueCollection* other) override {
+            other->foreach_value(&_merge_foreach);
+        }
         void clear() override { _values.clear(); }
     };
 }

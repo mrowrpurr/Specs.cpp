@@ -21,10 +21,10 @@ namespace SpecsCpp {
             auto found = _tags.find(key);
             return found != _tags.end();
         }
-        void foreach(ForEachTagFn* fn) const override {
+        void foreach_tag(ForEachTagFn* fn) const override {
             for (auto& tag : _tags) fn->invoke(tag.c_str());
         }
-        void merge(ISpecTagCollection* other) override { other->foreach(&_merge_foreach); }
+        void merge(ISpecTagCollection* other) override { other->foreach_tag(&_merge_foreach); }
         void clear() override { _tags.clear(); }
     };
 }

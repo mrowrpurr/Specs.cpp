@@ -90,13 +90,13 @@ namespace SpecsCpp {
             return get(name)->pointer_value();
         }
 
-        virtual void foreach(ForEachSpecDataFn*) const = 0;
-        virtual void merge(ISpecDataValueCollection*)  = 0;
-        virtual void clear()                           = 0;
+        virtual void foreach_value(ForEachSpecDataFn*) const = 0;
+        virtual void merge(ISpecDataValueCollection*)        = 0;
+        virtual void clear()                                 = 0;
 
         void foreach(std::function<void(ISpecDataValue*)> fn) const {
             auto callback = unique_function_pointer(fn);
-            this->foreach(callback.get());
+            this->foreach_value(callback.get());
         }
     };
 
@@ -105,15 +105,15 @@ namespace SpecsCpp {
 
         virtual ~ISpecTagCollection() = default;
 
-        virtual void add(const char*)             = 0;
-        virtual bool has(const char*) const       = 0;
-        virtual void foreach(ForEachTagFn*) const = 0;
-        virtual void merge(ISpecTagCollection*)   = 0;
-        virtual void clear()                      = 0;
+        virtual void add(const char*)                 = 0;
+        virtual bool has(const char*) const           = 0;
+        virtual void foreach_tag(ForEachTagFn*) const = 0;
+        virtual void merge(ISpecTagCollection*)       = 0;
+        virtual void clear()                          = 0;
 
         void foreach(std::function<void(const char*)> fn) const {
             auto callback = unique_function_pointer(fn);
-            this->foreach(callback.get());
+            this->foreach_tag(callback.get());
         }
     };
 
@@ -137,7 +137,7 @@ namespace SpecsCpp {
         virtual void          foreach_variable(ForEachVariableFn*) const                     = 0;
         virtual void          clear()                                                        = 0;
 
-        void foreach_variable(std::function<void(IVoidPointer*)> fn) const {
+        void foreach(std::function<void(IVoidPointer*)> fn) const {
             auto callback = unique_function_pointer(fn);
             this->foreach_variable(callback.get());
         }
@@ -393,7 +393,7 @@ namespace SpecsCpp {
         virtual void register_exception_handler(ILocalSpecExceptionHandler*)     = 0;
         virtual void foreach_exception_handler(ForEachExceptionHandlerFn*) const = 0;
 
-        void foreach_exception_handler(std::function<void(ILocalSpecExceptionHandler*)> fn) const {
+        void foreach(std::function<void(ILocalSpecExceptionHandler*)> fn) const {
             auto callback = unique_function_pointer(fn);
             this->foreach_exception_handler(callback.get());
         }
@@ -428,7 +428,7 @@ namespace SpecsCpp {
         virtual ISpecReporter* get(const char* name) const                = 0;
         virtual void           foreach_reporter(ForEachReporterFn*) const = 0;
 
-        void foreach_reporter(std::function<void(ISpecReporter*)> fn) const {
+        void foreach(std::function<void(ISpecReporter*)> fn) const {
             auto callback = unique_function_pointer(fn);
             this->foreach_reporter(callback.get());
         }
@@ -442,24 +442,47 @@ namespace SpecsCpp {
         virtual void report_suite_result(ISpecSuiteRunResult*) = 0;
     };
 
+    struct ISpecRunTextOptionList {
+        using ForEachOptionFn = IFunctionPointer<void(const char*)>;
+
+        virtual ~ISpecRunTextOptionList() = default;
+        virtual bool any() const          = 0;
+        virtual void add(const char*)     = 0;
+        virtual void clear()              = 0;
+
+        virtual void foreach_option(ForEachOptionFn*) const = 0;
+
+        void foreach(std::function<void(const char*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_option(callback.get());
+        }
+    };
+
+    struct ISpecRunOptions {
+        virtual ~ISpecRunOptions()                                         = default;
+        virtual bool          list_only() const                            = 0;
+        virtual void          list_only(bool list_only)                    = 0;
+        virtual std::uint32_t default_timeout_ms() const                   = 0;
+        virtual void          default_timeout_ms(std::uint32_t timeout_ms) = 0;
+        // TODO: we should have EXCLUDE options as well for every INCLUDE opion we currently have:
+        virtual ISpecRunTextOptionList*   name_matchers() const             = 0;
+        virtual ISpecRunTextOptionList*   test_name_matchers() const        = 0;
+        virtual ISpecRunTextOptionList*   group_name_matchers() const       = 0;
+        virtual ISpecRunTextOptionList*   regex_name_matchers() const       = 0;
+        virtual ISpecRunTextOptionList*   regex_test_name_matchers() const  = 0;
+        virtual ISpecRunTextOptionList*   regex_group_name_matchers() const = 0;
+        virtual ISpecRunTextOptionList*   include_tags() const              = 0;
+        virtual ISpecRunTextOptionList*   exclude_tags() const              = 0;
+        virtual ISpecDataValueCollection* data() const                      = 0;
+    };
+
+    // TODO: what is this doing all the way out here?
     using ISpecSuiteRunResultCallbackFn = IFunctionPointer<void(ISpecSuiteRunResult*)>;
 
     struct ISpecRunner {
-        // TODO: regex options too
-        static auto constexpr DEFAULT_TIMEOUT_MS_OPTION_KEY             = "default_timeout_ms";
-        static auto constexpr LIST_TEST_NAMES_OPTION_KEY                = "list";
-        static auto constexpr DESCRIPTION_FILTER_OPTION_KEY             = "name";
-        static auto constexpr SPEC_DESCRIPTION_FILTER_OPTION_KEY        = "spec";
-        static auto constexpr GROUP_DESCRIPTION_FILTER_OPTION_KEY       = "group";
-        static auto constexpr DESCRIPTION_REGEX_FILTER_OPTION_KEY       = "pattern";
-        static auto constexpr SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY  = "spec_pattern";
-        static auto constexpr GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY = "group_pattern";
-        static auto constexpr INCLUDE_TAGS_OPTION_KEY                   = "include_tags";
-        static auto constexpr EXCLUDE_TAGS_OPTION_KEY                   = "exclude_tags";
-
         virtual ~ISpecRunner() = default;
         virtual void
-        run(ISpecGroup*, ISpecReporterCollection*, ISpecDataValueCollection* options,
+        run(ISpecGroup*, ISpecReporterCollection*, ISpecRunOptions* options,
             ISpecSuiteRunResultCallbackFn*) = 0;
     };
 
@@ -485,7 +508,7 @@ namespace SpecsCpp {
         virtual ISpecRunnerCollection*                runners() const                  = 0;
         virtual ISpecReporterCollection*              reporters() const                = 0;
         virtual void
-        run(ISpecRunner*, ISpecReporterCollection*, ISpecDataValueCollection*,
+        run(ISpecRunner*, ISpecReporterCollection*, ISpecRunOptions*,
             ISpecSuiteRunResultCallbackFn*) = 0;
     };
 }

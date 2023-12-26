@@ -22,9 +22,9 @@ namespace SpecsCpp {
 
     class SpecSerialRunner : public ISpecRunner {
         class SpecSuiteRunInstance {
-            SpecSuiteRunResult        _resultTotalCounts;
-            ISpecReporterCollection*  _reporters;
-            ISpecDataValueCollection* _options = nullptr;
+            SpecSuiteRunResult       _resultTotalCounts;
+            ISpecReporterCollection* _reporters;
+            ISpecRunOptions*         _options = nullptr;
 
             int _timeoutMs = 0;
 
@@ -36,76 +36,51 @@ namespace SpecsCpp {
             std::unique_ptr<ISpecRunResult>                _currentResult           = nullptr;
             std::string                                    _currentSpecFailureMessage;
 
-            inline const char* filter_text() const {
-                if (!_options) return nullptr;
-                return _options->get_string(DESCRIPTION_FILTER_OPTION_KEY);
-            }
-            inline const char* group_filter_text() const {
-                if (!_options) return nullptr;
-                return _options->get_string(GROUP_DESCRIPTION_FILTER_OPTION_KEY);
-            }
-            inline const char* spec_filter_text() const {
-                if (!_options) return nullptr;
-                return _options->get_string(SPEC_DESCRIPTION_FILTER_OPTION_KEY);
-            }
-            inline const char* regex_filter_text() const {
-                if (!_options) return nullptr;
-                return _options->get_string(DESCRIPTION_REGEX_FILTER_OPTION_KEY);
-            }
-            inline const char* group_regex_filter_text() const {
-                if (!_options) return nullptr;
-                return _options->get_string(GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
-            }
-            inline const char* spec_regex_filter_text() const {
-                if (!_options) return nullptr;
-                return _options->get_string(SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY);
-            }
-            inline bool list_only() const {
-                if (!_options) return false;
-                return _options->has(LIST_TEST_NAMES_OPTION_KEY) &&
-                       _options->get_bool(LIST_TEST_NAMES_OPTION_KEY);
+            inline bool list_only() const { return false; }
+
+            inline bool any_text_matches(const char* text, ISpecRunTextOptionList* textList) {
+                // if (!filter || !description) return false;
+                // bool result = strstr(description, filter) != nullptr;
+                // return strstr(description, filter) != nullptr;
+                return false;
             }
 
-            inline bool description_matches(const char* description, const char* filter) {
-                if (!filter || !description) return false;
-                bool result = strstr(description, filter) != nullptr;
-                return strstr(description, filter) != nullptr;
-            }
-
-            inline bool regex_description_matches(const char* description, const char* filter) {
-                if (!filter || !description) return false;
-                return std::regex_search(description, std::regex(filter));
+            inline bool any_regex_matches(const char* text, ISpecRunTextOptionList* textList) {
+                // if (!filter || !description) return false;
+                // return std::regex_search(description, std::regex(filter));
+                return false;
             }
 
             inline bool should_run_group(ISpecGroup* group) {
                 // Always run root group (which has empty string as description)
                 if (strlen(group->description()) == 0) return true;
-
                 if (group->skip()) return false;
-                if (description_matches(group->full_description(), filter_text())) return true;
-                if (description_matches(group->description(), group_filter_text())) return true;
-                if (regex_description_matches(group->full_description(), regex_filter_text()))
-                    return true;
-                if (regex_description_matches(group->description(), group_regex_filter_text()))
-                    return true;
-                return (
-                    filter_text() == nullptr && group_filter_text() == nullptr &&
-                    regex_filter_text() == nullptr && group_regex_filter_text() == nullptr
-                );
+                // if (description_matches(group->full_description(), filter_text())) return true;
+                // if (description_matches(group->description(), group_filter_text())) return true;
+                // if (regex_description_matches(group->full_description(), regex_filter_text()))
+                //     return true;
+                // if (regex_description_matches(group->description(), group_regex_filter_text()))
+                //     return true;
+                // return (
+                //     filter_text() == nullptr && group_filter_text() == nullptr &&
+                //     regex_filter_text() == nullptr && group_regex_filter_text() == nullptr
+                // );
+                return true;
             }
 
             inline bool should_run_spec(ISpec* spec) {
                 if (spec->skip()) return false;
-                if (description_matches(spec->full_description(), filter_text())) return true;
-                if (description_matches(spec->description(), spec_filter_text())) return true;
-                if (regex_description_matches(spec->full_description(), regex_filter_text()))
-                    return true;
-                if (regex_description_matches(spec->description(), spec_regex_filter_text()))
-                    return true;
-                return (
-                    filter_text() == nullptr && spec_filter_text() == nullptr &&
-                    regex_filter_text() == nullptr && spec_regex_filter_text() == nullptr
-                );
+                // if (description_matches(spec->full_description(), filter_text())) return true;
+                // if (description_matches(spec->description(), spec_filter_text())) return true;
+                // if (regex_description_matches(spec->full_description(), regex_filter_text()))
+                //     return true;
+                // if (regex_description_matches(spec->description(), spec_regex_filter_text()))
+                //     return true;
+                // return (
+                //     filter_text() == nullptr && spec_filter_text() == nullptr &&
+                //     regex_filter_text() == nullptr && spec_regex_filter_text() == nullptr
+                // );
+                return true;
             }
 
             void code_block_callback_fn(ISpecRunResult* result) {
@@ -352,16 +327,13 @@ namespace SpecsCpp {
             }
 
         public:
-            SpecSuiteRunInstance(
-                ISpecReporterCollection* reporters, ISpecDataValueCollection* options,
-                int timeoutMs = 5000
-            )
-                : _reporters(reporters), _options(options), _timeoutMs(timeoutMs) {}
+            SpecSuiteRunInstance(ISpecReporterCollection* reporters, ISpecRunOptions* options)
+                : _reporters(reporters), _options(options) {}
 
             void run(ISpecGroup* group, ISpecSuiteRunResultCallbackFn* callback) {
                 // TODO : put all of the specs into a Queue and we can call report_suite_begin()
                 // with count
-
+                if (_options) _timeoutMs = _options->default_timeout_ms();
                 run_group(group);
                 _reporters->report_suite_result(&_resultTotalCounts);
                 if (callback) callback->invoke(&_resultTotalCounts);
@@ -370,15 +342,10 @@ namespace SpecsCpp {
 
     public:
         void run(
-            ISpecGroup* group, ISpecReporterCollection* reporters,
-            ISpecDataValueCollection* options, ISpecSuiteRunResultCallbackFn* callback
+            ISpecGroup* group, ISpecReporterCollection* reporters, ISpecRunOptions* options,
+            ISpecSuiteRunResultCallbackFn* callback
         ) override {
-            if (options && options->has(DEFAULT_TIMEOUT_MS_OPTION_KEY)) {
-                int timeoutMs = options->get(DEFAULT_TIMEOUT_MS_OPTION_KEY)->int_value();
-                SpecSuiteRunInstance(reporters, options, timeoutMs).run(group, callback);
-            } else {
-                SpecSuiteRunInstance(reporters, options).run(group, callback);
-            }
+            SpecSuiteRunInstance(reporters, options).run(group, callback);
         }
     };
 }

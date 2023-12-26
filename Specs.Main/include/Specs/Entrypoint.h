@@ -11,6 +11,7 @@
 #include <Specs/SpecDebugReporter.h>
 #include <Specs/SpecEnvironment.h>
 #include <Specs/SpecReporterCollection.h>
+#include <Specs/SpecRunOptions.h>
 #include <Specs/SpecSerialRunner.h>
 
 #include <cxxopts.hpp>
@@ -31,6 +32,7 @@ namespace SpecsCpp {
         int _returnCode = 0;
         int _totalTests = 0;
 
+        // SpecRunOptions          _options;
         SpecEnvironment         _specs;
         SpecSerialRunner        _runner;
         SpecDebugReporter       _reporter;
@@ -77,44 +79,44 @@ namespace SpecsCpp {
                 return 0;
             }
 
-            if (result.count("name"))
-                _runnerOptions.add(SpecDataValue::create_string(
-                    ISpecRunner::DESCRIPTION_FILTER_OPTION_KEY,
-                    result["name"].as<std::string>().c_str()
-                ));
-            if (result.count("spec"))
-                _runnerOptions.add(SpecDataValue::create_string(
-                    ISpecRunner::SPEC_DESCRIPTION_FILTER_OPTION_KEY,
-                    result["spec"].as<std::string>().c_str()
-                ));
-            if (result.count("group"))
-                _runnerOptions.add(SpecDataValue::create_string(
-                    ISpecRunner::GROUP_DESCRIPTION_FILTER_OPTION_KEY,
-                    result["group"].as<std::string>().c_str()
-                ));
-            if (result.count("pattern"))
-                _runnerOptions.add(SpecDataValue::create_string(
-                    ISpecRunner::DESCRIPTION_REGEX_FILTER_OPTION_KEY,
-                    result["pattern"].as<std::string>().c_str()
-                ));
-            if (result.count("spec-pattern"))
-                _runnerOptions.add(SpecDataValue::create_string(
-                    ISpecRunner::SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY,
-                    result["spec-pattern"].as<std::string>().c_str()
-                ));
-            if (result.count("group-pattern"))
-                _runnerOptions.add(SpecDataValue::create_string(
-                    ISpecRunner::GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY,
-                    result["group-pattern"].as<std::string>().c_str()
-                ));
-            if (result.count("list"))
-                _runnerOptions.add(SpecDataValue::create_bool(
-                    ISpecRunner::LIST_TEST_NAMES_OPTION_KEY, result["list"].as<bool>()
-                ));
-            if (result.count("timeout"))
-                _runnerOptions.add(SpecDataValue::create_int(
-                    ISpecRunner::DEFAULT_TIMEOUT_MS_OPTION_KEY, result["timeout"].as<int>()
-                ));
+            // if (result.count("name"))
+            //     _runnerOptions.add(SpecDataValue::create_string(
+            //         ISpecRunner::DESCRIPTION_FILTER_OPTION_KEY,
+            //         result["name"].as<std::string>().c_str()
+            //     ));
+            // if (result.count("spec"))
+            //     _runnerOptions.add(SpecDataValue::create_string(
+            //         ISpecRunner::SPEC_DESCRIPTION_FILTER_OPTION_KEY,
+            //         result["spec"].as<std::string>().c_str()
+            //     ));
+            // if (result.count("group"))
+            //     _runnerOptions.add(SpecDataValue::create_string(
+            //         ISpecRunner::GROUP_DESCRIPTION_FILTER_OPTION_KEY,
+            //         result["group"].as<std::string>().c_str()
+            //     ));
+            // if (result.count("pattern"))
+            //     _runnerOptions.add(SpecDataValue::create_string(
+            //         ISpecRunner::DESCRIPTION_REGEX_FILTER_OPTION_KEY,
+            //         result["pattern"].as<std::string>().c_str()
+            //     ));
+            // if (result.count("spec-pattern"))
+            //     _runnerOptions.add(SpecDataValue::create_string(
+            //         ISpecRunner::SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY,
+            //         result["spec-pattern"].as<std::string>().c_str()
+            //     ));
+            // if (result.count("group-pattern"))
+            //     _runnerOptions.add(SpecDataValue::create_string(
+            //         ISpecRunner::GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY,
+            //         result["group-pattern"].as<std::string>().c_str()
+            //     ));
+            // if (result.count("list"))
+            //     _runnerOptions.add(SpecDataValue::create_bool(
+            //         ISpecRunner::LIST_TEST_NAMES_OPTION_KEY, result["list"].as<bool>()
+            //     ));
+            // if (result.count("timeout"))
+            //     _runnerOptions.add(SpecDataValue::create_int(
+            //         ISpecRunner::DEFAULT_TIMEOUT_MS_OPTION_KEY, result["timeout"].as<int>()
+            //     ));
 
             if (result.unmatched().size() > 0) {
                 std::cout << "Unrecognized options:" << std::endl;
@@ -149,7 +151,7 @@ namespace SpecsCpp {
             }
 
             _reporters.add("debug", &_reporter);
-            _runner.run(_specs.root_group(), &_reporters, &_runnerOptions, &_onSuiteComplete);
+            _runner.run(_specs.root_group(), &_reporters, nullptr, &_onSuiteComplete);
 
             if (_totalTests == 0) {
                 std::cout << "No tests found.\n" << std::endl;
