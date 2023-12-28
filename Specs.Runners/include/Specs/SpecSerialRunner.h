@@ -168,13 +168,10 @@ namespace SpecsCpp {
                     return;
                 }
 
-                _Log_("HERE!");
-
                 _currentSpec       = spec;
                 _currentSpecFailed = false;
                 _currentResult     = nullptr;
 
-                _Log_("Reporting that test is beginning?");
                 _reporters->report_test_begin(_currentSpec);
 
                 std::vector<ISpecGroup*> groupStack;
@@ -336,12 +333,7 @@ namespace SpecsCpp {
             SpecSuiteRunInstance(
                 ISpecReporterCollection* reporters = nullptr, ISpecRunOptions* options = nullptr
             )
-                : _reporters(reporters), _options(options) {
-                _Log_("Init SpecSuiteRunInstance with reporters");
-                _reporters->foreach([&](ISpecReporter* reporter) {
-                    _Log_("THIS IS A REPORTER in a foreach");
-                });
-            }
+                : _reporters(reporters), _options(options) {}
 
             ISpecReporterCollection* reporters() const { return _reporters; }
 

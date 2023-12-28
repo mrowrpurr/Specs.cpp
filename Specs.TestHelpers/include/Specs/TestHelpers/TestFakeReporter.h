@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Specs/API.h>
+#include <_Log_.h>
 #include <collections.h>
 
 #include <string_view>
@@ -8,7 +9,7 @@
 
 namespace SpecsCpp::TestHelpers {
 
-    class MockTestReporter : public ISpecReporter {
+    class TestFakeReporter : public ISpecReporter {
         collections_map<std::string, std::unique_ptr<ISpecRunResult>> _testResults;
 
     public:
@@ -20,18 +21,13 @@ namespace SpecsCpp::TestHelpers {
 
         /* Interface */
 
-        void report_start() override { _Log_("START"); }
-        void report_suite_begin(unsigned int specCount) override { _Log_("SUITE BEGIN"); }
-        void report_test_begin(ISpec* spec) override {
-            _Log_("report_test_begin!!");
-            // _Log_("TEST BEGIN: {}", spec->full_description());
-        }
+        void report_start() override {}
+        void report_suite_begin(unsigned int specCount) override {}
+        void report_test_begin(ISpec* spec) override {}
         void report_setup(ISpecRunResult* result) override {}
-        void report_test(ISpecRunResult* result) override { _Log_("TEST RAN!"); }
+        void report_test(ISpecRunResult* result) override {}
         void report_teardown(ISpecRunResult* result) override {}
         void report_test_result(ISpecRunResult* result) override {
-            _Log_("Hiiiiiii?");
-            _Log_("Storing test result '{}'", result->spec()->full_description());
             _testResults[result->spec()->full_description()] =
                 std::unique_ptr<ISpecRunResult>(result->copy());
         }

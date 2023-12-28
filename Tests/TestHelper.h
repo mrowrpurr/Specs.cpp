@@ -4,7 +4,7 @@
 #include <Specs/Snowhouse.h>
 #include <Specs/SpecReporterCollection.h>
 #include <Specs/SpecSerialRunner.h>
-#include <Specs/TestHelpers/MockTestReporter.h>
+#include <Specs/TestHelpers/TestFakeReporter.h>
 
 #include <fakeit/standalone/fakeit.hpp>
 

@@ -167,7 +167,7 @@ namespace SpecsCpp {
                 component_defined(specPtr);
 
                 _registeredSpecs.push_back(std::move(spec));
-                group->add_spec(specPtr);
+                group->add_test(specPtr);
             } else {
                 _Log_("define_spec() called but no group is active!");
             }

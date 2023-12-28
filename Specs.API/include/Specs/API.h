@@ -317,7 +317,7 @@ namespace SpecsCpp {
 
         virtual ~ISpecGroup()                                            = default;
         virtual void add_group(ISpecGroup*)                              = 0;
-        virtual void add_spec(ISpec*)                                    = 0;
+        virtual void add_test(ISpec*)                                    = 0;
         virtual void add_setup(ISpecSetup*)                              = 0;
         virtual void add_teardown(ISpecTeardown*)                        = 0;
         virtual void add_one_time_setup(ISpecSetup*)                     = 0;
@@ -421,7 +421,7 @@ namespace SpecsCpp {
     };
 
     struct ISpecReporterCollection {
-        using ForEachReporterFn = IFunctionPointer<void(ISpecReporter*)>;
+        using ForEachReporterFn = IFunctionPointer<void(const char*, ISpecReporter*)>;
 
         virtual ~ISpecReporterCollection()                                = default;
         virtual void           add(const char*, ISpecReporter*)           = 0;
@@ -429,7 +429,7 @@ namespace SpecsCpp {
         virtual ISpecReporter* get(const char* name) const                = 0;
         virtual void           foreach_reporter(ForEachReporterFn*) const = 0;
 
-        void foreach(std::function<void(ISpecReporter*)> fn) const {
+        void foreach(std::function<void(const char*, ISpecReporter*)> fn) const {
             auto callback = unique_function_pointer(fn);
             this->foreach_reporter(callback.get());
         }
@@ -488,7 +488,7 @@ namespace SpecsCpp {
     };
 
     struct ISpecRunnerCollection {
-        using ForEachRunnerFn = IFunctionPointer<void(ISpecRunner*)>;
+        using ForEachRunnerFn = IFunctionPointer<void(const char*, ISpecRunner*)>;
 
         virtual ~ISpecRunnerCollection()                            = default;
         virtual void         add(const char*, ISpecRunner*)         = 0;
@@ -496,7 +496,7 @@ namespace SpecsCpp {
         virtual ISpecRunner* get(const char* name) const            = 0;
         virtual void         foreach_runner(ForEachRunnerFn*) const = 0;
 
-        void foreach_runner(std::function<void(ISpecRunner*)> fn) const {
+        void foreach_runner(std::function<void(const char*, ISpecRunner*)> fn) const {
             auto callback = unique_function_pointer(fn);
             this->foreach_runner(callback.get());
         }

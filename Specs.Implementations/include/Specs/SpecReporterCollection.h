@@ -27,7 +27,7 @@ namespace SpecsCpp {
         }
 
         void foreach_reporter(ForEachReporterFn* fn) const override {
-            for (const auto& [name, reporter] : _reporters) fn->invoke(reporter);
+            for (const auto& [name, reporter] : _reporters) fn->invoke(name.c_str(), reporter);
         }
 
         void report_start() override {
@@ -35,11 +35,7 @@ namespace SpecsCpp {
         }
 
         void report_test_begin(ISpec* spec) override {
-            _Log_("Doing report_test_begin... there are {} reporters", _reporters.size());
-            for (const auto& [name, reporter] : _reporters) {
-                _Log_("Calling report_test_begin on reporter '{}'", name);
-                reporter->report_test_begin(spec);
-            }
+            for (const auto& [name, reporter] : _reporters) reporter->report_test_begin(spec);
         }
 
         void report_setup(ISpecRunResult* result) override {

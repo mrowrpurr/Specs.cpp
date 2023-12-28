@@ -9,7 +9,7 @@
 namespace SpecsCpp {
 
     class SpecDebugReporter : public ISpecReporter {
-        void report_start() override { _Log_(">>>> START SUITE"); }
+        void report_start() override {}
 
         void report_suite_begin(unsigned int specCount) override {}
 

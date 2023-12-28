@@ -25,7 +25,7 @@ namespace SpecsCpp {
         }
 
         void foreach_runner(ForEachRunnerFn* fn) const override {
-            for (const auto& [name, runner] : _runners) fn->invoke(runner);
+            for (const auto& [name, runner] : _runners) fn->invoke(name.c_str(), runner);
         }
     };
 }

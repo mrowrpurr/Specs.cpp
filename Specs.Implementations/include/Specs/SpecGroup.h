@@ -25,7 +25,7 @@ namespace SpecsCpp {
         std::unique_ptr<SpecVariableCollection> _variables;
 
         void merge_child_groups(ISpecGroup* other) { add_group(other); }
-        void merge_specs(ISpec* other) { add_spec(other); }
+        void merge_specs(ISpec* other) { add_test(other); }
         void merge_setups(ISpecSetup* other) { add_setup(other); }
         void merge_teardowns(ISpecTeardown* other) { add_teardown(other); }
         void merge_one_time_setups(ISpecSetup* other) { add_one_time_setup(other); }
@@ -83,7 +83,7 @@ namespace SpecsCpp {
         }
 
         void add_group(ISpecGroup* group) override { _childGroups.push_back(group); }
-        void add_spec(ISpec* spec) override { _specs.push_back(spec); }
+        void add_test(ISpec* spec) override { _specs.push_back(spec); }
         void add_setup(ISpecSetup* setup) override { _setups.push_back(setup); }
         void add_teardown(ISpecTeardown* teardown) override { _teardowns.push_back(teardown); }
         void add_one_time_setup(ISpecSetup* setup) override { _oneTimeSetups.push_back(setup); }
