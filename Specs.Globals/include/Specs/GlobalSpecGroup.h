@@ -324,6 +324,10 @@ namespace SpecsCpp {
             }
         }
 
+        void declare_groups(std::vector<std::string> descriptions) {
+            for (auto& description : descriptions) declare_group(description);
+        }
+
         void use_template(std::string_view templateName) {
             if (auto* group = get()) {
                 auto found = _testTemplateGroups.find(templateName.data());

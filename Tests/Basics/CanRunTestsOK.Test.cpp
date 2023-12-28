@@ -1,13 +1,10 @@
 #define SPEC_FILE Basics_Can_Run_Tests_OK
 
-#include "TestHelper.h"  // IWYU pragma: keep
+#include "SpecHelper.h"  // IWYU pragma: keep
 
-TestGroup("Basics");
-ChildTestGroup("Can Run Tests OK");
+SpecGroups("Basics", "Can Run Tests OK");
 
-#define code_block(...) std::make_unique<SpecCodeBlock>(function_pointer(__VA_ARGS__))
-
-Test("Run one failing test") {
+Example("Run one failing test") {
     auto group = SpecGroup("My Group");
     auto test  = SpecTest(&group, "My Test", code_block([]() { throw "KABOOM"; }));
     group.add_test(&test);
@@ -26,7 +23,7 @@ Test("Run one failing test") {
     runner.run(&group, &reporters, nullptr, callback.get());
 }
 
-Test("Run one passing test") {
+Example("Run one passing test") {
     auto group = SpecGroup("My Group");
     auto test  = SpecTest(&group, "My Test", code_block([]() { /* nothing, passes */ }));
     group.add_test(&test);

@@ -60,17 +60,24 @@ namespace SpecsCpp {
             // TODO: option to specify / customize the reporters used
             // TODO: option to specify / customize the runner used
             options.add_options()
-                ("n,name", "Filter name of test/group to run", cxxopts::value<std::string>())
-                ("s,spec", "Filter name of test to run",  cxxopts::value<std::string>())
-                ("g,group", "Filter name of group to run", cxxopts::value<std::string>())
-                ("r,pattern", "Regex pattern filter of test/group to run", cxxopts::value<std::string>())
-                ("spec-pattern", "Regex pattern filter of test to run", cxxopts::value<std::string>())
-                ("group-pattern", "Regex pattern filter of group to run", cxxopts::value<std::string>())
-                ("l,list", "List all tests and groups", cxxopts::value<bool>()->default_value("false"))
-                ("dll,so", "Load tests from shared library (--dll,--so)", cxxopts::value<std::vector<std::string>>())
-                ("i,tag", "(TODO) Tag name of test to include", cxxopts::value<std::vector<std::string>>())
-                ("e,exclude-tag", "(TODO) Tag name of test to exclude", cxxopts::value<std::vector<std::string>>())
-                ("t,timeout", "Timeout in milliseconds for each test", cxxopts::value<int>())
+                // ("n,name", "Filter name of test/group to run", cxxopts::value<std::string>())
+                // ("s,spec", "Filter name of test to run",  cxxopts::value<std::string>())
+                // ("g,group", "Filter name of group to run", cxxopts::value<std::string>())
+                // ("r,pattern", "Regex pattern filter of test/group to run",
+                // cxxopts::value<std::string>())
+                // ("spec-pattern", "Regex pattern filter of test to run",
+                // cxxopts::value<std::string>())
+                // ("group-pattern", "Regex pattern filter of group to run",
+                // cxxopts::value<std::string>())
+                // ("l,list", "List all tests and groups",
+                // cxxopts::value<bool>()->default_value("false"))
+                // ("dll,so", "Load tests from shared library (--dll,--so)",
+                // cxxopts::value<std::vector<std::string>>())
+                // ("i,tag", "(TODO) Tag name of test to include",
+                // cxxopts::value<std::vector<std::string>>())
+                // ("e,exclude-tag", "(TODO) Tag name of test to exclude",
+                // cxxopts::value<std::vector<std::string>>())
+                // ("t,timeout", "Timeout in milliseconds for each test", cxxopts::value<int>())
                 ("h,help", "Print usage");
 
             auto result = options.parse(argc, argv);
@@ -133,22 +140,22 @@ namespace SpecsCpp {
             );
             GlobalSpecCodeBlocks::instance().run_code_blocks();
 
-            if (result.count("dll")) {
-                for (auto& dll : result["dll"].as<std::vector<std::string>>()) {
-                    if (!std::filesystem::exists(dll)) {
-                        std::cout << "Specs.cpp: Error: Spec dll/so file not found: " << dll
-                                  << std::endl;
-                        return 1;
-                    }
-                    if (auto* dllRootSpecGroup = _LibraryLoader.load(dll)) {
-                        _specs.root_group()->merge(dllRootSpecGroup);
-                    } else {
-                        std::cout << "Specs.cpp: Error: Failed to load group from dll/so file: "
-                                  << dll << std::endl;
-                        return 1;
-                    }
-                }
-            }
+            // if (result.count("dll")) {
+            //     for (auto& dll : result["dll"].as<std::vector<std::string>>()) {
+            //         if (!std::filesystem::exists(dll)) {
+            //             std::cout << "Specs.cpp: Error: Spec dll/so file not found: " << dll
+            //                       << std::endl;
+            //             return 1;
+            //         }
+            //         if (auto* dllRootSpecGroup = _LibraryLoader.load(dll)) {
+            //             _specs.root_group()->merge(dllRootSpecGroup);
+            //         } else {
+            //             std::cout << "Specs.cpp: Error: Failed to load group from dll/so file: "
+            //                       << dll << std::endl;
+            //             return 1;
+            //         }
+            //     }
+            // }
 
             _reporters.add("debug", &_reporter);
             _runner.run(_specs.root_group(), &_reporters, nullptr, &_onSuiteComplete);

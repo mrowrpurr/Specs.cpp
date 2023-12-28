@@ -25,6 +25,7 @@
 #include "DSLs/TopLevel/DescribeFn.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/EndTestGroup.h"        // IWYU pragma: keep
 #include "DSLs/TopLevel/EndTestTemplate.h"     // IWYU pragma: keep
+#include "DSLs/TopLevel/Example.h"             // IWYU pragma: keep
 #include "DSLs/TopLevel/GroupSetup.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/GroupSetupAsync.h"     // IWYU pragma: keep
 #include "DSLs/TopLevel/GroupTeardown.h"       // IWYU pragma: keep
@@ -39,6 +40,7 @@
 #include "DSLs/TopLevel/SkipAll.h"             // IWYU pragma: keep
 #include "DSLs/TopLevel/Spec.h"                // IWYU pragma: keep
 #include "DSLs/TopLevel/SpecAsync.h"           // IWYU pragma: keep
+#include "DSLs/TopLevel/SpecGroups.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/Specs.h"               // IWYU pragma: keep
 #include "DSLs/TopLevel/SpecsFn.h"             // IWYU pragma: keep
 #include "DSLs/TopLevel/StartTestGroup.h"      // IWYU pragma: keep
@@ -51,11 +53,13 @@
 #include "DSLs/TopLevel/TestAsync.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/TestGroup.h"           // IWYU pragma: keep
 #include "DSLs/TopLevel/TestGroupFn.h"         // IWYU pragma: keep
+#include "DSLs/TopLevel/TestGroups.h"          // IWYU pragma: keep
 #include "DSLs/TopLevel/TestTemplate.h"        // IWYU pragma: keep
 #include "DSLs/TopLevel/TestTemplateFn.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/UnsetTestGroup.h"      // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplate.h"         // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplates.h"        // IWYU pragma: keep
+
 
 using SpecDone = SpecsCpp::SpecDone;
 

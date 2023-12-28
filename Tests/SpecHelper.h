@@ -11,3 +11,5 @@
 using namespace SpecsCpp;
 using namespace SpecsCpp::TestHelpers;
 using namespace fakeit;
+
+#define code_block(...) std::make_unique<SpecCodeBlock>(function_pointer(__VA_ARGS__))

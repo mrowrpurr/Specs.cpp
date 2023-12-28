@@ -459,6 +459,7 @@ namespace SpecsCpp {
         }
     };
 
+    // TODO: nah, make this composable, I kind like how static it is, but F that...
     struct ISpecRunOptions {
         virtual ~ISpecRunOptions()                                         = default;
         virtual bool          list_only() const                            = 0;
@@ -511,5 +512,47 @@ namespace SpecsCpp {
         virtual void
         run(ISpecRunner*, ISpecReporterCollection*, ISpecRunOptions*,
             ISpecSuiteRunResultCallbackFn*) = 0;
+    };
+
+    struct ISpecApplication;
+
+    struct ISpecCommandLineOption {
+        using OnCommandLineOptionFn =
+            IFunctionPointer<void(ISpecCommandLineOption*, ISpecApplication*)>;
+
+        virtual ~ISpecCommandLineOption()                                        = default;
+        virtual const char*            flags() const                             = 0;
+        virtual void                   set_flags(const char*)                    = 0;
+        virtual const char*            description() const                       = 0;
+        virtual void                   set_description(const char*)              = 0;
+        virtual bool                   is_list() const                           = 0;
+        virtual void                   mark_list(bool list = true)               = 0;
+        virtual bool                   is_required() const                       = 0;
+        virtual void                   mark_required(bool required = true)       = 0;
+        virtual OnCommandLineOptionFn* option_callback() const                   = 0;
+        virtual void on_option(OnCommandLineOptionFn*, bool destructable = true) = 0;
+    };
+
+    struct ISpecCommandLineOptionCollection {
+        using ForEachOptionFn = IFunctionPointer<void(ISpecCommandLineOption*)>;
+
+        virtual ~ISpecCommandLineOptionCollection()                                = default;
+        virtual void add(ISpecCommandLineOption* option, bool destructable = true) = 0;
+        virtual ISpecCommandLineOption* get_at(std::uint32_t index) const          = 0;
+        virtual std::uint32_t           count() const                              = 0;
+        virtual void                    clear()                                    = 0;
+        virtual void                    foreach_option(ForEachOptionFn*) const     = 0;
+
+        void foreach(std::function<void(ISpecCommandLineOption*)> fn) const {
+            auto callback = unique_function_pointer(fn);
+            this->foreach_option(callback.get());
+        }
+    };
+
+    struct ISpecApplication {
+        virtual ~ISpecApplication()                                           = default;
+        virtual int                               main(int argc, char** argv) = 0;
+        virtual ISpecCommandLineOptionCollection* options() const             = 0;
+        virtual ISpecEnvironment*                 environment()               = 0;
     };
 }
