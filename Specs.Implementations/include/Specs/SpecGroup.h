@@ -24,17 +24,35 @@ namespace SpecsCpp {
 
         std::unique_ptr<SpecVariableCollection> _variables;
 
-        void merge_child_groups(ISpecGroup* other) { add_group(other); }
-        void merge_specs(ISpec* other) { add_test(other); }
-        void merge_setups(ISpecSetup* other) { add_setup(other); }
-        void merge_teardowns(ISpecTeardown* other) { add_teardown(other); }
-        void merge_one_time_setups(ISpecSetup* other) { add_one_time_setup(other); }
-        void merge_one_time_teardowns(ISpecTeardown* other) { add_one_time_teardown(other); }
+        void merge_child_groups(ISpecGroup* other) {
+            other->set_group(this);
+            add_group(other);
+        }
+        void merge_tests(ISpec* other) {
+            other->set_group(this);
+            add_test(other);
+        }
+        void merge_setups(ISpecSetup* other) {
+            other->set_group(this);
+            add_setup(other);
+        }
+        void merge_teardowns(ISpecTeardown* other) {
+            other->set_group(this);
+            add_teardown(other);
+        }
+        void merge_one_time_setups(ISpecSetup* other) {
+            other->set_group(this);
+            add_one_time_setup(other);
+        }
+        void merge_one_time_teardowns(ISpecTeardown* other) {
+            other->set_group(this);
+            add_one_time_teardown(other);
+        }
 
         FunctionPointer<void(ISpecGroup*)> _merge_child_groups_fn =
             function_pointer(this, &SpecGroup::merge_child_groups);
-        FunctionPointer<void(ISpec*)> _merge_specs_fn =
-            function_pointer(this, &SpecGroup::merge_specs);
+        FunctionPointer<void(ISpec*)> _merge_tests_fn =
+            function_pointer(this, &SpecGroup::merge_tests);
         FunctionPointer<void(ISpecSetup*)> _merge_setups_fn =
             function_pointer(this, &SpecGroup::merge_setups);
         FunctionPointer<void(ISpecTeardown*)> _merge_teardowns_fn =
@@ -62,7 +80,7 @@ namespace SpecsCpp {
             for (auto* group : _childGroups) callback->invoke(group);
         }
 
-        void foreach_spec(ForEachSpecFn* callback) const override {
+        void foreach_test(ForEachSpecFn* callback) const override {
             for (auto* spec : _specs) callback->invoke(spec);
         }
 
@@ -94,8 +112,10 @@ namespace SpecsCpp {
         const char* full_description() const override { return _fullDescription.c_str(); }
 
         void merge(ISpecGroup* other) override {
+            _Log_("Merge group {} into {}", other->full_description(), full_description());
+
             other->foreach_group(&_merge_child_groups_fn);
-            other->foreach_spec(&_merge_specs_fn);
+            other->foreach_test(&_merge_tests_fn);
             other->foreach_setup(&_merge_setups_fn);
             other->foreach_teardown(&_merge_teardowns_fn);
             other->foreach_one_time_setup(&_merge_one_time_setups_fn);

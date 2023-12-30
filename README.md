@@ -7,6 +7,7 @@ _Almost_ ready for release 🎉
 - [ ] Rename `GlobalSpecGroup` (_it's more than groups now_) and make it (and `GlobalInterface`) nice for external consumption from DSL-makers
   - [ ] Extract the concept of data for 'next' component or spec into a structure
 - [ ] Parameterized tests
+- [ ] `assert_multiple` (like NUNit)
 - [ ] Parallel test runner
 - [ ] If possible, add support/adapter for `BOOST_TEST`
 - [ ] If possible, add support/adapter for GoogleTest's `EXPECT_THAT` and/or `ASSERT_THAT`

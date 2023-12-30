@@ -2,13 +2,8 @@
 
 #include "SpecHelper.h"  // IWYU pragma: keep
 
-Skip Setup { _Log_("Setup"); }
-
-Test("Foo") {
-    //
+Setup {
+    _Log_("HI FROM SETUP !!!!!!!!!! defined in {}", current_setup->group()->full_description());
 }
 
-SetTimeoutMs(1000);
-Test("Bar") {
-    //
-}
+UseTemplate("MyTemplate");

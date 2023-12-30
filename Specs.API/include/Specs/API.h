@@ -146,6 +146,7 @@ namespace SpecsCpp {
     struct ISpecComponent {
         virtual ~ISpecComponent()                                        = default;
         virtual ISpecGroup*               group() const                  = 0;
+        virtual void                      set_group(ISpecGroup* group)   = 0;
         virtual ISpecDataValueCollection* data() const                   = 0;
         virtual ISpecTagCollection*       tags() const                   = 0;
         virtual SpecComponentType         type() const                   = 0;
@@ -316,7 +317,7 @@ namespace SpecsCpp {
         virtual void add_one_time_setup(ISpecSetup*)                     = 0;
         virtual void add_one_time_teardown(ISpecTeardown*)               = 0;
         virtual void foreach_group(ForEachGroupFn*) const                = 0;
-        virtual void foreach_spec(ForEachSpecFn*) const                  = 0;
+        virtual void foreach_test(ForEachSpecFn*) const                  = 0;
         virtual void foreach_setup(ForEachSetupFn*) const                = 0;
         virtual void foreach_teardown(ForEachTeardownFn*) const          = 0;
         virtual void foreach_one_time_setup(ForEachSetupFn*) const       = 0;
@@ -327,9 +328,9 @@ namespace SpecsCpp {
             auto callback = unique_function_pointer(fn);
             this->foreach_group(callback.get());
         }
-        void foreach_spec(std::function<void(ISpec*)> fn) const {
+        void foreach_test(std::function<void(ISpec*)> fn) const {
             auto callback = unique_function_pointer(fn);
-            this->foreach_spec(callback.get());
+            this->foreach_test(callback.get());
         }
         void foreach_setup(std::function<void(ISpecSetup*)> fn) const {
             auto callback = unique_function_pointer(fn);

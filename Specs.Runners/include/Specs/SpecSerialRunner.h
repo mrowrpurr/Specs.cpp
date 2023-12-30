@@ -160,7 +160,7 @@ namespace SpecsCpp {
                 this, &SpecSuiteRunInstance::foreach_teardown_in_group
             };
 
-            void foreach_spec_in_group(ISpec* spec) {
+            void foreach_test_in_group(ISpec* spec) {
                 if (_currentlySkippingTests || list_only() || !should_run_spec(spec)) {
                     auto result = SpecRunResult::not_run(spec, spec);
                     _reporters->report_test_result(result.get());
@@ -263,7 +263,7 @@ namespace SpecsCpp {
             }
 
             FunctionPointer<void(ISpec*)> _forEachSpecInGroupFn{
-                this, &SpecSuiteRunInstance::foreach_spec_in_group
+                this, &SpecSuiteRunInstance::foreach_test_in_group
             };
 
             void foreach_group_in_group(ISpecGroup* group) {
@@ -274,7 +274,7 @@ namespace SpecsCpp {
                 _currentResult = nullptr;
 
                 if (_currentlySkippingTests) {
-                    group->foreach_spec(&_forEachSpecInGroupFn);
+                    group->foreach_test(&_forEachSpecInGroupFn);
                     group->foreach_group(&_forEachGroupInGroupFn);
                     return;
                 }
@@ -286,7 +286,7 @@ namespace SpecsCpp {
                 if (!_currentlySkippingTests)
                     group->foreach_one_time_setup(&_forEachSetupInGroupFn);
 
-                group->foreach_spec(&_forEachSpecInGroupFn);
+                group->foreach_test(&_forEachSpecInGroupFn);
                 group->foreach_group(&_forEachGroupInGroupFn);
 
                 // Run the group's one time teardowns
@@ -317,7 +317,7 @@ namespace SpecsCpp {
                     group->foreach_one_time_setup(&_forEachSetupInGroupFn);
 
                 // Run the specs
-                group->foreach_spec(&_forEachSpecInGroupFn);
+                group->foreach_test(&_forEachSpecInGroupFn);
 
                 // Run any child groups
                 group->foreach_group(&_forEachGroupInGroupFn);

@@ -21,6 +21,7 @@ namespace SpecsCpp {
             : _type(type), _parentGroup(parentGroup), _skip(skip) {}
 
         ISpecGroup*               group() const override { return _parentGroup; }
+        void                      set_group(ISpecGroup* group) override { _parentGroup = group; }
         ISpecDataValueCollection* data() const override { return _metaDataPtr; }
         ISpecTagCollection*       tags() const override { return _tagsPtr; }
         SpecComponentType         type() const override { return _type; }
