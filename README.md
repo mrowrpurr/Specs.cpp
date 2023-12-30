@@ -25,6 +25,7 @@ _Almost_ ready for release 🎉
 - [ ] Bundle up the syntax options into simpler `#include`'s
   - [ ] A bit simpler to BYO syntax selection
   - [ ] Provide RSpec-ish `BeforeEach`/`It`
+- [ ] `current_test->var<PointerType>("name", new Something())` is a little confusing, can it be `var<PointerType*>` instead?
 - [ ] Finish docs :)
 
 ---
