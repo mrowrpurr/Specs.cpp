@@ -50,7 +50,7 @@ namespace SpecsCpp {
 
         bool bool_value() const override {
             if (_type != SpecDataValueType::Boolean) return false;
-            return *_value->as<bool>();
+            return _value->as<bool>();
         }
 
         void bool_value(bool value) override {
@@ -60,7 +60,7 @@ namespace SpecsCpp {
 
         int int_value() const override {
             if (_type != SpecDataValueType::Integer) return 0;
-            return *_value->as<int>();
+            return _value->as<int>();
         }
 
         void int_value(int value) override {
@@ -70,7 +70,7 @@ namespace SpecsCpp {
 
         unsigned int unsigned_int_value() const override {
             if (_type != SpecDataValueType::UnsignedInteger) return 0;
-            return *_value->as<unsigned int>();
+            return _value->as<unsigned int>();
         }
 
         void unsigned_int_value(unsigned int value) override {
@@ -80,7 +80,7 @@ namespace SpecsCpp {
 
         double float_value() const override {
             if (_type != SpecDataValueType::Float) return 0;
-            return *_value->as<double>();
+            return _value->as<double>();
         }
 
         void float_value(double value) override {
@@ -90,7 +90,8 @@ namespace SpecsCpp {
 
         const char* string_value() const override {
             if (_type != SpecDataValueType::String) return nullptr;
-            return _value->as<std::string>()->c_str();
+            // TODO whaaaaa this isn't safe!
+            return _value->as<std::string*>()->c_str();
         }
 
         void string_value(const char* value) override {

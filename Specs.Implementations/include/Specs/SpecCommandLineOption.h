@@ -32,7 +32,7 @@ namespace SpecsCpp {
         void mark_required(bool required = true) override { _required = required; }
 
         OnCommandLineOptionFn* option_callback() const override {
-            return _option_callback->as<OnCommandLineOptionFn>();
+            return _option_callback->as<OnCommandLineOptionFn*>();
         }
         void on_option(OnCommandLineOptionFn* fn, bool destructable = true) override {
             _option_callback = std::make_unique<VoidPointer<OnCommandLineOptionFn>>(fn);

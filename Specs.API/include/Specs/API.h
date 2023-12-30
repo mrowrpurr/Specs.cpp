@@ -224,16 +224,9 @@ namespace SpecsCpp {
             return variables()->get(name);
         }
 
-        template <typename T, typename std::enable_if<!std::is_pointer<T>::value, int>::type = 0>
+        template <typename T>
         T var(const char* name) const {
-            return *var(name)->as<T>();
-        }
-
-        template <typename T, typename std::enable_if<std::is_pointer<T>::value, int>::type = 0>
-        T var(const char* name) const {
-            auto ptr = var(name);
-            if (!ptr) return nullptr;
-            return static_cast<T>(ptr->void_ptr());
+            return var(name)->as<T>();
         }
 
         template <typename T>
@@ -270,7 +263,7 @@ namespace SpecsCpp {
         }
 
         const char* var_text(const char* name) {
-            char* value = var(name)->as<char>();
+            char* value = var(name)->as<char*>();
             return value ? value : nullptr;
         }
 

@@ -17,7 +17,7 @@ namespace SpecsCpp {
         }
 
         ISpecCommandLineOption* get_at(std::uint32_t index) const override {
-            return _options[index]->as<ISpecCommandLineOption>();
+            return _options[index]->as<ISpecCommandLineOption*>();
         }
 
         std::uint32_t count() const override { return _options.size(); }
@@ -25,7 +25,7 @@ namespace SpecsCpp {
         void clear() override { _options.clear(); }
 
         void foreach_option(ForEachOptionFn* fn) const override {
-            for (auto& option : _options) fn->invoke(option->as<ISpecCommandLineOption>());
+            for (auto& option : _options) fn->invoke(option->as<ISpecCommandLineOption*>());
         }
     };
 }
