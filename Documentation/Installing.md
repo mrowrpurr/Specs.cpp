@@ -246,7 +246,7 @@ Add the [`MrowrLib/Packages`](https://github.com/MrowrLib/Packages.git) registry
         {
             "kind": "git",
             "repository": "https://github.com/MrowrLib/Packages.git",
-            "baseline": "d8193dee2818d1bf61af42256c1901fd1f509111",
+            "baseline": "e20efc32eb30d54e1baa71a28b061a1149c87054",
             "packages": [
                 "specs",
                 "specs-snowhouse",
