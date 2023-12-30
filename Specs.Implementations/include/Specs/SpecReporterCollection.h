@@ -34,8 +34,9 @@ namespace SpecsCpp {
             for (const auto& [name, reporter] : _reporters) reporter->report_start();
         }
 
-        void report_test_begin(ISpec* spec) override {
-            for (const auto& [name, reporter] : _reporters) reporter->report_test_begin(spec);
+        void report_test_begin(ISpecGroup* group, ISpec* spec) override {
+            for (const auto& [name, reporter] : _reporters)
+                reporter->report_test_begin(group, spec);
         }
 
         void report_setup(ISpecRunResult* result) override {

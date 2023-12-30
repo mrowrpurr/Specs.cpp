@@ -32,6 +32,7 @@ namespace SpecsCpp {
             bool                                           _currentlySkippingTests  = false;
             int                                            _setupGroupsRun          = 0;
             std::unique_ptr<std::promise<ISpecRunResult*>> _currentRunResultPromise = nullptr;
+            ISpecGroup*                                    _currentGroup            = nullptr;
             ISpec*                                         _currentSpec             = nullptr;
             bool                                           _currentSpecFailed       = false;
             std::unique_ptr<ISpecRunResult>                _currentResult           = nullptr;
@@ -100,7 +101,7 @@ namespace SpecsCpp {
 
             void foreach_setup_in_group(ISpecSetup* setup) {
                 if (_currentSpecFailed || setup->skip()) {
-                    auto result = SpecRunResult::not_run(setup, _currentSpec);
+                    auto result = SpecRunResult::not_run(setup, _currentGroup, _currentSpec);
                     _reporters->report_setup(result.get());
                     return;
                 }
@@ -110,13 +111,13 @@ namespace SpecsCpp {
                 auto* codeBlock = setup->code_block();
                 if (codeBlock->get_timeout_ms() == 0) codeBlock->set_timeout_ms(_timeoutMs);
 
-                codeBlock->run(setup, _currentSpec, &_codeBlockCallbackFn);
+                codeBlock->run(setup, _currentGroup, _currentSpec, &_codeBlockCallbackFn);
 
                 auto future = _currentRunResultPromise->get_future();
                 if (codeBlock->get_timeout_ms() > 0) {
                     if (future.wait_for(std::chrono::milliseconds(codeBlock->get_timeout_ms())) ==
                         std::future_status::timeout) {
-                        auto result = SpecRunResult::timeout(setup, _currentSpec);
+                        auto result = SpecRunResult::timeout(setup, _currentGroup, _currentSpec);
                         _reporters->report_setup(result.get());
                         _currentSpecFailed = true;
                         return;
@@ -139,13 +140,13 @@ namespace SpecsCpp {
                 auto* codeBlock = teardown->code_block();
                 if (codeBlock->get_timeout_ms() == 0) codeBlock->set_timeout_ms(_timeoutMs);
 
-                codeBlock->run(teardown, _currentSpec, &_codeBlockCallbackFn);
+                codeBlock->run(teardown, _currentGroup, _currentSpec, &_codeBlockCallbackFn);
 
                 auto future = _currentRunResultPromise->get_future();
                 if (codeBlock->get_timeout_ms() > 0) {
                     if (future.wait_for(std::chrono::milliseconds(codeBlock->get_timeout_ms())) ==
                         std::future_status::timeout) {
-                        auto result = SpecRunResult::timeout(teardown, _currentSpec);
+                        auto result = SpecRunResult::timeout(teardown, _currentGroup, _currentSpec);
                         _reporters->report_teardown(result.get());
                         _currentSpecFailed = true;
                         return;
@@ -161,8 +162,13 @@ namespace SpecsCpp {
             };
 
             void foreach_test_in_group(ISpec* spec) {
+                _Log_(
+                    "For Each Test in Group [{}] - [{}]", _currentGroup->description(),
+                    spec->description()
+                );
+
                 if (_currentlySkippingTests || list_only() || !should_run_spec(spec)) {
-                    auto result = SpecRunResult::not_run(spec, spec);
+                    auto result = SpecRunResult::not_run(spec, _currentGroup, spec);
                     _reporters->report_test_result(result.get());
                     _resultTotalCounts.increment_not_run();
                     return;
@@ -172,10 +178,10 @@ namespace SpecsCpp {
                 _currentSpecFailed = false;
                 _currentResult     = nullptr;
 
-                _reporters->report_test_begin(_currentSpec);
+                _reporters->report_test_begin(_currentGroup, _currentSpec);
 
                 std::vector<ISpecGroup*> groupStack;
-                auto*                    currentGroup = spec->group();
+                auto*                    currentGroup = _currentGroup;
                 while (currentGroup) {
                     groupStack.push_back(currentGroup);
                     currentGroup = currentGroup->group();
@@ -189,15 +195,16 @@ namespace SpecsCpp {
                 }
 
                 if (_currentSpecFailed) {
-                    auto specCodeResult = SpecRunResult::not_run(spec, spec);
+                    auto specCodeResult = SpecRunResult::not_run(spec, _currentGroup, spec);
                     _reporters->report_test(specCodeResult.get());
 
                     if (_currentResult && _currentResult->status() == RunResultStatus::Timeout) {
-                        auto specFinalResult = SpecRunResult::timeout(spec, spec);
+                        auto specFinalResult = SpecRunResult::timeout(spec, _currentGroup, spec);
                         _reporters->report_test_result(specFinalResult.get());
                     } else {
-                        auto specFinalResult =
-                            SpecRunResult::failed(spec, spec, _currentSpecFailureMessage);
+                        auto specFinalResult = SpecRunResult::failed(
+                            spec, _currentGroup, spec, _currentSpecFailureMessage
+                        );
                         _reporters->report_test_result(specFinalResult.get());
                     }
 
@@ -226,16 +233,16 @@ namespace SpecsCpp {
                 auto* codeBlock = spec->code_block();
                 if (codeBlock->get_timeout_ms() == 0) codeBlock->set_timeout_ms(_timeoutMs);
 
-                codeBlock->run(spec, spec, &_codeBlockCallbackFn);
+                codeBlock->run(spec, _currentGroup, spec, &_codeBlockCallbackFn);
 
                 auto future = _currentRunResultPromise->get_future();
 
                 if (codeBlock->get_timeout_ms() > 0) {
                     if (future.wait_for(std::chrono::milliseconds(codeBlock->get_timeout_ms())) ==
                         std::future_status::timeout) {
-                        auto result = SpecRunResult::timeout(spec, spec);
+                        auto result = SpecRunResult::timeout(spec, _currentGroup, spec);
                         _reporters->report_test(result.get());
-                        auto specFinalResult = SpecRunResult::failed(spec, spec);
+                        auto specFinalResult = SpecRunResult::failed(spec, _currentGroup, spec);
                         _reporters->report_test_result(specFinalResult.get());
                         _resultTotalCounts.increment_failed();
                         spec->variables()->clear();
@@ -251,12 +258,13 @@ namespace SpecsCpp {
 
                 if (_currentSpecFailed) {
                     _resultTotalCounts.increment_failed();
-                    auto specFinalResult =
-                        SpecRunResult::failed(spec, spec, _currentSpecFailureMessage);
+                    auto specFinalResult = SpecRunResult::failed(
+                        spec, _currentGroup, spec, _currentSpecFailureMessage
+                    );
                     _reporters->report_test_result(specFinalResult.get());
                 } else {
                     _resultTotalCounts.increment_passed();
-                    auto specFinalResult = SpecRunResult::passed(spec, spec);
+                    auto specFinalResult = SpecRunResult::passed(spec, _currentGroup, spec);
                     _reporters->report_test_result(specFinalResult.get());
                 }
                 spec->variables()->clear();
@@ -274,6 +282,7 @@ namespace SpecsCpp {
                 _currentResult = nullptr;
 
                 if (_currentlySkippingTests) {
+                    _currentGroup = group;
                     group->foreach_test(&_forEachSpecInGroupFn);
                     group->foreach_group(&_forEachGroupInGroupFn);
                     return;
@@ -286,6 +295,7 @@ namespace SpecsCpp {
                 if (!_currentlySkippingTests)
                     group->foreach_one_time_setup(&_forEachSetupInGroupFn);
 
+                _currentGroup = group;
                 group->foreach_test(&_forEachSpecInGroupFn);
                 group->foreach_group(&_forEachGroupInGroupFn);
 
@@ -317,6 +327,7 @@ namespace SpecsCpp {
                     group->foreach_one_time_setup(&_forEachSetupInGroupFn);
 
                 // Run the specs
+                _currentGroup = group;
                 group->foreach_test(&_forEachSpecInGroupFn);
 
                 // Run any child groups

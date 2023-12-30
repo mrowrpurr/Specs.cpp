@@ -13,7 +13,7 @@ namespace SpecsCpp {
 
         void report_suite_begin(unsigned int specCount) override {}
 
-        void report_test_begin(ISpec* spec) override {}
+        void report_test_begin(ISpecGroup*, ISpec* spec) override {}
 
         void report_setup(ISpecRunResult* result) override {}
 
@@ -22,17 +22,20 @@ namespace SpecsCpp {
         void report_teardown(ISpecRunResult* result) override {}
 
         void report_test_result(ISpecRunResult* result) override {
+            auto fullDescription = string_format(
+                "{} > {}", result->group()->full_description(), result->spec()->description()
+            );
+            if (!result->group()) fullDescription = result->spec()->description();
+
             switch (result->status()) {
                 case SpecsCpp::RunResultStatus::Passed:
                     Colors::PrintColor(
-                        string_format("\n[PASSED] {}\n", result->spec()->full_description()),
-                        Colors::Color::Green
+                        string_format("\n[PASSED] {}\n", fullDescription), Colors::Color::Green
                     );
                     break;
                 case SpecsCpp::RunResultStatus::Failed:
                     Colors::PrintColor(
-                        string_format("\n[FAILED] {}\n", result->spec()->full_description()),
-                        Colors::Color::Red
+                        string_format("\n[FAILED] {}\n", fullDescription), Colors::Color::Red
                     );
                     if (auto* message = result->message())
                         Colors::PrintColor(
@@ -41,14 +44,12 @@ namespace SpecsCpp {
                     break;
                 case SpecsCpp::RunResultStatus::NotRun:
                     Colors::PrintColor(
-                        string_format("\n[NOT RUN] {}\n", result->spec()->full_description()),
-                        Colors::Color::Yellow
+                        string_format("\n[NOT RUN] {}\n", fullDescription), Colors::Color::Yellow
                     );
                     break;
                 case SpecsCpp::RunResultStatus::Timeout:
                     Colors::PrintColor(
-                        string_format("\n[TIMEOUT] {}\n", result->spec()->full_description()),
-                        Colors::Color::LightRed
+                        string_format("\n[TIMEOUT] {}\n", fullDescription), Colors::Color::LightRed
                     );
                     break;
             }

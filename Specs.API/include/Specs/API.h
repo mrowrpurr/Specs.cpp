@@ -165,6 +165,7 @@ namespace SpecsCpp {
     struct ISpecRunResult {
         virtual ~ISpecRunResult()                 = default;
         virtual ISpecComponent* component() const = 0;
+        virtual ISpecGroup*     group() const     = 0;
         virtual ISpec*          spec() const      = 0;
         virtual RunResultStatus status() const    = 0;
         virtual const char*     message() const   = 0;
@@ -204,7 +205,7 @@ namespace SpecsCpp {
         virtual SpecCodeBlockBodyFn* body() const                   = 0;
         virtual void                 set_body(SpecCodeBlockBodyFn*) = 0;
 
-        virtual void run(ISpecComponent*, ISpec*, ISpecRunResultCallbackFn*) = 0;
+        virtual void run(ISpecComponent*, ISpecGroup*, ISpec*, ISpecRunResultCallbackFn*) = 0;
     };
 
     struct ISpecHasVariables {
@@ -406,7 +407,7 @@ namespace SpecsCpp {
         virtual ~ISpecReporter()                                = default;
         virtual void report_start()                             = 0;
         virtual void report_suite_begin(unsigned int specCount) = 0;
-        virtual void report_test_begin(ISpec*)                  = 0;
+        virtual void report_test_begin(ISpecGroup*, ISpec*)     = 0;
         virtual void report_setup(ISpecRunResult*)              = 0;
         virtual void report_test(ISpecRunResult*)               = 0;
         virtual void report_teardown(ISpecRunResult*)           = 0;
@@ -429,7 +430,7 @@ namespace SpecsCpp {
         }
 
         virtual void report_start()                            = 0;
-        virtual void report_test_begin(ISpec*)                 = 0;
+        virtual void report_test_begin(ISpecGroup*, ISpec*)    = 0;
         virtual void report_setup(ISpecRunResult*)             = 0;
         virtual void report_test(ISpecRunResult*)              = 0;
         virtual void report_teardown(ISpecRunResult*)          = 0;

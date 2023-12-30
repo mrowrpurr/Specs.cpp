@@ -124,7 +124,7 @@ namespace SpecsCpp {
 
             auto* currentGroup = get();
             set(templateGroupPtr);
-            codeBlock->run(templateGroupPtr, nullptr, nullptr);
+            codeBlock->run(templateGroupPtr, templateGroupPtr, nullptr, nullptr);
             set(currentGroup);
 
             _testTemplateGroups[templateName.data()] = std::move(templateGroup);
@@ -149,7 +149,7 @@ namespace SpecsCpp {
 
                 // Evaluate the group block (with this group being the 'current group')
                 push(specGroupPtr);
-                codeBlock->run(specGroupPtr, nullptr, nullptr);
+                codeBlock->run(specGroupPtr, specGroupPtr, nullptr, nullptr);
                 pop();
             } else {
                 _Log_("define_group() called but no group is active!");

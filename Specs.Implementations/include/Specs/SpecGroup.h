@@ -24,30 +24,12 @@ namespace SpecsCpp {
 
         std::unique_ptr<SpecVariableCollection> _variables;
 
-        void merge_child_groups(ISpecGroup* other) {
-            other->set_group(this);
-            add_group(other);
-        }
-        void merge_tests(ISpec* other) {
-            other->set_group(this);
-            add_test(other);
-        }
-        void merge_setups(ISpecSetup* other) {
-            other->set_group(this);
-            add_setup(other);
-        }
-        void merge_teardowns(ISpecTeardown* other) {
-            other->set_group(this);
-            add_teardown(other);
-        }
-        void merge_one_time_setups(ISpecSetup* other) {
-            other->set_group(this);
-            add_one_time_setup(other);
-        }
-        void merge_one_time_teardowns(ISpecTeardown* other) {
-            other->set_group(this);
-            add_one_time_teardown(other);
-        }
+        void merge_child_groups(ISpecGroup* other) { add_group(other); }
+        void merge_tests(ISpec* other) { add_test(other); }
+        void merge_setups(ISpecSetup* other) { add_setup(other); }
+        void merge_teardowns(ISpecTeardown* other) { add_teardown(other); }
+        void merge_one_time_setups(ISpecSetup* other) { add_one_time_setup(other); }
+        void merge_one_time_teardowns(ISpecTeardown* other) { add_one_time_teardown(other); }
 
         FunctionPointer<void(ISpecGroup*)> _merge_child_groups_fn =
             function_pointer(this, &SpecGroup::merge_child_groups);

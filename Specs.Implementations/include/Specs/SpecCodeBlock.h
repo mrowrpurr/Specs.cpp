@@ -212,8 +212,10 @@ namespace SpecsCpp {
 
         void set_body(SpecCodeBlockBodyFn* body) override { _unmanagedBody = body; }
 
-        void run(ISpecComponent* self, ISpec* spec, ISpecRunResultCallbackFn* resultCallback)
-            override {
+        void run(
+            ISpecComponent* self, ISpecGroup* group, ISpec* spec,
+            ISpecRunResultCallbackFn* resultCallback
+        ) override {
             try {
                 if (is_async()) {
                     _asyncDonePromise = std::make_unique<std::promise<void>>();
@@ -224,7 +226,7 @@ namespace SpecsCpp {
                         if (asyncDoneFuture.wait_for(std::chrono::milliseconds(get_timeout_ms())) ==
                             std::future_status::timeout) {
                             if (resultCallback) {
-                                auto result = SpecRunResult::timeout(self, spec);
+                                auto result = SpecRunResult::timeout(self, group, spec);
                                 resultCallback->invoke(result.get());
                                 return;
                             } else {
@@ -240,7 +242,7 @@ namespace SpecsCpp {
                 }
 
                 if (!resultCallback) return;
-                auto result = SpecRunResult::passed(self, spec);
+                auto result = SpecRunResult::passed(self, group, spec);
                 resultCallback->invoke(result.get());
             } catch (...) {
                 _exceptionHandled = false;
@@ -258,7 +260,7 @@ namespace SpecsCpp {
                         if (_exceptionHandled) {
                             if (resultCallback) {
                                 auto result = SpecRunResult::failed(
-                                    self, spec, _currentExceptionMessage.c_str()
+                                    self, group, spec, _currentExceptionMessage.c_str()
                                 );
                                 resultCallback->invoke(result.get());
                             } else {
@@ -267,7 +269,7 @@ namespace SpecsCpp {
                         } else {
                             if (resultCallback) {
                                 auto result =
-                                    SpecRunResult::failed(self, spec, "Unknown exception");
+                                    SpecRunResult::failed(self, group, spec, "Unknown exception");
                                 resultCallback->invoke(result.get());
 
                             } else {
