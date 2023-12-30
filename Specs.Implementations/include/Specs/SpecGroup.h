@@ -112,8 +112,6 @@ namespace SpecsCpp {
         const char* full_description() const override { return _fullDescription.c_str(); }
 
         void merge(ISpecGroup* other) override {
-            _Log_("Merge group {} into {}", other->full_description(), full_description());
-
             other->foreach_group(&_merge_child_groups_fn);
             other->foreach_test(&_merge_tests_fn);
             other->foreach_setup(&_merge_setups_fn);
