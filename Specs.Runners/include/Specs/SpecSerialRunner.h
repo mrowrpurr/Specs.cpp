@@ -162,11 +162,6 @@ namespace SpecsCpp {
             };
 
             void foreach_test_in_group(ISpec* spec) {
-                _Log_(
-                    "For Each Test in Group [{}] - [{}]", _currentGroup->description(),
-                    spec->description()
-                );
-
                 if (_currentlySkippingTests || list_only() || !should_run_spec(spec)) {
                     auto result = SpecRunResult::not_run(spec, _currentGroup, spec);
                     _reporters->report_test_result(result.get());
