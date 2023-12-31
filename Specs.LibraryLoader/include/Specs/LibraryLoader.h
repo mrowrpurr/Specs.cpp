@@ -48,7 +48,11 @@ namespace SpecsCpp {
             if (!libraryHandle)
                 throw std::runtime_error("Failed to load library: " + std::string(libraryFilePath));
 
+#ifdef _WIN32
             auto loadFunctionAddress = GetProcAddress(libraryHandle, LOAD_FUNCTION_NAME);
+#else
+            auto loadFunctionAddress = dlsym(libraryHandle, LOAD_FUNCTION_NAME);
+#endif
             if (!loadFunctionAddress)
                 throw std::runtime_error(
                     "Failed to get load function address: " + std::string(LOAD_FUNCTION_NAME)
@@ -84,7 +88,11 @@ namespace SpecsCpp {
 
         void unload_all() {
             for (auto& [libraryFilePath, libraryHandle] : _loadedLibraries)
+#ifdef _WIN32
                 FreeLibrary(libraryHandle);
+#else
+                dlclose(libraryHandle);
+#endif
             _loadedLibraries.clear();
         }
     };
