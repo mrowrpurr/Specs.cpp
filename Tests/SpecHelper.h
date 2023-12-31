@@ -8,6 +8,7 @@
 
 #include <fakeit/standalone/fakeit.hpp>
 
+using namespace std;
 using namespace SpecsCpp;
 using namespace SpecsCpp::TestHelpers;
 using namespace fakeit;

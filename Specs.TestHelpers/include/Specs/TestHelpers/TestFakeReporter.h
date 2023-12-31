@@ -23,7 +23,7 @@ namespace SpecsCpp::TestHelpers {
 
         void report_start() override {}
         void report_suite_begin(unsigned int specCount) override {}
-        void report_test_begin(ISpec* spec) override {}
+        void report_test_begin(ISpecGroup*, ISpec* spec) override {}
         void report_setup(ISpecRunResult* result) override {}
         void report_test(ISpecRunResult* result) override {}
         void report_teardown(ISpecRunResult* result) override {}

@@ -60,7 +60,6 @@
 #include "DSLs/TopLevel/UseTemplate.h"         // IWYU pragma: keep
 #include "DSLs/TopLevel/UseTemplates.h"        // IWYU pragma: keep
 
-
 using SpecDone = SpecsCpp::SpecDone;
 
 using namespace SpecsCpp::DSLs::Functions;

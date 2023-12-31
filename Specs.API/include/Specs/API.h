@@ -2,18 +2,23 @@
 
 #include <_Log_.h>
 #include <function_pointer.h>
+#include <virtual_collections/interfaces.h>
 #include <void_pointer.h>
 
 #include <cstdint>
 #include <exception>
 #include <functional>
-#include <type_traits>
 
 namespace SpecsCpp {
 
     struct ISpec;
     struct ISpecGroup;
     struct ISpecComponent;
+
+    struct ISpecOutput {
+        virtual ~ISpecOutput()          = default;
+        virtual void write(const char*) = 0;
+    };
 
     enum class SpecDataValueType {
         Boolean,
@@ -499,11 +504,15 @@ namespace SpecsCpp {
     };
 
     struct ISpecEnvironment {
-        virtual ~ISpecEnvironment()                                                    = default;
-        virtual ISpecGroup*                           root_group() const               = 0;
-        virtual ILocalSpecExceptionHandlerCollection* local_exception_handlers() const = 0;
-        virtual ISpecRunnerCollection*                runners() const                  = 0;
-        virtual ISpecReporterCollection*              reporters() const                = 0;
+        virtual ~ISpecEnvironment()                                                     = default;
+        virtual ISpecOutput*                          standard_output() const           = 0;
+        virtual void                                  set_standard_output(ISpecOutput*) = 0;
+        virtual ISpecOutput*                          error_output() const              = 0;
+        virtual void                                  set_error_output(ISpecOutput*)    = 0;
+        virtual ISpecGroup*                           root_group() const                = 0;
+        virtual ILocalSpecExceptionHandlerCollection* local_exception_handlers() const  = 0;
+        virtual ISpecRunnerCollection*                runners() const                   = 0;
+        virtual ISpecReporterCollection*              reporters() const                 = 0;
         virtual void
         run(ISpecRunner*, ISpecReporterCollection*, ISpecRunOptions*,
             ISpecSuiteRunResultCallbackFn*) = 0;
@@ -547,7 +556,8 @@ namespace SpecsCpp {
     struct ISpecApplication {
         virtual ~ISpecApplication()                                           = default;
         virtual int                               main(int argc, char** argv) = 0;
+        virtual int                               main()                      = 0;
         virtual ISpecCommandLineOptionCollection* options() const             = 0;
-        virtual ISpecEnvironment*                 environment()               = 0;
+        virtual ISpecEnvironment*                 environment() const         = 0;
     };
 }
