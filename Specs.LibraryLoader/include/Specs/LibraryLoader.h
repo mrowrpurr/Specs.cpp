@@ -64,7 +64,11 @@ namespace SpecsCpp {
                 _loadedLibraries.emplace(libraryFilePath, libraryHandle);
                 return group;
             } else {
+#ifdef _WIN32
                 FreeLibrary(libraryHandle);
+#else
+                dlclose(libraryHandle);
+#endif
                 throw std::runtime_error(
                     "Failed to load group from library: " + std::string(libraryFilePath)
                 );
