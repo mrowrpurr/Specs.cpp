@@ -9,7 +9,7 @@ Example("Run one failing test") {
     auto test  = SpecTest(&group, "My Test", code_block([]() { throw "KABOOM"; }));
     group.add_test(&test);
 
-    auto reporter  = TestFakeReporter();
+    auto reporter  = TestSpecReporter();
     auto reporters = SpecReporterCollection();
     reporters.add("test", &reporter);
 
@@ -28,7 +28,7 @@ Example("Run one passing test") {
     auto test  = SpecTest(&group, "My Test", code_block([]() { /* nothing, passes */ }));
     group.add_test(&test);
 
-    auto reporter  = TestFakeReporter();
+    auto reporter  = TestSpecReporter();
     auto reporters = SpecReporterCollection();
     reporters.add("test", &reporter);
 

@@ -5,8 +5,14 @@
 #include "SpecHelper.h"  // IWYU pragma: keep
 
 Example("running code main() entrypoint with no registered options") {
-    auto app = unique_ptr<ISpecApplication>(new SpecApplication());
-    app->main();
+    TestSpecOutput  standardOutput;
+    TestSpecOutput  standardError;
+    SpecApplication app;
+
+    app.environment()->set_standard_output(&standardOutput);
+    app.environment()->set_error_output(&standardError);
+
+    app.main();
 }
 
 // StartTestGroup("with zero configuration") {

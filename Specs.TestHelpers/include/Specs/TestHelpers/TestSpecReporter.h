@@ -9,7 +9,7 @@
 
 namespace SpecsCpp::TestHelpers {
 
-    class TestFakeReporter : public ISpecReporter {
+    class TestSpecReporter : public ISpecReporter {
         collections_map<std::string, std::unique_ptr<ISpecRunResult>> _testResults;
 
     public:
