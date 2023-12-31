@@ -3,7 +3,7 @@
 #include <_Log_.h>
 #include <function_pointer.h>
 #include <virtual_collections/interfaces.h>
-#include <void_pointer.h>
+#include <void_pointer/deprecated.h>
 
 #include <cstdint>
 #include <exception>

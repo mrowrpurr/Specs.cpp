@@ -67,6 +67,14 @@
             },
             version = "v0.9.5"
         },
+        ["managed_pointer#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "22dc2da6025949f05388b3fa14dd759607359ac5",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
         ["spdlog#31fecfc4"] = {
             repo = {
                 branch = "master",
@@ -105,7 +113,7 @@
         ["virtual_collections#31fecfc4"] = {
             branch = "@default",
             repo = {
-                commit = "9cedd6feb2db59d64d0a4d757f778b9cd390eebf",
+                commit = "fe623f741f851e177d6cc2191122711c2ef1c675",
                 url = "https://github.com/MrowrLib/Packages"
             },
             version = "@default"
@@ -113,7 +121,7 @@
         ["void_pointer#31fecfc4"] = {
             branch = "@default",
             repo = {
-                commit = "9721c54b76c90b0e644ed914886aa6d12ead452b",
+                commit = "22dc2da6025949f05388b3fa14dd759607359ac5",
                 url = "https://github.com/MrowrLib/Packages"
             },
             version = "@default"
