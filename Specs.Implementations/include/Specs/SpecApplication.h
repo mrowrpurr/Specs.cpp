@@ -3,23 +3,13 @@
 #include <Specs/API.h>
 #include <_Log_.h>
 
-#include <memory>
-#include <string_view>
-
-#include "SpecCommandLineOptionCollection.h"
-#include "SpecEnvironment.h"
-
 namespace SpecsCpp {
 
-    class SpecApplication : public ISpecApplication {
-        std::unique_ptr<ISpecEnvironment>                 _environment;
-        std::unique_ptr<ISpecCommandLineOptionCollection> _options;
+    class SpecApplication : public Interfaces::ISpecApplication {
+        ISpecEnvironment*                 _environment;
+        ISpecCommandLineOptionCollection* _cli_options;
 
     public:
-        SpecApplication()
-            : _environment(std::make_unique<SpecEnvironment>()),
-              _options(std::make_unique<SpecCommandLineOptionCollection>()) {}
-
         int main(int argc, char** argv) override {
             if (!_environment) {
                 _Log_("SpecApplication::main() called without an environment set");
@@ -31,7 +21,12 @@ namespace SpecsCpp {
 
         int main() override { return main(0, nullptr); }
 
-        ISpecCommandLineOptionCollection* options() const override { return _options.get(); }
-        ISpecEnvironment* environment() const override { return _environment.get(); }
+        ISpecCommandLineOptionCollection* cli_options() const override { return _cli_options; }
+        void set_cli_option_collection(ISpecCommandLineOptionCollection* options) override {
+            _cli_options = options;
+        }
+
+        ISpecEnvironment* environment() const override { return _environment; }
+        void set_environment(ISpecEnvironment* environment) override { _environment = environment; }
     };
 }

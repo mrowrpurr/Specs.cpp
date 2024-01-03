@@ -28,6 +28,7 @@
 
 namespace SpecsCpp {
 
+    // TODO: this should implement an interface
     class Entrypoint {
         int _returnCode = 0;
         int _totalTests = 0;
