@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('struct_specs_cpp_1_1_i_spec_run_result
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SpecsCpp::ISpecRunResult:</div>
 <div class="dyncontent">
@@ -123,6 +123,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aff5f1c7d636eb12361f7fb0a2db2fa26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7078eee1048868498453cbce80c99fa"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_component.html">ISpecComponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html#af7078eee1048868498453cbce80c99fa">component</a> () const =0</td></tr>
 <tr class="separator:af7078eee1048868498453cbce80c99fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd865fe4f8fe25805a31293b1ba85d6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html#a2fd865fe4f8fe25805a31293b1ba85d6">group</a> () const =0</td></tr>
+<tr class="separator:a2fd865fe4f8fe25805a31293b1ba85d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a406c85ccf6cf2e142df343a756c33d81"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec.html">ISpec</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html#a406c85ccf6cf2e142df343a756c33d81">spec</a> () const =0</td></tr>
 <tr class="separator:a406c85ccf6cf2e142df343a756c33d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dc8b8ed549eecf05641930cf29156c4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521d">RunResultStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html#a0dc8b8ed549eecf05641930cf29156c4">status</a> () const =0</td></tr>
@@ -134,7 +136,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aad206c1d4f1aa93574ec3929b4857868"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html#aad206c1d4f1aa93574ec3929b4857868">status_as_string</a> () const</td></tr>
 <tr class="separator:aad206c1d4f1aa93574ec3929b4857868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00173">173</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aff5f1c7d636eb12361f7fb0a2db2fa26" name="aff5f1c7d636eb12361f7fb0a2db2fa26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff5f1c7d636eb12361f7fb0a2db2fa26">&#9670;&#160;</a></span>~ISpecRunResult()</h2>
 
@@ -212,6 +217,33 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_run_result.html#a831588624a6082eee10ff6221f25e70f">SpecsCpp::SpecRunResult</a>.</p>
+
+</div>
+</div>
+<a id="a2fd865fe4f8fe25805a31293b1ba85d6" name="a2fd865fe4f8fe25805a31293b1ba85d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd865fe4f8fe25805a31293b1ba85d6">&#9670;&#160;</a></span>group()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> * SpecsCpp::ISpecRunResult::group </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_run_result.html#a595eec1400a0b325365366c46b9cc7cb">SpecsCpp::SpecRunResult</a>.</p>
 
 </div>
 </div>
@@ -319,10 +351,31 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00182">182</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  182</span>                                                     {</div>
+<div class="line"><span class="lineno">  183</span>            <span class="keywordflow">switch</span> (<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_run_result.html#a0dc8b8ed549eecf05641930cf29156c4">status</a>()) {</div>
+<div class="line"><span class="lineno">  184</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521daa0d0628f6b4e4d78d2ffef4d4d1c4b15">RunResultStatus::Passed</a>:</div>
+<div class="line"><span class="lineno">  185</span>                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Passed&quot;</span>;</div>
+<div class="line"><span class="lineno">  186</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521dad7c8c85bf79bbe1b7188497c32c3b0ca">RunResultStatus::Failed</a>:</div>
+<div class="line"><span class="lineno">  187</span>                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Failed&quot;</span>;</div>
+<div class="line"><span class="lineno">  188</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521da74fabe97ee9218565bedba910ea8934b">RunResultStatus::NotRun</a>:</div>
+<div class="line"><span class="lineno">  189</span>                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;NotRun&quot;</span>;</div>
+<div class="line"><span class="lineno">  190</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521dac85a251cc457840f1e032f1b733e9398">RunResultStatus::Timeout</a>:</div>
+<div class="line"><span class="lineno">  191</span>                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Timeout&quot;</span>;</div>
+<div class="line"><span class="lineno">  192</span>                <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  193</span>                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Unknown&quot;</span>;</div>
+<div class="line"><span class="lineno">  194</span>            }</div>
+<div class="line"><span class="lineno">  195</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_html_a0bb235abfa3682e622e4c3e41172521da74fabe97ee9218565bedba910ea8934b"><div class="ttname"><a href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521da74fabe97ee9218565bedba910ea8934b">SpecsCpp::RunResultStatus::NotRun</a></div><div class="ttdeci">@ NotRun</div></div>
+<div class="ttc" id="anamespace_specs_cpp_html_a0bb235abfa3682e622e4c3e41172521daa0d0628f6b4e4d78d2ffef4d4d1c4b15"><div class="ttname"><a href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521daa0d0628f6b4e4d78d2ffef4d4d1c4b15">SpecsCpp::RunResultStatus::Passed</a></div><div class="ttdeci">@ Passed</div></div>
+<div class="ttc" id="anamespace_specs_cpp_html_a0bb235abfa3682e622e4c3e41172521dac85a251cc457840f1e032f1b733e9398"><div class="ttname"><a href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521dac85a251cc457840f1e032f1b733e9398">SpecsCpp::RunResultStatus::Timeout</a></div><div class="ttdeci">@ Timeout</div></div>
+<div class="ttc" id="anamespace_specs_cpp_html_a0bb235abfa3682e622e4c3e41172521dad7c8c85bf79bbe1b7188497c32c3b0ca"><div class="ttname"><a href="namespace_specs_cpp.html#a0bb235abfa3682e622e4c3e41172521dad7c8c85bf79bbe1b7188497c32c3b0ca">SpecsCpp::RunResultStatus::Failed</a></div><div class="ttdeci">@ Failed</div></div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_run_result_html_a0dc8b8ed549eecf05641930cf29156c4"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_run_result.html#a0dc8b8ed549eecf05641930cf29156c4">SpecsCpp::ISpecRunResult::status</a></div><div class="ttdeci">virtual RunResultStatus status() const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Specs.API/include/Specs/<a class="el" href="_a_p_i_8h_source.html">API.h</a></li>
+<li>Specs.API/include/Specs/API/Internal/Undocumented/<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

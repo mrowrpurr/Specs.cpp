@@ -121,7 +121,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad519d887851d67a0ff7d65c2d2d90603"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_library_loader.html#ad519d887851d67a0ff7d65c2d2d90603">unload_all</a> ()</td></tr>
 <tr class="separator:ad519d887851d67a0ff7d65c2d2d90603"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_library_loader_8h_source.html#l00017">17</a> of file <a class="el" href="_library_loader_8h_source.html">LibraryLoader.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a731e18bd8c560b84584280835bbd1841" name="a731e18bd8c560b84584280835bbd1841"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a731e18bd8c560b84584280835bbd1841">&#9670;&#160;</a></span>LibraryLoader()</h2>
 
@@ -146,6 +149,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_library_loader_8h_source.html#l00033">33</a> of file <a class="el" href="_library_loader_8h_source.html">LibraryLoader.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>            : _globalSpecEnvironment(globalSpecEnvironment) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aadf50eef53dcebc987fe59cf4f0210b0" name="aadf50eef53dcebc987fe59cf4f0210b0"></a>
@@ -171,6 +177,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_library_loader_8h_source.html#l00036">36</a> of file <a class="el" href="_library_loader_8h_source.html">LibraryLoader.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>{ <a class="code hl_function" href="class_specs_cpp_1_1_library_loader.html#ad519d887851d67a0ff7d65c2d2d90603">unload_all</a>(); }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_library_loader_html_ad519d887851d67a0ff7d65c2d2d90603"><div class="ttname"><a href="class_specs_cpp_1_1_library_loader.html#ad519d887851d67a0ff7d65c2d2d90603">SpecsCpp::LibraryLoader::unload_all</a></div><div class="ttdeci">void unload_all()</div><div class="ttdef"><b>Definition</b> <a href="_library_loader_8h_source.html#l00085">LibraryLoader.h:85</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -198,6 +208,39 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_library_loader_8h_source.html#l00038">38</a> of file <a class="el" href="_library_loader_8h_source.html">LibraryLoader.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>                                                         {</div>
+<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">if</span> (!std::filesystem::exists(libraryFilePath))</div>
+<div class="line"><span class="lineno">   40</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;File does not exist: &quot;</span> + std::string(libraryFilePath));</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="lineno">   43</span>            <span class="keyword">auto</span> libraryHandle = LoadLibraryA(libraryFilePath.data());</div>
+<div class="line"><span class="lineno">   44</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">   45</span>            <span class="keyword">auto</span> libraryHandle = dlopen(libraryFilePath.data(), RTLD_LAZY);</div>
+<div class="line"><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> (!libraryHandle)</div>
+<div class="line"><span class="lineno">   49</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to load library: &quot;</span> + std::string(libraryFilePath));</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>            <span class="keyword">auto</span> loadFunctionAddress = GetProcAddress(libraryHandle, LOAD_FUNCTION_NAME);</div>
+<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">if</span> (!loadFunctionAddress)</div>
+<div class="line"><span class="lineno">   53</span>                <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><span class="lineno">   54</span>                    <span class="stringliteral">&quot;Failed to get load function address: &quot;</span> + std::string(LOAD_FUNCTION_NAME)</div>
+<div class="line"><span class="lineno">   55</span>                );</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>            <span class="keyword">auto</span> loadFunction = <span class="keyword">reinterpret_cast&lt;</span>LOAD_FUNCTION_SIGNATURE<span class="keyword">&gt;</span>(loadFunctionAddress);</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* group = loadFunction(_globalSpecEnvironment)) {</div>
+<div class="line"><span class="lineno">   60</span>                _loadedLibraries.emplace(libraryFilePath, libraryHandle);</div>
+<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">return</span> group;</div>
+<div class="line"><span class="lineno">   62</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   63</span>                FreeLibrary(libraryHandle);</div>
+<div class="line"><span class="lineno">   64</span>                <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><span class="lineno">   65</span>                    <span class="stringliteral">&quot;Failed to load group from library: &quot;</span> + std::string(libraryFilePath)</div>
+<div class="line"><span class="lineno">   66</span>                );</div>
+<div class="line"><span class="lineno">   67</span>            }</div>
+<div class="line"><span class="lineno">   68</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a11379f5235bd44f756811d7ac72eeb07" name="a11379f5235bd44f756811d7ac72eeb07"></a>
@@ -224,6 +267,23 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_library_loader_8h_source.html#l00070">70</a> of file <a class="el" href="_library_loader_8h_source.html">LibraryLoader.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                    {</div>
+<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span> it = _loadedLibraries.find(libraryFilePath.data());</div>
+<div class="line"><span class="lineno">   72</span>                <a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a39f254479d9ba02473092f50c75122a5">it</a> != _loadedLibraries.end()) {</div>
+<div class="line"><span class="lineno">   73</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="lineno">   74</span>                FreeLibrary(<a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a39f254479d9ba02473092f50c75122a5">it</a>-&gt;second);</div>
+<div class="line"><span class="lineno">   75</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">   76</span>                dlclose(<a class="code hl_function" href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a39f254479d9ba02473092f50c75122a5">it</a>-&gt;second);</div>
+<div class="line"><span class="lineno">   77</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>                _loadedLibraries.erase(it);</div>
+<div class="line"><span class="lineno">   80</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   81</span>            }</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_d_s_ls_1_1_functions_html_a39f254479d9ba02473092f50c75122a5"><div class="ttname"><a href="namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html#a39f254479d9ba02473092f50c75122a5">SpecsCpp::DSLs::Functions::it</a></div><div class="ttdeci">void it(std::string_view description, std::function&lt; void()&gt; body)</div><div class="ttdef"><b>Definition</b> <a href="_functions_2it_8h_source.html#l00011">it.h:11</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad519d887851d67a0ff7d65c2d2d90603" name="ad519d887851d67a0ff7d65c2d2d90603"></a>
@@ -249,6 +309,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_library_loader_8h_source.html#l00085">85</a> of file <a class="el" href="_library_loader_8h_source.html">LibraryLoader.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>                          {</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [libraryFilePath, libraryHandle] : _loadedLibraries)</div>
+<div class="line"><span class="lineno">   87</span>                FreeLibrary(libraryHandle);</div>
+<div class="line"><span class="lineno">   88</span>            _loadedLibraries.clear();</div>
+<div class="line"><span class="lineno">   89</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

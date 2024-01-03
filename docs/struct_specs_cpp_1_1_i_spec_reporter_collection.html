@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('struct_specs_cpp_1_1_i_spec_reporter_c
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SpecsCpp::ISpecReporterCollection:</div>
 <div class="dyncontent">
@@ -120,8 +120,8 @@ Inheritance diagram for SpecsCpp::ISpecReporterCollection:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aba4e6efa687ecaaadfec6915dee98b08"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aba4e6efa687ecaaadfec6915dee98b08">ForEachReporterFn</a> = IFunctionPointer&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a> *)&gt;</td></tr>
-<tr class="separator:aba4e6efa687ecaaadfec6915dee98b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb9213106ef73663794d56d818a4b40"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aebb9213106ef73663794d56d818a4b40">ForEachReporterFn</a> = IFunctionPointer&lt; void(const char *, <a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a> *)&gt;</td></tr>
+<tr class="separator:aebb9213106ef73663794d56d818a4b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -133,37 +133,42 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af6127587e59b9b1896e350b6aac2a29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a8bd2f2abe8f2b4ee71b3007c40d0da"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a2a8bd2f2abe8f2b4ee71b3007c40d0da">get</a> (const char *name) const =0</td></tr>
 <tr class="separator:a2a8bd2f2abe8f2b4ee71b3007c40d0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e78e66e0161c6583bd8f7aacbbfbf51"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a4e78e66e0161c6583bd8f7aacbbfbf51">foreach_reporter</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aba4e6efa687ecaaadfec6915dee98b08">ForEachReporterFn</a> *) const =0</td></tr>
+<tr class="memitem:a4e78e66e0161c6583bd8f7aacbbfbf51"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a4e78e66e0161c6583bd8f7aacbbfbf51">foreach_reporter</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aebb9213106ef73663794d56d818a4b40">ForEachReporterFn</a> *) const =0</td></tr>
 <tr class="separator:a4e78e66e0161c6583bd8f7aacbbfbf51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af140281b6f11a17efa8e6feb97dd0b06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#af140281b6f11a17efa8e6feb97dd0b06">foreach_reporter</a> (std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a> *)&gt; fn) const</td></tr>
-<tr class="separator:af140281b6f11a17efa8e6feb97dd0b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a611ddc3fcd9e4a611c66cd050e6133b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a611ddc3fcd9e4a611c66cd050e6133b5">foreach</a> (std::function&lt; void(const char *, <a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a> *)&gt; fn) const</td></tr>
+<tr class="separator:a611ddc3fcd9e4a611c66cd050e6133b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b33de57405ac5eadf7cc90d2c80d153"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a3b33de57405ac5eadf7cc90d2c80d153">report_start</a> ()=0</td></tr>
 <tr class="separator:a3b33de57405ac5eadf7cc90d2c80d153"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22a5e1df6d1ab6eb1f206979f24ef70b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a22a5e1df6d1ab6eb1f206979f24ef70b">report_spec_begin</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec.html">ISpec</a> *)=0</td></tr>
-<tr class="separator:a22a5e1df6d1ab6eb1f206979f24ef70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a126c6aae08d6eb963b08609c14475ea0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a126c6aae08d6eb963b08609c14475ea0">report_test_begin</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *, <a class="el" href="struct_specs_cpp_1_1_i_spec.html">ISpec</a> *)=0</td></tr>
+<tr class="separator:a126c6aae08d6eb963b08609c14475ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3edd3c8c413bedd42e033c60d48d6b27"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a3edd3c8c413bedd42e033c60d48d6b27">report_setup</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *)=0</td></tr>
 <tr class="separator:a3edd3c8c413bedd42e033c60d48d6b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0d03489a110b104e7330ac86ae7928f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#ab0d03489a110b104e7330ac86ae7928f">report_spec</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *)=0</td></tr>
-<tr class="separator:ab0d03489a110b104e7330ac86ae7928f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02b84db3e92a47af2fe6bbb105f4f237"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a02b84db3e92a47af2fe6bbb105f4f237">report_test</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *)=0</td></tr>
+<tr class="separator:a02b84db3e92a47af2fe6bbb105f4f237"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60044bda74fc0082162b1f732b8ed9de"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a60044bda74fc0082162b1f732b8ed9de">report_teardown</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *)=0</td></tr>
 <tr class="separator:a60044bda74fc0082162b1f732b8ed9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3991ae7f7b12992860c46ddd4e9bf21a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a3991ae7f7b12992860c46ddd4e9bf21a">report_spec_result</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *)=0</td></tr>
-<tr class="separator:a3991ae7f7b12992860c46ddd4e9bf21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205a1f769c34d4347d0b796821fff14d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a205a1f769c34d4347d0b796821fff14d">report_test_result</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *)=0</td></tr>
+<tr class="separator:a205a1f769c34d4347d0b796821fff14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae133d74fd03ec1010330fba4a3d8aaf0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#ae133d74fd03ec1010330fba4a3d8aaf0">report_suite_result</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_suite_run_result.html">ISpecSuiteRunResult</a> *)=0</td></tr>
 <tr class="separator:ae133d74fd03ec1010330fba4a3d8aaf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="aba4e6efa687ecaaadfec6915dee98b08" name="aba4e6efa687ecaaadfec6915dee98b08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba4e6efa687ecaaadfec6915dee98b08">&#9670;&#160;</a></span>ForEachReporterFn</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00426">426</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aebb9213106ef73663794d56d818a4b40" name="aebb9213106ef73663794d56d818a4b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb9213106ef73663794d56d818a4b40">&#9670;&#160;</a></span>ForEachReporterFn</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aba4e6efa687ecaaadfec6915dee98b08">SpecsCpp::ISpecReporterCollection::ForEachReporterFn</a> =  IFunctionPointer&lt;void(<a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a>*)&gt;</td>
+          <td class="memname">using <a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aebb9213106ef73663794d56d818a4b40">SpecsCpp::ISpecReporterCollection::ForEachReporterFn</a> =  IFunctionPointer&lt;void(const char*, <a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a>*)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00427">427</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
 
 </div>
 </div>
@@ -232,8 +237,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a611ddc3fcd9e4a611c66cd050e6133b5" name="a611ddc3fcd9e4a611c66cd050e6133b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a611ddc3fcd9e4a611c66cd050e6133b5">&#9670;&#160;</a></span>foreach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpecsCpp::ISpecReporterCollection::foreach </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const char *, <a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a> *)&gt;&#160;</td>
+          <td class="paramname"><em>fn</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00435">435</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  435</span>                                                                              {</div>
+<div class="line"><span class="lineno">  436</span>            <span class="keyword">auto</span> callback = unique_function_pointer(fn);</div>
+<div class="line"><span class="lineno">  437</span>            this-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a4e78e66e0161c6583bd8f7aacbbfbf51">foreach_reporter</a>(callback.get());</div>
+<div class="line"><span class="lineno">  438</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_reporter_collection_html_a4e78e66e0161c6583bd8f7aacbbfbf51"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#a4e78e66e0161c6583bd8f7aacbbfbf51">SpecsCpp::ISpecReporterCollection::foreach_reporter</a></div><div class="ttdeci">virtual void foreach_reporter(ForEachReporterFn *) const =0</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a4e78e66e0161c6583bd8f7aacbbfbf51" name="a4e78e66e0161c6583bd8f7aacbbfbf51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e78e66e0161c6583bd8f7aacbbfbf51">&#9670;&#160;</a></span>foreach_reporter() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e78e66e0161c6583bd8f7aacbbfbf51">&#9670;&#160;</a></span>foreach_reporter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -244,7 +282,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void SpecsCpp::ISpecReporterCollection::foreach_reporter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aba4e6efa687ecaaadfec6915dee98b08">ForEachReporterFn</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_reporter_collection.html#aebb9213106ef73663794d56d818a4b40">ForEachReporterFn</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
@@ -257,32 +295,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_reporter_collection.html#af1f088d06ffb515a9e850d59d58ffd8a">SpecsCpp::SpecReporterCollection</a>.</p>
-
-</div>
-</div>
-<a id="af140281b6f11a17efa8e6feb97dd0b06" name="af140281b6f11a17efa8e6feb97dd0b06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af140281b6f11a17efa8e6feb97dd0b06">&#9670;&#160;</a></span>foreach_reporter() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SpecsCpp::ISpecReporterCollection::foreach_reporter </td>
-          <td>(</td>
-          <td class="paramtype">std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_reporter.html">ISpecReporter</a> *)&gt;&#160;</td>
-          <td class="paramname"><em>fn</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -370,90 +382,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab0d03489a110b104e7330ac86ae7928f" name="ab0d03489a110b104e7330ac86ae7928f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0d03489a110b104e7330ac86ae7928f">&#9670;&#160;</a></span>report_spec()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void SpecsCpp::ISpecReporterCollection::report_spec </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_reporter_collection.html#a092ee4cff90129a1c1d4a5fdb65204d3">SpecsCpp::SpecReporterCollection</a>.</p>
-
-</div>
-</div>
-<a id="a22a5e1df6d1ab6eb1f206979f24ef70b" name="a22a5e1df6d1ab6eb1f206979f24ef70b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22a5e1df6d1ab6eb1f206979f24ef70b">&#9670;&#160;</a></span>report_spec_begin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void SpecsCpp::ISpecReporterCollection::report_spec_begin </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec.html">ISpec</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_reporter_collection.html#a873768b12e53350484a75c5785c47eb9">SpecsCpp::SpecReporterCollection</a>.</p>
-
-</div>
-</div>
-<a id="a3991ae7f7b12992860c46ddd4e9bf21a" name="a3991ae7f7b12992860c46ddd4e9bf21a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3991ae7f7b12992860c46ddd4e9bf21a">&#9670;&#160;</a></span>report_spec_result()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void SpecsCpp::ISpecReporterCollection::report_spec_result </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_reporter_collection.html#a31ea084cc0e59f838ba2cbb4e7156931">SpecsCpp::SpecReporterCollection</a>.</p>
-
-</div>
-</div>
 <a id="a3b33de57405ac5eadf7cc90d2c80d153" name="a3b33de57405ac5eadf7cc90d2c80d153"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b33de57405ac5eadf7cc90d2c80d153">&#9670;&#160;</a></span>report_start()</h2>
 
@@ -537,8 +465,102 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a02b84db3e92a47af2fe6bbb105f4f237" name="a02b84db3e92a47af2fe6bbb105f4f237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02b84db3e92a47af2fe6bbb105f4f237">&#9670;&#160;</a></span>report_test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecReporterCollection::report_test </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_reporter_collection.html#a3d1d68830be55d2852354ac6be222bcd">SpecsCpp::SpecReporterCollection</a>.</p>
+
+</div>
+</div>
+<a id="a126c6aae08d6eb963b08609c14475ea0" name="a126c6aae08d6eb963b08609c14475ea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a126c6aae08d6eb963b08609c14475ea0">&#9670;&#160;</a></span>report_test_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecReporterCollection::report_test_begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec.html">ISpec</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_reporter_collection.html#ae3b8e909a81226d1710b103c4d646fed">SpecsCpp::SpecReporterCollection</a>.</p>
+
+</div>
+</div>
+<a id="a205a1f769c34d4347d0b796821fff14d" name="a205a1f769c34d4347d0b796821fff14d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a205a1f769c34d4347d0b796821fff14d">&#9670;&#160;</a></span>report_test_result()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecReporterCollection::report_test_result </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_run_result.html">ISpecRunResult</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_reporter_collection.html#a2dbe294cb81116bfc50d9d9c4907b361">SpecsCpp::SpecReporterCollection</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Specs.API/include/Specs/<a class="el" href="_a_p_i_8h_source.html">API.h</a></li>
+<li>Specs.API/include/Specs/API/Internal/Undocumented/<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

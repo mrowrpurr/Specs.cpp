@@ -113,7 +113,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3cd4c81a771e4ac7d0894d0b4530ded1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_entrypoint.html#a3cd4c81a771e4ac7d0894d0b4530ded1">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3cd4c81a771e4ac7d0894d0b4530ded1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_specs_8_main_2include_2_specs_2_entrypoint_8h_source.html#l00032">32</a> of file <a class="el" href="_specs_8_main_2include_2_specs_2_entrypoint_8h_source.html">Entrypoint.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3cd4c81a771e4ac7d0894d0b4530ded1" name="a3cd4c81a771e4ac7d0894d0b4530ded1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3cd4c81a771e4ac7d0894d0b4530ded1">&#9670;&#160;</a></span>main()</h2>
 
@@ -148,6 +151,134 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_specs_8_main_2include_2_specs_2_entrypoint_8h_source.html#l00057">57</a> of file <a class="el" href="_specs_8_main_2include_2_specs_2_entrypoint_8h_source.html">Entrypoint.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>                                        {</div>
+<div class="line"><span class="lineno">   58</span>            cxxopts::Options options(<span class="stringliteral">&quot;Specs.cpp&quot;</span>, <span class="stringliteral">&quot;Specs.cpp command line options&quot;</span>);</div>
+<div class="line"><span class="lineno">   59</span>            options.allow_unrecognised_options();</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>            <span class="comment">// TODO: option to specify / customize the reporters used</span></div>
+<div class="line"><span class="lineno">   62</span>            <span class="comment">// TODO: option to specify / customize the runner used</span></div>
+<div class="line"><span class="lineno">   63</span>            options.add_options()</div>
+<div class="line"><span class="lineno">   64</span>                <span class="comment">// (&quot;n,name&quot;, &quot;Filter name of test/group to run&quot;, cxxopts::value&lt;std::string&gt;())</span></div>
+<div class="line"><span class="lineno">   65</span>                <span class="comment">// (&quot;s,spec&quot;, &quot;Filter name of test to run&quot;,  cxxopts::value&lt;std::string&gt;())</span></div>
+<div class="line"><span class="lineno">   66</span>                <span class="comment">// (&quot;g,group&quot;, &quot;Filter name of group to run&quot;, cxxopts::value&lt;std::string&gt;())</span></div>
+<div class="line"><span class="lineno">   67</span>                <span class="comment">// (&quot;r,pattern&quot;, &quot;Regex pattern filter of test/group to run&quot;,</span></div>
+<div class="line"><span class="lineno">   68</span>                <span class="comment">// cxxopts::value&lt;std::string&gt;())</span></div>
+<div class="line"><span class="lineno">   69</span>                <span class="comment">// (&quot;spec-pattern&quot;, &quot;Regex pattern filter of test to run&quot;,</span></div>
+<div class="line"><span class="lineno">   70</span>                <span class="comment">// cxxopts::value&lt;std::string&gt;())</span></div>
+<div class="line"><span class="lineno">   71</span>                <span class="comment">// (&quot;group-pattern&quot;, &quot;Regex pattern filter of group to run&quot;,</span></div>
+<div class="line"><span class="lineno">   72</span>                <span class="comment">// cxxopts::value&lt;std::string&gt;())</span></div>
+<div class="line"><span class="lineno">   73</span>                <span class="comment">// (&quot;l,list&quot;, &quot;List all tests and groups&quot;,</span></div>
+<div class="line"><span class="lineno">   74</span>                <span class="comment">// cxxopts::value&lt;bool&gt;()-&gt;default_value(&quot;false&quot;))</span></div>
+<div class="line"><span class="lineno">   75</span>                <span class="comment">// (&quot;dll,so&quot;, &quot;Load tests from shared library (--dll,--so)&quot;,</span></div>
+<div class="line"><span class="lineno">   76</span>                <span class="comment">// cxxopts::value&lt;std::vector&lt;std::string&gt;&gt;())</span></div>
+<div class="line"><span class="lineno">   77</span>                <span class="comment">// (&quot;i,tag&quot;, &quot;(TODO) Tag name of test to include&quot;,</span></div>
+<div class="line"><span class="lineno">   78</span>                <span class="comment">// cxxopts::value&lt;std::vector&lt;std::string&gt;&gt;())</span></div>
+<div class="line"><span class="lineno">   79</span>                <span class="comment">// (&quot;e,exclude-tag&quot;, &quot;(TODO) Tag name of test to exclude&quot;,</span></div>
+<div class="line"><span class="lineno">   80</span>                <span class="comment">// cxxopts::value&lt;std::vector&lt;std::string&gt;&gt;())</span></div>
+<div class="line"><span class="lineno">   81</span>                <span class="comment">// (&quot;t,timeout&quot;, &quot;Timeout in milliseconds for each test&quot;, cxxopts::value&lt;int&gt;())</span></div>
+<div class="line"><span class="lineno">   82</span>                (<span class="stringliteral">&quot;h,help&quot;</span>, <span class="stringliteral">&quot;Print usage&quot;</span>);</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>            <span class="keyword">auto</span> result = options.parse(argc, argv);</div>
+<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">if</span> (result.count(<span class="stringliteral">&quot;help&quot;</span>)) {</div>
+<div class="line"><span class="lineno">   86</span>                std::cout &lt;&lt; options.help() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   87</span>                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   88</span>            }</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>            <span class="comment">// if (result.count(&quot;name&quot;))</span></div>
+<div class="line"><span class="lineno">   91</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_string(</span></div>
+<div class="line"><span class="lineno">   92</span>            <span class="comment">//         ISpecRunner::DESCRIPTION_FILTER_OPTION_KEY,</span></div>
+<div class="line"><span class="lineno">   93</span>            <span class="comment">//         result[&quot;name&quot;].as&lt;std::string&gt;().c_str()</span></div>
+<div class="line"><span class="lineno">   94</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">   95</span>            <span class="comment">// if (result.count(&quot;spec&quot;))</span></div>
+<div class="line"><span class="lineno">   96</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_string(</span></div>
+<div class="line"><span class="lineno">   97</span>            <span class="comment">//         ISpecRunner::SPEC_DESCRIPTION_FILTER_OPTION_KEY,</span></div>
+<div class="line"><span class="lineno">   98</span>            <span class="comment">//         result[&quot;spec&quot;].as&lt;std::string&gt;().c_str()</span></div>
+<div class="line"><span class="lineno">   99</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">  100</span>            <span class="comment">// if (result.count(&quot;group&quot;))</span></div>
+<div class="line"><span class="lineno">  101</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_string(</span></div>
+<div class="line"><span class="lineno">  102</span>            <span class="comment">//         ISpecRunner::GROUP_DESCRIPTION_FILTER_OPTION_KEY,</span></div>
+<div class="line"><span class="lineno">  103</span>            <span class="comment">//         result[&quot;group&quot;].as&lt;std::string&gt;().c_str()</span></div>
+<div class="line"><span class="lineno">  104</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">  105</span>            <span class="comment">// if (result.count(&quot;pattern&quot;))</span></div>
+<div class="line"><span class="lineno">  106</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_string(</span></div>
+<div class="line"><span class="lineno">  107</span>            <span class="comment">//         ISpecRunner::DESCRIPTION_REGEX_FILTER_OPTION_KEY,</span></div>
+<div class="line"><span class="lineno">  108</span>            <span class="comment">//         result[&quot;pattern&quot;].as&lt;std::string&gt;().c_str()</span></div>
+<div class="line"><span class="lineno">  109</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">  110</span>            <span class="comment">// if (result.count(&quot;spec-pattern&quot;))</span></div>
+<div class="line"><span class="lineno">  111</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_string(</span></div>
+<div class="line"><span class="lineno">  112</span>            <span class="comment">//         ISpecRunner::SPEC_DESCRIPTION_REGEX_FILTER_OPTION_KEY,</span></div>
+<div class="line"><span class="lineno">  113</span>            <span class="comment">//         result[&quot;spec-pattern&quot;].as&lt;std::string&gt;().c_str()</span></div>
+<div class="line"><span class="lineno">  114</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">  115</span>            <span class="comment">// if (result.count(&quot;group-pattern&quot;))</span></div>
+<div class="line"><span class="lineno">  116</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_string(</span></div>
+<div class="line"><span class="lineno">  117</span>            <span class="comment">//         ISpecRunner::GROUP_DESCRIPTION_REGEX_FILTER_OPTION_KEY,</span></div>
+<div class="line"><span class="lineno">  118</span>            <span class="comment">//         result[&quot;group-pattern&quot;].as&lt;std::string&gt;().c_str()</span></div>
+<div class="line"><span class="lineno">  119</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">  120</span>            <span class="comment">// if (result.count(&quot;list&quot;))</span></div>
+<div class="line"><span class="lineno">  121</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_bool(</span></div>
+<div class="line"><span class="lineno">  122</span>            <span class="comment">//         ISpecRunner::LIST_TEST_NAMES_OPTION_KEY, result[&quot;list&quot;].as&lt;bool&gt;()</span></div>
+<div class="line"><span class="lineno">  123</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">  124</span>            <span class="comment">// if (result.count(&quot;timeout&quot;))</span></div>
+<div class="line"><span class="lineno">  125</span>            <span class="comment">//     _runnerOptions.add(SpecDataValue::create_int(</span></div>
+<div class="line"><span class="lineno">  126</span>            <span class="comment">//         ISpecRunner::DEFAULT_TIMEOUT_MS_OPTION_KEY, result[&quot;timeout&quot;].as&lt;int&gt;()</span></div>
+<div class="line"><span class="lineno">  127</span>            <span class="comment">//     ));</span></div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">if</span> (result.unmatched().size() &gt; 0) {</div>
+<div class="line"><span class="lineno">  130</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Unrecognized options:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; option : result.unmatched()) std::cout &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; option &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  132</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  133</span>            }</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>            <a class="code hl_function" href="namespace_specs_cpp.html#a1e3a5f692033d77121a39df0eefdcc5f">global_spec_environment</a>().<a class="code hl_function" href="class_specs_cpp_1_1_global_spec_environment.html#a20f933ec6fa374cbb8415b5ecd78160d">set</a>(&amp;_specs);</div>
+<div class="line"><span class="lineno">  136</span>            _specs.<a class="code hl_function" href="class_specs_cpp_1_1_spec_environment.html#a10cedfc0c8c605e693778c63f9da3938">root_group</a>()-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_group.html#a621c3cf3d442aed3eb48d850f15d20e2">merge</a>(<a class="code hl_function" href="class_specs_cpp_1_1_global_spec_group.html#a2a91a7dc0e00c511c02bfdb7aa1460f1">GlobalSpecGroup::instance</a>().root());</div>
+<div class="line"><span class="lineno">  137</span>            _specs.<a class="code hl_function" href="class_specs_cpp_1_1_spec_environment.html#a91ce16808f2886bd32e1ae4e1d5a7806">local_exception_handlers</a>()-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a02523a3ade93df58978e939123d7265a">register_exception_handler</a>(&amp;_cStringExceptionHandler</div>
+<div class="line"><span class="lineno">  138</span>            );</div>
+<div class="line"><span class="lineno">  139</span>            _specs.<a class="code hl_function" href="class_specs_cpp_1_1_spec_environment.html#a91ce16808f2886bd32e1ae4e1d5a7806">local_exception_handlers</a>()-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a02523a3ade93df58978e939123d7265a">register_exception_handler</a>(</div>
+<div class="line"><span class="lineno">  140</span>                &amp;_stdExceptionExceptionHandler</div>
+<div class="line"><span class="lineno">  141</span>            );</div>
+<div class="line"><span class="lineno">  142</span>            <a class="code hl_function" href="class_specs_cpp_1_1_global_spec_code_blocks.html#a02b7b907ef8af497cd95da680d15febd">GlobalSpecCodeBlocks::instance</a>().<a class="code hl_function" href="class_specs_cpp_1_1_global_spec_code_blocks.html#a817dae0dc73962f208078b08a757c53b">run_code_blocks</a>();</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>            <span class="comment">// if (result.count(&quot;dll&quot;)) {</span></div>
+<div class="line"><span class="lineno">  145</span>            <span class="comment">//     for (auto&amp; dll : result[&quot;dll&quot;].as&lt;std::vector&lt;std::string&gt;&gt;()) {</span></div>
+<div class="line"><span class="lineno">  146</span>            <span class="comment">//         if (!std::filesystem::exists(dll)) {</span></div>
+<div class="line"><span class="lineno">  147</span>            <span class="comment">//             std::cout &lt;&lt; &quot;Specs.cpp: Error: Spec dll/so file not found: &quot; &lt;&lt; dll</span></div>
+<div class="line"><span class="lineno">  148</span>            <span class="comment">//                       &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">  149</span>            <span class="comment">//             return 1;</span></div>
+<div class="line"><span class="lineno">  150</span>            <span class="comment">//         }</span></div>
+<div class="line"><span class="lineno">  151</span>            <span class="comment">//         if (auto* dllRootSpecGroup = _LibraryLoader.load(dll)) {</span></div>
+<div class="line"><span class="lineno">  152</span>            <span class="comment">//             _specs.root_group()-&gt;merge(dllRootSpecGroup);</span></div>
+<div class="line"><span class="lineno">  153</span>            <span class="comment">//         } else {</span></div>
+<div class="line"><span class="lineno">  154</span>            <span class="comment">//             std::cout &lt;&lt; &quot;Specs.cpp: Error: Failed to load group from dll/so file: &quot;</span></div>
+<div class="line"><span class="lineno">  155</span>            <span class="comment">//                       &lt;&lt; dll &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">  156</span>            <span class="comment">//             return 1;</span></div>
+<div class="line"><span class="lineno">  157</span>            <span class="comment">//         }</span></div>
+<div class="line"><span class="lineno">  158</span>            <span class="comment">//     }</span></div>
+<div class="line"><span class="lineno">  159</span>            <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">  160</span> </div>
+<div class="line"><span class="lineno">  161</span>            _reporters.<a class="code hl_function" href="class_specs_cpp_1_1_spec_reporter_collection.html#adb03523af068f1c465c19dc2a43fe1ee">add</a>(<span class="stringliteral">&quot;debug&quot;</span>, &amp;_reporter);</div>
+<div class="line"><span class="lineno">  162</span>            _runner.<a class="code hl_function" href="class_specs_cpp_1_1_spec_serial_runner.html#ae4216aa61c659ca9195649588107cebd">run</a>(_specs.<a class="code hl_function" href="class_specs_cpp_1_1_spec_environment.html#a10cedfc0c8c605e693778c63f9da3938">root_group</a>(), &amp;_reporters, <span class="keyword">nullptr</span>, &amp;_onSuiteComplete);</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>            <span class="keywordflow">if</span> (_totalTests == 0) {</div>
+<div class="line"><span class="lineno">  165</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;No tests found.\n&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  166</span>                std::cout &lt;&lt; options.help() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  167</span>                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  168</span>            }</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>            <span class="keywordflow">return</span> _returnCode;</div>
+<div class="line"><span class="lineno">  171</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_global_spec_code_blocks_html_a02b7b907ef8af497cd95da680d15febd"><div class="ttname"><a href="class_specs_cpp_1_1_global_spec_code_blocks.html#a02b7b907ef8af497cd95da680d15febd">SpecsCpp::GlobalSpecCodeBlocks::instance</a></div><div class="ttdeci">static GlobalSpecCodeBlocks &amp; instance()</div><div class="ttdef"><b>Definition</b> <a href="_global_spec_code_blocks_8h_source.html#l00012">GlobalSpecCodeBlocks.h:12</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_global_spec_code_blocks_html_a817dae0dc73962f208078b08a757c53b"><div class="ttname"><a href="class_specs_cpp_1_1_global_spec_code_blocks.html#a817dae0dc73962f208078b08a757c53b">SpecsCpp::GlobalSpecCodeBlocks::run_code_blocks</a></div><div class="ttdeci">void run_code_blocks()</div><div class="ttdef"><b>Definition</b> <a href="_global_spec_code_blocks_8h_source.html#l00021">GlobalSpecCodeBlocks.h:21</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_global_spec_environment_html_a20f933ec6fa374cbb8415b5ecd78160d"><div class="ttname"><a href="class_specs_cpp_1_1_global_spec_environment.html#a20f933ec6fa374cbb8415b5ecd78160d">SpecsCpp::GlobalSpecEnvironment::set</a></div><div class="ttdeci">void set(ISpecEnvironment *environment)</div><div class="ttdef"><b>Definition</b> <a href="_global_spec_environment_8h_source.html#l00012">GlobalSpecEnvironment.h:12</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_global_spec_group_html_a2a91a7dc0e00c511c02bfdb7aa1460f1"><div class="ttname"><a href="class_specs_cpp_1_1_global_spec_group.html#a2a91a7dc0e00c511c02bfdb7aa1460f1">SpecsCpp::GlobalSpecGroup::instance</a></div><div class="ttdeci">static GlobalSpecGroup &amp; instance()</div><div class="ttdef"><b>Definition</b> <a href="_global_spec_group_8h_source.html#l00080">GlobalSpecGroup.h:80</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_environment_html_a10cedfc0c8c605e693778c63f9da3938"><div class="ttname"><a href="class_specs_cpp_1_1_spec_environment.html#a10cedfc0c8c605e693778c63f9da3938">SpecsCpp::SpecEnvironment::root_group</a></div><div class="ttdeci">ISpecGroup * root_group() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_environment_8h_source.html#l00029">SpecEnvironment.h:29</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_environment_html_a91ce16808f2886bd32e1ae4e1d5a7806"><div class="ttname"><a href="class_specs_cpp_1_1_spec_environment.html#a91ce16808f2886bd32e1ae4e1d5a7806">SpecsCpp::SpecEnvironment::local_exception_handlers</a></div><div class="ttdeci">ILocalSpecExceptionHandlerCollection * local_exception_handlers() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_environment_8h_source.html#l00037">SpecEnvironment.h:37</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_reporter_collection_html_adb03523af068f1c465c19dc2a43fe1ee"><div class="ttname"><a href="class_specs_cpp_1_1_spec_reporter_collection.html#adb03523af068f1c465c19dc2a43fe1ee">SpecsCpp::SpecReporterCollection::add</a></div><div class="ttdeci">void add(const char *name, ISpecReporter *reporter) override</div><div class="ttdef"><b>Definition</b> <a href="_spec_reporter_collection_8h_source.html#l00014">SpecReporterCollection.h:14</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_serial_runner_html_ae4216aa61c659ca9195649588107cebd"><div class="ttname"><a href="class_specs_cpp_1_1_spec_serial_runner.html#ae4216aa61c659ca9195649588107cebd">SpecsCpp::SpecSerialRunner::run</a></div><div class="ttdeci">void run(ISpecGroup *group, ISpecReporterCollection *reporters, ISpecRunOptions *options, ISpecSuiteRunResultCallbackFn *callback) override</div><div class="ttdef"><b>Definition</b> <a href="_spec_serial_runner_8h_source.html#l00358">SpecSerialRunner.h:358</a></div></div>
+<div class="ttc" id="anamespace_specs_cpp_html_a1e3a5f692033d77121a39df0eefdcc5f"><div class="ttname"><a href="namespace_specs_cpp.html#a1e3a5f692033d77121a39df0eefdcc5f">SpecsCpp::global_spec_environment</a></div><div class="ttdeci">GlobalSpecEnvironment &amp; global_spec_environment()</div><div class="ttdef"><b>Definition</b> <a href="_global_spec_environment_8h_source.html#l00015">GlobalSpecEnvironment.h:15</a></div></div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_local_spec_exception_handler_collection_html_a02523a3ade93df58978e939123d7265a"><div class="ttname"><a href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a02523a3ade93df58978e939123d7265a">SpecsCpp::ILocalSpecExceptionHandlerCollection::register_exception_handler</a></div><div class="ttdeci">virtual void register_exception_handler(ILocalSpecExceptionHandler *)=0</div></div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_group_html_a621c3cf3d442aed3eb48d850f15d20e2"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_group.html#a621c3cf3d442aed3eb48d850f15d20e2">SpecsCpp::ISpecGroup::merge</a></div><div class="ttdeci">virtual void merge(ISpecGroup *)=0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

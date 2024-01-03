@@ -5,7 +5,8 @@ var searchData=
   ['exceptionhandlers_2',['ExceptionHandlers',['../namespace_specs_cpp_1_1_exception_handlers.html',1,'SpecsCpp']]],
   ['functions_3',['Functions',['../namespace_specs_cpp_1_1_d_s_ls_1_1_functions.html',1,'SpecsCpp::DSLs']]],
   ['globalinterface_4',['GlobalInterface',['../namespace_specs_cpp_1_1_d_s_ls_1_1_global_interface.html',1,'SpecsCpp::DSLs']]],
-  ['libassert_5',['LibAssert',['../namespace_specs_cpp_1_1_lib_assert.html',1,'SpecsCpp']]],
-  ['specscpp_6',['SpecsCpp',['../namespace_specs_cpp.html',1,'']]],
-  ['unix_7',['Unix',['../namespace_specs_cpp_1_1_colors_1_1_unix.html',1,'SpecsCpp::Colors']]]
+  ['interfaces_5',['Interfaces',['../namespace_specs_cpp_1_1_interfaces.html',1,'SpecsCpp']]],
+  ['libassert_6',['LibAssert',['../namespace_specs_cpp_1_1_lib_assert.html',1,'SpecsCpp']]],
+  ['specscpp_7',['SpecsCpp',['../namespace_specs_cpp.html',1,'']]],
+  ['unix_8',['Unix',['../namespace_specs_cpp_1_1_colors_1_1_unix.html',1,'SpecsCpp::Colors']]]
 ];

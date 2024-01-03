@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('struct_specs_cpp_1_1_i_spec_variable_c
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SpecsCpp::ISpecVariableCollection:</div>
 <div class="dyncontent">
@@ -143,10 +143,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2a3c411f9e5492c357ee40efec1e3488"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aae00c2460d0c8a62b7c88fb0ffef16"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a9aae00c2460d0c8a62b7c88fb0ffef16">clear</a> ()=0</td></tr>
 <tr class="separator:a9aae00c2460d0c8a62b7c88fb0ffef16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d3533fdaefc0b0d3f91c51657881f56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a0d3533fdaefc0b0d3f91c51657881f56">foreach_variable</a> (std::function&lt; void(IVoidPointer *)&gt; fn) const</td></tr>
-<tr class="separator:a0d3533fdaefc0b0d3f91c51657881f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f402101abdadf8c89919a18372b261"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a39f402101abdadf8c89919a18372b261">foreach</a> (std::function&lt; void(IVoidPointer *)&gt; fn) const</td></tr>
+<tr class="separator:a39f402101abdadf8c89919a18372b261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00135">135</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a383c5bbaebe379750338d1a83a1c6a51" name="a383c5bbaebe379750338d1a83a1c6a51"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a383c5bbaebe379750338d1a83a1c6a51">&#9670;&#160;</a></span>ForEachVariableFn</h2>
 
@@ -158,6 +161,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00136">136</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
 
 </div>
 </div>
@@ -243,8 +248,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a39f402101abdadf8c89919a18372b261" name="a39f402101abdadf8c89919a18372b261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39f402101abdadf8c89919a18372b261">&#9670;&#160;</a></span>foreach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpecsCpp::ISpecVariableCollection::foreach </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(IVoidPointer *)&gt;&#160;</td>
+          <td class="paramname"><em>fn</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00148">148</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>                                                                {</div>
+<div class="line"><span class="lineno">  149</span>            <span class="keyword">auto</span> callback = unique_function_pointer(fn);</div>
+<div class="line"><span class="lineno">  150</span>            this-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a2a3c411f9e5492c357ee40efec1e3488">foreach_variable</a>(callback.get());</div>
+<div class="line"><span class="lineno">  151</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_variable_collection_html_a2a3c411f9e5492c357ee40efec1e3488"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_variable_collection.html#a2a3c411f9e5492c357ee40efec1e3488">SpecsCpp::ISpecVariableCollection::foreach_variable</a></div><div class="ttdeci">virtual void foreach_variable(ForEachVariableFn *) const =0</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a2a3c411f9e5492c357ee40efec1e3488" name="a2a3c411f9e5492c357ee40efec1e3488"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a3c411f9e5492c357ee40efec1e3488">&#9670;&#160;</a></span>foreach_variable() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a3c411f9e5492c357ee40efec1e3488">&#9670;&#160;</a></span>foreach_variable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,32 +306,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_variable_collection.html#a2987167dd2629ccbe993aad2bc83dd2e">SpecsCpp::SpecVariableCollection</a>.</p>
-
-</div>
-</div>
-<a id="a0d3533fdaefc0b0d3f91c51657881f56" name="a0d3533fdaefc0b0d3f91c51657881f56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d3533fdaefc0b0d3f91c51657881f56">&#9670;&#160;</a></span>foreach_variable() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SpecsCpp::ISpecVariableCollection::foreach_variable </td>
-          <td>(</td>
-          <td class="paramtype">std::function&lt; void(IVoidPointer *)&gt;&#160;</td>
-          <td class="paramname"><em>fn</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -464,7 +476,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Specs.API/include/Specs/<a class="el" href="_a_p_i_8h_source.html">API.h</a></li>
+<li>Specs.API/include/Specs/API/Internal/Undocumented/<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

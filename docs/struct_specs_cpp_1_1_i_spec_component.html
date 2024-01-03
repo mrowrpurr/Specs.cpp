@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('struct_specs_cpp_1_1_i_spec_component.
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SpecsCpp::ISpecComponent:</div>
 <div class="dyncontent">
@@ -135,6 +135,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adcf6c063e9a3129b4854fbe945eed9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a201611c0e7cc06fb1206918b621e24ae"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_component.html#a201611c0e7cc06fb1206918b621e24ae">group</a> () const =0</td></tr>
 <tr class="separator:a201611c0e7cc06fb1206918b621e24ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9c191c23dde64b1c702772019dd07a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_component.html#acd9c191c23dde64b1c702772019dd07a">set_group</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *<a class="el" href="struct_specs_cpp_1_1_i_spec_component.html#a201611c0e7cc06fb1206918b621e24ae">group</a>)=0</td></tr>
+<tr class="separator:acd9c191c23dde64b1c702772019dd07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e8ed61b6db76640972d9be12407696b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html">ISpecDataValueCollection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_component.html#a3e8ed61b6db76640972d9be12407696b">data</a> () const =0</td></tr>
 <tr class="separator:a3e8ed61b6db76640972d9be12407696b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea170a96b084e2444811e87b47000b88"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html">ISpecTagCollection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_component.html#aea170a96b084e2444811e87b47000b88">tags</a> () const =0</td></tr>
@@ -146,7 +148,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a95c4d8531e2412157a6805a77e1d361f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_component.html#a95c4d8531e2412157a6805a77e1d361f">mark_skipped</a> (bool <a class="el" href="struct_specs_cpp_1_1_i_spec_component.html#a6abe9fe58c72a16cb225881675587274">skip</a>=true)=0</td></tr>
 <tr class="separator:a95c4d8531e2412157a6805a77e1d361f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00154">154</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adcf6c063e9a3129b4854fbe945eed9c4" name="adcf6c063e9a3129b4854fbe945eed9c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adcf6c063e9a3129b4854fbe945eed9c4">&#9670;&#160;</a></span>~ISpecComponent()</h2>
 
@@ -255,6 +260,34 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="acd9c191c23dde64b1c702772019dd07a" name="acd9c191c23dde64b1c702772019dd07a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd9c191c23dde64b1c702772019dd07a">&#9670;&#160;</a></span>set_group()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecComponent::set_group </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_group.html">ISpecGroup</a> *&#160;</td>
+          <td class="paramname"><em>group</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_component.html#ab92a2c0f3e5f45f7fbcc7422a20dff2f">SpecsCpp::SpecComponent</a>.</p>
+
+</div>
+</div>
 <a id="a6abe9fe58c72a16cb225881675587274" name="a6abe9fe58c72a16cb225881675587274"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6abe9fe58c72a16cb225881675587274">&#9670;&#160;</a></span>skip()</h2>
 
@@ -337,7 +370,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Specs.API/include/Specs/<a class="el" href="_a_p_i_8h_source.html">API.h</a></li>
+<li>Specs.API/include/Specs/API/Internal/Undocumented/<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
