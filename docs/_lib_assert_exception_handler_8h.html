@@ -168,6 +168,25 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_lib_assert_exception_handler_8h_source.html#l00020">20</a> of file <a class="el" href="_lib_assert_exception_handler_8h_source.html">LibAssertExceptionHandler.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>  {</div>
+<div class="line"><span class="lineno">   23</span>    std::string message = printer(libassert::utility::terminal_width(120));</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="namespace_specs_cpp_1_1_lib_assert.html#aed0e9d37b1c66460b0ad1787c179a2a3">SpecsCpp::LibAssert::ShowStackTrace</a>) {</div>
+<div class="line"><span class="lineno">   25</span>        std::string::size_type stack_trace_start = message.find(<span class="stringliteral">&quot;\nStack trace:&quot;</span>);</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">if</span> (stack_trace_start != std::string::npos) message.erase(stack_trace_start);</div>
+<div class="line"><span class="lineno">   27</span>    }</div>
+<div class="line"><span class="lineno">   28</span><span class="preprocessor">    #ifdef NDEBUG</span></div>
+<div class="line"><span class="lineno">   29</span>        <span class="comment">// In release mode, the c_str() is lost unless we hold onto the string somewhere.</span></div>
+<div class="line"><span class="lineno">   30</span>        <span class="comment">// Here we just add it to a never-ending vector. Which is fine, whatever.</span></div>
+<div class="line"><span class="lineno">   31</span>        std::lock_guard&lt;std::mutex&gt; lock(SpecsCpp::LibAssert::AllAssertionFailureMessagesMutex);</div>
+<div class="line"><span class="lineno">   32</span>        SpecsCpp::LibAssert::AllAssertionFailureMessages.emplace_back(message);</div>
+<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">throw</span> SpecsCpp::LibAssert::AllAssertionFailureMessages.back().c_str();</div>
+<div class="line"><span class="lineno">   34</span><span class="preprocessor">    #else</span></div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">throw</span> message.c_str();</div>
+<div class="line"><span class="lineno">   36</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><span class="lineno">   37</span>}</div>
+<div class="ttc" id="anamespace_specs_cpp_1_1_lib_assert_html_aed0e9d37b1c66460b0ad1787c179a2a3"><div class="ttname"><a href="namespace_specs_cpp_1_1_lib_assert.html#aed0e9d37b1c66460b0ad1787c179a2a3">SpecsCpp::LibAssert::ShowStackTrace</a></div><div class="ttdeci">bool ShowStackTrace</div><div class="ttdef"><b>Definition</b> <a href="_lib_assert_exception_handler_8h_source.html#l00012">LibAssertExceptionHandler.h:12</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

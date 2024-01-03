@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('struct_specs_cpp_1_1_i_spec_tag_collec
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SpecsCpp::ISpecTagCollection:</div>
 <div class="dyncontent">
@@ -131,8 +131,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a058a1f28cb00b89ef6345c45bb472875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f37ec5af5d70273ea5fafbf4eb622d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a84f37ec5af5d70273ea5fafbf4eb622d">has</a> (const char *) const =0</td></tr>
 <tr class="separator:a84f37ec5af5d70273ea5fafbf4eb622d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaba6ea141d83018ab038780c41168d66"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#aaba6ea141d83018ab038780c41168d66">foreach</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a88dd23617ba66ce98000ec12733b6035">ForEachTagFn</a> *) const =0</td></tr>
-<tr class="separator:aaba6ea141d83018ab038780c41168d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37f876f513b60723abb666536bcc2692"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a37f876f513b60723abb666536bcc2692">foreach_tag</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a88dd23617ba66ce98000ec12733b6035">ForEachTagFn</a> *) const =0</td></tr>
+<tr class="separator:a37f876f513b60723abb666536bcc2692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d860377f2df681113f706fbbb4b5b11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a5d860377f2df681113f706fbbb4b5b11">merge</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html">ISpecTagCollection</a> *)=0</td></tr>
 <tr class="separator:a5d860377f2df681113f706fbbb4b5b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65051fe394b3ebb96525c164356312ff"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a65051fe394b3ebb96525c164356312ff">clear</a> ()=0</td></tr>
@@ -140,7 +140,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf03f910b1e65cab6811cd267d51e285"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#adf03f910b1e65cab6811cd267d51e285">foreach</a> (std::function&lt; void(const char *)&gt; fn) const</td></tr>
 <tr class="separator:adf03f910b1e65cab6811cd267d51e285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00111">111</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a88dd23617ba66ce98000ec12733b6035" name="a88dd23617ba66ce98000ec12733b6035"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88dd23617ba66ce98000ec12733b6035">&#9670;&#160;</a></span>ForEachTagFn</h2>
 
@@ -152,6 +155,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00112">112</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
 
 </div>
 </div>
@@ -237,36 +242,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaba6ea141d83018ab038780c41168d66" name="aaba6ea141d83018ab038780c41168d66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaba6ea141d83018ab038780c41168d66">&#9670;&#160;</a></span>foreach() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void SpecsCpp::ISpecTagCollection::foreach </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a88dd23617ba66ce98000ec12733b6035">ForEachTagFn</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_tag_collection.html#ac9a0f453de029ede29903a603e5927db">SpecsCpp::SpecTagCollection</a>.</p>
-
-</div>
-</div>
 <a id="adf03f910b1e65cab6811cd267d51e285" name="adf03f910b1e65cab6811cd267d51e285"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf03f910b1e65cab6811cd267d51e285">&#9670;&#160;</a></span>foreach() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adf03f910b1e65cab6811cd267d51e285">&#9670;&#160;</a></span>foreach()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,6 +265,43 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00122">122</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>                                                              {</div>
+<div class="line"><span class="lineno">  123</span>            <span class="keyword">auto</span> callback = unique_function_pointer(fn);</div>
+<div class="line"><span class="lineno">  124</span>            this-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a37f876f513b60723abb666536bcc2692">foreach_tag</a>(callback.get());</div>
+<div class="line"><span class="lineno">  125</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_tag_collection_html_a37f876f513b60723abb666536bcc2692"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a37f876f513b60723abb666536bcc2692">SpecsCpp::ISpecTagCollection::foreach_tag</a></div><div class="ttdeci">virtual void foreach_tag(ForEachTagFn *) const =0</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a37f876f513b60723abb666536bcc2692" name="a37f876f513b60723abb666536bcc2692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37f876f513b60723abb666536bcc2692">&#9670;&#160;</a></span>foreach_tag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecTagCollection::foreach_tag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_tag_collection.html#a88dd23617ba66ce98000ec12733b6035">ForEachTagFn</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_tag_collection.html#a9713aaab8b4ecb5ccbf162e2b475654d">SpecsCpp::SpecTagCollection</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00122">foreach()</a>, and <a class="el" href="_spec_tag_collection_8h_source.html#l00027">SpecsCpp::SpecTagCollection::merge()</a>.</p>
 
 </div>
 </div>
@@ -348,7 +362,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Specs.API/include/Specs/<a class="el" href="_a_p_i_8h_source.html">API.h</a></li>
+<li>Specs.API/include/Specs/API/Internal/Undocumented/<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

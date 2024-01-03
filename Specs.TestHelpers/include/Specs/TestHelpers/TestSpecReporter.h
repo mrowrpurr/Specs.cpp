@@ -9,7 +9,7 @@
 
 namespace SpecsCpp::TestHelpers {
 
-    class TestFakeReporter : public ISpecReporter {
+    class TestSpecReporter : public ISpecReporter {
         collections_map<std::string, std::unique_ptr<ISpecRunResult>> _testResults;
 
     public:
@@ -23,7 +23,7 @@ namespace SpecsCpp::TestHelpers {
 
         void report_start() override {}
         void report_suite_begin(unsigned int specCount) override {}
-        void report_test_begin(ISpec* spec) override {}
+        void report_test_begin(ISpecGroup*, ISpec* spec) override {}
         void report_setup(ISpecRunResult* result) override {}
         void report_test(ISpecRunResult* result) override {}
         void report_teardown(ISpecRunResult* result) override {}

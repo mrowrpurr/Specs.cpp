@@ -8,6 +8,7 @@ var dir_f0cecd1223edb7dcd93d17556885e48d =
     [ "BEGIN_CHILD_GROUP.h", "_b_e_g_i_n___c_h_i_l_d___g_r_o_u_p_8h.html", "_b_e_g_i_n___c_h_i_l_d___g_r_o_u_p_8h" ],
     [ "CODE_BLOCK.h", "_c_o_d_e___b_l_o_c_k_8h.html", "_c_o_d_e___b_l_o_c_k_8h" ],
     [ "DECLARE_GROUP.h", "_d_e_c_l_a_r_e___g_r_o_u_p_8h.html", "_d_e_c_l_a_r_e___g_r_o_u_p_8h" ],
+    [ "DECLARE_GROUPS.h", "_d_e_c_l_a_r_e___g_r_o_u_p_s_8h.html", "_d_e_c_l_a_r_e___g_r_o_u_p_s_8h" ],
     [ "DECLARE_TEMPLATE.h", "_d_e_c_l_a_r_e___t_e_m_p_l_a_t_e_8h.html", "_d_e_c_l_a_r_e___t_e_m_p_l_a_t_e_8h" ],
     [ "END_CHILD_GROUP.h", "_e_n_d___c_h_i_l_d___g_r_o_u_p_8h.html", "_e_n_d___c_h_i_l_d___g_r_o_u_p_8h" ],
     [ "GROUP.h", "_g_r_o_u_p_8h.html", "_g_r_o_u_p_8h" ],

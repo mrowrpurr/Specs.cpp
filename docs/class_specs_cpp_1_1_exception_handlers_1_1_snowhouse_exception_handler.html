@@ -133,7 +133,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a15bf984c8f93386ca2dd7388f5996426 inherit pub_types_struct_specs_cpp_1_1_i_local_spec_exception_handler"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler.html#a15bf984c8f93386ca2dd7388f5996426">LocalSpecExceptionFailureMessageCallbackFn</a> = IFunctionPointer&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_1_1_i_exception_message.html">IExceptionMessage</a> *)&gt;</td></tr>
 <tr class="separator:a15bf984c8f93386ca2dd7388f5996426 inherit pub_types_struct_specs_cpp_1_1_i_local_spec_exception_handler"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_snowhouse_exception_handler_8h_source.html#l00015">15</a> of file <a class="el" href="_snowhouse_exception_handler_8h_source.html">SnowhouseExceptionHandler.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5db1663090a5230a63d91e82c294cb61" name="a5db1663090a5230a63d91e82c294cb61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5db1663090a5230a63d91e82c294cb61">&#9670;&#160;</a></span>handle_exception()</h2>
 
@@ -170,6 +173,24 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler.html#af1178c7d39a586ba3ac5d2db6bae1638">SpecsCpp::ILocalSpecExceptionHandler</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_snowhouse_exception_handler_8h_source.html#l00058">58</a> of file <a class="el" href="_snowhouse_exception_handler_8h_source.html">SnowhouseExceptionHandler.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>                   {</div>
+<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   62</span>                std::rethrow_exception(*exception);</div>
+<div class="line"><span class="lineno">   63</span>            } <span class="keywordflow">catch</span> (<span class="keyword">const</span> snowhouse::AssertionException&amp; e) {</div>
+<div class="line"><span class="lineno">   64</span>                <span class="keywordflow">if</span> (failureMessageCallback) {</div>
+<div class="line"><span class="lineno">   65</span>                    SpecExceptionMessage failureMessage{string_format(</div>
+<div class="line"><span class="lineno">   66</span>                        <span class="stringliteral">&quot;{}\n[{}:{}] {}&quot;</span>, e.what(), e.file(), e.line(),</div>
+<div class="line"><span class="lineno">   67</span>                        ReadLineFromFile(e.file(), e.line())</div>
+<div class="line"><span class="lineno">   68</span>                    )};</div>
+<div class="line"><span class="lineno">   69</span>                    failureMessageCallback-&gt;invoke(&amp;failureMessage);</div>
+<div class="line"><span class="lineno">   70</span>                }</div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   72</span>            } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><span class="lineno">   73</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   74</span>            }</div>
+<div class="line"><span class="lineno">   75</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

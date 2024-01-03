@@ -263,7 +263,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad121319924d830b95fa26ad19007d13d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_specs_cpp_1_1_spec_data_value.html#ad121319924d830b95fa26ad19007d13d">create</a> (const char *<a class="el" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, IVoidPointer *value)</td></tr>
 <tr class="separator:ad121319924d830b95fa26ad19007d13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00009">9</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a72f44565df00046f081d97c36a96e9aa" name="a72f44565df00046f081d97c36a96e9aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72f44565df00046f081d97c36a96e9aa">&#9670;&#160;</a></span>SpecDataValue() <span class="overload">[1/7]</span></h2>
 
@@ -304,6 +307,11 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00017">17</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>            : _key(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>), _type(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">type</a>), _value(value) {}</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a0b142c418cd9837a4c20817ecde92265"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">SpecsCpp::SpecDataValue::type</a></div><div class="ttdeci">SpecDataValueType type() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00046">SpecDataValue.h:46</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a0e810f0f08e1ca7fd25db686c99d7117"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">SpecsCpp::SpecDataValue::key</a></div><div class="ttdeci">const char * key() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00048">SpecDataValue.h:48</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a2daa32f8ea03e09388f871d2ebe60f8c" name="a2daa32f8ea03e09388f871d2ebe60f8c"></a>
@@ -346,6 +354,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00020">20</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>            : _key(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>), _type(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">type</a>), _unmanagedValue(value) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6907b86e36198b5254955a9185328176" name="a6907b86e36198b5254955a9185328176"></a>
@@ -388,6 +399,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00023">23</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>            : _key(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>), _type(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">type</a>), _value(<span class="keyword">new</span> VoidPointer&lt;bool&gt;(<span class="keyword">new</span> <span class="keywordtype">bool</span>(value))) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0298368c5017acdac0b12a10b2cd588d" name="a0298368c5017acdac0b12a10b2cd588d"></a>
@@ -430,6 +444,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00026">26</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>            : _key(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>), _type(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">type</a>), _value(<span class="keyword">new</span> VoidPointer&lt;int&gt;(<span class="keyword">new</span> <span class="keywordtype">int</span>(value))) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="adab15a2e5de149e9bef08432fe649602" name="adab15a2e5de149e9bef08432fe649602"></a>
@@ -472,6 +489,11 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00029">29</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>            : _key(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>),</div>
+<div class="line"><span class="lineno">   31</span>              _type(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">type</a>),</div>
+<div class="line"><span class="lineno">   32</span>              _value(<span class="keyword">new</span> VoidPointer&lt;unsigned int&gt;(<span class="keyword">new</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>(value))) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4196de9b8a344d62d9e19d83d458eda6" name="a4196de9b8a344d62d9e19d83d458eda6"></a>
@@ -514,6 +536,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00034">34</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>            : _key(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>), _type(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">type</a>), _value(<span class="keyword">new</span> VoidPointer&lt;double&gt;(<span class="keyword">new</span> <span class="keywordtype">double</span>(value))) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1e594f253503806fc53979a77ff8db45" name="a1e594f253503806fc53979a77ff8db45"></a>
@@ -556,6 +581,11 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00037">37</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>            : _key(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>),</div>
+<div class="line"><span class="lineno">   39</span>              _type(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0b142c418cd9837a4c20817ecde92265">type</a>),</div>
+<div class="line"><span class="lineno">   40</span>              _value(<span class="keyword">new</span> VoidPointer&lt;std::string&gt;(<span class="keyword">new</span> std::string(value))) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afa0110e3cf09067ed41eef236dc0b93a" name="afa0110e3cf09067ed41eef236dc0b93a"></a>
@@ -581,6 +611,11 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00042">42</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>                                  {</div>
+<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">if</span> (_value) <span class="keyword">delete</span> _value;</div>
+<div class="line"><span class="lineno">   44</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -608,6 +643,15 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#ac97e377bae4fde1b454696ca8049e881">SpecsCpp::ISpecDataValue</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00051">51</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>                                         {</div>
+<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">if</span> (_type != <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27226c864bac7454a8504f8edb15d95b">SpecDataValueType::Boolean</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">return</span> _value-&gt;as&lt;<span class="keywordtype">bool</span>&gt;();</div>
+<div class="line"><span class="lineno">   54</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_html_ae83d3fdbb152ff91f81c5e9caa7bce9aa27226c864bac7454a8504f8edb15d95b"><div class="ttname"><a href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27226c864bac7454a8504f8edb15d95b">SpecsCpp::SpecDataValueType::Boolean</a></div><div class="ttdeci">@ Boolean</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00126">to_string()</a>.</p>
 
 </div>
 </div>
@@ -637,6 +681,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a84f57ed2794a27eec23adc8d98769f9a">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00056">56</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>                                             {</div>
+<div class="line"><span class="lineno">   57</span>            _type  = <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27226c864bac7454a8504f8edb15d95b">SpecDataValueType::Boolean</a>;</div>
+<div class="line"><span class="lineno">   58</span>            _value = <span class="keyword">new</span> VoidPointer&lt;bool&gt;(<span class="keyword">new</span> <span class="keywordtype">bool</span>(value));</div>
+<div class="line"><span class="lineno">   59</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3dd7a1cf35890eaa3e5f0b755067a03d" name="a3dd7a1cf35890eaa3e5f0b755067a03d"></a>
@@ -672,6 +722,14 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00172">172</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  172</span>                                                                   {</div>
+<div class="line"><span class="lineno">  173</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0bc7bc64f58797473ceb68e46eae51d7">create_bool</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, value);</div>
+<div class="line"><span class="lineno">  174</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a0bc7bc64f58797473ceb68e46eae51d7"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a0bc7bc64f58797473ceb68e46eae51d7">SpecsCpp::SpecDataValue::create_bool</a></div><div class="ttdeci">static ISpecDataValue * create_bool(const char *key, bool value)</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00150">SpecDataValue.h:150</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="set__timeout_8h_source.html#l00009">SpecsCpp::DSLs::Functions::set_timeout()</a>, and <a class="el" href="_functions_2skip_8h_source.html#l00009">SpecsCpp::DSLs::Functions::skip()</a>.</p>
 
 </div>
 </div>
@@ -709,6 +767,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00182">182</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  182</span>                                                                          {</div>
+<div class="line"><span class="lineno">  183</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a571cc36512affe7543ee72b0da846757">create_string</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, value);</div>
+<div class="line"><span class="lineno">  184</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a571cc36512affe7543ee72b0da846757"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a571cc36512affe7543ee72b0da846757">SpecsCpp::SpecDataValue::create_string</a></div><div class="ttdeci">static ISpecDataValue * create_string(const char *key, const char *value)</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00162">SpecDataValue.h:162</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a17fb0f6d83cbbcca77119c79dea3289c" name="a17fb0f6d83cbbcca77119c79dea3289c"></a>
@@ -745,6 +809,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00179">179</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  179</span>                                                                     {</div>
+<div class="line"><span class="lineno">  180</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a8d5bb1b5a36517c1acba3941a00623dc">create_float</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, value);</div>
+<div class="line"><span class="lineno">  181</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a8d5bb1b5a36517c1acba3941a00623dc"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a8d5bb1b5a36517c1acba3941a00623dc">SpecsCpp::SpecDataValue::create_float</a></div><div class="ttdeci">static ISpecDataValue * create_float(const char *key, double value)</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00159">SpecDataValue.h:159</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab8b2e204b3ca0e0cdf145d5e7ec2356c" name="ab8b2e204b3ca0e0cdf145d5e7ec2356c"></a>
@@ -781,6 +851,10 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00175">175</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#ad00acd41a79f64d9588c6638742ccd33">create_int</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, value); }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_ad00acd41a79f64d9588c6638742ccd33"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#ad00acd41a79f64d9588c6638742ccd33">SpecsCpp::SpecDataValue::create_int</a></div><div class="ttdeci">static ISpecDataValue * create_int(const char *key, int value)</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00153">SpecDataValue.h:153</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad121319924d830b95fa26ad19007d13d" name="ad121319924d830b95fa26ad19007d13d"></a>
@@ -817,6 +891,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00188">188</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>                                                                            {</div>
+<div class="line"><span class="lineno">  189</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#afe3f7f4139745940a0c99ab17cf14438">create_pointer</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, value);</div>
+<div class="line"><span class="lineno">  190</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_afe3f7f4139745940a0c99ab17cf14438"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#afe3f7f4139745940a0c99ab17cf14438">SpecsCpp::SpecDataValue::create_pointer</a></div><div class="ttdeci">static ISpecDataValue * create_pointer(const char *key, void *value)</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00165">SpecDataValue.h:165</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a58d9b5754dcce63db66121ad38607551" name="a58d9b5754dcce63db66121ad38607551"></a>
@@ -853,6 +933,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00176">176</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>                                                                           {</div>
+<div class="line"><span class="lineno">  177</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a1e3ca637cd10da5f5a222bcf87aa84b6">create_unsigned_int</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, value);</div>
+<div class="line"><span class="lineno">  178</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a1e3ca637cd10da5f5a222bcf87aa84b6"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a1e3ca637cd10da5f5a222bcf87aa84b6">SpecsCpp::SpecDataValue::create_unsigned_int</a></div><div class="ttdeci">static ISpecDataValue * create_unsigned_int(const char *key, unsigned int value)</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00156">SpecDataValue.h:156</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a06e385cdbae662d469881e66fb05f722" name="a06e385cdbae662d469881e66fb05f722"></a>
@@ -889,6 +975,11 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00185">185</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>                                                                    {</div>
+<div class="line"><span class="lineno">  186</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#afe3f7f4139745940a0c99ab17cf14438">create_pointer</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, value);</div>
+<div class="line"><span class="lineno">  187</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0bc7bc64f58797473ceb68e46eae51d7" name="a0bc7bc64f58797473ceb68e46eae51d7"></a>
@@ -924,6 +1015,14 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00150">150</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>                                                                        {</div>
+<div class="line"><span class="lineno">  151</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecDataValue</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27226c864bac7454a8504f8edb15d95b">SpecDataValueType::Boolean</a>, value);</div>
+<div class="line"><span class="lineno">  152</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a72f44565df00046f081d97c36a96e9aa"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecsCpp::SpecDataValue::SpecDataValue</a></div><div class="ttdeci">SpecDataValue(const char *key, SpecDataValueType type, IVoidPointer *value)</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00017">SpecDataValue.h:17</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00172">create()</a>.</p>
 
 </div>
 </div>
@@ -961,6 +1060,14 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00159">159</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  159</span>                                                                           {</div>
+<div class="line"><span class="lineno">  160</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecDataValue</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa22ae0e2b89e5e3d477f988cc36d3272b">SpecDataValueType::Float</a>, value);</div>
+<div class="line"><span class="lineno">  161</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_html_ae83d3fdbb152ff91f81c5e9caa7bce9aa22ae0e2b89e5e3d477f988cc36d3272b"><div class="ttname"><a href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa22ae0e2b89e5e3d477f988cc36d3272b">SpecsCpp::SpecDataValueType::Float</a></div><div class="ttdeci">@ Float</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00179">create()</a>.</p>
+
 </div>
 </div>
 <a id="ad00acd41a79f64d9588c6638742ccd33" name="ad00acd41a79f64d9588c6638742ccd33"></a>
@@ -996,6 +1103,14 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00153">153</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  153</span>                                                                      {</div>
+<div class="line"><span class="lineno">  154</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecDataValue</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aaa0faef0851b4294c06f2b94bb1cb2044">SpecDataValueType::Integer</a>, value);</div>
+<div class="line"><span class="lineno">  155</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_html_ae83d3fdbb152ff91f81c5e9caa7bce9aaa0faef0851b4294c06f2b94bb1cb2044"><div class="ttname"><a href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aaa0faef0851b4294c06f2b94bb1cb2044">SpecsCpp::SpecDataValueType::Integer</a></div><div class="ttdeci">@ Integer</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00175">create()</a>.</p>
 
 </div>
 </div>
@@ -1033,6 +1148,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00168">168</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  168</span>                                                                                    {</div>
+<div class="line"><span class="lineno">  169</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecDataValue</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecDataValueType::Pointer</a>, value);</div>
+<div class="line"><span class="lineno">  170</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_html_ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7"><div class="ttname"><a href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecsCpp::SpecDataValueType::Pointer</a></div><div class="ttdeci">@ Pointer</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afe3f7f4139745940a0c99ab17cf14438" name="afe3f7f4139745940a0c99ab17cf14438"></a>
@@ -1068,6 +1189,13 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00165">165</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  165</span>                                                                            {</div>
+<div class="line"><span class="lineno">  166</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecDataValue</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecDataValueType::Pointer</a>, value);</div>
+<div class="line"><span class="lineno">  167</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00188">create()</a>, and <a class="el" href="_spec_data_value_8h_source.html#l00185">create()</a>.</p>
 
 </div>
 </div>
@@ -1105,6 +1233,14 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00162">162</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  162</span>                                                                                 {</div>
+<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecDataValue</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27118326006d3829667a400ad23d5d98">SpecDataValueType::String</a>, value);</div>
+<div class="line"><span class="lineno">  164</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_html_ae83d3fdbb152ff91f81c5e9caa7bce9aa27118326006d3829667a400ad23d5d98"><div class="ttname"><a href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27118326006d3829667a400ad23d5d98">SpecsCpp::SpecDataValueType::String</a></div><div class="ttdeci">@ String</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00182">create()</a>.</p>
+
 </div>
 </div>
 <a id="a1e3ca637cd10da5f5a222bcf87aa84b6" name="a1e3ca637cd10da5f5a222bcf87aa84b6"></a>
@@ -1141,6 +1277,14 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00156">156</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>                                                                                        {</div>
+<div class="line"><span class="lineno">  157</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a72f44565df00046f081d97c36a96e9aa">SpecDataValue</a>(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>, <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa83147e7fef151fb803ff9a23e13cbc5c">SpecDataValueType::UnsignedInteger</a>, value);</div>
+<div class="line"><span class="lineno">  158</span>        }</div>
+<div class="ttc" id="anamespace_specs_cpp_html_ae83d3fdbb152ff91f81c5e9caa7bce9aa83147e7fef151fb803ff9a23e13cbc5c"><div class="ttname"><a href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa83147e7fef151fb803ff9a23e13cbc5c">SpecsCpp::SpecDataValueType::UnsignedInteger</a></div><div class="ttdeci">@ UnsignedInteger</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00176">create()</a>.</p>
+
 </div>
 </div>
 <a id="aeca4be227bb9701d3018e46949115cd7" name="aeca4be227bb9701d3018e46949115cd7"></a>
@@ -1167,6 +1311,14 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a9595c79067f981cfd56f394eb2847b53">SpecsCpp::ISpecDataValue</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00081">81</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>                                            {</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">if</span> (_type != <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa22ae0e2b89e5e3d477f988cc36d3272b">SpecDataValueType::Float</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">return</span> _value-&gt;as&lt;<span class="keywordtype">double</span>&gt;();</div>
+<div class="line"><span class="lineno">   84</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00126">to_string()</a>.</p>
 
 </div>
 </div>
@@ -1196,6 +1348,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a5891935cc494d749ce1a3705c3b77d3d">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00086">86</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>                                                {</div>
+<div class="line"><span class="lineno">   87</span>            _type  = <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa22ae0e2b89e5e3d477f988cc36d3272b">SpecDataValueType::Float</a>;</div>
+<div class="line"><span class="lineno">   88</span>            _value = <span class="keyword">new</span> VoidPointer&lt;double&gt;(<span class="keyword">new</span> <span class="keywordtype">double</span>(value));</div>
+<div class="line"><span class="lineno">   89</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af8b77f2aedbf0699d044b8f1920f6f53" name="af8b77f2aedbf0699d044b8f1920f6f53"></a>
@@ -1222,6 +1380,14 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a8c249d935c74ccbdc430c3a938591022">SpecsCpp::ISpecDataValue</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00061">61</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>                                       {</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">if</span> (_type != <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aaa0faef0851b4294c06f2b94bb1cb2044">SpecDataValueType::Integer</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">return</span> _value-&gt;as&lt;<span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><span class="lineno">   64</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00126">to_string()</a>.</p>
 
 </div>
 </div>
@@ -1251,6 +1417,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a60f45ac7344d6f6536d010b9cca55273">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00066">66</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>                                           {</div>
+<div class="line"><span class="lineno">   67</span>            _type  = <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aaa0faef0851b4294c06f2b94bb1cb2044">SpecDataValueType::Integer</a>;</div>
+<div class="line"><span class="lineno">   68</span>            _value = <span class="keyword">new</span> VoidPointer&lt;int&gt;(<span class="keyword">new</span> <span class="keywordtype">int</span>(value));</div>
+<div class="line"><span class="lineno">   69</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4297e7d2f4da73ea3f4d11db840d1a87" name="a4297e7d2f4da73ea3f4d11db840d1a87"></a>
@@ -1278,6 +1450,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#ac90bfcea486485d69f3f5d24b043206f">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00117">117</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{ <span class="keywordflow">return</span> _type == <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27226c864bac7454a8504f8edb15d95b">SpecDataValueType::Boolean</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9c3f4659d9cb65569ee312710bd2b2d8" name="a9c3f4659d9cb65569ee312710bd2b2d8"></a>
@@ -1305,6 +1480,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a8a0328a1a8117f2dca06d10212a5ce12">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00122">122</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>{ <span class="keywordflow">return</span> _type == <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa22ae0e2b89e5e3d477f988cc36d3272b">SpecDataValueType::Float</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="adf169f6fb75304265980e82f948b3478" name="adf169f6fb75304265980e82f948b3478"></a>
@@ -1332,6 +1510,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a419d1ef3662bd778e1e4f5a8a076c1c9">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00118">118</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>{ <span class="keywordflow">return</span> _type == <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aaa0faef0851b4294c06f2b94bb1cb2044">SpecDataValueType::Integer</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a33f439b44009b05dbd5202069fb6489a" name="a33f439b44009b05dbd5202069fb6489a"></a>
@@ -1359,6 +1540,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a58f26eb3ccd2201acfec417b56409b1b">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00124">124</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  124</span>{ <span class="keywordflow">return</span> _type == <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecDataValueType::Pointer</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a67d882b78cdf663562209255b7ff3388" name="a67d882b78cdf663562209255b7ff3388"></a>
@@ -1386,6 +1570,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a8b31b5bfe4cddda69dfe74005bdcb6af">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00123">123</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>{ <span class="keywordflow">return</span> _type == <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27118326006d3829667a400ad23d5d98">SpecDataValueType::String</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8806d4a03c19c8f1661b71f8a390ad95" name="a8806d4a03c19c8f1661b71f8a390ad95"></a>
@@ -1413,6 +1600,11 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a7b9df25e7639db0a317916c752323733">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00119">119</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>                                              {</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">return</span> _type == <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa83147e7fef151fb803ff9a23e13cbc5c">SpecDataValueType::UnsignedInteger</a>;</div>
+<div class="line"><span class="lineno">  121</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0e810f0f08e1ca7fd25db686c99d7117" name="a0e810f0f08e1ca7fd25db686c99d7117"></a>
@@ -1439,6 +1631,11 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#ab93401db4cfa032eb8f7fbbcd36c5059">SpecsCpp::ISpecDataValue</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00048">48</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>{ <span class="keywordflow">return</span> _key.c_str(); }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00172">create()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00182">create()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00179">create()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00175">create()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00188">create()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00176">create()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00185">create()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00150">create_bool()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00159">create_float()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00153">create_int()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00168">create_pointer()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00165">create_pointer()</a>, <a class="el" href="_spec_data_value_8h_source.html#l00162">create_string()</a>, and <a class="el" href="_spec_data_value_8h_source.html#l00156">create_unsigned_int()</a>.</p>
 
 </div>
 </div>
@@ -1468,6 +1665,11 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#ac31e8d317e0a8fbd13294f81e6f7aab4">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00049">49</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{ _key = <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a0e810f0f08e1ca7fd25db686c99d7117">key</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00049">key()</a>.</p>
+
 </div>
 </div>
 <a id="a0427678514e2432ec884fbb22b3564de" name="a0427678514e2432ec884fbb22b3564de"></a>
@@ -1495,6 +1697,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a73fa9933c75089eb10419c11a474b5f2">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00102">102</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>                                             {</div>
+<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span> (_type != <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecDataValueType::Pointer</a>) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">return</span> _unmanagedValue ? _unmanagedValue : _value-&gt;void_ptr();</div>
+<div class="line"><span class="lineno">  105</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a531f813a6b5481f4d0a34d1aaba49402" name="a531f813a6b5481f4d0a34d1aaba49402"></a>
@@ -1523,6 +1731,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a566741a255df1e8bdc802fa1d1530cda">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00112">112</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>                                                         {</div>
+<div class="line"><span class="lineno">  113</span>            _type  = <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecDataValueType::Pointer</a>;</div>
+<div class="line"><span class="lineno">  114</span>            _value = value;</div>
+<div class="line"><span class="lineno">  115</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a58cdbf4efa686fe01b4496a79f79c3c2" name="a58cdbf4efa686fe01b4496a79f79c3c2"></a>
@@ -1551,6 +1765,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#aad3ae76363a52e15c929d131e381f836">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00107">107</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>                                                 {</div>
+<div class="line"><span class="lineno">  108</span>            _type           = <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecDataValueType::Pointer</a>;</div>
+<div class="line"><span class="lineno">  109</span>            _unmanagedValue = value;</div>
+<div class="line"><span class="lineno">  110</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab6de054660084fef2a9ff650c5018f40" name="ab6de054660084fef2a9ff650c5018f40"></a>
@@ -1577,6 +1797,15 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a3f636e53c5da7ad432ee3dc605cf1993">SpecsCpp::ISpecDataValue</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00091">91</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>                                                  {</div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span> (_type != <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27118326006d3829667a400ad23d5d98">SpecDataValueType::String</a>) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   93</span>            <span class="comment">// TODO whaaaaa this isn&#39;t safe!</span></div>
+<div class="line"><span class="lineno">   94</span>            <span class="keywordflow">return</span> _value-&gt;as&lt;std::string*&gt;()-&gt;c_str();</div>
+<div class="line"><span class="lineno">   95</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00126">to_string()</a>.</p>
 
 </div>
 </div>
@@ -1606,6 +1835,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a7e010d29469a806f883f658db6ebbc19">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00097">97</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>                                                      {</div>
+<div class="line"><span class="lineno">   98</span>            _type  = <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27118326006d3829667a400ad23d5d98">SpecDataValueType::String</a>;</div>
+<div class="line"><span class="lineno">   99</span>            _value = <span class="keyword">new</span> VoidPointer&lt;std::string&gt;(<span class="keyword">new</span> std::string(value));</div>
+<div class="line"><span class="lineno">  100</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abc7382e84e4b0c16b6fb4cb6ca637ecd" name="abc7382e84e4b0c16b6fb4cb6ca637ecd"></a>
@@ -1633,6 +1868,36 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a357213497d656f0e8cc893a7d4d0081e">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00126">126</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>                                         {</div>
+<div class="line"><span class="lineno">  127</span>            <span class="keywordflow">switch</span> (_type) {</div>
+<div class="line"><span class="lineno">  128</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27226c864bac7454a8504f8edb15d95b">SpecDataValueType::Boolean</a>:</div>
+<div class="line"><span class="lineno">  129</span>                    _asString = <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a1da3465b80943ed80bc83664de09955a">bool_value</a>() ? <span class="stringliteral">&quot;true&quot;</span> : <span class="stringliteral">&quot;false&quot;</span>;</div>
+<div class="line"><span class="lineno">  130</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aaa0faef0851b4294c06f2b94bb1cb2044">SpecDataValueType::Integer</a>:</div>
+<div class="line"><span class="lineno">  132</span>                    _asString = std::to_string(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#af8b77f2aedbf0699d044b8f1920f6f53">int_value</a>());</div>
+<div class="line"><span class="lineno">  133</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  134</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa83147e7fef151fb803ff9a23e13cbc5c">SpecDataValueType::UnsignedInteger</a>:</div>
+<div class="line"><span class="lineno">  135</span>                    _asString = std::to_string(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#a1369e70aa8b04bfcd4212195b91cfccb">unsigned_int_value</a>());</div>
+<div class="line"><span class="lineno">  136</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  137</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa22ae0e2b89e5e3d477f988cc36d3272b">SpecDataValueType::Float</a>:</div>
+<div class="line"><span class="lineno">  138</span>                    _asString = std::to_string(<a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#aeca4be227bb9701d3018e46949115cd7">float_value</a>());</div>
+<div class="line"><span class="lineno">  139</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  140</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa27118326006d3829667a400ad23d5d98">SpecDataValueType::String</a>:</div>
+<div class="line"><span class="lineno">  141</span>                    _asString = <a class="code hl_function" href="class_specs_cpp_1_1_spec_data_value.html#ab6de054660084fef2a9ff650c5018f40">string_value</a>();</div>
+<div class="line"><span class="lineno">  142</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  143</span>                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa61cf8510205077b6f5491d38cd44c0f7">SpecDataValueType::Pointer</a>:</div>
+<div class="line"><span class="lineno">  144</span>                    _asString = <span class="stringliteral">&quot;(pointer)&quot;</span>;</div>
+<div class="line"><span class="lineno">  145</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  146</span>            }</div>
+<div class="line"><span class="lineno">  147</span>            <span class="keywordflow">return</span> _asString.c_str();</div>
+<div class="line"><span class="lineno">  148</span>        }</div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a1369e70aa8b04bfcd4212195b91cfccb"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a1369e70aa8b04bfcd4212195b91cfccb">SpecsCpp::SpecDataValue::unsigned_int_value</a></div><div class="ttdeci">unsigned int unsigned_int_value() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00071">SpecDataValue.h:71</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_a1da3465b80943ed80bc83664de09955a"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#a1da3465b80943ed80bc83664de09955a">SpecsCpp::SpecDataValue::bool_value</a></div><div class="ttdeci">bool bool_value() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00051">SpecDataValue.h:51</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_ab6de054660084fef2a9ff650c5018f40"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#ab6de054660084fef2a9ff650c5018f40">SpecsCpp::SpecDataValue::string_value</a></div><div class="ttdeci">const char * string_value() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00091">SpecDataValue.h:91</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_aeca4be227bb9701d3018e46949115cd7"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#aeca4be227bb9701d3018e46949115cd7">SpecsCpp::SpecDataValue::float_value</a></div><div class="ttdeci">double float_value() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00081">SpecDataValue.h:81</a></div></div>
+<div class="ttc" id="aclass_specs_cpp_1_1_spec_data_value_html_af8b77f2aedbf0699d044b8f1920f6f53"><div class="ttname"><a href="class_specs_cpp_1_1_spec_data_value.html#af8b77f2aedbf0699d044b8f1920f6f53">SpecsCpp::SpecDataValue::int_value</a></div><div class="ttdeci">int int_value() const override</div><div class="ttdef"><b>Definition</b> <a href="_spec_data_value_8h_source.html#l00061">SpecDataValue.h:61</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0b142c418cd9837a4c20817ecde92265" name="a0b142c418cd9837a4c20817ecde92265"></a>
@@ -1660,6 +1925,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a9fa995029fd3f7de3aa2fd95dace9759">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00046">46</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{ <span class="keywordflow">return</span> _type; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1369e70aa8b04bfcd4212195b91cfccb" name="a1369e70aa8b04bfcd4212195b91cfccb"></a>
@@ -1686,6 +1954,14 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#adec9082db8841ffb9de57752112051ef">SpecsCpp::ISpecDataValue</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00071">71</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                                                         {</div>
+<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">if</span> (_type != <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa83147e7fef151fb803ff9a23e13cbc5c">SpecDataValueType::UnsignedInteger</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">return</span> _value-&gt;as&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><span class="lineno">   74</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_spec_data_value_8h_source.html#l00126">to_string()</a>.</p>
 
 </div>
 </div>
@@ -1715,6 +1991,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html#a22159b56fa12956125bafaa3d38330dc">SpecsCpp::ISpecDataValue</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_spec_data_value_8h_source.html#l00076">76</a> of file <a class="el" href="_spec_data_value_8h_source.html">SpecDataValue.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                             {</div>
+<div class="line"><span class="lineno">   77</span>            _type  = <a class="code hl_enumvalue" href="namespace_specs_cpp.html#ae83d3fdbb152ff91f81c5e9caa7bce9aa83147e7fef151fb803ff9a23e13cbc5c">SpecDataValueType::UnsignedInteger</a>;</div>
+<div class="line"><span class="lineno">   78</span>            _value = <span class="keyword">new</span> VoidPointer&lt;unsigned int&gt;(<span class="keyword">new</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>(value));</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

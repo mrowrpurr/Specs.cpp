@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('struct_specs_cpp_1_1_i_spec_data_value
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SpecsCpp::ISpecDataValueCollection:</div>
 <div class="dyncontent">
@@ -145,8 +145,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad65f1ad7cf8dc9213df75431b6b7ed0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a17cc6866cd1774ee805a1044bb9380"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a0a17cc6866cd1774ee805a1044bb9380">get_pointer</a> (const char *name) const</td></tr>
 <tr class="separator:a0a17cc6866cd1774ee805a1044bb9380"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e5a30e0380a1fb690a9f750e00d7ab9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a6e5a30e0380a1fb690a9f750e00d7ab9">foreach</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a2eb95fb9327d5e904d2297b544072c5c">ForEachSpecDataFn</a> *) const =0</td></tr>
-<tr class="separator:a6e5a30e0380a1fb690a9f750e00d7ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a693fec6794db40bc665185c9c2fb102f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a693fec6794db40bc665185c9c2fb102f">foreach_value</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a2eb95fb9327d5e904d2297b544072c5c">ForEachSpecDataFn</a> *) const =0</td></tr>
+<tr class="separator:a693fec6794db40bc665185c9c2fb102f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98b204e2af0cdd5183e525332438c551"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a98b204e2af0cdd5183e525332438c551">merge</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html">ISpecDataValueCollection</a> *)=0</td></tr>
 <tr class="separator:a98b204e2af0cdd5183e525332438c551"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adadd4dd1150937179a8f7e67aab64dc0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#adadd4dd1150937179a8f7e67aab64dc0">clear</a> ()=0</td></tr>
@@ -154,7 +154,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac25579d609b7cde0ade6dd7547f54ef2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ac25579d609b7cde0ade6dd7547f54ef2">foreach</a> (std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_data_value.html">ISpecDataValue</a> *)&gt; fn) const</td></tr>
 <tr class="separator:ac25579d609b7cde0ade6dd7547f54ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00067">67</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a2eb95fb9327d5e904d2297b544072c5c" name="a2eb95fb9327d5e904d2297b544072c5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2eb95fb9327d5e904d2297b544072c5c">&#9670;&#160;</a></span>ForEachSpecDataFn</h2>
 
@@ -166,6 +169,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00068">68</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
 
 </div>
 </div>
@@ -251,36 +256,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6e5a30e0380a1fb690a9f750e00d7ab9" name="a6e5a30e0380a1fb690a9f750e00d7ab9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e5a30e0380a1fb690a9f750e00d7ab9">&#9670;&#160;</a></span>foreach() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void SpecsCpp::ISpecDataValueCollection::foreach </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a2eb95fb9327d5e904d2297b544072c5c">ForEachSpecDataFn</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#aded23f48081764bcf5c9135229ea7141">SpecsCpp::SpecDataValueCollection</a>.</p>
-
-</div>
-</div>
 <a id="ac25579d609b7cde0ade6dd7547f54ef2" name="ac25579d609b7cde0ade6dd7547f54ef2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac25579d609b7cde0ade6dd7547f54ef2">&#9670;&#160;</a></span>foreach() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac25579d609b7cde0ade6dd7547f54ef2">&#9670;&#160;</a></span>foreach()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,6 +279,43 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00105">105</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>                                                                  {</div>
+<div class="line"><span class="lineno">  106</span>            <span class="keyword">auto</span> callback = unique_function_pointer(fn);</div>
+<div class="line"><span class="lineno">  107</span>            this-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a693fec6794db40bc665185c9c2fb102f">foreach_value</a>(callback.get());</div>
+<div class="line"><span class="lineno">  108</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_collection_html_a693fec6794db40bc665185c9c2fb102f"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a693fec6794db40bc665185c9c2fb102f">SpecsCpp::ISpecDataValueCollection::foreach_value</a></div><div class="ttdeci">virtual void foreach_value(ForEachSpecDataFn *) const =0</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a693fec6794db40bc665185c9c2fb102f" name="a693fec6794db40bc665185c9c2fb102f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a693fec6794db40bc665185c9c2fb102f">&#9670;&#160;</a></span>foreach_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SpecsCpp::ISpecDataValueCollection::foreach_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a2eb95fb9327d5e904d2297b544072c5c">ForEachSpecDataFn</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#a1cee388306c14401e967cc0b7d336398">SpecsCpp::SpecDataValueCollection</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00105">foreach()</a>, and <a class="el" href="_spec_data_value_collection_8h_source.html#l00035">SpecsCpp::SpecDataValueCollection::merge()</a>.</p>
 
 </div>
 </div>
@@ -331,6 +345,8 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#a1180fa5f264044f4dc49ddda9d6fa2a7">SpecsCpp::SpecDataValueCollection</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00076">get_bool()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00088">get_float()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00080">get_int()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00096">get_pointer()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00092">get_string()</a>, and <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00084">get_unsigned_int()</a>.</p>
+
 </div>
 </div>
 <a id="a7dc1e0479f49652fa789dd6f38c8fa44" name="a7dc1e0479f49652fa789dd6f38c8fa44"></a>
@@ -357,6 +373,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00076">76</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                      {</div>
+<div class="line"><span class="lineno">   77</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad7fb2053a02d19ecf2b57715679d716b">has</a>(name)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5">get</a>(name)-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value.html#ac97e377bae4fde1b454696ca8049e881">bool_value</a>();</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_collection_html_a8a7bbccb7dee5d6d75ecc173ef6f70c5"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5">SpecsCpp::ISpecDataValueCollection::get</a></div><div class="ttdeci">virtual ISpecDataValue * get(const char *name) const =0</div></div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_collection_html_ad7fb2053a02d19ecf2b57715679d716b"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad7fb2053a02d19ecf2b57715679d716b">SpecsCpp::ISpecDataValueCollection::has</a></div><div class="ttdeci">virtual bool has(const char *name) const =0</div></div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_html_ac97e377bae4fde1b454696ca8049e881"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value.html#ac97e377bae4fde1b454696ca8049e881">SpecsCpp::ISpecDataValue::bool_value</a></div><div class="ttdeci">virtual bool bool_value() const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a42e78acb4d28c3f8c4bf47acf3612588" name="a42e78acb4d28c3f8c4bf47acf3612588"></a>
@@ -383,6 +408,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00088">88</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>                                                         {</div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad7fb2053a02d19ecf2b57715679d716b">has</a>(name)) <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><span class="lineno">   90</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5">get</a>(name)-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value.html#a9595c79067f981cfd56f394eb2847b53">float_value</a>();</div>
+<div class="line"><span class="lineno">   91</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_html_a9595c79067f981cfd56f394eb2847b53"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value.html#a9595c79067f981cfd56f394eb2847b53">SpecsCpp::ISpecDataValue::float_value</a></div><div class="ttdeci">virtual double float_value() const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab432f2e58df5ecf95e7798b4b90c6c7e" name="ab432f2e58df5ecf95e7798b4b90c6c7e"></a>
@@ -409,6 +441,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00080">80</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                    {</div>
+<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad7fb2053a02d19ecf2b57715679d716b">has</a>(name)) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5">get</a>(name)-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value.html#a8c249d935c74ccbdc430c3a938591022">int_value</a>();</div>
+<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_html_a8c249d935c74ccbdc430c3a938591022"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value.html#a8c249d935c74ccbdc430c3a938591022">SpecsCpp::ISpecDataValue::int_value</a></div><div class="ttdeci">virtual int int_value() const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0a17cc6866cd1774ee805a1044bb9380" name="a0a17cc6866cd1774ee805a1044bb9380"></a>
@@ -435,6 +474,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00096">96</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>                                                          {</div>
+<div class="line"><span class="lineno">   97</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad7fb2053a02d19ecf2b57715679d716b">has</a>(name)) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5">get</a>(name)-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value.html#a73fa9933c75089eb10419c11a474b5f2">pointer_value</a>();</div>
+<div class="line"><span class="lineno">   99</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_html_a73fa9933c75089eb10419c11a474b5f2"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value.html#a73fa9933c75089eb10419c11a474b5f2">SpecsCpp::ISpecDataValue::pointer_value</a></div><div class="ttdeci">virtual void * pointer_value() const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad65f1ad7cf8dc9213df75431b6b7ed0f" name="ad65f1ad7cf8dc9213df75431b6b7ed0f"></a>
@@ -461,6 +507,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00092">92</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>                                                               {</div>
+<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad7fb2053a02d19ecf2b57715679d716b">has</a>(name)) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   94</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5">get</a>(name)-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value.html#a3f636e53c5da7ad432ee3dc605cf1993">string_value</a>();</div>
+<div class="line"><span class="lineno">   95</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_html_a3f636e53c5da7ad432ee3dc605cf1993"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value.html#a3f636e53c5da7ad432ee3dc605cf1993">SpecsCpp::ISpecDataValue::string_value</a></div><div class="ttdeci">virtual const char * string_value() const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a635bf112b45432a329f8abf70653e54c" name="a635bf112b45432a329f8abf70653e54c"></a>
@@ -487,6 +540,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00084">84</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>                                                                      {</div>
+<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#ad7fb2053a02d19ecf2b57715679d716b">has</a>(name)) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value_collection.html#a8a7bbccb7dee5d6d75ecc173ef6f70c5">get</a>(name)-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_data_value.html#adec9082db8841ffb9de57752112051ef">unsigned_int_value</a>();</div>
+<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_data_value_html_adec9082db8841ffb9de57752112051ef"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_data_value.html#adec9082db8841ffb9de57752112051ef">SpecsCpp::ISpecDataValue::unsigned_int_value</a></div><div class="ttdeci">virtual unsigned int unsigned_int_value() const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad7fb2053a02d19ecf2b57715679d716b" name="ad7fb2053a02d19ecf2b57715679d716b"></a>
@@ -514,6 +574,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_data_value_collection.html#a20bbe462359c0e88c9685864ff4071a5">SpecsCpp::SpecDataValueCollection</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00076">get_bool()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00088">get_float()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00080">get_int()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00096">get_pointer()</a>, <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00092">get_string()</a>, and <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00084">get_unsigned_int()</a>.</p>
 
 </div>
 </div>
@@ -546,7 +608,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Specs.API/include/Specs/<a class="el" href="_a_p_i_8h_source.html">API.h</a></li>
+<li>Specs.API/include/Specs/API/Internal/Undocumented/<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

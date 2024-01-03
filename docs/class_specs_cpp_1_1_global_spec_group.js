@@ -10,6 +10,7 @@ var class_specs_cpp_1_1_global_spec_group =
     [ "clear_top_level_group", "class_specs_cpp_1_1_global_spec_group.html#a0fc4496366c1c4c0dd4628737bcc1d78", null ],
     [ "declare_file_group", "class_specs_cpp_1_1_global_spec_group.html#adc6c9842ff22573d574830141aed8de4", null ],
     [ "declare_group", "class_specs_cpp_1_1_global_spec_group.html#af3ed8d8428afb021ad5761283a3c8406", null ],
+    [ "declare_groups", "class_specs_cpp_1_1_global_spec_group.html#a63b02964572b7330a808919e1c7eb410", null ],
     [ "declare_top_level_group", "class_specs_cpp_1_1_global_spec_group.html#a9936470579806585c52f1096fdbe868f", null ],
     [ "declare_top_level_template", "class_specs_cpp_1_1_global_spec_group.html#af89cbbd93b40b31923d67b2ce345198e", null ],
     [ "define_group", "class_specs_cpp_1_1_global_spec_group.html#a31aa71a6f5a4a785740793a2b1e1b183", null ],

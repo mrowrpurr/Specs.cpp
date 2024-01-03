@@ -1,0 +1,130 @@
+{
+    __meta__ = {
+        version = "1.0"
+    },
+    ["windows|x64"] = {
+        ["cmake#31fecfc4"] = {
+            repo = {
+                branch = "master",
+                commit = "a2ecf6453aae55a22fbb50a9a007e4a8783fa769",
+                url = "https://gitlab.com/tboox/xmake-repo.git"
+            },
+            version = "3.27.7"
+        },
+        ["collections#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "fd3a5515edcaa4e719c08c8d7580f7f9d5937d9a",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["cpptrace#31fecfc4"] = {
+            repo = {
+                branch = "master",
+                commit = "c5e50f4ef0c9e4cf1743c374bc806ebed4fbe5ee",
+                url = "https://gitlab.com/tboox/xmake-repo.git"
+            },
+            version = "v0.3.1"
+        },
+        ["cxxopts#31fecfc4"] = {
+            repo = {
+                branch = "master",
+                commit = "ff1c401fb827ab4c445ace08ef56f20243102ac1",
+                url = "https://gitlab.com/tboox/xmake-repo.git"
+            },
+            version = "v3.1.1"
+        },
+        ["function_pointer#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "cd78ba157aae728a1e08f4e84dc1c9c64314510d",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["global_macro_functions#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "62035bad460157a412125abe97d07df2d4748f88",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["libassert_latest#e8d8b1d6"] = {
+            branch = "@default",
+            repo = {
+                commit = "740c5d8c48129165164f3b3edafcdfdd6aa922a2",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["magic_enum#31fecfc4"] = {
+            repo = {
+                branch = "master",
+                commit = "c5e50f4ef0c9e4cf1743c374bc806ebed4fbe5ee",
+                url = "https://gitlab.com/tboox/xmake-repo.git"
+            },
+            version = "v0.9.5"
+        },
+        ["managed_pointer#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "22dc2da6025949f05388b3fa14dd759607359ac5",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["spdlog#31fecfc4"] = {
+            repo = {
+                branch = "master",
+                commit = "e743cdc26e82ee2868d95e3598f1cfbb1260a0f8",
+                url = "https://gitlab.com/tboox/xmake-repo.git"
+            },
+            version = "v1.12.0"
+        },
+        ["string_format#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "ef990e2fa52a0b6bef1b1af996810f8b915854c3",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["underscore_log#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "fe623f741f851e177d6cc2191122711c2ef1c675",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["unordered_dense#31fecfc4"] = {
+            repo = {
+                branch = "master",
+                commit = "e85c073a601552f7c643f8f4fb06116cc207b3dc",
+                url = "https://gitlab.com/tboox/xmake-repo.git"
+            },
+            version = "v4.0.4"
+        },
+        ["vcpkg::snowhouse#31fecfc4"] = {
+            version = "latest"
+        },
+        ["virtual_collections#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "fe623f741f851e177d6cc2191122711c2ef1c675",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        },
+        ["void_pointer#31fecfc4"] = {
+            branch = "@default",
+            repo = {
+                commit = "22dc2da6025949f05388b3fa14dd759607359ac5",
+                url = "https://github.com/MrowrLib/Packages"
+            },
+            version = "@default"
+        }
+    }
+}

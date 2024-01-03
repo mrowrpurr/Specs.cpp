@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('struct_specs_cpp_1_1_i_spec_runner_col
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SpecsCpp::ISpecRunnerCollection:</div>
 <div class="dyncontent">
@@ -120,8 +120,8 @@ Inheritance diagram for SpecsCpp::ISpecRunnerCollection:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ac243a009eb02e29dcf263193f1a186e3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ac243a009eb02e29dcf263193f1a186e3">ForEachRunnerFn</a> = IFunctionPointer&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a> *)&gt;</td></tr>
-<tr class="separator:ac243a009eb02e29dcf263193f1a186e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace05a57bb94f1502f38c4ecc974d328f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ace05a57bb94f1502f38c4ecc974d328f">ForEachRunnerFn</a> = IFunctionPointer&lt; void(const char *, <a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a> *)&gt;</td></tr>
+<tr class="separator:ace05a57bb94f1502f38c4ecc974d328f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -133,23 +133,28 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a439c69ee947ba9412f1ea5ffa678195b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4be0106570adf4b6c7e76a6ff6fb679"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ab4be0106570adf4b6c7e76a6ff6fb679">get</a> (const char *name) const =0</td></tr>
 <tr class="separator:ab4be0106570adf4b6c7e76a6ff6fb679"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abab46455b894f10e44f11d3e049262b1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#abab46455b894f10e44f11d3e049262b1">foreach_runner</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ac243a009eb02e29dcf263193f1a186e3">ForEachRunnerFn</a> *) const =0</td></tr>
+<tr class="memitem:abab46455b894f10e44f11d3e049262b1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#abab46455b894f10e44f11d3e049262b1">foreach_runner</a> (<a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ace05a57bb94f1502f38c4ecc974d328f">ForEachRunnerFn</a> *) const =0</td></tr>
 <tr class="separator:abab46455b894f10e44f11d3e049262b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a344988bdcf89d882ee100a9fb508bc97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#a344988bdcf89d882ee100a9fb508bc97">foreach_runner</a> (std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a> *)&gt; fn) const</td></tr>
-<tr class="separator:a344988bdcf89d882ee100a9fb508bc97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78d65eae474cc5797eed09024261195c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#a78d65eae474cc5797eed09024261195c">foreach_runner</a> (std::function&lt; void(const char *, <a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a> *)&gt; fn) const</td></tr>
+<tr class="separator:a78d65eae474cc5797eed09024261195c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ac243a009eb02e29dcf263193f1a186e3" name="ac243a009eb02e29dcf263193f1a186e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac243a009eb02e29dcf263193f1a186e3">&#9670;&#160;</a></span>ForEachRunnerFn</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00494">494</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ace05a57bb94f1502f38c4ecc974d328f" name="ace05a57bb94f1502f38c4ecc974d328f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace05a57bb94f1502f38c4ecc974d328f">&#9670;&#160;</a></span>ForEachRunnerFn</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ac243a009eb02e29dcf263193f1a186e3">SpecsCpp::ISpecRunnerCollection::ForEachRunnerFn</a> =  IFunctionPointer&lt;void(<a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a>*)&gt;</td>
+          <td class="memname">using <a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ace05a57bb94f1502f38c4ecc974d328f">SpecsCpp::ISpecRunnerCollection::ForEachRunnerFn</a> =  IFunctionPointer&lt;void(const char*, <a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a>*)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00495">495</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
 
 </div>
 </div>
@@ -216,6 +221,8 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_runner_collection.html#a8adc2097e6cb8fbb9d164cfdd459b432">SpecsCpp::SpecRunnerCollection</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="_global_spec_environment_8h_source.html#l00032">SpecsCpp::register_runner()</a>.</p>
+
 </div>
 </div>
 <a id="abab46455b894f10e44f11d3e049262b1" name="abab46455b894f10e44f11d3e049262b1"></a>
@@ -230,7 +237,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void SpecsCpp::ISpecRunnerCollection::foreach_runner </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ac243a009eb02e29dcf263193f1a186e3">ForEachRunnerFn</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#ace05a57bb94f1502f38c4ecc974d328f">ForEachRunnerFn</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
@@ -244,10 +251,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_runner_collection.html#a639d3d76d8d20faa5db32af75fee7376">SpecsCpp::SpecRunnerCollection</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00503">foreach_runner()</a>.</p>
+
 </div>
 </div>
-<a id="a344988bdcf89d882ee100a9fb508bc97" name="a344988bdcf89d882ee100a9fb508bc97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a344988bdcf89d882ee100a9fb508bc97">&#9670;&#160;</a></span>foreach_runner() <span class="overload">[2/2]</span></h2>
+<a id="a78d65eae474cc5797eed09024261195c" name="a78d65eae474cc5797eed09024261195c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78d65eae474cc5797eed09024261195c">&#9670;&#160;</a></span>foreach_runner() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,7 +267,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void SpecsCpp::ISpecRunnerCollection::foreach_runner </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a> *)&gt;&#160;</td>
+          <td class="paramtype">std::function&lt; void(const char *, <a class="el" href="struct_specs_cpp_1_1_i_spec_runner.html">ISpecRunner</a> *)&gt;&#160;</td>
           <td class="paramname"><em>fn</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -270,6 +279,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html#l00503">503</a> of file <a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  503</span>                                                                                   {</div>
+<div class="line"><span class="lineno">  504</span>            <span class="keyword">auto</span> callback = unique_function_pointer(fn);</div>
+<div class="line"><span class="lineno">  505</span>            this-&gt;<a class="code hl_function" href="struct_specs_cpp_1_1_i_spec_runner_collection.html#abab46455b894f10e44f11d3e049262b1">foreach_runner</a>(callback.get());</div>
+<div class="line"><span class="lineno">  506</span>        }</div>
+<div class="ttc" id="astruct_specs_cpp_1_1_i_spec_runner_collection_html_abab46455b894f10e44f11d3e049262b1"><div class="ttname"><a href="struct_specs_cpp_1_1_i_spec_runner_collection.html#abab46455b894f10e44f11d3e049262b1">SpecsCpp::ISpecRunnerCollection::foreach_runner</a></div><div class="ttdeci">virtual void foreach_runner(ForEachRunnerFn *) const =0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab4be0106570adf4b6c7e76a6ff6fb679" name="ab4be0106570adf4b6c7e76a6ff6fb679"></a>
@@ -297,6 +313,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="class_specs_cpp_1_1_spec_runner_collection.html#a5a76ca919feb4bada0685eba1939ac0b">SpecsCpp::SpecRunnerCollection</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="_spec_environment_8h_source.html#l00041">SpecsCpp::SpecEnvironment::runners()</a>.</p>
 
 </div>
 </div>
@@ -329,7 +347,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Specs.API/include/Specs/<a class="el" href="_a_p_i_8h_source.html">API.h</a></li>
+<li>Specs.API/include/Specs/API/Internal/Undocumented/<a class="el" href="_a_p_i_2_internal_2_undocumented_2_a_p_i_8h_source.html">API.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -15,8 +15,17 @@ var hierarchy =
     [ "SpecsCpp::ILocalSpecExceptionHandlerCollection", "struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html", [
       [ "SpecsCpp::LocalSpecExceptionHandlerCollection", "class_specs_cpp_1_1_local_spec_exception_handler_collection.html", null ]
     ] ],
+    [ "SpecsCpp::Interfaces::ISpecApplication", "struct_specs_cpp_1_1_interfaces_1_1_i_spec_application.html", [
+      [ "SpecsCpp::SpecApplication", "class_specs_cpp_1_1_spec_application.html", null ]
+    ] ],
     [ "SpecsCpp::ISpecCodeBlock", "struct_specs_cpp_1_1_i_spec_code_block.html", [
       [ "SpecsCpp::SpecCodeBlock", "class_specs_cpp_1_1_spec_code_block.html", null ]
+    ] ],
+    [ "SpecsCpp::ISpecCommandLineOption", "struct_specs_cpp_1_1_i_spec_command_line_option.html", [
+      [ "SpecsCpp::SpecCommandLineOption", "class_specs_cpp_1_1_spec_command_line_option.html", null ]
+    ] ],
+    [ "SpecsCpp::ISpecCommandLineOptionCollection", "struct_specs_cpp_1_1_i_spec_command_line_option_collection.html", [
+      [ "SpecsCpp::SpecCommandLineOptionCollection", "class_specs_cpp_1_1_spec_command_line_option_collection.html", null ]
     ] ],
     [ "SpecsCpp::ISpecComponent", "struct_specs_cpp_1_1_i_spec_component.html", [
       [ "SpecsCpp::ISpec", "struct_specs_cpp_1_1_i_spec.html", [
@@ -69,6 +78,9 @@ var hierarchy =
       [ "SpecsCpp::ISpec", "struct_specs_cpp_1_1_i_spec.html", null ],
       [ "SpecsCpp::ISpecGroup", "struct_specs_cpp_1_1_i_spec_group.html", null ]
     ] ],
+    [ "SpecsCpp::ISpecOutput", "struct_specs_cpp_1_1_i_spec_output.html", [
+      [ "SpecsCpp::SpecConsoleOutput", "class_specs_cpp_1_1_spec_console_output.html", null ]
+    ] ],
     [ "SpecsCpp::ISpecReporter", "struct_specs_cpp_1_1_i_spec_reporter.html", [
       [ "SpecsCpp::SpecDebugReporter", "class_specs_cpp_1_1_spec_debug_reporter.html", null ]
     ] ],
@@ -81,8 +93,14 @@ var hierarchy =
     [ "SpecsCpp::ISpecRunnerCollection", "struct_specs_cpp_1_1_i_spec_runner_collection.html", [
       [ "SpecsCpp::SpecRunnerCollection", "class_specs_cpp_1_1_spec_runner_collection.html", null ]
     ] ],
+    [ "SpecsCpp::ISpecRunOptions", "struct_specs_cpp_1_1_i_spec_run_options.html", [
+      [ "SpecsCpp::SpecRunOptions", "class_specs_cpp_1_1_spec_run_options.html", null ]
+    ] ],
     [ "SpecsCpp::ISpecRunResult", "struct_specs_cpp_1_1_i_spec_run_result.html", [
       [ "SpecsCpp::SpecRunResult", "class_specs_cpp_1_1_spec_run_result.html", null ]
+    ] ],
+    [ "SpecsCpp::ISpecRunTextOptionList", "struct_specs_cpp_1_1_i_spec_run_text_option_list.html", [
+      [ "SpecsCpp::SpecRunTextOptionList", "class_specs_cpp_1_1_spec_run_text_option_list.html", null ]
     ] ],
     [ "SpecsCpp::ISpecSuiteRunResult", "struct_specs_cpp_1_1_i_spec_suite_run_result.html", [
       [ "SpecsCpp::SpecSuiteRunResult", "class_specs_cpp_1_1_spec_suite_run_result.html", null ]

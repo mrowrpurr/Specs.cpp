@@ -179,7 +179,6 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
@@ -197,13 +196,15 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_a_p_i_8h.html",
-"_print_color_8h.html#a6c09f408be24e973fddbb8a4bf66e410a25a81701fbfa4a1efdf660a950c1d006",
-"class_specs_cpp_1_1_global_spec_environment.html#ab74d7f28345fa74fdbd66e399aebc26d",
-"class_specs_cpp_1_1_spec_documented.html",
-"functions_b.html",
-"namespace_specs_cpp_1_1_colors_1_1_unix.html#a710499b33e1c7256c823756a3963ab95acf4c2a4bf7c328c4e51f902350475343",
-"struct_specs_cpp_1_1_i_spec_group.html#a3f7a7a483e3d51924cd29db33a663c19"
+"_a_p_i_2_internal_2_documented_2_a_p_i_8h.html",
+"_o_n_e___t_i_m_e___s_e_t_u_p_8h.html#a0e9924da9fa4ef3e1f0312f0e566c184",
+"_top_level_2test_8h.html#aa73c0e1a19248bc75f44b13b45e890ee",
+"class_specs_cpp_1_1_spec_console_output.html#a17e4438559e50ac61185987d92e2142f",
+"class_specs_cpp_1_1_spec_run_result.html#a1164ab6772b95f2cb868c2dceac5aaab",
+"md__documentation_2_installing.html#autotoc_md8",
+"struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a02523a3ade93df58978e939123d7265a",
+"struct_specs_cpp_1_1_i_spec_group.html#ac3c88771cbfaeed06fc2daa94b5ed46d",
+"struct_specs_cpp_1_1_interfaces_1_1_i_spec_application.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

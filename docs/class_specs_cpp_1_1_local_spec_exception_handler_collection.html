@@ -130,8 +130,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a02523a3ade93df58978e939123d7265a inherit pub_methods_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3171ac821919858e921e1de93fa5e2e5 inherit pub_methods_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a3171ac821919858e921e1de93fa5e2e5">foreach_exception_handler</a> (<a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a823ef6c01beb77da90292ce37394df8d">ForEachExceptionHandlerFn</a> *) const =0</td></tr>
 <tr class="separator:a3171ac821919858e921e1de93fa5e2e5 inherit pub_methods_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ea8367d748ea98ea41aefbdd4cc9a22 inherit pub_methods_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a4ea8367d748ea98ea41aefbdd4cc9a22">foreach_exception_handler</a> (std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler.html">ILocalSpecExceptionHandler</a> *)&gt; fn) const</td></tr>
-<tr class="separator:a4ea8367d748ea98ea41aefbdd4cc9a22 inherit pub_methods_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e07e37b0e2e426e288993716040a00 inherit pub_methods_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a48e07e37b0e2e426e288993716040a00">foreach</a> (std::function&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler.html">ILocalSpecExceptionHandler</a> *)&gt; fn) const</td></tr>
+<tr class="separator:a48e07e37b0e2e426e288993716040a00 inherit pub_methods_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -139,7 +139,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a823ef6c01beb77da90292ce37394df8d inherit pub_types_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a823ef6c01beb77da90292ce37394df8d">ForEachExceptionHandlerFn</a> = IFunctionPointer&lt; void(<a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler.html">ILocalSpecExceptionHandler</a> *)&gt;</td></tr>
 <tr class="separator:a823ef6c01beb77da90292ce37394df8d inherit pub_types_struct_specs_cpp_1_1_i_local_spec_exception_handler_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_local_spec_exception_handler_collection_8h_source.html#l00009">9</a> of file <a class="el" href="_local_spec_exception_handler_collection_8h_source.html">LocalSpecExceptionHandlerCollection.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a46a39cfe48887c1bae59e1b30cd44978" name="a46a39cfe48887c1bae59e1b30cd44978"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46a39cfe48887c1bae59e1b30cd44978">&#9670;&#160;</a></span>foreach_exception_handler()</h2>
 
@@ -166,6 +169,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a3171ac821919858e921e1de93fa5e2e5">SpecsCpp::ILocalSpecExceptionHandlerCollection</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_local_spec_exception_handler_collection_8h_source.html#l00017">17</a> of file <a class="el" href="_local_spec_exception_handler_collection_8h_source.html">LocalSpecExceptionHandlerCollection.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>                                                                                     {</div>
+<div class="line"><span class="lineno">   18</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; handler : _handlers) fn-&gt;invoke(handler);</div>
+<div class="line"><span class="lineno">   19</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a96fcc64bd363292caddc19a121888cbc" name="a96fcc64bd363292caddc19a121888cbc"></a>
@@ -194,6 +202,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="struct_specs_cpp_1_1_i_local_spec_exception_handler_collection.html#a02523a3ade93df58978e939123d7265a">SpecsCpp::ILocalSpecExceptionHandlerCollection</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_local_spec_exception_handler_collection_8h_source.html#l00013">13</a> of file <a class="el" href="_local_spec_exception_handler_collection_8h_source.html">LocalSpecExceptionHandlerCollection.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                                                      {</div>
+<div class="line"><span class="lineno">   14</span>            _handlers.push_front(handler);</div>
+<div class="line"><span class="lineno">   15</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
