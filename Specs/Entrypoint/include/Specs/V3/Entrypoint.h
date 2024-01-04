@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+import <iostream>;
 
 namespace SpecsCppV3 {
     class SpecsEntrypoint {

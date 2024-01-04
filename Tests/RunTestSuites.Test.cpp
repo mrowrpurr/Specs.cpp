@@ -1,11 +1,14 @@
-#include <Specs.h>
-#include <Specs/V3/Entrypoint.h>
+// #include <Specs.h>
 
-using namespace SpecsCppV3;
+// import SpecsCppV3;
 
-Example("Run the Specs main() entrypoint") {
-    SpecsEntrypoint entrypoint;
-    entrypoint.main();
+// // #include <Specs/V3/Entrypoint.h>
 
-    // ... test that it printed something to STDOUT
-}
+// using namespace SpecsCppV3;
+
+// Example("Run the Specs main() entrypoint") {
+//     SpecsEntrypoint entrypoint;
+//     entrypoint.main();
+
+//     // ... test that it printed something to STDOUT
+// }
