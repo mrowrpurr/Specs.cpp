@@ -1,5 +1,0 @@
-// #include <Specs/Main.h>
-
-import <iostream>;
-
-int main() { std::cout << "Hello, world!!!" << std::endl; }
