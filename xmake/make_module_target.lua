@@ -1,3 +1,7 @@
+target("ModuleHelper")
+    set_kind("headeronly")
+
+
 function make_module_target(module_name)
     on_config(function (target)
         local module_dir = path.join("modules", module_name)
@@ -9,18 +13,19 @@ function make_module_target(module_name)
             for _, file in ipairs(os.files(source .. "/*")) do
                 local filename = path.filename(file)
                 local new_file = dest .. "/" .. filename:gsub("%.h$", ".ixx")
-
-                -- Read the content of the .h file
                 local content = io.readfile(file)
-                -- Perform the replacements
                 content = content:gsub("//@ module;", "module;")
                 content = content:gsub("//@ export module", "export module")
                 content = content:gsub("//@ export @//", "export")
                 content = content:gsub("//@ export:", "export:")
-                -- Handle the special case of removing the newline after "//@ export @//"
+                content = content:gsub("//@ import ", "import ")
+                content = content:gsub("#include%s*\"(.-)%.h\"%s*// @headerunit@", "import <%1>;")
+                content = content:gsub("#include%s*<(.-)%.h>%s*// @headerunit@", "import <%1>;")
+                content = content:gsub("#include%s*<(.-)>%s*// @headerunit@", "import <%1>;")
+                content = content:gsub("#include%s*(.-)%s*// @nomodule@", "")
+                content = content:gsub("#include%s*<(.-)>%s*// @module@", "import %1;")
+                content = content:gsub("#include%s*\"(.-)%.h\"%s*// @module@", "import %1;")
                 content = content:gsub("export\nnamespace", "export namespace")
-
-                -- Write the modified content to the .ixx file
                 io.writefile(new_file, content)
             end
             for _, dir in ipairs(os.dirs(source .. "/*")) do

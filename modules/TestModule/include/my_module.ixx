@@ -2,7 +2,10 @@
 
 module;
 
-#include <iostream>
+import my_module;
+import <iostream>;
+
+import vector;
 
 export module my_module;
 

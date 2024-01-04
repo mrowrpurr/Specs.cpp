@@ -2,7 +2,10 @@
 
 //@ module;
 
-#include <iostream>
+//@ import my_module;
+#include <iostream>  // @headerunit@
+#include <string>    // @nomodule@
+#include <vector>    // @module@
 
 //@ export module my_module;
 
