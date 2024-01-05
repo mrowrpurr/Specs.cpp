@@ -4,4 +4,4 @@ target("Specs.Application")
     add_deps("Specs.Interfaces")
     
     make_module_target("Specs.Application.Module")
-    add_deps("Specs.Interfaces")
+    add_deps("Specs.Interfaces.Module")
