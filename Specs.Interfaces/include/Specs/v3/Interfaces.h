@@ -1,5 +1,5 @@
 #pragma once
 
-namespace Specs::v3 {
+namespace SpecsCpp::v3 {
     struct IExampleInterface {};
 }

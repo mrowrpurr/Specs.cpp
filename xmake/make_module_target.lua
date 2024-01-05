@@ -3,7 +3,8 @@ target("ModuleHelper")
 
 
 function make_module_target(module_name)
-    before_build(function (target)
+    -- before_build(function (target)
+    on_config(function (target)
         local module_dir = path.join("modules", module_name)
         if os.isdir(module_dir) then
             os.rmdir(module_dir)
@@ -17,7 +18,6 @@ function make_module_target(module_name)
                 content = content:gsub("//@ module;", "module;")
                 content = content:gsub("//@ export module", "export module")
                 content = content:gsub("//@ export @//", "export")
-                content = content:gsub("//@ export:", "export:")
                 content = content:gsub("//@ import ", "import ")
                 content = content:gsub("#include%s*\"(.-)%.h\"%s*// @headerunit@", "import <%1>;")
                 content = content:gsub("#include%s*<(.-)%.h>%s*// @headerunit@", "import <%1>;")
@@ -25,7 +25,7 @@ function make_module_target(module_name)
                 content = content:gsub("#include%s*(.-)%s*// @nomodule@", "")
                 content = content:gsub("#include%s*<(.-)>%s*// @module@", "import %1;")
                 content = content:gsub("#include%s*\"(.-)%.h\"%s*// @module@", "import %1;")
-                content = content:gsub("export\nnamespace", "export namespace")
+                content = content:gsub("//@ export\nnamespace", "export namespace")
                 io.writefile(new_file, content)
             end
             for _, dir in ipairs(os.dirs(source .. "/*")) do
@@ -42,5 +42,5 @@ function make_module_target(module_name)
     target(module_name)
         set_kind("static")
         add_defines("USE_MODULES")
-        add_files(path.join("modules", module_name, "**.ixx"), { install = true })
+        add_files(path.join(os.projectdir(), "modules", module_name, "**.ixx"), { install = true })
 end
