@@ -1,11 +1,14 @@
--- add_requires(
---     "specs"
--- )
+add_requires(
+    "specs"
+)
 
-target("Tests")
+target("Tests - Using Headers")
     set_kind("binary")
     add_files("*.cpp")
-    -- add_packages("specs")
-    -- add_includedirs(".")
-    -- add_deps("Modules")
-    -- add_deps("Specs.Module")
+    add_packages("specs")
+    add_includedirs(".")
+
+    -- Separate targets for using modules -vs- headers
+
+    -- headers...
+    add_deps("Specs.Application")

@@ -3,7 +3,7 @@ target("ModuleHelper")
 
 
 function make_module_target(module_name)
-    on_config(function (target)
+    before_build(function (target)
         local module_dir = path.join("modules", module_name)
         if os.isdir(module_dir) then
             os.rmdir(module_dir)
