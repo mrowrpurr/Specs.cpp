@@ -1,11 +1,11 @@
 #define SPEC_FILE CallFunctionTest
 
 #include <Specs.h>
-#include <Specs/v3/SpecsApplication.h>  // @nomodule@
+
 
 #include <iostream>
 
-//@ import specs.application;
+import specs.application;
 
 Test("Call function in Specs.Application") {
     //
