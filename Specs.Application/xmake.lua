@@ -3,5 +3,5 @@ target("Specs.Application")
     add_includedirs("include", { public = true })
     add_deps("Specs.Interfaces")
     
-    make_module_target("Specs.Application.Module")
+make_module("Specs.Application")
     add_deps("Specs.Interfaces.Module")
