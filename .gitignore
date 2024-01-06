@@ -1,0 +1,14 @@
+build
+.idea
+cmake-build*
+.vs
+*.pdb
+.vscode/settings.json
+.xmake
+compile_commands
+
+.sass-cache
+.jekyll-metadata
+Gemfile.lock
+
+docs
