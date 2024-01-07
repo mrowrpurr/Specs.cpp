@@ -1,0 +1,26 @@
+name: Linux C++11
+on:
+  push:
+    branches: [ "v3" ]
+env:
+  GCC_VERSION: 11
+jobs:
+  build_matrix:
+    strategy:
+      matrix:
+        gcc: [ 9, 10, 11, 12, 13 ]
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
+      with:
+        path: .xmake-cache
+        key: xmake-cache-${{ runner.os }}
+    - uses: xmake-io/github-action-setup-xmake@v1
+      with:
+        xmake-version: latest
+        actions-cache-folder: .xmake-cache
+    - name: Build
+      run: GCC_VERSION=${{ matrix.gcc }} xmake build -w -v "Tests cxx11"
+    - name: Test
+      run: GCC_VERSION=${{ matrix.gcc }} xmake run "Tests cxx11"
