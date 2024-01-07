@@ -1,9 +1,7 @@
-name: Linux C++11
+name: Linux Clang C++11
 on:
   push:
     branches: [ "v3" ]
-env:
-  GCC_VERSION: 11
 jobs:
   build_matrix:
     strategy:
@@ -29,6 +27,6 @@ jobs:
       with:
         version: "17.0.6"
     - name: Build
-      run: CLANG_VERSION=${{ matrix.clang }} xmake build -w -v "Tests cxx11"
+      run: CLANG_VERSION=${{ matrix.clang }} xmake build -w -v "Tests cxx11 clang"
     - name: Test
-      run: CLANG_VERSION=${{ matrix.clang }} xmake run "Tests cxx11"
+      run: CLANG_VERSION=${{ matrix.clang }} xmake run "Tests cxx11 clang"

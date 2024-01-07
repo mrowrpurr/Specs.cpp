@@ -1,9 +1,7 @@
-name: Linux C++11
+name: Linux GCC C++11
 on:
   push:
     branches: [ "v3" ]
-env:
-  GCC_VERSION: 11
 jobs:
   build_matrix:
     strategy:
