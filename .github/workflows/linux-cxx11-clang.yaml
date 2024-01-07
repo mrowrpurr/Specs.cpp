@@ -18,14 +18,12 @@ jobs:
       with:
         xmake-version: latest
         actions-cache-folder: .xmake-cache
-    - if: matrix.clang == 16
-      uses: KyleMayes/install-llvm-action@v1
-      with:
-        version: "16.0.6"
-    - if: matrix.clang == 17
-      uses: KyleMayes/install-llvm-action@v1
-      with:
-        version: "17.0.6"
+    - if: matrix.clang == 16 || matrix.clang == 17
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod u+x llvm.sh
+        sudo ./llvm.sh ${{ matrix.clang }}
+      shell: bash
     - name: Build
       run: CLANG_VERSION=${{ matrix.clang }} xmake build -w -v "Tests cxx11 clang"
     - name: Test
