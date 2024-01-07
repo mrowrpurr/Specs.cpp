@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
+    - uses: xmake-io/github-action-setup-xmake@v1
+      with:
+        xmake-version: latest
     - name: Build
       run: xmake build -w -v "Tests cxx11"
     - name: Test
