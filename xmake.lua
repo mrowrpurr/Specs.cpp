@@ -1,5 +1,8 @@
 add_rules("mode.debug", "mode.release")
 
+-- Make xmake print verbose output:
+-- set_config("verbose", true)
+
 includes("xmake/*.lua")
 
 if is_wsl() then
