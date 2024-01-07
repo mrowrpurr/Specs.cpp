@@ -2,6 +2,8 @@ name: Linux C++11
 on:
   push:
     branches: [ "v3" ]
+env:
+  GCC_VERSION: 12
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -10,6 +12,7 @@ jobs:
     - uses: xmake-io/github-action-setup-xmake@v1
       with:
         xmake-version: latest
+        actions-cache-folder: .xmake-cache
     - name: Build
       run: xmake build -w -v "Tests cxx11"
     - name: Test

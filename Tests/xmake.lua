@@ -1,17 +1,26 @@
 test_target("cxx11")
-clang_test_target("cxx11")
+
+if supports_clang() then
+    test_target("cxx11", "clang")
+end
 
 test_target("cxx14")
-clang_test_target("cxx14")
+
+if supports_clang() then
+    test_target("cxx14", "clang")
+end
 
 test_target("cxx17")
-clang_test_target("cxx17")
 
-test_target("cxx17")
-clang_test_target("cxx17")
+if supports_clang() then
+    test_target("cxx17", "clang")
+end
 
 test_target("cxx20")
-clang_test_target("cxx20")
+
+if supports_clang() then
+    test_target("cxx20", "clang")
+end
 
 target("Run All Tests")
     set_kind("phony")
